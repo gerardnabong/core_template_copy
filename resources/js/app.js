@@ -7,9 +7,8 @@
 import router from "./router/router";
 import Vue from "vue";
 import Index from "./components/Index";
-import Vuex from "vuex";
+import store from "./storage/store";
 
-Vue.use(Vuex);
 window.Vue = require("vue");
 
 /**
@@ -28,9 +27,9 @@ window.Vue = require("vue");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
 new Vue({
     router,
+    store,
     render: h => h(Index),
     el: "#app"
 });
