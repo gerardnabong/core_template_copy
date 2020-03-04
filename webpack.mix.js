@@ -44,30 +44,22 @@ mix.webpackConfig({
     }
 });
 
-mix.scripts(["resources/assets/js/jquery.min.js"], "public/js/scripts.js");
-
-mix.js("resources/js/app.js", "public/js").sass(
-    "resources/sass/app.scss",
-    "public/css"
-);
-
-mix.styles(
-    [
-        "node_modules/bootstrap/dist/css/bootstrap.css",
-        "node_modules/@fortawesome/font-awesome-free/css/font-awesome.css"
-    ],
-    "public/css/shared.css"
-);
-
+mix.js("resources/js/app.js", "public/js");
 mix.copy("resources/assets/images/", "public/images/");
-mix.copy("node_modules/@fortawesome/font-awesome-free/scss", "public/scss");
-
+mix.copy("node_modules/@fortawesome/fontawesome-free/scss", "public/scss");
 mix.scripts(
     [
         "node_modules/jquery/dist/jquery.min.js",
         "node_modules/bootstrap/dist/js/bootstrap.min.js"
     ],
     "public/js/shared.js"
+);
+mix.styles(
+    [
+        "node_modules/bootstrap/dist/css/bootstrap.css",
+        "node_modules/@fortawesome/font-awesome-free/css/font-awesome.css"
+    ],
+    "public/css/shared.css"
 );
 
 mix.version();

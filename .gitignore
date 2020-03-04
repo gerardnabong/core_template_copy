@@ -16,3 +16,4 @@ public/*
 package-lock.json
 ngrok
 composer.lock
+resources\js\components\ExampleComponent.vue
