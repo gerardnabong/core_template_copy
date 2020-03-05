@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/{any}', function () {
-    return view('index');
-})->where('any', '.*');;
+Route::get('/getPortfolio', 'WebsiteController@getPortfolio');
+
+Route::get('/{any}', 'WebsiteController@index')->where('any', '.*');

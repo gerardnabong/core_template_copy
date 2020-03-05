@@ -1,20 +1,28 @@
 import Vuex from "vuex";
-
+import axios from "axios";
 import Vue from "vue";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        count: 0
+        user: null,
+        portfolio: []
     },
     mutations: {
-        incrementCount(state) {
-            state.count++;
+        setPortfolio: (state, portfolio) => {
+            state.portfolio = portfolio;
         }
     },
     getters: {
-        getCount: state => {
-            return state.count;
+        getPortfolio: state => {
+            return state.portfolio;
+        }
+    },
+    actions: {
+        getPortfolio: function() {
+            axios.get("/getPortfolio").then(response => {
+                this.commit("setPortfolio", response.data);
+            });
         }
     }
-});
+}).dispatch("getPortfolio");

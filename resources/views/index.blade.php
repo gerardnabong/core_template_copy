@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Customer Portal</title>
     <link rel="stylesheet" href="{{mix('/css/shared.css')}}">
+    <link rel="stylesheet" href="{{mix('/css/app.css')}}">
 </head>
 
 <body>

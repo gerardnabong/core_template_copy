@@ -1,40 +1,25 @@
-
 <template>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12">
-                <div class="customer-portal-header">header</div>
-            </div>
+            <header-client-portal />
         </div>
         <div class="row">
-            <div class="col-12 text-center">
-                <div class="customer-portal-content">{{this.getCount}}</div>
-            </div>
+            <div class="col-12 text-center"></div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <div class="customer-portal-footer">
-                    <button @click="addCounter">Add</button>
-                </div>
-            </div>
+            <footer-client-portal />
         </div>
     </div>
 </template>
-
 <script>
-// TODO this is a sample code for vueX will replace with actual codes for the project
-import counter from "../components/";
+import HeaderClientPortal from "~/components/templates/Header";
+import FooterClientPortal from "~/components/templates/Footer";
 
 export default {
-    computed: {
-        getCount() {
-            return this.$store.getters.getCount;
-        }
-    },
-    methods: {
-        addCounter() {
-            this.$store.commit("incrementCount");
-        }
+    name: "Index",
+    components: {
+        HeaderClientPortal,
+        FooterClientPortal
     }
 };
 </script>
