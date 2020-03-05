@@ -19,7 +19,8 @@ class CreatePortfoliosTable extends Migration
             $table->string('logo');
             $table->string('button_color');
             $table->string('button_hover_color');
-            $table->string('header_background_color');
+            $table->string('header_background_mobile');
+            $table->string('header_background');
             $table->string('wave');
             $table->timestamps();
         });

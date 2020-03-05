@@ -1,14 +1,12 @@
 <template>
-    <div class="container-fluid">
-        <div class="row">
-            <header-client-portal />
+    <div>
+        <header-client-portal />
+        <div>
+            <div class="col-12 text-center client-portal-container">
+                <router-view />
+            </div>
         </div>
-        <div class="row">
-            <div class="col-12 text-center"></div>
-        </div>
-        <div class="row">
-            <footer-client-portal />
-        </div>
+        <footer-client-portal />
     </div>
 </template>
 <script>
@@ -20,6 +18,20 @@ export default {
     components: {
         HeaderClientPortal,
         FooterClientPortal
+    },
+    data() {
+        return {
+            portfolio: []
+        };
+    },
+    created() {
+        $.ajax({
+            url: "getPortfolio",
+            type: "get",
+            async: false
+        }).done(response => {
+            this.$store.commit("setPortfolio", response);
+        });
     }
 };
 </script>

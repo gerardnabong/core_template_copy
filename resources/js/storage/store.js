@@ -1,5 +1,4 @@
 import Vuex from "vuex";
-import axios from "axios";
 import Vue from "vue";
 Vue.use(Vuex);
 
@@ -20,9 +19,13 @@ export default new Vuex.Store({
     },
     actions: {
         getPortfolio: function() {
-            axios.get("/getPortfolio").then(response => {
-                this.commit("setPortfolio", response.data);
+            $.ajax({
+                url: "getPortfolio",
+                type: "get",
+                async: false
+            }).done(response => {
+                this.commit("setPortfolio", response);
             });
         }
     }
-}).dispatch("getPortfolio");
+});

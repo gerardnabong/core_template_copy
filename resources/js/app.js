@@ -4,6 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import BootstrapVue from "bootstrap-vue";
 import router from "./router/router";
 import Vue from "vue";
 import Index from "./components/Index";
@@ -27,6 +28,10 @@ window.Vue = require("vue");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+Vue.config.productionTip = false;
+Vue.use(BootstrapVue);
+
 new Vue({
     router,
     store,
