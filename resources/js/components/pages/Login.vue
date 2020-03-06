@@ -2,9 +2,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
-                <img src="/images/login icon.svg" alt />
+                <span class="icon-like-icon client-portal-icon" :style="loginIcon"></span>
                 <b-form class="pt-4">
-                    <h2 class="font-weight-bold font-size-24">Login</h2>
+                    <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
                             v-model="username"
@@ -63,6 +63,11 @@ export default {
                 color: "#" + this.portfolio.button_color,
                 hover_color: "#" + this.portfolio.button_hover_color
             };
+        },
+        loginIcon() {
+            return {
+                "--color": this.portfolio.button_color
+            };
         }
     },
     methods: {
@@ -72,3 +77,10 @@ export default {
     }
 };
 </script>
+<style lang="scss">
+.icon-login-icon {
+    &::before {
+        color: var(--color);
+    }
+}
+</style>
