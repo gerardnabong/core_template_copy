@@ -1,9 +1,11 @@
 <template>
-    <div>
-        <header-client-portal />
-        <div>
-            <div class="col-12 text-center client-portal-container">
-                <router-view />
+    <div class="row no-gutters client-portal-min-height-100">
+        <div class="col-12 container-fluid">
+            <header-client-portal />
+            <div class="row no-gutters">
+                <div class="col-12 text-center client-portal-container">
+                    <router-view />
+                </div>
             </div>
         </div>
         <footer-client-portal />
