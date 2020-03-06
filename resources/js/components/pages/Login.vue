@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
-                <span class="icon-like-icon client-portal-icon" :style="loginIcon"></span>
+                <span class="icon-login-icon client-portal-icon" :style="loginIcon"></span>
                 <b-form class="pt-4">
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
@@ -26,8 +26,10 @@
                 </b-form>
                 <div class="pt-4">
                     <p class="text-center font-size-13">Customer Portal Version 1.0.0</p>
+                </div>
+                <div class="pt-5">
                     <p
-                        class="text-center pt-5 font-size-12"
+                        class="text-center font-size-12"
                     >Copyright © 2020 Inbox Credit. All Rights Reserved.</p>
                 </div>
             </div>

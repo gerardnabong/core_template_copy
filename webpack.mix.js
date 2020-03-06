@@ -44,9 +44,6 @@ mix.webpackConfig({
     }
 });
 
-// TODO Temporary file for generating SCSS to CSS file
-// mix.sass("resources/sass/app.scss", "public/css/app.css");
-
 mix.js("resources/js/app.js", "public/js");
 mix.copy("resources/assets/", "public/");
 mix.copy("node_modules/@fortawesome/fontawesome-free/scss", "public/scss");
@@ -64,5 +61,6 @@ mix.styles(
     ],
     "public/css/shared.css"
 );
+mix.styles("resources/assets/css/app.css", "public/css/app.css");
 
 mix.version();
