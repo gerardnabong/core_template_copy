@@ -18,7 +18,7 @@
 <script>
 // TODO This is only for vue template and will be remove later
 export default {
-    Name: "Header",
+    Name: 'Header',
     computed: {
         portfolio: {
             get() {

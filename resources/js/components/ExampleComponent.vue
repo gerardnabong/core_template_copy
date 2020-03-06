@@ -15,7 +15,7 @@
 <script>
 // TODO This is only for vue template and will be remove later
 export default {
-    Name: "ExampleComponent",
+    Name: 'ExampleComponent',
     mounted() {}
 };
 </script>

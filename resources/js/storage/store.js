@@ -10,15 +10,15 @@ export default new Vuex.Store({
     mutations: {
         setPortfolio: (state, portfolio) => {
             state.portfolio = portfolio;
-        }
+        },
     },
     getters: {
         getPortfolio: state => {
             return state.portfolio;
-        }
+        },
     },
     actions: {
-        getPortfolio: function() {
+        getPortfolio: function () {
             $.ajax({
                 url: "getPortfolio",
                 type: "get",
@@ -26,6 +26,6 @@ export default new Vuex.Store({
             }).done(response => {
                 this.commit("setPortfolio", response);
             });
-        }
+        },
     }
 });
