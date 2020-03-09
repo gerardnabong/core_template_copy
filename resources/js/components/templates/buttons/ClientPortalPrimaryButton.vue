@@ -12,12 +12,11 @@
 "use strict";
 export default {
     name: "CLientPortalPrimaryButton",
-    // ["color", "hover_color", "button_class", "button_name"],
     props: {
-        color: String,
-        hover_color: String,
-        button_class: Array,
-        button_name: String
+        color: { type: String, required: true },
+        hover_color: { type: String, required: true },
+        button_class: { type: Array, required: true },
+        button_name: { type: String, required: true }
     },
     data() {
         return {

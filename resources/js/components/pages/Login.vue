@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
-                <img src="/images/login icon.svg" alt />
+                <img src="/images/login icon.svg" />
                 <b-form class="pt-4">
                     <h2 class="font-weight-bold font-size-24">Login</h2>
                     <b-form-group class="pt-4">
@@ -42,17 +42,21 @@
 "use strict";
 
 import ClientPortalPrimaryButton from "~/components/templates/buttons/ClientPortalPrimaryButton";
+
 export default {
     name: "Login",
+
     components: {
         ClientPortalPrimaryButton
     },
+
     data() {
         return {
             username: null,
             ssn: null
         };
     },
+
     computed: {
         portfolio() {
             return this.$store.state.portfolio;
@@ -70,6 +74,7 @@ export default {
             };
         }
     },
+
     methods: {
         loginButtonClick() {
             // TODO will add Login Event

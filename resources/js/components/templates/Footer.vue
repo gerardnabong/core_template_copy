@@ -5,7 +5,7 @@
                 <img
                     class="w-100"
                     :src="'/images/'+this.$store.state.portfolio.footer_image_mobile_url"
-                    alt
+
                 />
             </div>
         </div>
@@ -14,7 +14,7 @@
                 <img
                     class="w-100"
                     :src="'/images/'+this.$store.state.portfolio.footer_image_url"
-                    alt
+
                 />
             </div>
         </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+'use strict';
 // TODO This is only for vue template and will be remove later
 export default {
     Name: "Footer"
