@@ -20,11 +20,6 @@ export default {
     components: {
         HeaderClientPortal,
         FooterClientPortal
-    },
-    data() {
-        return {
-            portfolio: []
-        };
     }
 };
 </script>
