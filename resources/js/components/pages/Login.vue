@@ -19,10 +19,7 @@
                             class="client-portal-form-input"
                         />
                     </b-form-group>
-                    <client-portal-primary-button
-                        :buttonProperty="buttonLoginProperty"
-                        @buttonClick="loginButtonClick"
-                    />
+                    <b-button class="client-portal-btn-primary">Login</b-button>
                 </b-form>
                 <div class="pt-4">
                     <p class="text-center font-size-13">Customer Portal Version 1.0.0</p>
@@ -38,18 +35,16 @@
 </template>
 
 <script>
-import ClientPortalPrimaryButton from "~/components/templates/buttons/ClientPortalPrimaryButton";
 export default {
     name: "Login",
-    components: {
-        ClientPortalPrimaryButton
-    },
+
     data() {
         return {
             username: null,
             ssn: null
         };
     },
+
     computed: {
         portfolio() {
             return this.$store.state.portfolio;
@@ -61,7 +56,6 @@ export default {
                     "client-portal-login-btn",
                     "font-size-14"
                 ],
-                name: "Login",
                 color: "#" + this.portfolio.button_color,
                 hover_color: "#" + this.portfolio.button_hover_color
             };
@@ -72,6 +66,7 @@ export default {
             };
         }
     },
+
     methods: {
         loginButtonClick() {
             // TODO will add Login Event
@@ -83,6 +78,12 @@ export default {
 .icon-login-icon {
     &::before {
         color: var(--color);
+    }
+}
+.client-portal-btn-primary {
+    background-color: var(--background-color);
+    &:hover {
+        background-color: var(--background-hover-color);
     }
 }
 </style>

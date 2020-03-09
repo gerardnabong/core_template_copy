@@ -12,7 +12,10 @@
                 >Congratulations! You're qualified for a new loan!</h2>
                 <div class="mt-5">
                     <p>Click the button to apply</p>
-                    <client-portal-primary-button />
+                    <b-button
+                        class="client-portal-btn-primary"
+                        :style="buttonStyle"
+                    >Request for New Loan</b-button>
                 </div>
             </div>
         </div>
@@ -20,16 +23,22 @@
 </template>
 
 <script>
-import ClientPortalPrimaryButton from "~/components/templates/buttons/ClientPortalPrimaryButton";
+"use strict";
+
 export default {
     name: "NewLoan",
-    components: {
-        ClientPortalPrimaryButton
-    },
+
     computed: {
         iconStyle() {
             return {
                 "--color": this.$store.state.portfolio.button_color
+            };
+        },
+        buttonStyle() {
+            return {
+                "--background-color": this.$store.state.portfolio.button_color,
+                "--background-hover-color": this.$store.state.portfolio
+                    .button_hover_color
             };
         }
     }
@@ -40,6 +49,12 @@ export default {
     font-size: 100px;
     &::before {
         color: var(--color);
+    }
+}
+.client-portal-btn-primary {
+    background-color: var(--background-color);
+    &:hover {
+        background-color: var(--background-hover-color);
     }
 }
 </style>
