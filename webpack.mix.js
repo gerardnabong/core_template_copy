@@ -64,5 +64,6 @@ mix.styles(
     ],
     "public/css/shared.css"
 );
+mix.styles("resources/assets/css/app.css", "public/css/app.css");
 
 mix.version();

@@ -20,7 +20,10 @@
                         />
                     </b-form-group>
                     <client-portal-primary-button
-                        :buttonProperty="buttonLoginProperty"
+                        :color="buttonLoginProperty.color"
+                        :hover_color="buttonLoginProperty.hover_color"
+                        :button_name="buttonLoginProperty.name"
+                        :button_class="buttonLoginProperty.class"
                         @buttonClick="loginButtonClick"
                     />
                 </b-form>
@@ -36,6 +39,8 @@
 </template>
 
 <script>
+"use strict";
+
 import ClientPortalPrimaryButton from "~/components/templates/buttons/ClientPortalPrimaryButton";
 export default {
     name: "Login",

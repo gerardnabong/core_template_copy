@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -21,6 +25,8 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    const INVALID_LOGIN_MESSAGE = 'Invalid Login... Please Try Again';
+
     /**
      * Where to redirect users after login.
      *
@@ -36,5 +42,40 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function username()
+    {
+        return 'username';
+    }
+
+    public function postLogin(Request $request)
+    {
+        return response()->json($this->login($request));
+    }
+
+    public function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return Auth::user();
+    }
+
+    public function sendFailedLoginResponse(Request $request)
+    {
+        return ['error_message' => self::INVALID_LOGIN_MESSAGE];
+    }
+
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        $this->loggedOut($request);
+
+        return redirect('/');
     }
 }

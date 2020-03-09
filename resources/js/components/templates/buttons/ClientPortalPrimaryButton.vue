@@ -1,22 +1,30 @@
 <template>
     <b-button
-        :class="buttonProperty.class"
-        :style="{'background-color' : (hover ? buttonProperty.hover_color : buttonProperty.color)}"
+        :class="button_class"
+        :style="{'background-color' : (hover ? color : hover_color)}"
         @click="buttonClick"
         @mouseover="hover = true"
         @mouseleave="hover = false"
-    >{{buttonProperty.name}}</b-button>
+    >{{button_name}}</b-button>
 </template>
 
 <script>
+"use strict";
 export default {
     name: "CLientPortalPrimaryButton",
-    props: ["buttonProperty"],
+    // ["color", "hover_color", "button_class", "button_name"],
+    props: {
+        color: String,
+        hover_color: String,
+        button_class: Array,
+        button_name: String
+    },
     data() {
         return {
             hover: false
         };
     },
+
     methods: {
         buttonClick(e) {
             this.$emit("buttonClick");

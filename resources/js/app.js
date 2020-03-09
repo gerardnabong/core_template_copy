@@ -7,7 +7,7 @@
 import BootstrapVue from "bootstrap-vue";
 import router from "./router/router";
 import Vue from "vue";
-import Index from "./components/Index";
+import Index from "./components/templates/Index";
 import store from "./storage/store";
 
 window.Vue = require("vue");

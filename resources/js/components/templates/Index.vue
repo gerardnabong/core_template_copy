@@ -23,9 +23,10 @@ export default {
     },
     data() {
         return {
-            portfolio: [],
+            portfolio: []
         };
     },
+    // TODO Temporary solution for getting the portfolio will move to js_var before next PR
     created() {
         $.ajax({
             url: "getPortfolio",

@@ -1,3 +1,5 @@
+"use strict";
+
 import Router from "vue-router";
 import Vue from "vue";
 import Login from "~/components/pages/Login";

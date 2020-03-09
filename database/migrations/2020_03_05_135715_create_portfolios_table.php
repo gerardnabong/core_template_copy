@@ -14,13 +14,13 @@ class CreatePortfoliosTable extends Migration
         Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('url');
-            $table->string('logo');
+            $table->string('logo_url');
             $table->string('button_color');
             $table->string('button_hover_color');
-            $table->string('header_background_mobile');
-            $table->string('header_background');
-            $table->string('wave_image');
-            $table->string('wave_mobile_image');
+            $table->string('header_background_image_mobile_url');
+            $table->string('header_background_image_url');
+            $table->string('footer_image_url');
+            $table->string('footer_image_mobile_url');
             $table->timestamps();
         });
     }
