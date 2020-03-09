@@ -2,20 +2,17 @@
     <div class="row no-gutters">
         <div class="col-12 text-center client-portal-header desktop-hide position-relative">
             <div class="client-portal-background-image">
-                <img class="w-100" :src="'images/'+this.$jsvars.theme.header_image_mobile_url" />
+                <img class="w-100" :src="'images/'+portfolio.header_image_mobile_url" />
             </div>
-            <img
-                class="client-portal-header-logo"
-                :src="'images/logo/'+this.$jsvars.theme.logo_url"
-            />
+            <img class="client-portal-header-logo" :src="'images/logo/'+portfolio.logo_url" />
         </div>
         <div class="col-12 text-center client-portal-header mobile-hide position-relative">
             <div class="client-portal-background-image">
-                <img class="w-100" :src="'images/'+this.$jsvars.theme.header_image_url" />
+                <img class="w-100" :src="'images/'+portfolio.header_image_url" />
             </div>
             <img
                 class="client-portal-header-logo"
-                :src="'images/logo/'+this.$jsvars.theme.logo_url"
+                :src="'images/logo/'+portfolio.logo_url"
             />
         </div>
     </div>
@@ -23,8 +20,17 @@
 
 <script>
 "use strict";
-// TODO This is only for vue template and will be remove later
+
 export default {
-    Name: "Header"
+    Name: "Header",
+    data() {
+        return {
+            portfolio: null
+        };
+    },
+
+    created() {
+        this.portfolio = this.$jsVars.portfolio;
+    }
 };
 </script>

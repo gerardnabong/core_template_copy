@@ -1,8 +1,9 @@
 <script>
-if (typeof PORTFOLIO === 'undefined'){
-    PORTFOLIO = {};
-}
+    if (typeof jsVars === 'undefined'){
+        jsVars = {};
+    }
 
-PORTFOLIO.theme = JSON.parse('{!!$portfolio!!}');
-window.PORTFOLIO = PORTFOLIO;
+    jsVars.portfolio = JSON.parse('{!!$portfolio!!}');
+
+    window.JS_VARS = jsVars;
 </script>

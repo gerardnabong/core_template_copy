@@ -21,9 +21,9 @@
                     </b-form-group>
                     <client-portal-primary-button
                         :color="buttonLoginProperty.color"
-                        :hover_color="buttonLoginProperty.hover_color"
-                        :button_name="buttonLoginProperty.name"
-                        :button_class="buttonLoginProperty.class"
+                        :hoverColor="buttonLoginProperty.hoverColor"
+                        :buttonName="buttonLoginProperty.name"
+                        :buttonClass="buttonLoginProperty.class"
                         @buttonClick="loginButtonClick"
                     />
                 </b-form>
@@ -53,8 +53,13 @@ export default {
     data() {
         return {
             username: null,
-            ssn: null
+            ssn: null,
+            portfolio: null,
         };
+    },
+
+    created(){
+        this.portfolio = this.$jsVars.portfolio;
     },
 
     computed: {
@@ -66,8 +71,8 @@ export default {
                     "font-size-14"
                 ],
                 name: "Login",
-                color: "#" + this.$jsvars.theme.button_color,
-                hover_color: "#" + this.$jsvars.theme.button_hover_color
+                color: "#" + this.portfolio.button_color,
+                hoverColor: "#" + this.portfolio.button_hover_color
             };
         }
     },
