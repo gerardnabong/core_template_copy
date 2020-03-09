@@ -13,7 +13,7 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('url')->unique();
+            $table->string('url')->index();
             $table->string('logo_url');
             $table->string('button_color');
             $table->string('button_hover_color');
