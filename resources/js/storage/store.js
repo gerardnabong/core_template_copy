@@ -20,11 +20,10 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        getPortfolio: function() {
+        getPortfolio({ commit }) {
             $.ajax({
                 url: "getPortfolio",
-                type: "get",
-                async: false
+                type: "get"
             }).done(response => {
                 this.commit("setPortfolio", response);
             });

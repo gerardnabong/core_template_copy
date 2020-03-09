@@ -25,16 +25,6 @@ export default {
         return {
             portfolio: []
         };
-    },
-    // TODO Temporary solution for getting the portfolio will move to js_var before next PR
-    created() {
-        $.ajax({
-            url: "getPortfolio",
-            type: "get",
-            async: false
-        }).done(response => {
-            this.$store.commit("setPortfolio", response);
-        });
     }
 };
 </script>
