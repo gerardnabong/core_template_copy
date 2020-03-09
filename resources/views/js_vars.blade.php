@@ -1,7 +1,7 @@
 <script>
-    let jsVars = {};
+    const JS_VARS = {};
 
-    jsVars.portfolio = JSON.parse('{!!App\JSVars::getPortfolio()!!}');
+    JS_VARS.portfolio = JSON.parse('{!!App\JSVars::getPortfolio()!!}');
 
-    window.JS_VARS = jsVars;
+    window.JS_VARS = JS_VARS;
 </script>
