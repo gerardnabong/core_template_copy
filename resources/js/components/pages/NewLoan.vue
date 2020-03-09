@@ -10,6 +10,10 @@
                 <h2
                     class="client-portal-heading-text"
                 >Congratulations! You're qualified for a new loan!</h2>
+                <div class="mt-5">
+                    <p>Click the button to apply</p>
+                    <client-portal-primary-button />
+                </div>
             </div>
         </div>
     </div>
