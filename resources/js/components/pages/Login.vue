@@ -58,9 +58,6 @@ export default {
     },
 
     computed: {
-        portfolio() {
-            return this.$store.state.portfolio;
-        },
         buttonLoginProperty() {
             return {
                 class: [
