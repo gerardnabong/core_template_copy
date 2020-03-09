@@ -1,9 +1,7 @@
 <script>
-    if (typeof jsVars === 'undefined'){
-        jsVars = {};
-    }
+    let jsVars = {};
 
-    jsVars.portfolio = JSON.parse('{!!App\JsVars::getPortfolio()!!}');
+    jsVars.portfolio = JSON.parse('{!!App\JSVars::getPortfolio()!!}');
 
     window.JS_VARS = jsVars;
 </script>
