@@ -69,8 +69,8 @@ export default {
                     "font-size-14"
                 ],
                 name: "Login",
-                color: "#" + this.portfolio.button_color,
-                hover_color: "#" + this.portfolio.button_hover_color
+                color: "#" + this.$jsvars.theme.button_color,
+                hover_color: "#" + this.$jsvars.theme.button_hover_color
             };
         }
     },
