@@ -6,9 +6,7 @@ use App\Model\Portfolio;
 use Faker\Generator as Faker;
 
 $factory->define(Portfolio::class, function (Faker $faker) {
-    $portfolio = new Portfolio;
     return [
-        'id' => 1,
         'url' => 'localhost',
         'logo_url' => 'inbox_credit_white_logo.svg',
         'button_color' => '004F95',
