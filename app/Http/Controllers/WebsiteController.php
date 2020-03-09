@@ -12,8 +12,7 @@ class WebsiteController extends Controller
 {
     public function index(): View
     {
-        $data['portfolio'] = Portfolio::getPortfolio();
-        return view('index',$data);
+        return view('index');
     }
 
     public function getPortfolio(): JsonResponse
