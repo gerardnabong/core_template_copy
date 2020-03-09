@@ -1,5 +1,5 @@
 <?php
-
+// TODO File might be remove or change after we clarify how we would implement the authentication
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
