@@ -31,7 +31,7 @@ window.Vue = require("vue");
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
-store.dispatch("getPortfolio");
+Vue.prototype.$jsvars = window.PORTFOLIO;
 new Vue({
     router,
     store,
