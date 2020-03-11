@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Model\Portfolio;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
 
 class WebsiteController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         return view('index');
     }
 
-    public function getPortfolio()
+    public function getPortfolio(): JsonResponse
     {
-        return response()->json((new Portfolio)->getByUrl($_SERVER['SERVER_NAME']));
+        $portfolio = Portfolio::getPortfolio();
+        return response()->json($portfolio);
     }
 }

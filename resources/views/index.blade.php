@@ -14,6 +14,7 @@
 <body>
     <div id="app"></div>
 </body>
+@include('js_vars')
 <script src="{{mix('/js/shared.js')}}"></script>
 <script src="{{mix('/js/app.js')}}"></script>
 

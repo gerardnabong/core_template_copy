@@ -13,4 +13,6 @@
 
 Route::get('/getPortfolio', 'WebsiteController@getPortfolio');
 
-Route::get('/{any}', 'WebsiteController@index')->where('any', '.*');
+// TODO this should be deleted later because we'd better use whitelist later on - Albert
+Route::get('/', 'WebsiteController@index');
+Route::get('/{any}', 'WebsiteController@index')->where('any', '.*')->middleware('auth');

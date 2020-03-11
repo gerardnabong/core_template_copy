@@ -2,7 +2,7 @@
     <div class="row no-gutters client-portal-min-height-100">
         <div class="col-12 container-fluid">
             <header-client-portal />
-            <div class="row no-gutters client-portal-container-vertical-center">
+            <div class="row no-gutters">
                 <div class="col-12 text-center client-portal-container">
                     <router-view />
                 </div>
@@ -12,6 +12,8 @@
     </div>
 </template>
 <script>
+"use strict";
+
 import HeaderClientPortal from "~/components/templates/Header";
 import FooterClientPortal from "~/components/templates/Footer";
 
@@ -19,21 +21,7 @@ export default {
     name: "Index",
     components: {
         HeaderClientPortal,
-        FooterClientPortal
+        FooterClientPortal,
     },
-    data() {
-        return {
-            portfolio: []
-        };
-    },
-    created() {
-        $.ajax({
-            url: "getPortfolio",
-            type: "get",
-            async: false
-        }).done(response => {
-            this.$store.commit("setPortfolio", response);
-        });
-    }
 };
 </script>

@@ -44,8 +44,15 @@ mix.webpackConfig({
     }
 });
 
+// TODO Temporary file for generating SCSS to CSS file
+// mix.sass("resources/sass/app.scss", "public/css/app.css");
+
 mix.js("resources/js/app.js", "public/js");
 mix.copy("resources/assets/", "public/");
+mix.copy(
+    "node_modules/@fortawesome/fontawesome-free/webfonts",
+    "public/webfonts"
+);
 mix.scripts(
     [
         "node_modules/jquery/dist/jquery.min.js",

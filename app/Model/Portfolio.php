@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
 {
-    public function getByUrl(String $url): Portfolio
+    public static function getPortfolio(): ?Portfolio
     {
-        return $this->where('url', $url)->first();
+        return Portfolio::where('url', $_SERVER['SERVER_NAME'])->firstOrFail();
     }
 }
