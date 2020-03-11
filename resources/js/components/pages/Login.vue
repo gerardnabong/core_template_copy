@@ -43,32 +43,32 @@ export default {
     data() {
         return {
             username: null,
-            ssn: null
+            ssn: null,
         };
     },
 
     computed: {
-        portfolio() {
-            return this.$store.state.portfolio;
-        },
         buttonStyle() {
             return {
-                "--background-color": this.$store.state.portfolio.button_color,
-                "--background-hover-color": this.$store.state.portfolio
-                    .button_hover_color
+                "--background-color": this.portfolio.button_color,
+                "--background-hover-color": this.portfolio.button_hover_color,
             };
         },
         loginIcon() {
             return {
-                "--color": this.portfolio.button_color
+                "--color": this.portfolio.button_color,
             };
-        }
+        },
+    },
+
+    created() {
+        this.portfolio = this.$jsVars.portfolio;
     },
 
     methods: {
         loginButtonClick() {
             // TODO will add Login Event
         },
-    }
+    },
 };
 </script>

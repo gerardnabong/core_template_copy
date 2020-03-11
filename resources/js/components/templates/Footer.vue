@@ -21,12 +21,12 @@ export default {
 
     data() {
         return {
-            portfolio: null
+            portfolio: null,
         };
     },
 
     created() {
         this.portfolio = this.$jsVars.portfolio;
-    }
+    },
 };
 </script>

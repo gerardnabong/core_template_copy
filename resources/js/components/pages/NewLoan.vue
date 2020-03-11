@@ -49,20 +49,28 @@
 
 export default {
     name: "NewLoan",
+    data() {
+        return {
+            portfolio: null,
+        };
+    },
 
     computed: {
         iconStyle() {
             return {
-                "--color": this.$store.state.portfolio.button_color,
+                "--color": this.portfolio.button_color,
             };
         },
         buttonStyle() {
             return {
-                "--background-color": this.$store.state.portfolio.button_color,
-                "--background-hover-color": this.$store.state.portfolio
-                    .button_hover_color,
+                "--background-color": this.portfolio.button_color,
+                "--background-hover-color": this.portfolio.button_hover_color,
             };
         },
+    },
+
+    created() {
+        this.portfolio = this.$jsVars.portfolio;
     },
 };
 </script>
