@@ -154,7 +154,7 @@ html {
     }
 
     .call-us-number {
-        font-size: 22px;
+        font-size: 20px;
     }
 }
 @media (min-width: 767px) {
@@ -168,7 +168,7 @@ html {
         font-size: 17px;
     }
     .call-us-number {
-        font-size: 22px;
+        font-size: 20px;
     }
 }
 @media (min-width: 993px) {
