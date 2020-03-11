@@ -31,6 +31,6 @@ export default {
         buttonClick(e) {
             this.$emit("buttonClick");
         },
-    }
+    },
 };
 </script>
