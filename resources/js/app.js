@@ -4,12 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import BootstrapVue from "bootstrap-vue";
 import router from "./router/router";
 import Vue from "vue";
-import Index from "./components/Index";
-import Vuex from "vuex";
+import Index from "./components/templates/Index";
+import store from "./storage/store";
 
-Vue.use(Vuex);
 window.Vue = require("vue");
 
 /**
@@ -29,8 +29,13 @@ window.Vue = require("vue");
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.config.productionTip = false;
+Vue.use(BootstrapVue);
+// TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
+Vue.prototype.$jsVars = JS_VARS;
 new Vue({
     router,
+    store,
     render: h => h(Index),
     el: "#app"
 });
