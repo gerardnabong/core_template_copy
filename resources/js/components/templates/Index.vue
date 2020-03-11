@@ -21,7 +21,7 @@ export default {
     name: "Index",
     components: {
         HeaderClientPortal,
-        FooterClientPortal
-    }
+        FooterClientPortal,
+    },
 };
 </script>

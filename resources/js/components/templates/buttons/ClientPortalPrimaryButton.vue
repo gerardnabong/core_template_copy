@@ -18,19 +18,19 @@ export default {
         color: { type: String, required: true },
         hoverColor: { type: String, required: true },
         buttonClass: { type: Array, required: true },
-        buttonName: { type: String, required: true }
+        buttonName: { type: String, required: true },
     },
 
     data() {
         return {
-            hover: false
+            hover: false,
         };
     },
 
     methods: {
         buttonClick(e) {
             this.$emit("buttonClick");
-        }
+        },
     }
 };
 </script>

@@ -60,7 +60,7 @@ export default {
         };
     },
 
-    created(){
+    created() {
         this.portfolio = this.$jsVars.portfolio;
     },
 
@@ -74,7 +74,7 @@ export default {
                 ],
                 name: "Login",
                 color: "#" + this.portfolio.button_color,
-                hoverColor: "#" + this.portfolio.button_hover_color
+                hoverColor: "#" + this.portfolio.button_hover_color,
             };
         }
     },
@@ -82,7 +82,7 @@ export default {
     methods: {
         loginButtonClick() {
             // TODO will add Login Event
-        }
+        },
     }
 };
 </script>
