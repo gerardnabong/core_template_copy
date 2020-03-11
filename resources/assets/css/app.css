@@ -4,20 +4,29 @@ body {
     height: 100%;
     font-family: "Open Sans", sans-serif;
 }
+
 html {
     overflow: scroll;
     overflow-x: hidden;
 }
+
 ::-webkit-scrollbar {
     width: 0px;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #ff0000;
 }
+
+.color-black {
+    color: #2C2C2E;
+}
+
 .client-portal-header {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .client-portal-header-logo {
     position: absolute;
     top: 50%;
@@ -25,83 +34,151 @@ html {
     transform: translate(-50%, -50%);
     width: 65%;
 }
+
 .client-portal-background-image {
     z-index: -1;
 }
+
 .client-portal-container {
     min-height: 100%;
     height: auto;
     padding-top: 50px;
 }
+
 .client-portal-footer {
     height: 150px;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .client-portal-form-input {
     color: #a4a4a4;
     border-color: #dcdcdc;
     text-align: center;
     border-radius: 8px;
 }
+
 .client-portal-login-btn {
     width: 100%;
     border-radius: 8px;
     border-color: transparent;
 }
+
 .client-portal-login-btn:hover {
     border-color: transparent;
 }
+
 .desktop-hide {
     display: block;
 }
+
 .mobile-hide {
     display: none;
 }
+
 .client-portal-min-height-100 {
     min-height: 100%;
     height: 100%;
 }
+
 .font-size-12 {
     font-size: 12px;
 }
+
 .font-size-13 {
     font-size: 13px;
 }
+
 .font-size-14 {
     font-size: 14px;
 }
+
+.font-size-17 {
+    font-size: 17px;
+}
+
+.font-size-22 {
+    font-size: 22px;
+}
+
 .font-size-24 {
     font-size: 24px;
 }
+
+.font-size-40 {
+    font-size: 40px;
+}
+
 .client-portal-icon {
     font-size: 90px;
 }
+
 .client-portal-heading-text {
     font-weight: bold;
     font-size: 24px;
     text-align: center;
     letter-spacing: 0.6px;
 }
+
 .client-portal-container-vertical-center {
     min-height: 68%;
     align-items: center;
 }
+
+.icon-like-icon {
+    font-size: 100px;
+}
+
+.icon-like-icon::before {
+    color: var(--color);
+}
+
+.client-portal-btn-primary {
+    background-color: var(--background-color);
+}
+
+.client-portal-btn-primary:hover {
+    background-color: var(--background-hover-color);
+}
+
+.icon-login-icon:before {
+    color: var(--color);
+}
+
+.color-override {
+    color: var(--color);
+}
+
+.call-us-background {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 25px #CECECE5C;
+    border-radius: 8px;
+    opacity: 1;
+}
+
+.client-portal-border-none {
+    border: none;
+}
+
 @media (min-width: 767px) {
     .client-portal-icon {
         font-size: 100px;
     }
+
     .client-portal-header-logo {
         width: 40%;
     }
 }
+
 @media (min-width: 993px) {
     .desktop-hide {
         display: none;
     }
+
     .mobile-hide {
         display: block;
     }
+
     .client-portal-header-logo {
         width: 16%;
     }

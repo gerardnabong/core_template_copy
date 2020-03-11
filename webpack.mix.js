@@ -46,7 +46,6 @@ mix.webpackConfig({
 
 mix.js("resources/js/app.js", "public/js");
 mix.copy("resources/assets/", "public/");
-mix.copy("node_modules/@fortawesome/fontawesome-free/scss", "public/scss");
 mix.scripts(
     [
         "node_modules/jquery/dist/jquery.min.js",
@@ -57,7 +56,7 @@ mix.scripts(
 mix.styles(
     [
         "node_modules/bootstrap/dist/css/bootstrap.css",
-        "node_modules/@fortawesome/font-awesome-free/css/font-awesome.css"
+        "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
     ],
     "public/css/shared.css"
 );

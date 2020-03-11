@@ -19,7 +19,7 @@
                             class="client-portal-form-input"
                         />
                     </b-form-group>
-                    <b-button class="client-portal-btn-primary">Login</b-button>
+                    <b-button class="client-portal-btn-primary w-100" :style="buttonStyle">Login</b-button>
                 </b-form>
                 <div class="pt-4">
                     <p class="text-center font-size-13">Customer Portal Version 1.0.0</p>
@@ -49,15 +49,11 @@ export default {
         portfolio() {
             return this.$store.state.portfolio;
         },
-        buttonLoginProperty() {
+        buttonStyle() {
             return {
-                class: [
-                    "text-center",
-                    "client-portal-login-btn",
-                    "font-size-14"
-                ],
-                color: "#" + this.portfolio.button_color,
-                hover_color: "#" + this.portfolio.button_hover_color
+                "--background-color": this.$store.state.portfolio.button_color,
+                "--background-hover-color": this.$store.state.portfolio
+                    .button_hover_color
             };
         },
         loginIcon() {
@@ -74,16 +70,3 @@ export default {
     }
 };
 </script>
-<style lang="scss">
-.icon-login-icon {
-    &::before {
-        color: var(--color);
-    }
-}
-.client-portal-btn-primary {
-    background-color: var(--background-color);
-    &:hover {
-        background-color: var(--background-hover-color);
-    }
-}
-</style>
