@@ -7,9 +7,10 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <h2
-                    class="client-portal-heading-text"
-                >Congratulations! You're qualified for a new loan!</h2>
+                <h2 class="client-portal-heading-text">
+                    Congratulations! You're
+                    qualified for a new loan!
+                </h2>
                 <div class="mt-5">
                     <p>Click the button to apply</p>
                     <b-button
@@ -20,21 +21,16 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-8 col-md-4 text-center mt-5">
-                <div class="card call-us-background p-4 client-portal-border-none">
-                    <div class="row">
-                        <div class="col-4 align-self-center call-us-icon">
+            <div class="col-8 col-md-4 text-center mt-5 client-portal-call-us" @click="callNumber">
+                <div class="card call-us-background py-4 client-portal-border-none">
+                    <div class="row no-gutters">
+                        <div class="col-5 align-self-center call-us-icon">
                             <i class="fas fa-phone fa-rotate-90 color-override" :style="iconStyle"></i>
                         </div>
-                        <div class="col-8">
+                        <div class="col-7">
                             <div class="row flex-column text-left call-us-text">
                                 <div class="col">Call us at</div>
-                                <div class="col font-weight-bold call-us-number">
-                                    <a
-                                        href="tel:+18555734504"
-                                        class="text-decoration-none color-black"
-                                    >1-855-573-4504</a>
-                                </div>
+                                <div class="col font-weight-bold call-us-number">1-855-573-4504</div>
                             </div>
                         </div>
                     </div>
@@ -71,6 +67,13 @@ export default {
 
     created() {
         this.portfolio = this.$jsVars.portfolio;
+    },
+
+    methods: {
+        callNumber() {
+            // TODO Add function to call
+            alert("This is clickable");
+        },
     },
 };
 </script>

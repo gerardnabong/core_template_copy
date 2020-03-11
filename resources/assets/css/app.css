@@ -51,6 +51,7 @@ html {
     width: 100%;
     border-radius: 8px;
     border-color: transparent;
+    border: none;
 }
 .client-portal-login-btn:hover {
     border-color: transparent;
@@ -107,9 +108,17 @@ html {
 }
 .client-portal-btn-primary {
     background-color: var(--background-color);
+    border: none !important;
+    box-shadow: none !important;
 }
 .client-portal-btn-primary:hover {
     background-color: var(--background-hover-color);
+}
+.client-portal-btn-primary:active {
+    background-color: var(--background-hover-color) !important;
+}
+.client-portal-btn-primary:focus {
+    background-color: var(--background-hover-color) !important;
 }
 .icon-login-icon:before {
     color: var(--color);
@@ -133,8 +142,12 @@ html {
     font-size: 12px;
 }
 .call-us-icon {
-    font-size: 30px;
+    font-size: 44px;
 }
+.client-portal-call-us:hover {
+    cursor: hand;
+}
+
 @media (min-width: 499px) {
     .call-us-text {
         font-size: 14px;
@@ -156,9 +169,6 @@ html {
     }
     .call-us-number {
         font-size: 22px;
-    }
-    .call-us-icon {
-        font-size: 40px;
     }
 }
 @media (min-width: 993px) {
