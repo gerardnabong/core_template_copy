@@ -30,7 +30,7 @@ export default {
     methods: {
         buttonClick(e) {
             this.$emit("buttonClick");
-        },
+        }
     }
 };
 </script>
