@@ -14,7 +14,6 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #ff0000;
 }
-
 .color-black {
     color: #2c2c2e;
 }
@@ -136,7 +135,15 @@ html {
 .call-us-icon {
     font-size: 30px;
 }
+@media (min-width: 499px) {
+    .call-us-text {
+        font-size: 14px;
+    }
 
+    .call-us-number {
+        font-size: 22px;
+    }
+}
 @media (min-width: 767px) {
     .client-portal-icon {
         font-size: 100px;
@@ -154,7 +161,6 @@ html {
         font-size: 40px;
     }
 }
-
 @media (min-width: 993px) {
     .desktop-hide {
         display: none;

@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-8 col-sm-6 col-md-6 text-center mt-5">
+            <div class="col-8 col-md-4 text-center mt-5">
                 <div class="card call-us-background p-4 client-portal-border-none">
                     <div class="row">
                         <div class="col-4 align-self-center call-us-icon">
@@ -53,16 +53,16 @@ export default {
     computed: {
         iconStyle() {
             return {
-                "--color": this.$store.state.portfolio.button_color
+                "--color": this.$store.state.portfolio.button_color,
             };
         },
         buttonStyle() {
             return {
                 "--background-color": this.$store.state.portfolio.button_color,
                 "--background-hover-color": this.$store.state.portfolio
-                    .button_hover_color
+                    .button_hover_color,
             };
-        }
-    }
+        },
+    },
 };
 </script>
