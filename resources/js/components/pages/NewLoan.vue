@@ -20,16 +20,16 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-8 col-sm-4 text-center mt-5">
+            <div class="col-8 col-sm-6 col-md-6 text-center mt-5">
                 <div class="card call-us-background p-4 client-portal-border-none">
                     <div class="row">
-                        <div class="col-4 align-self-center font-size-40">
+                        <div class="col-4 align-self-center call-us-icon">
                             <i class="fas fa-phone fa-rotate-90 color-override" :style="iconStyle"></i>
                         </div>
                         <div class="col-8">
-                            <div class="row flex-column text-left">
-                                <div class="col font-size-17">Call us at</div>
-                                <div class="col font-size-22 font-weight-bold">
+                            <div class="row flex-column text-left call-us-text">
+                                <div class="col">Call us at</div>
+                                <div class="col font-weight-bold call-us-number">
                                     <a
                                         href="tel:+18555734504"
                                         class="text-decoration-none color-black"
