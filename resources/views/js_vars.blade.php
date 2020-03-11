@@ -1,5 +1,5 @@
 <script>
-    const JS_VARS = {};
+    let JS_VARS = {};
 
     JS_VARS.portfolio = JSON.parse('{!!App\JSVars::getPortfolio()!!}');
 
