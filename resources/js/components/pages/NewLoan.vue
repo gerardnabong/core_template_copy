@@ -31,7 +31,8 @@
         </div>
         <div class="row justify-content-center">
             <div
-                class="col-9 client-portal-custom-col-call-us col-sm-6 col-md-5 col-lg-4 col-xl-3 text-center my-5"
+                class="col-9 client-portal-custom-col-call-us
+                    col-sm-6 col-md-5 col-lg-4 col-xl-3 text-center my-5"
             >
                 <call-us-button />
             </div>
@@ -40,9 +41,9 @@
 </template>
 
 <script>
-'use strict'
+'use strict';
 
-import CallUsButton from '~/components/templates/buttons/CallUsButton'
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
     name: 'NewLoan',
@@ -52,8 +53,8 @@ export default {
     },
 
     created() {
-        this.portfolio = this.$jsVars.portfolio
-        this.clientPortalButton = this.portfolio.button_color
+        this.portfolio = this.$jsVars.portfolio;
+        this.clientPortalButton = this.portfolio.button_color;
     },
-}
+};
 </script>

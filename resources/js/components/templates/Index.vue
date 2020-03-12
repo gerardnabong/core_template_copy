@@ -12,10 +12,10 @@
     </div>
 </template>
 <script>
-"use strict";
+'use strict';
 
-import HeaderClientPortal from "~/components/templates/Header";
-import FooterClientPortal from "~/components/templates/Footer";
+import HeaderClientPortal from '~/components/templates/Header';
+import FooterClientPortal from '~/components/templates/Footer';
 
 export default {
     name: 'Index',

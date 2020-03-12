@@ -29,20 +29,20 @@
 </template>
 
 <script>
-'use strict'
+'use strict';
 
 export default {
     name: 'CallUsButton',
 
     computed: {
         phone_number() {
-            var phone_number = this.portfolio.phone_number
-            return 'tel: +' + phone_number.replace(/-/g, '')
+            var phone_number = this.portfolio.phone_number;
+            return 'tel: +' + phone_number.replace(/-/g, '');
         },
     },
 
     created() {
-        this.portfolio = this.$jsVars.portfolio
+        this.portfolio = this.$jsVars.portfolio;
     },
-}
+};
 </script>
