@@ -50,13 +50,13 @@ export default {
     computed: {
         buttonStyle() {
             return {
-                "--background-color": this.portfolio.button_color,
-                "--background-hover-color": this.portfolio.button_hover_color,
+                '--background-color': this.portfolio.button_color,
+                '--background-hover-color': this.portfolio.button_hover_color,
             };
         },
         loginIcon() {
             return {
-                "--color": this.portfolio.button_color,
+                '--color': this.portfolio.button_color,
             };
         },
     },
