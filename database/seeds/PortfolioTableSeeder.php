@@ -18,6 +18,7 @@ class PortfolioTableSeeder extends Seeder
             'header_image_url' => 'blue_arc_bg.svg',
             'footer_image_url' => 'wave_footer.svg',
             'footer_image_mobile_url' => 'footer_wave_bg.svg',
+            'phone_number' => '1-855-573-4504',
         ]);
     }
 }

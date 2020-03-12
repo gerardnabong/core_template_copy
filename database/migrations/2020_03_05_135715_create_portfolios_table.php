@@ -20,6 +20,7 @@ class CreatePortfoliosTable extends Migration
             $table->string('header_image_url');
             $table->string('footer_image_url');
             $table->string('footer_image_mobile_url');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }

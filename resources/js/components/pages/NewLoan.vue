@@ -21,24 +21,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-8 col-md-4 text-center mt-5">
-                <div class="card call-us-background p-4 client-portal-border-none">
-                    <div class="row">
-                        <div class="col-4 align-self-center call-us-icon">
-                            <i class="fas fa-phone fa-rotate-90 color-override" :style="iconStyle"></i>
-                        </div>
-                        <div class="col-8">
-                            <div class="row flex-column text-left call-us-text">
-                                <div class="col">Call us at</div>
-                                <div class="col font-weight-bold call-us-number">
-                                    <a
-                                        href="tel:+18555734504"
-                                        class="text-decoration-none color-black"
-                                    >1-855-573-4504</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <call-us-button />
             </div>
         </div>
     </div>
@@ -47,8 +30,15 @@
 <script>
 "use strict";
 
+import CallUsButton from "~/components/templates/buttons/CallUsButton";
+
 export default {
     name: "NewLoan",
+
+    components: {
+        CallUsButton,
+    },
+
     data() {
         return {
             portfolio: null,
