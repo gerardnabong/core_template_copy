@@ -111,8 +111,11 @@ html {
     border: none !important;
     box-shadow: none !important;
 }
-.client-portal-btn-primary:hover {
-    background-color: var(--background-hover-color);
+.client-portal-btn-primary:hover,
+.client-portal-btn-primary:focus,
+.client-portal-btn-primary:active {
+    background-color: var(--background-hover-color) !important;
+    box-shadow: none;
 }
 .client-portal-btn-primary:active {
     background-color: var(--background-hover-color) !important;
@@ -142,7 +145,11 @@ html {
     font-size: 12px;
 }
 .call-us-icon {
-    font-size: 44px;
+    font-size: 42px;
+}
+.call-us-button:hover {
+    cursor: pointer;
+    color: initial;
 }
 .client-portal-call-us:hover {
     cursor: hand;
@@ -152,11 +159,11 @@ html {
     .call-us-text {
         font-size: 14px;
     }
-
     .call-us-number {
         font-size: 20px;
     }
 }
+
 @media (min-width: 767px) {
     .client-portal-icon {
         font-size: 100px;
@@ -168,9 +175,10 @@ html {
         font-size: 17px;
     }
     .call-us-number {
-        font-size: 20px;
+        font-size: 22px;
     }
 }
+
 @media (min-width: 993px) {
     .desktop-hide {
         display: none;

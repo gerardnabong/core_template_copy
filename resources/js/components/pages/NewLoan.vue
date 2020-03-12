@@ -21,20 +21,8 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-7 col-md-3 text-center mt-5 client-portal-call-us" @click="callNumber">
-                <div class="card call-us-background py-4 client-portal-border-none">
-                    <div class="row no-gutters">
-                        <div class="col-4 align-self-center call-us-icon">
-                            <i class="fas fa-phone fa-rotate-90 color-override" :style="iconStyle"></i>
-                        </div>
-                        <div class="col-8">
-                            <div class="row no-gutters flex-column text-left call-us-text">
-                                <div class="col">Call us at</div>
-                                <div class="col font-weight-bold call-us-number">1-855-573-4504</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-8 col-md-4 text-center mt-5">
+                <call-us-button />
             </div>
         </div>
     </div>
@@ -43,8 +31,15 @@
 <script>
 "use strict";
 
+import CallUsButton from "~/components/templates/buttons/CallUsButton";
+
 export default {
     name: "NewLoan",
+
+    components: {
+        CallUsButton,
+    },
+
     data() {
         return {
             portfolio: null,
