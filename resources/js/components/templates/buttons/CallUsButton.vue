@@ -32,7 +32,7 @@ export default {
     computed: {
         iconColor() {
             return {
-                "--color": this.portfolio.button_color,
+                '--color': this.portfolio.button_color,
             };
         },
         phone_number() {

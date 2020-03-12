@@ -33,7 +33,7 @@
 import CallUsButton from "~/components/templates/buttons/CallUsButton";
 
 export default {
-    name: "NewLoan",
+    name: 'NewLoan',
 
     components: {
         CallUsButton,
@@ -48,13 +48,13 @@ export default {
     computed: {
         iconStyle() {
             return {
-                "--color": this.portfolio.button_color,
+                '--color': this.portfolio.button_color,
             };
         },
         buttonStyle() {
             return {
-                "--background-color": this.portfolio.button_color,
-                "--background-hover-color": this.portfolio.button_hover_color,
+                '--background-color': this.portfolio.button_color,
+                '--background-hover-color': this.portfolio.button_hover_color,
             };
         },
     },

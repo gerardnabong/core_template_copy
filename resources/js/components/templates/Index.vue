@@ -18,7 +18,7 @@ import HeaderClientPortal from "~/components/templates/Header";
 import FooterClientPortal from "~/components/templates/Footer";
 
 export default {
-    name: "Index",
+    name: 'Index',
     components: {
         HeaderClientPortal,
         FooterClientPortal,

@@ -17,7 +17,7 @@
 "use strict";
 
 export default {
-    Name: "Footer",
+    Name: 'Footer',
 
     data() {
         return {

@@ -170,9 +170,6 @@ html {
     }
 }
 @media(min-width: 740px){
-    .client-portal-btn-submit{
-        width: 50%;
-    }
     .client-portal-heading-text{
         font-size: 28px;
     }

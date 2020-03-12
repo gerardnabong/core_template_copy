@@ -19,7 +19,7 @@
 "use strict";
 
 export default {
-    Name: "Header",
+    Name: 'Header',
 
     data() {
         return {
