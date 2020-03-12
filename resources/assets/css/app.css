@@ -14,7 +14,7 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #ff0000;
 }
-.color-black {
+.color-darkgray {
     color: #2c2c2e;
 }
 .client-portal-header {
@@ -47,7 +47,7 @@ html {
     text-align: center;
     border-radius: 8px;
 }
-.client-portal-button{
+.client-portal-button {
     border-radius: 8px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -107,32 +107,16 @@ html {
 .icon-like-icon {
     font-size: 100px;
 }
-.icon-like-icon::before {
-    color: var(--color);
-}
-.client-portal-btn-primary {
-    background-color: var(--background-color);
-}
 .client-portal-btn-primary:hover,
 .client-portal-btn-primary:focus,
 .client-portal-btn-primary:active {
-    background-color: var(--background-hover-color) !important;
     box-shadow: none;
-}
-.icon-login-icon:before {
-    color: var(--color);
-}
-.color-override {
-    color: var(--color);
 }
 .call-us-background {
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 25px #cecece5c;
     border-radius: 8px;
     opacity: 1;
-}
-.client-portal-border-none {
-    border: none;
 }
 .call-us-text {
     font-size: 17px;
@@ -148,29 +132,26 @@ html {
     cursor: pointer;
     color: initial;
 }
-.client-portal-btn-submit{
+.client-portal-btn-submit {
     width: 100%;
 }
-@media(min-width:319px){
-    .call-us-number{
+@media (min-width: 319px) {
+    .call-us-number {
         font-size: 20px;
     }
 }
-@media(min-width: 410px){
-    .client-portal-custom-col-call-us{
-        flex: 0 0 57% 
+@media (min-width: 410px) {
+    .client-portal-custom-col-call-us {
+        flex: 0 0 57%;
     }
 }
 @media (min-width: 499px) {
-    .call-us-number {
-        font-size: 22px;
-    }
-    .client-portal-btn-submit{
+    .client-portal-btn-submit {
         width: 50%;
     }
 }
-@media(min-width: 740px){
-    .client-portal-heading-text{
+@media (min-width: 740px) {
+    .client-portal-heading-text {
         font-size: 28px;
     }
     .client-portal-header-logo {
@@ -192,10 +173,10 @@ html {
     .call-us-number {
         font-size: 22px;
     }
-    .tablet-show{
+    .tablet-show {
         display: block;
     }
-    .client-portal-btn-submit{
+    .client-portal-btn-submit {
         width: 60%;
     }
 }
@@ -210,7 +191,7 @@ html {
     .client-portal-header-logo {
         width: 16%;
     }
-    .client-portal-btn-submit{
+    .client-portal-btn-submit {
         width: 50%;
     }
 }

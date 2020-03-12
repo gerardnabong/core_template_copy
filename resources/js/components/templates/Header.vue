@@ -16,19 +16,13 @@
 </template>
 
 <script>
-"use strict";
+'use strict'
 
 export default {
     Name: 'Header',
 
-    data() {
-        return {
-            portfolio: null,
-        };
-    },
-
     created() {
-        this.portfolio = this.$jsVars.portfolio;
+        this.portfolio = this.$jsVars.portfolio
     },
-};
+}
 </script>

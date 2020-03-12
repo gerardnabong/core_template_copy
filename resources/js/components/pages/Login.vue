@@ -4,7 +4,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
-                <span class="icon-login-icon client-portal-icon" :style="loginIcon"></span>
+                <span
+                    class="icon-login-icon client-portal-icon"
+                    :style="{'color': portfolio.button_color}"
+                ></span>
                 <b-form class="pt-4">
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
@@ -21,7 +24,12 @@
                             class="client-portal-form-input"
                         />
                     </b-form-group>
-                    <b-button class="client-portal-btn-primary w-100" :style="buttonStyle">Login</b-button>
+                    <b-button
+                        class="client-portal-btn-primary w-100"
+                        :style="{'background-color': login_button_color}"
+                        @mouseover="login_button_color = portfolio.button_hover_color"
+                        @mouseleave="login_button_color = portfolio.button_color"
+                    >Login</b-button>
                 </b-form>
                 <div class="pt-4">
                     <p class="text-center font-size-13">Customer Portal Version 1.0.0</p>
@@ -29,7 +37,7 @@
                 <div class="pt-5">
                     <p
                         class="text-center font-size-12"
-                    >Copyright © 2020 Inbox Credit. All Rights Reserved.</p>
+                    >Copyright &copy; 2020 Inbox Credit. All Rights Reserved.</p>
                 </div>
             </div>
         </div>
@@ -37,6 +45,8 @@
 </template>
 
 <script>
+'use strict'
+
 export default {
     name: 'Login',
 
@@ -44,25 +54,12 @@ export default {
         return {
             username: null,
             ssn: null,
-        };
-    },
-
-    computed: {
-        buttonStyle() {
-            return {
-                '--background-color': this.portfolio.button_color,
-                '--background-hover-color': this.portfolio.button_hover_color,
-            };
-        },
-        loginIcon() {
-            return {
-                '--color': this.portfolio.button_color,
-            };
-        },
+        }
     },
 
     created() {
-        this.portfolio = this.$jsVars.portfolio;
+        this.portfolio = this.$jsVars.portfolio
+        this.login_button_color = this.portfolio.button_color
     },
 
     methods: {
@@ -70,5 +67,5 @@ export default {
             // TODO will add Login Event
         },
     },
-};
+}
 </script>
