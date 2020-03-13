@@ -14,7 +14,7 @@
                     class="client-portal-heading-text"
                 >Congratulations! You're qualified for a new loan!</h2>
                 <div class="mt-5">
-                    <p>Click the button to apply</p>
+                    <p class="client-portal-paragraph">Click the button to apply</p>
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"

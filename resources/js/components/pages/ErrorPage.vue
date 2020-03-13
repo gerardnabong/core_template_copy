@@ -3,24 +3,24 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
                 <span
-                    class="icon-piggy-bank-icon client-portal-icon"
+                    class="icon-sad-icon client-portal-icon"
                     :style="{color: portfolio.button_color}"
                 ></span>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <h2
-                    class="client-portal-heading-text"
-                >Congratulations! You're qualified for a new loan!</h2>
+                <h2 class="client-portal-heading-text">Oops! Something went wrong</h2>
                 <div class="mt-5">
-                    <p class="client-portal-paragraph">Click the button to apply</p>
+                    <p
+                        class="client-portal-paragraph"
+                    >The request failed for some reason, but you are still on track.</p>
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
                         @mouseover="clientPortalButton = portfolio.button_hover_color"
                         @mouseleave="clientPortalButton = portfolio.button_color"
-                    >Request for New Loan</b-button>
+                    >Try Again</b-button>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
-    name: 'NewLoan',
+    name: 'ErrorPage',
 
     data() {
         return {

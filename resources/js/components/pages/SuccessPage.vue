@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
                 <span
-                    class="icon-piggy-bank-icon client-portal-icon"
+                    class="icon-check-icon client-portal-icon"
                     :style="{color: portfolio.button_color}"
                 ></span>
             </div>
@@ -12,15 +12,11 @@
             <div class="col-md-6 text-center pt-4">
                 <h2
                     class="client-portal-heading-text"
-                >Congratulations! You're qualified for a new loan!</h2>
+                >Thank You. We have successfully received your application</h2>
                 <div class="mt-5">
-                    <p class="client-portal-paragraph">Click the button to apply</p>
-                    <b-button
-                        class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
-                        :style="{ 'background-color': clientPortalButton }"
-                        @mouseover="clientPortalButton = portfolio.button_hover_color"
-                        @mouseleave="clientPortalButton = portfolio.button_color"
-                    >Request for New Loan</b-button>
+                    <p
+                        class="client-portal-paragraph"
+                    >A customer representative will contact you soon!</p>
                 </div>
             </div>
         </div>
@@ -38,7 +34,7 @@
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
-    name: 'NewLoan',
+    name: 'ErrorPage',
 
     data() {
         return {
