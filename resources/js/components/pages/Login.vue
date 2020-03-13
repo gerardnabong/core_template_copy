@@ -25,7 +25,7 @@ passport works. // This is kept only for the design
                         />
                     </b-form-group>
                     <b-button
-                        class="client-portal-btn-primary w-100"
+                        class="client-portal-btn-primary w-100 border-0"
                         :style="{ 'background-color': login_button_color }"
                         @mouseover="
                             login_button_color = portfolio.button_hover_color
