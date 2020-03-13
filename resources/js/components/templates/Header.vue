@@ -16,16 +16,10 @@
 </template>
 
 <script>
-"use strict";
+'use strict';
 
 export default {
-    Name: "Header",
-
-    data() {
-        return {
-            portfolio: null,
-        };
-    },
+    Name: 'Header',
 
     created() {
         this.portfolio = this.$jsVars.portfolio;

@@ -14,7 +14,7 @@ html {
 ::-webkit-scrollbar-thumb {
     background: #ff0000;
 }
-.color-black {
+.color-darkgray {
     color: #2c2c2e;
 }
 .client-portal-header {
@@ -26,7 +26,7 @@ html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 65%;
+    width: 55%;
 }
 .client-portal-background-image {
     z-index: -1;
@@ -46,6 +46,11 @@ html {
     border-color: #dcdcdc;
     text-align: center;
     border-radius: 8px;
+}
+.client-portal-button {
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .client-portal-login-btn {
     width: 100%;
@@ -103,31 +108,10 @@ html {
 .icon-like-icon {
     font-size: 100px;
 }
-.icon-like-icon::before {
-    color: var(--color);
-}
-.client-portal-btn-primary {
-    background-color: var(--background-color);
-    border: none !important;
-    box-shadow: none !important;
-}
 .client-portal-btn-primary:hover,
 .client-portal-btn-primary:focus,
 .client-portal-btn-primary:active {
-    background-color: var(--background-hover-color) !important;
     box-shadow: none;
-}
-.client-portal-btn-primary:active {
-    background-color: var(--background-hover-color) !important;
-}
-.client-portal-btn-primary:focus {
-    background-color: var(--background-hover-color) !important;
-}
-.icon-login-icon:before {
-    color: var(--color);
-}
-.color-override {
-    color: var(--color);
 }
 .call-us-background {
     background: #ffffff 0% 0% no-repeat padding-box;
@@ -135,32 +119,35 @@ html {
     border-radius: 8px;
     opacity: 1;
 }
-.client-portal-border-none {
-    border: none;
-}
 .call-us-text {
-    font-size: 12px;
-}
-.call-us-number {
-    font-size: 12px;
+    font-size: 17px;
+    text-align: left;
 }
 .call-us-icon {
     font-size: 42px;
+}
+.call-us-button{
+    width: 250px;
 }
 .call-us-button:hover {
     cursor: pointer;
     color: initial;
 }
-.client-portal-call-us:hover {
-    cursor: hand;
+.client-portal-btn-submit {
+    width: 100%;
+    border: none;
 }
-
 @media (min-width: 499px) {
-    .call-us-text {
-        font-size: 14px;
+    .client-portal-btn-submit {
+        width: 50%;
     }
-    .call-us-number {
-        font-size: 20px;
+}
+@media (min-width: 740px) {
+    .client-portal-heading-text {
+        font-size: 28px;
+    }
+    .client-portal-header-logo {
+        width: 40%;
     }
 }
 
@@ -171,11 +158,11 @@ html {
     .client-portal-header-logo {
         width: 40%;
     }
-    .call-us-text {
-        font-size: 17px;
+    .tablet-show {
+        display: block;
     }
-    .call-us-number {
-        font-size: 22px;
+    .client-portal-btn-submit {
+        width: 60%;
     }
 }
 
@@ -188,5 +175,8 @@ html {
     }
     .client-portal-header-logo {
         width: 16%;
+    }
+    .client-portal-btn-submit {
+        width: 50%;
     }
 }
