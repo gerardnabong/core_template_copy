@@ -12,10 +12,10 @@
                 class="loan-action-button"
                 @mouseover.native="paymentHover = {
                     color: 'white',
-                    'background-color': portfolio.button_color
+                    'background-color': '#' + portfolio.button_color
                 }"
                 @mouseleave.native="paymentHover = {
-                    color: portfolio.button_color,
+                    color: '#' + portfolio.button_color,
                     'background-color': 'white'
                 }"
                 :style="{paymentHover}"
@@ -46,6 +46,12 @@ export default {
         paymentHover: function(newPayment) {
             console.log(newPayment);
         },
+    },
+
+    data() {
+        return {
+            paymentHover: null,
+        };
     },
 
     created() {
