@@ -12,13 +12,13 @@
                 class="loan-action-button"
                 @mouseover.native="paymentHover = {
                     color: 'white',
-                    'background-color': '#' + portfolio.button_color
+                    'background-color': portfolio.button_color
                 }"
                 @mouseleave.native="paymentHover = {
-                    color: '#' + portfolio.button_color,
+                    color: portfolio.button_color,
                     'background-color': 'white'
                 }"
-                :style="{paymentHover}"
+                :style="paymentHover"
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon"
@@ -42,11 +42,6 @@
 
 export default {
     name: 'LoanAction',
-    watch: {
-        paymentHover: function(newPayment) {
-            console.log(newPayment);
-        },
-    },
 
     data() {
         return {
