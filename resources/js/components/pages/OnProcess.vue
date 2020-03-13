@@ -3,20 +3,24 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
                 <span
-                    class="icon-check-icon client-portal-icon"
+                    class="icon-computer-gear-icon client-portal-icon"
                     :style="{color: portfolio.button_color}"
                 ></span>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <h2
-                    class="client-portal-heading-text"
-                >Thank You. We have successfully received your application</h2>
+                <h2 class="client-portal-heading-text">Your application is still on process</h2>
                 <div class="mt-5">
                     <p
                         class="client-portal-paragraph"
                     >A customer representative will contact you soon!</p>
+                    <b-button
+                        class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
+                        :style="{ 'background-color': clientPortalButton }"
+                        @mouseover="clientPortalButton = portfolio.button_hover_color"
+                        @mouseleave="clientPortalButton = portfolio.button_color"
+                    >Logout</b-button>
                 </div>
             </div>
         </div>
@@ -34,7 +38,7 @@
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
-    name: 'SuccessPage',
+    name: 'OnProcess',
 
     data() {
         return {
