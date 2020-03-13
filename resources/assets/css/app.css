@@ -92,6 +92,9 @@ html {
 .font-size-24 {
     font-size: 24px;
 }
+.font-size-28 {
+    font-size: 28px;
+}
 .font-size-40 {
     font-size: 40px;
 }
@@ -146,6 +149,28 @@ html {
     letter-spacing: 0.34px;
     color: #2C2C2E;
     line-height: 23px;
+}
+.loan-action-heading{
+    font-size: 28px;
+    font-weight: bold;
+}
+.loan-action-button{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 25px #CECECE5C;
+    padding: 50px 50px 0 50px;
+    list-style: none;
+    color: #2C2C2E;
+    width: 262px;
+    height: 258px;
+    align-items:center;
+    justify-content: center;
+}
+.loan-action-button:hover{
+    text-decoration: none;
+    color: initial;
 }
 @media (min-width: 499px) {
     .client-portal-btn-submit {

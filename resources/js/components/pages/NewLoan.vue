@@ -19,7 +19,7 @@
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
                         @mouseover="clientPortalButton = portfolio.button_hover_color"
-                        @mouseleave="clientPortalButton = portfolio.button_color"
+                        @mouseleave="clientPortalButton = 'white'"
                     >Request for New Loan</b-button>
                 </div>
             </div>
