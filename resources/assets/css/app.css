@@ -52,6 +52,9 @@ html {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.client-portal-button:not(:disabled):not(.disabled):active:focus{
+    box-shadow: none;
+}
 .client-portal-login-btn {
     width: 100%;
     border-radius: 8px;
@@ -137,6 +140,7 @@ html {
     width: 100%;
     border: none;
 }
+
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
