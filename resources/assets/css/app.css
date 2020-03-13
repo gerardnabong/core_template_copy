@@ -120,7 +120,7 @@ html {
 }
 .call-us-text {
     font-size: 17px;
-    text-align: center;
+    text-align: left;
 }
 .call-us-number {
     font-size: 22px;
@@ -128,22 +128,16 @@ html {
 .call-us-icon {
     font-size: 42px;
 }
+.call-us-button{
+    width: 250px;
+}
 .call-us-button:hover {
     cursor: pointer;
     color: initial;
 }
 .client-portal-btn-submit {
     width: 100%;
-}
-@media (min-width: 319px) {
-    .call-us-number {
-        font-size: 20px;
-    }
-}
-@media (min-width: 410px) {
-    .client-portal-custom-col-call-us {
-        flex: 0 0 57%;
-    }
+    border: none;
 }
 @media (min-width: 499px) {
     .client-portal-btn-submit {
@@ -165,13 +159,6 @@ html {
     }
     .client-portal-header-logo {
         width: 40%;
-    }
-    .call-us-text {
-        font-size: 17px;
-        text-align: left;
-    }
-    .call-us-number {
-        font-size: 22px;
     }
     .tablet-show {
         display: block;
