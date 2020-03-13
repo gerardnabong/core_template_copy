@@ -1,8 +1,8 @@
 <template>
     <a
         :href="phone_number"
-        class="text-decoration-none card call-us-background
-            py-3 px-2 border-0 call-us-button color-darkgray"
+        class="text-decoration-none card call-us-background py-3
+        px-2 border-0 call-us-button color-darkgray"
     >
         <div class="row justify-content-center no-gutters">
             <div
@@ -38,11 +38,11 @@ export default {
         phone_number() {
             var phone_number = this.portfolio.phone_number;
             return 'tel: +' + phone_number.replace(/-/g, '');
-        },
+        }
     },
 
     created() {
         this.portfolio = this.$jsVars.portfolio;
-    },
+    }
 };
 </script>
