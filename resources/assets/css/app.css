@@ -52,7 +52,7 @@ html {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.client-portal-button:not(:disabled):not(.disabled):active:focus{
+.client-portal-button:not(:disabled):not(.disabled):active:focus {
     box-shadow: none;
 }
 .client-portal-login-btn {
