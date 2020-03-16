@@ -103,6 +103,7 @@ html {
     font-size: 24px;
     text-align: center;
     letter-spacing: 0.6px;
+    line-height: 38px;
 }
 .client-portal-container-vertical-center {
     min-height: 68%;
@@ -139,6 +140,12 @@ html {
 .client-portal-btn-submit {
     width: 100%;
     border: none;
+}
+.client-portal-paragraph {
+    text-align: center;
+    letter-spacing: 0.34px;
+    color: #2C2C2E;
+    line-height: 23px;
 }
 @media (min-width: 499px) {
     .client-portal-btn-submit {
