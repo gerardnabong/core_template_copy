@@ -22,8 +22,8 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="d-flex my-5">
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
                 <call-us-button />
             </div>
         </div>
