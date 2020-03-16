@@ -8,28 +8,44 @@
         </div>
         <div class="row justify-content-center align-items-center">
             <router-link
-                to="#"
+                to="/payment-schedule"
                 class="loan-action-button"
                 @mouseover.native="paymentHover = {
                     color: 'white',
                     'background-color': portfolio.button_color
-                }"
+                };
+                PaymentIconTrigger = true;"
                 @mouseleave.native="paymentHover = {
                     color: portfolio.button_color,
                     'background-color': 'white'
-                }"
+                };
+                PaymentIconTrigger = false;"
                 :style="paymentHover"
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon"
-                    :style="{color: portfolio.button_color}"
+                    :style="{'--color' : PaymentIconTrigger ? 'white' : portfolio.button_color}"
                 />
                 View Payment Schedule
             </router-link>
-            <router-link to="#" class="loan-action-button">
+            <router-link
+                to="#"
+                class="loan-action-button"
+                @mouseover.native="loanHover = {
+                    color: 'white',
+                    'background-color': portfolio.button_color,
+                };
+                LoanIconHover = true;"
+                @mouseleave.native="loanHover = {
+                    color: portfolio.button_color,
+                    'background-color': 'white',
+                };
+                LoanIconHover = false;"
+                :style="loanHover"
+            >
                 <span
                     class="icon-piggy-bank-icon client-portal-icon"
-                    :style="{color: portfolio.button_color}"
+                    :style="{'--color' : LoanIconHover ? 'white' : portfolio.button_color}"
                 />
                 Download Loan Agreement
             </router-link>
@@ -43,18 +59,31 @@
 export default {
     name: 'LoanAction',
 
-    data() {
+    data () {
         return {
             paymentHover: null,
+            loanHover: null,
+            PaymentIconTrigger: false,
+            LoanIconHover: false,
         };
     },
 
-    created() {
+    created () {
         this.portfolio = this.$jsVars.portfolio;
         this.paymentHover = {
+            color: this.portfolio.button_color,
+            'background-color': 'white',
+        };
+        this.loanHover = {
             color: this.portfolio.button_color,
             'background-color': 'white',
         };
     },
 };
 </script>
+
+<style>
+.client-portal-icon:before {
+    color: var(--color);
+}
+</style>
