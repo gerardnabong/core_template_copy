@@ -24,7 +24,7 @@
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon"
-                    :style="{'--color' : PaymentIconTrigger ? 'white' : portfolio.button_color}"
+                    :style="{color : PaymentIconTrigger ? 'white' : portfolio.button_color}"
                 />
                 View Payment Schedule
             </router-link>
@@ -45,7 +45,7 @@
             >
                 <span
                     class="icon-piggy-bank-icon client-portal-icon"
-                    :style="{'--color' : LoanIconHover ? 'white' : portfolio.button_color}"
+                    :style="{color : LoanIconHover ? 'white' : portfolio.button_color}"
                 />
                 Download Loan Agreement
             </router-link>
@@ -81,9 +81,3 @@ export default {
     },
 };
 </script>
-
-<style>
-.client-portal-icon:before {
-    color: var(--color);
-}
-</style>

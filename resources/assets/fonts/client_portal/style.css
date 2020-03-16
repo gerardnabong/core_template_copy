@@ -27,17 +27,14 @@
 
 .icon-Success-steps-icon .path1:before {
   content: "\e909";
-  color: rgb(0, 79, 149);
 }
 .icon-Success-steps-icon .path2:before {
   content: "\e90a";
   margin-left: -1em;
-  color: rgb(0, 79, 149);
 }
 .icon-Success-steps-icon .path3:before {
   content: "\e90b";
   margin-left: -1em;
-  color: rgb(0, 79, 149);
 }
 .icon-Success-steps-icon .path4:before {
   content: "\e90c";
@@ -51,37 +48,28 @@
 }
 .icon-check-icon:before {
   content: "\e900";
-  color: #004f95;
 }
 .icon-computer-gear-icon:before {
   content: "\e901";
-  color: #004f95;
 }
 .icon-credit-card-icon:before {
   content: "\e902";
-  color: #004f95;
 }
 .icon-download-icon:before {
   content: "\e903";
-  color: #004f95;
 }
 .icon-like-icon:before {
   content: "\e904";
-  color: #004f95;
 }
 .icon-login-icon:before {
   content: "\e905";
-  color: #004f95;
 }
 .icon-paper-document-icon:before {
   content: "\e906";
-  color: #004f95;
 }
 .icon-piggy-bank-icon:before {
   content: "\e907";
-  color: #004f95;
 }
 .icon-sad-icon:before {
   content: "\e908";
-  color: #004f95;
 }
