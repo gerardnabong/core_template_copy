@@ -5,14 +5,12 @@
                 <span
                     class="icon-piggy-bank-icon client-portal-icon"
                     :style="{color: portfolio.button_color}"
-                ></span>
+                />
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <h2
-                    class="client-portal-heading-text"
-                >Congratulations! You're qualified for a new loan!</h2>
+                <h2 class="client-portal-heading-text">Congratulations! You're qualified for a new loan!</h2>
                 <div class="mt-5">
                     <p>Click the button to apply</p>
                     <b-button
@@ -40,7 +38,7 @@ import CallUsButton from '~/components/templates/buttons/CallUsButton';
 export default {
     name: 'NewLoan',
 
-    data() {
+    data () {
         return {
             portfolio: null,
         };
@@ -50,7 +48,7 @@ export default {
         CallUsButton,
     },
 
-    created() {
+    created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.button_color;
     },
