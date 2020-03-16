@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Customer Portal</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('/fonts/client_portal/style.css')}}">
     <link rel="stylesheet" href="{{mix('/css/shared.css')}}">
     <link rel="stylesheet" href="{{mix('/css/app.css')}}">
 </head>

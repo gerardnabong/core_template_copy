@@ -63,7 +63,7 @@ mix.scripts(
 mix.styles(
     [
         "node_modules/bootstrap/dist/css/bootstrap.css",
-        "node_modules/@fortawesome/font-awesome-free/css/font-awesome.css"
+        "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
     ],
     "public/css/shared.css"
 );

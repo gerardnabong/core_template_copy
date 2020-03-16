@@ -4,9 +4,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
-                <img src="/images/login icon.svg" />
+                <span
+                    class="icon-login-icon client-portal-icon"
+                    :style="{ color: portfolio.button_color }"
+                ></span>
                 <b-form class="pt-4">
-                    <h2 class="font-weight-bold font-size-24">Login</h2>
+                    <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
                             v-model="username"
@@ -21,19 +24,27 @@
                             class="client-portal-form-input"
                         />
                     </b-form-group>
-                    <client-portal-primary-button
-                        :color="buttonLoginProperty.color"
-                        :hoverColor="buttonLoginProperty.hoverColor"
-                        :buttonName="buttonLoginProperty.name"
-                        :buttonClass="buttonLoginProperty.class"
-                        @buttonClick="loginButtonClick"
-                    />
+                    <b-button
+                        class="client-portal-btn-primary w-100 border-0"
+                        :style="{ 'background-color': login_button_color }"
+                        @mouseover="
+                            login_button_color = portfolio.button_hover_color
+                        "
+                        @mouseleave="
+                            login_button_color = portfolio.button_color
+                        "
+                        >Login</b-button
+                    >
                 </b-form>
                 <div class="pt-4">
-                    <p class="text-center font-size-13">Customer Portal Version 1.0.0</p>
-                    <p
-                        class="text-center pt-5 font-size-12"
-                    >Copyright © 2020 Inbox Credit. All Rights Reserved.</p>
+                    <p class="text-center font-size-13">
+                        Customer Portal Version 1.0.0
+                    </p>
+                </div>
+                <div class="pt-5">
+                    <p class="text-center font-size-12">
+                        Copyright &copy; 2020 Inbox Credit. All Rights Reserved.
+                    </p>
                 </div>
             </div>
         </div>
@@ -41,48 +52,27 @@
 </template>
 
 <script>
-"use strict";
-
-import ClientPortalPrimaryButton from "~/components/templates/buttons/ClientPortalPrimaryButton";
+'use strict';
 
 export default {
-    name: "Login",
-
-    components: {
-        ClientPortalPrimaryButton
-    },
+    name: 'Login',
 
     data() {
         return {
             username: null,
             ssn: null,
-            portfolio: null,
         };
     },
 
     created() {
         this.portfolio = this.$jsVars.portfolio;
-    },
-
-    computed: {
-        buttonLoginProperty() {
-            return {
-                class: [
-                    "text-center",
-                    "client-portal-login-btn",
-                    "font-size-14"
-                ],
-                name: "Login",
-                color: "#" + this.portfolio.button_color,
-                hoverColor: "#" + this.portfolio.button_hover_color,
-            };
-        }
+        this.login_button_color = this.portfolio.button_color;
     },
 
     methods: {
         loginButtonClick() {
             // TODO will add Login Event
         },
-    }
+    },
 };
 </script>

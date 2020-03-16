@@ -10,28 +10,19 @@
             <div class="client-portal-background-image">
                 <img class="w-100" :src="'images/' + portfolio.header_image_url" />
             </div>
-            <img
-                class="client-portal-header-logo"
-                :src="'images/logo/' + portfolio.logo_url"
-            />
+            <img class="client-portal-header-logo" :src="'images/logo/' + portfolio.logo_url" />
         </div>
     </div>
 </template>
 
 <script>
-"use strict";
+'use strict';
 
 export default {
-    Name: "Header",
-
-    data() {
-        return {
-            portfolio: null,
-        };
-    },
+    Name: 'Header',
 
     created() {
         this.portfolio = this.$jsVars.portfolio;
-    }
+    },
 };
 </script>
