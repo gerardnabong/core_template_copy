@@ -38,12 +38,6 @@ import CallUsButton from '~/components/templates/buttons/CallUsButton';
 export default {
     name: 'NewLoan',
 
-    data () {
-        return {
-            portfolio: null,
-        };
-    },
-
     components: {
         CallUsButton,
     },
