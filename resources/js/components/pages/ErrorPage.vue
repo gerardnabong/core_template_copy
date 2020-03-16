@@ -12,7 +12,9 @@
             <div class="col-md-6 text-center pt-4">
                 <h2 class="client-portal-heading-text">Oops! Something went wrong</h2>
                 <div class="mt-5">
-                    <p class="client-portal-paragraph">The request failed for some reason, but you are still on track.</p>
+                    <p class="client-portal-paragraph">
+                        The request failed for some reason, but you are still on track.
+                    </p>
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
