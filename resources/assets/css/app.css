@@ -52,7 +52,7 @@ html {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.client-portal-button:not(:disabled):not(.disabled):active:focus{
+.client-portal-button:not(:disabled):not(.disabled):active:focus {
     box-shadow: none;
 }
 .client-portal-login-btn {
@@ -129,7 +129,7 @@ html {
 .call-us-icon {
     font-size: 42px;
 }
-.call-us-button{
+.call-us-button {
     width: 250px;
 }
 .call-us-button:hover {
@@ -140,7 +140,6 @@ html {
     width: 100%;
     border: none;
 }
-
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
