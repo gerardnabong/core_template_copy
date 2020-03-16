@@ -2,6 +2,7 @@
 
 import Router from "vue-router";
 import Vue from "vue";
+
 import ErrorPage from "~/components/pages/ErrorPage";
 import LoanTransfer from "~/components/pages/LoanTransfer";
 import Login from "~/components/pages/Login";

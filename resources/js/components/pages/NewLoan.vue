@@ -10,11 +10,9 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6 text-center pt-4">
-                <h2
-                    class="client-portal-heading-text"
-                >Congratulations! You're qualified for a new loan!</h2>
+                <h2 class="client-portal-heading-text">Congratulations! You're qualified for a new loan!</h2>
                 <div class="mt-5">
-                    <p class="client-portal-paragraph">Click the button to apply</p>
+                    <p>Click the button to apply</p>
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
@@ -44,16 +42,9 @@ export default {
         CallUsButton,
     },
 
-    created() {
+    created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.button_color;
-    },
-
-    methods: {
-        callNumber() {
-            // TODO Add function to call
-            alert('This is clickable');
-        },
     },
 };
 </script>
