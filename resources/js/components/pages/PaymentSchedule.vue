@@ -11,9 +11,6 @@
 <script>
 'use strict';
 
-import 'node_modules/datatables.net';
-import 'node_modules/datatables.net-bs4';
-
 export default {
     name: 'PaymentSchedule',
 
