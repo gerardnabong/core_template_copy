@@ -31,17 +31,19 @@
                             login_button_color = portfolio.button_hover_color
                         "
                         @mouseleave="
-                            login_button_color = 'portfolio.button_color'
+                            login_button_color = portfolio.button_color
                         "
                     >Login</b-button>
                 </b-form>
                 <div class="pt-4">
-                    <p class="text-center font-size-13">Customer Portal Version 1.0.0</p>
+                    <p class="text-center font-size-13">
+                        Customer Portal Version 1.0.0
+                    </p>
                 </div>
                 <div class="pt-5">
-                    <p
-                        class="text-center font-size-12"
-                    >Copyright &copy; 2020 Inbox Credit. All Rights Reserved.</p>
+                    <p class="text-center font-size-12">
+                        Copyright &copy; 2020 Inbox Credit. All Rights Reserved.
+                    </p>
                 </div>
             </div>
         </div>
@@ -54,20 +56,20 @@
 export default {
     name: 'Login',
 
-    data() {
+    data () {
         return {
             username: null,
             ssn: null,
         };
     },
 
-    created() {
+    created () {
         this.portfolio = this.$jsVars.portfolio;
         this.login_button_color = this.portfolio.button_color;
     },
 
     methods: {
-        loginButtonClick() {
+        loginButtonClick () {
             // TODO will add Login Event
         },
     },
