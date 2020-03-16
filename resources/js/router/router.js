@@ -11,7 +11,7 @@ Vue.use(Router);
 const ROUTES = [
     { path: "/", component: Login },
     { path: "/new-loan", component: NewLoan },
-    { path: "/loan-transfer", component: LoanTransfer }
+    { path: "/loan-transfer", component: LoanTransfer },
 ];
 
 export default new Router({
