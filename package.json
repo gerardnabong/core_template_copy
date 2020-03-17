@@ -26,10 +26,10 @@
         "@fortawesome/fontawesome-free": "^5.12.1",
         "bootstrap": "^4.4.1",
         "bootstrap-vue": "^2.7.0",
-        "datatables.net": "file:node_modules/datatables.net",
-        "datatables.net-bs4": "file:node_modules/datatables.net-bs4",
+        "datatables.net-bs4": "^1.10.20",
         "es6-promise": "^4.2.8",
         "jquery": "^3.4.1",
+        "laravel-vue-datatable": "^0.5.10",
         "vue": "^2.6.11",
         "vue-router": "^3.1.6",
         "vuex": "^3.1.3"

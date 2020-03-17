@@ -17,6 +17,9 @@ html {
 .color-darkgray {
     color: #2c2c2e;
 }
+.color-white{
+    color: white;
+}
 .client-portal-header {
     background-repeat: no-repeat;
     background-size: cover;
@@ -167,6 +170,7 @@ html {
     height: 258px;
     align-items:center;
     justify-content: center;
+    border-radius: 8px;
 }
 .loan-action-button:hover{
     text-decoration: none;
@@ -175,6 +179,33 @@ html {
 .icon-piggy-bank-icon {
     padding-right: 14px;
 }
+.payment-schedule .table-responsive,
+.payment-schedule thead{
+    border-radius: 8px 8px 0px 0px;
+    font-size: 14px;
+}
+.payment-schedule th{
+    color: white;
+    font-size: 14px;
+}
+/* .payment-schedule th:before{
+    font-family: 'Font Awesome 5 Free';
+    margin-right: 5px;
+    content: '\f062';
+    color: white;
+} */
+.payment-schedule-btn-back{
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 8px;
+    opacity: 1;
+    width: 120px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
