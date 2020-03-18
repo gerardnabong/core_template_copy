@@ -13,7 +13,6 @@ import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
 import OnlineVerification from "~/components/pages/OnlineVerification";
 
-
 Vue.use(Router);
 
 const ROUTES = [

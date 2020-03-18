@@ -5,13 +5,12 @@
  */
 
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import Vue from "vue";
+import Index from './components/templates/Index';
+import router from './router/router';
+import store from './storage/store';
+import Vue from 'vue';
 
-import Index from "./components/templates/Index";
-import router from "./router/router";
-import store from "./storage/store";
-
-window.Vue = require("vue");
+window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your

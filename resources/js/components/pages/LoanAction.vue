@@ -10,42 +10,26 @@
             <router-link
                 to="/payment-schedule"
                 class="loan-action-button"
-                @mouseover.native="paymentHover = {
-                    color: 'white',
-                    'background-color': portfolio.button_color
-                };
-                PaymentIconTrigger = true;"
-                @mouseleave.native="paymentHover = {
-                    color: '#2C2C2E',
-                    'background-color': 'white'
-                };
-                PaymentIconTrigger = false;"
-                :style="paymentHover"
+                @mouseover.native="triggerPaymentHover"
+                @mouseleave.native="triggerPaymentHoverLeave"
+                :style="payment_hover"
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon mb-3"
-                    :style="{color : PaymentIconTrigger ? 'white' : portfolio.button_color}"
+                    :style="changePaymentIconStyle"
                 />
                 View Payment Schedule
             </router-link>
             <router-link
                 to="#"
                 class="loan-action-button"
-                @mouseover.native="loanHover = {
-                    color: 'white',
-                    'background-color': portfolio.button_color,
-                };
-                LoanIconHover = true;"
-                @mouseleave.native="loanHover = {
-                    color: '#2C2C2E',
-                    'background-color': 'white',
-                };
-                LoanIconHover = false;"
-                :style="loanHover"
+                @mouseover.native="triggerLoanHover"
+                @mouseleave.native="triggerLoanHoverLeave"
+                :style="loan_hover"
             >
                 <span
                     class="icon-piggy-bank-icon client-portal-icon mb-3"
-                    :style="{color : LoanIconHover ? 'white' : portfolio.button_color}"
+                    :style="changeLoanIconStyle"
                 />
                 Download Loan Agreement
             </router-link>
@@ -61,23 +45,63 @@ export default {
 
     data () {
         return {
-            paymentHover: null,
-            loanHover: null,
-            PaymentIconTrigger: false,
-            LoanIconHover: false,
+            payment_hover: null,
+            loan_hover: null,
+            payment_icon_trigger: false,
+            loan_icon_trigger: false,
         };
     },
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.paymentHover = {
+        this.payment_hover = {
             color: '#2C2C2E',
             'background-color': 'white',
         };
-        this.loanHover = {
+        this.loan_hover = {
             color: '#2C2C2E',
             'background-color': 'white',
         };
     },
+
+    methods: {
+        triggerPaymentHover () {
+            this.payment_hover = {
+                color: 'white',
+                'background-color': this.portfolio.button_color
+            };
+            this.payment_icon_trigger = true;
+        },
+        triggerPaymentHoverLeave () {
+            this.payment_hover = {
+                color: '#2C2C2E',
+                'background-color': 'white'
+            };
+            this.payment_icon_trigger = false;
+        },
+        triggerLoanHover () {
+            this.loan_hover = {
+                color: 'white',
+                'background-color': this.portfolio.button_color,
+            };
+            this.loan_icon_trigger = true;
+        },
+        triggerLoanHoverLeave () {
+            this.loan_hover = {
+                color: '#2C2C2E',
+                'background-color': 'white',
+            };
+            this.loan_icon_trigger = false;
+        },
+    },
+
+    computed: {
+        changePaymentIconStyle () {
+            return { color: this.payment_icon_trigger ? 'white' : this.portfolio.button_color }
+        },
+        changeLoanIconStyle () {
+            return { color: this.loan_icon_trigger ? 'white' : this.portfolio.button_color }
+        },
+    }
 };
 </script>
