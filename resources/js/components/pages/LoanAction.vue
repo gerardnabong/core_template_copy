@@ -10,42 +10,26 @@
             <router-link
                 to="/payment-schedule"
                 class="loan-action-button"
-                @mouseover.native="paymentHover = {
-                    color: 'white',
-                    'background-color': portfolio.button_color
-                };
-                PaymentIconTrigger = true;"
-                @mouseleave.native="paymentHover = {
-                    color: '#2C2C2E',
-                    'background-color': 'white'
-                };
-                PaymentIconTrigger = false;"
+                @mouseover.native="triggerPaymentHover"
+                @mouseleave.native="triggerPaymentHoverLeave"
                 :style="paymentHover"
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon mb-3"
-                    :style="{color : PaymentIconTrigger ? 'white' : portfolio.button_color}"
+                    :style="changePaymentIconStyle"
                 />
                 View Payment Schedule
             </router-link>
             <router-link
                 to="#"
                 class="loan-action-button"
-                @mouseover.native="loanHover = {
-                    color: 'white',
-                    'background-color': portfolio.button_color,
-                };
-                LoanIconHover = true;"
-                @mouseleave.native="loanHover = {
-                    color: '#2C2C2E',
-                    'background-color': 'white',
-                };
-                LoanIconHover = false;"
+                @mouseover.native="triggerLoanHover"
+                @mouseleave.native="triggerLoanHoverLeave"
                 :style="loanHover"
             >
                 <span
                     class="icon-piggy-bank-icon client-portal-icon mb-3"
-                    :style="{color : LoanIconHover ? 'white' : portfolio.button_color}"
+                    :style="changeLoanIconStyle"
                 />
                 Download Loan Agreement
             </router-link>
@@ -79,5 +63,45 @@ export default {
             'background-color': 'white',
         };
     },
+
+    methods: {
+        triggerPaymentHover () {
+            this.paymentHover = {
+                color: 'white',
+                'background-color': this.portfolio.button_color
+            };
+            this.PaymentIconTrigger = true;
+        },
+        triggerPaymentHoverLeave () {
+            this.paymentHover = {
+                color: '#2C2C2E',
+                'background-color': 'white'
+            };
+            this.PaymentIconTrigger = false;
+        },
+        triggerLoanHover () {
+            this.loanHover = {
+                color: 'white',
+                'background-color': this.portfolio.button_color,
+            };
+            this.LoanIconHover = true;
+        },
+        triggerLoanHoverLeave () {
+            this.loanHover = {
+                color: '#2C2C2E',
+                'background-color': 'white',
+            };
+            this.LoanIconHover = false;
+        },
+    },
+
+    computed: {
+        changePaymentIconStyle () {
+            return { color: this.PaymentIconTrigger ? 'white' : this.portfolio.button_color }
+        },
+        changeLoanIconStyle () {
+            return { color: this.LoanIconHover ? 'white' : this.portfolio.button_color }
+        },
+    }
 };
 </script>
