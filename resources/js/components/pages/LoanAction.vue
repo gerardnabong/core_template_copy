@@ -12,7 +12,7 @@
                 class="loan-action-button"
                 @mouseover.native="triggerPaymentHover"
                 @mouseleave.native="triggerPaymentHoverLeave"
-                :style="paymentHover"
+                :style="payment_hover"
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon mb-3"
@@ -25,7 +25,7 @@
                 class="loan-action-button"
                 @mouseover.native="triggerLoanHover"
                 @mouseleave.native="triggerLoanHoverLeave"
-                :style="loanHover"
+                :style="loan_hover"
             >
                 <span
                     class="icon-piggy-bank-icon client-portal-icon mb-3"
@@ -45,20 +45,20 @@ export default {
 
     data () {
         return {
-            paymentHover: null,
-            loanHover: null,
-            PaymentIconTrigger: false,
-            LoanIconHover: false,
+            payment_hover: null,
+            loan_hover: null,
+            payment_icon_trigger: false,
+            loan_icon_trigger: false,
         };
     },
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.paymentHover = {
+        this.payment_hover = {
             color: '#2C2C2E',
             'background-color': 'white',
         };
-        this.loanHover = {
+        this.loan_hover = {
             color: '#2C2C2E',
             'background-color': 'white',
         };
@@ -66,41 +66,41 @@ export default {
 
     methods: {
         triggerPaymentHover () {
-            this.paymentHover = {
+            this.payment_hover = {
                 color: 'white',
                 'background-color': this.portfolio.button_color
             };
-            this.PaymentIconTrigger = true;
+            this.payment_icon_trigger = true;
         },
         triggerPaymentHoverLeave () {
-            this.paymentHover = {
+            this.payment_hover = {
                 color: '#2C2C2E',
                 'background-color': 'white'
             };
-            this.PaymentIconTrigger = false;
+            this.payment_icon_trigger = false;
         },
         triggerLoanHover () {
-            this.loanHover = {
+            this.loan_hover = {
                 color: 'white',
                 'background-color': this.portfolio.button_color,
             };
-            this.LoanIconHover = true;
+            this.loan_icon_trigger = true;
         },
         triggerLoanHoverLeave () {
-            this.loanHover = {
+            this.loan_hover = {
                 color: '#2C2C2E',
                 'background-color': 'white',
             };
-            this.LoanIconHover = false;
+            this.loan_icon_trigger = false;
         },
     },
 
     computed: {
         changePaymentIconStyle () {
-            return { color: this.PaymentIconTrigger ? 'white' : this.portfolio.button_color }
+            return { color: this.payment_icon_trigger ? 'white' : this.portfolio.button_color }
         },
         changeLoanIconStyle () {
-            return { color: this.LoanIconHover ? 'white' : this.portfolio.button_color }
+            return { color: this.loan_icon_trigger ? 'white' : this.portfolio.button_color }
         },
     }
 };

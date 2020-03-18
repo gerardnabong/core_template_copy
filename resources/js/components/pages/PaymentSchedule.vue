@@ -37,8 +37,8 @@ export default {
         return {
             //TODO needed the API for the data to display or the sample json file
             paymentSchedules: [
-                { 'id': 1, 'date': 'March 1, 2020', 'total': '$1000.00', 'mode': 'Default (ACH)' },
-                { 'id': 2, 'date': 'March 2, 2020', 'total': '$2000.00', 'mode': 'Default (ACH)' },
+                { 'id': 1, 'date': 'March 1, 2020', 'amount': '$1000.00', 'mode': 'Default (ACH)' },
+                { 'id': 2, 'date': 'March 2, 2020', 'amount': '$2000.00', 'mode': 'Default (ACH)' },
             ],
 
         }
@@ -76,7 +76,7 @@ export default {
             },
             {
                 label: 'Total',
-                key: 'total',
+                key: 'amount',
                 sortable: true,
                 thStyle: headerStyleCenter,
             },

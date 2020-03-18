@@ -12,7 +12,6 @@ import OnProcess from "~/components/pages/OnProcess";
 import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
 
-
 Vue.use(Router);
 
 const ROUTES = [
