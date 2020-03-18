@@ -5,7 +5,6 @@
  */
 
 import BootstrapVue from "bootstrap-vue";
-import DataTable from 'laravel-vue-datatable';
 import Index from "./components/templates/Index";
 import router from "./router/router";
 import store from "./storage/store";
@@ -32,7 +31,6 @@ window.Vue = require("vue");
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
-Vue.use(DataTable);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
 new Vue({

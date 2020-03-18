@@ -179,21 +179,6 @@ html {
 .icon-piggy-bank-icon {
     padding-right: 14px;
 }
-.payment-schedule .table-responsive,
-.payment-schedule thead{
-    border-radius: 8px 8px 0px 0px;
-    font-size: 14px;
-}
-.payment-schedule th{
-    color: white;
-    font-size: 14px;
-}
-/* .payment-schedule th:before{
-    font-family: 'Font Awesome 5 Free';
-    margin-right: 5px;
-    content: '\f062';
-    color: white;
-} */
 .payment-schedule-btn-back{
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
