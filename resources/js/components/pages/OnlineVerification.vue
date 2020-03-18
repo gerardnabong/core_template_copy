@@ -10,23 +10,18 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <b-progress
-                    :value="20"
-                    :max="100"
-                    show-progress
-                ></b-progress>
-                <h2 class="client-portal-heading-text">Oops! Something went wrong</h2>
-                <div class="mt-5">
-                    <p class="client-portal-paragraph">
-                        The request failed for some reason, but you are still on track.
-                    </p>
-                    <b-button
-                        class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
-                        :style="{ 'background-color': clientPortalButton }"
-                        @mouseover="clientPortalButton = portfolio.button_hover_color"
-                        @mouseleave="clientPortalButton = portfolio.button_color"
-                    >Try Again</b-button>
-                </div>
+                <b-progress class="online-verification-progressbar-container mb-4">
+                    <b-progress-bar
+                        :style="{'background-color': portfolio.button_color}"
+                        :value="progressBar"
+                        show-progress
+                        class="online-verification-progressbar"
+                    />
+                </b-progress>
+                <h2 class="client-portal-heading-text mb-5">
+                    Easy Online Verification as Fast as 5 minutes
+                </h2>
+                <complete-name />
             </div>
         </div>
         <div class="px-3">
@@ -41,17 +36,21 @@
 'use strict';
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
+import CompleteName from '~/components/templates/online-verification/CompleteName';
 
 export default {
     name: 'OnlineVerification',
 
     components: {
         CallUsButton,
+        CompleteName,
     },
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.button_color;
+        this.$store.commit('setProgressBar', 20);
+        this.progressBar = this.$store.getters.getProgressBar;
     },
 };
 </script>
