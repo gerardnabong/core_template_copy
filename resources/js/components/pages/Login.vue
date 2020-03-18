@@ -12,8 +12,8 @@
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
-                            v-model="username"
-                            placeholder="Username"
+                            v-model="email"
+                            placeholder="Email"
                             class="client-portal-form-input"
                         />
                     </b-form-group>
@@ -58,7 +58,7 @@ export default {
 
     data () {
         return {
-            username: null,
+            email: null,
             ssn: null,
         };
     },

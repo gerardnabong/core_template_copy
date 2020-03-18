@@ -1,12 +1,12 @@
 //TODO to="#" because no files were given for attachement
 <template>
     <div class="container">
-        <div class="row justify-content-center mt-5 mb-2">
-            <div class="col-md-6 text-center pt-4">
+        <div class="row justify-content-center loan-action-container mb-2">
+            <div class="col-md-6 text-center">
                 <h2 class="client-portal-heading-text loan-action-heading">Loan Actions</h2>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center loan-action-button-container">
             <router-link
                 to="/payment-schedule"
                 class="loan-action-button"
@@ -16,14 +16,14 @@
                 };
                 PaymentIconTrigger = true;"
                 @mouseleave.native="paymentHover = {
-                    color: portfolio.button_color,
+                    color: '#2C2C2E',
                     'background-color': 'white'
                 };
                 PaymentIconTrigger = false;"
                 :style="paymentHover"
             >
                 <span
-                    class="icon-credit-card-icon client-portal-icon"
+                    class="icon-credit-card-icon client-portal-icon mb-3"
                     :style="{color : PaymentIconTrigger ? 'white' : portfolio.button_color}"
                 />
                 View Payment Schedule
@@ -37,14 +37,14 @@
                 };
                 LoanIconHover = true;"
                 @mouseleave.native="loanHover = {
-                    color: portfolio.button_color,
+                    color: '#2C2C2E',
                     'background-color': 'white',
                 };
                 LoanIconHover = false;"
                 :style="loanHover"
             >
                 <span
-                    class="icon-piggy-bank-icon client-portal-icon"
+                    class="icon-piggy-bank-icon client-portal-icon mb-3"
                     :style="{color : LoanIconHover ? 'white' : portfolio.button_color}"
                 />
                 Download Loan Agreement
@@ -71,11 +71,11 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.paymentHover = {
-            color: this.portfolio.button_color,
+            color: '#2C2C2E',
             'background-color': 'white',
         };
         this.loanHover = {
-            color: this.portfolio.button_color,
+            color: '#2C2C2E',
             'background-color': 'white',
         };
     },
