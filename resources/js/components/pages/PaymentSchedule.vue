@@ -1,14 +1,17 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-8 text-center">
-                <!-- sort-icon not working still researching -->
+            <div class="col-sm-8 text-center">
+                <h2 class="client-portal-heading-text my-4">Payment Schedule</h2>
                 <b-table
                     :items="paymentSchedules"
                     :fields="paymentTableColumns"
                     striped
                     hover
-                    sort-icon-left
+                    thead-tr-class="payment-schedule-tr"
+                    table-class="payment-schedule payment-schedule-border"
+                    tbody-class="payment-schedule-tbody"
+                    responsive="sm"
                 >
                 </b-table>
 
@@ -47,6 +50,7 @@ export default {
             'background-color': this.portfolio.button_color,
             'color': 'white',
             'border-radius': '8px 0 0 0',
+            'padding-left': '30px',
         };
         var headerStyleCenter = {
             'background-color': this.portfolio.button_color,
