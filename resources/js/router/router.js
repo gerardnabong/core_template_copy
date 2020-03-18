@@ -11,6 +11,7 @@ import NewLoan from "~/components/pages/NewLoan";
 import OnProcess from "~/components/pages/OnProcess";
 import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
+import OnlineVerification from "~/components/pages/OnlineVerification";
 
 
 Vue.use(Router);
@@ -22,6 +23,7 @@ const ROUTES = [
     { path: "/loan-transfer", component: LoanTransfer },
     { path: "/new-loan", component: NewLoan },
     { path: "/on-process", component: OnProcess },
+    { path: "/online-verification", component: OnlineVerification },
     { path: "/payment-schedule", component: PaymentSchedule },
     { path: "/success", component: SuccessPage },
 ];
