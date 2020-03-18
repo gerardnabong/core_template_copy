@@ -150,14 +150,11 @@ html {
     color: #2C2C2E;
     line-height: 23px;
 }
-.loan-action-heading{
+.loan-action-heading {
     font-size: 28px;
     font-weight: bold;
 }
-.loan-action-button-container :first-child{
-    margin-bottom: 0;
-}
-.loan-action-button{
+.loan-action-button {
     display: flex;
     flex-direction: column;
     margin: 25px 50px 25px 50px;
@@ -172,14 +169,14 @@ html {
     border-radius: 8px;
     color: #2c2c2e;
 }
-.loan-action-button:hover{
+.loan-action-button:hover {
     text-decoration: none;
     color: initial;
 }
 .icon-piggy-bank-icon {
     padding-right: 14px;
 }
-.payment-schedule-btn-back{
+.payment-schedule-btn-back {
     background: #FFFFFF 0% 0% no-repeat padding-box;
     border: 1px solid #DCDCDC;
     border-radius: 8px;
@@ -190,17 +187,17 @@ html {
     align-items: center;
     justify-content: center;
 }
-.payment-schedule td{
+.payment-schedule td {
     text-align: center;
     vertical-align: middle;
 }
-.payment-schedule td:first-child{
+.payment-schedule td:first-child {
     padding-left: 30px;
 }
-.payment-schedule-tbody{
+.payment-schedule-tbody {
     border: 1px solid #dcdcdc;
 }
-.payment-schedule-tr th{
+.payment-schedule-tr th {
     text-align: center;
     border-top: none;
 }
@@ -209,7 +206,7 @@ html {
     .client-portal-btn-submit {
         width: 50%;
     }
-    .payment-schedule-btn-back{
+    .payment-schedule-btn-back {
         width: 120px;
     }
     .loan-action-container{
@@ -256,7 +253,7 @@ html {
     .client-portal-btn-submit {
         width: 50%;
     }
-    .payment-schedule-tr th[aria-sort]{
+    .payment-schedule-tr th[aria-sort] {
         background-position: right 20px center !important;
     }
 }

@@ -12,9 +12,7 @@
                     table-class="payment-schedule payment-schedule-border"
                     tbody-class="payment-schedule-tbody"
                     responsive="sm"
-                >
-                </b-table>
-
+                />
             </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -46,17 +44,17 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        var headerStyleLeft = {
+        let headerStyleLeft = {
             'background-color': this.portfolio.button_color,
             'color': 'white',
             'border-radius': '8px 0 0 0',
             'padding-left': '30px',
         };
-        var headerStyleCenter = {
+        let headerStyleCenter = {
             'background-color': this.portfolio.button_color,
             'color': 'white',
         };
-        var headerStyleRight = {
+        let headerStyleRight = {
             'background-color': this.portfolio.button_color,
             'color': 'white',
             'border-radius': '0 8px 0 0',
