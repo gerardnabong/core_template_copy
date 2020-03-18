@@ -67,20 +67,17 @@ export default {
                 key: 'id',
                 sortable: true,
                 thStyle: headerStyleLeft,
-            },
-            {
+            }, {
                 label: 'Date',
                 key: 'date',
                 sortable: true,
                 thStyle: headerStyleCenter,
-            },
-            {
+            }, {
                 label: 'Total',
                 key: 'amount',
                 sortable: true,
                 thStyle: headerStyleCenter,
-            },
-            {
+            }, {
                 label: 'Mode',
                 key: 'mode',
                 sortable: true,
