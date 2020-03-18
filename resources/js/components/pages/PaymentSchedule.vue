@@ -8,7 +8,7 @@
                     :fields="paymentTableColumns"
                     striped
                     hover
-                    sort-icon-left
+                    sort-icon-leftd
                 >
                 </b-table>
 
