@@ -63,6 +63,7 @@ mix.scripts(
 mix.styles(
     [
         "node_modules/bootstrap/dist/css/bootstrap.css",
+        "node_modules/bootstrap-vue/dist/bootstrap-vue.min.css",
         "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
     ],
     "public/css/shared.css"

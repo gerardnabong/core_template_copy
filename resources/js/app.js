@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import BootstrapVue from "bootstrap-vue";
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import Index from "./components/templates/Index";
 import router from "./router/router";
 import store from "./storage/store";
@@ -31,6 +31,7 @@ window.Vue = require("vue");
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
 new Vue({
