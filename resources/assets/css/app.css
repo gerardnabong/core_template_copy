@@ -163,7 +163,7 @@ html {
     margin: 25px 50px 25px 50px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 25px #CECECE5C;
-    padding: 50px 50px 0 50px;
+    padding: 50px;
     list-style: none;
     width: 262px;
     height: 258px;
@@ -249,6 +249,9 @@ html {
     }
     .client-portal-btn-submit {
         width: 60%;
+    }
+    .loan-action-button-container :first-child{
+        margin: 25px 50px 25px 50px;
     }
 }
 
