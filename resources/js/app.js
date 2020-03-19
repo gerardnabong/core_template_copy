@@ -31,7 +31,6 @@ window.Vue = require('vue');
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
-Vue.use(IconsPlugin);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
 new Vue({
