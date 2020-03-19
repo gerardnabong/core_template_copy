@@ -32,8 +32,8 @@ export default {
 
     data () {
         return {
-            first_name: null,
-            last_name: null,
+            // TODO will change when created Database Entry for Page
+            page_id: 2,
         }
     },
 
