@@ -17,6 +17,9 @@ html {
 .color-white {
     color: white;
 }
+.bg-white {
+    background-color: white;
+}
 .client-portal-header {
     background-repeat: no-repeat;
     background-size: cover;
@@ -46,6 +49,7 @@ html {
     border-color: #dcdcdc;
     text-align: center;
     border-radius: 8px;
+    font-size: 16px;
 }
 .client-portal-button {
     border-radius: 8px;
@@ -119,6 +123,22 @@ html {
 .client-portal-btn-primary:focus,
 .client-portal-btn-primary:active {
     box-shadow: none;
+}
+.client-portal-btn-primary{
+    border-radius: 8px;
+}
+.client-portal-btn-secondary{
+    color: #2c2c2e;
+    background-color: white;
+    border: 1px solid #DCDCDC;
+    border-radius: 8px;
+}
+.client-portal-btn-secondary:hover,
+.client-portal-btn-secondary:focus,
+.client-portal-btn-secondary:active {
+    color: #2c2c2e;
+    background-color: white;
+    border: 1px solid #DCDCDC;
 }
 .call-us-background {
     background: #ffffff 0% 0% no-repeat padding-box;
@@ -218,6 +238,24 @@ html {
 .payment-schedule-tr > [aria-sort=ascending]::after {
      content: '\f0de';
 }
+.online-verification-progressbar-container{
+    background: #F2F2F2 0% 0% no-repeat padding-box;
+    border-radius: 7px;
+    height: 20px;
+}
+.online-verification-progressbar{
+    height: 20px;
+}
+.online-verification-select{
+    height: 38px;
+    text-align-last: center;
+}
+.online-verification-select option{
+    text-align: center;
+}
+.online-verification-button-group{
+    flex-direction: column-reverse;
+}
 
 @media (min-width: 499px) {
     .client-portal-btn-submit {
@@ -226,10 +264,10 @@ html {
     .payment-schedule-btn-back {
         width: 120px;
     }
-    .loan-action-container{
+    .loan-action-container {
         margin-top: 50px;
     }
-    .loan-action-heading{
+    .loan-action-heading {
         padding-top: 20px;
     }
 }
@@ -255,8 +293,11 @@ html {
     .client-portal-btn-submit {
         width: 60%;
     }
-    .loan-action-button-container :first-child{
+    .loan-action-button-container :first-child {
         margin: 25px 50px 25px 50px;
+    }
+    .online-verification-button-group{
+        flex-direction: row;
     }
 }
 

@@ -16,8 +16,9 @@
             />
         </b-form-group>
         <b-button
-            class="client-portal-btn-primary w-100 border-0"
+            class="client-portal-btn-primary border-0 w-100"
             :style="{ 'background-color': portfolio.button_color }"
+            @click="verifyInput"
         >
             Continue
         </b-button>
@@ -34,6 +35,17 @@ export default {
         return {
             // TODO will change when created Database Entry for Page
             page_id: 2,
+            first_name: null,
+            last_name: null,
+        }
+    },
+
+    methods: {
+        verifyInput () {
+            // TODO will add function to verify first_name and last_name after api is created
+            if (true) {
+                this.$store.commit('setProgressBar', 40);
+            }
         }
     },
 
