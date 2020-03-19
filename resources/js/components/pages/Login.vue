@@ -1,6 +1,7 @@
-// TODO this file might be change or be deleted need verification on how passport works.
-// This is kept only for the design
 <template>
+    <!--    TODO this file might be change or be deleted need verification on how passport works.
+            This is kept only for the design
+    -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -12,8 +13,8 @@
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
-                            v-model="username"
-                            placeholder="Username"
+                            v-model="email"
+                            placeholder="Email"
                             class="client-portal-form-input"
                         />
                     </b-form-group>
@@ -27,14 +28,9 @@
                     <b-button
                         class="client-portal-btn-primary w-100 border-0"
                         :style="{ 'background-color': login_button_color }"
-                        @mouseover="
-                            login_button_color = portfolio.button_hover_color
-                        "
-                        @mouseleave="
-                            login_button_color = portfolio.button_color
-                        "
-                        >Login</b-button
-                    >
+                        @mouseover="login_button_color = portfolio.button_hover_color"
+                        @mouseleave="login_button_color = portfolio.button_color"
+                    >Login</b-button>
                 </b-form>
                 <div class="pt-4">
                     <p class="text-center font-size-13">
@@ -57,20 +53,20 @@
 export default {
     name: 'Login',
 
-    data() {
+    data () {
         return {
-            username: null,
+            email: null,
             ssn: null,
         };
     },
 
-    created() {
+    created () {
         this.portfolio = this.$jsVars.portfolio;
         this.login_button_color = this.portfolio.button_color;
     },
 
     methods: {
-        loginButtonClick() {
+        loginButtonClick () {
             // TODO will add Login Event
         },
     },

@@ -4,13 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import BootstrapVue from "bootstrap-vue";
-import router from "./router/router";
-import Vue from "vue";
-import Index from "./components/templates/Index";
-import store from "./storage/store";
+import BootstrapVue from 'bootstrap-vue'
+import Index from './components/templates/Index';
+import router from './router/router';
+import store from './storage/store';
+import Vue from 'vue';
 
-window.Vue = require("vue");
+window.Vue = require('vue');
 
 /**
  * The following block of code may be used to automatically register your

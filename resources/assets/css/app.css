@@ -11,11 +11,11 @@ html {
 ::-webkit-scrollbar {
     width: 0px;
 }
-::-webkit-scrollbar-thumb {
-    background: #ff0000;
-}
 .color-darkgray {
     color: #2c2c2e;
+}
+.color-white {
+    color: white;
 }
 .client-portal-header {
     background-repeat: no-repeat;
@@ -92,6 +92,9 @@ html {
 .font-size-24 {
     font-size: 24px;
 }
+.font-size-28 {
+    font-size: 28px;
+}
 .font-size-40 {
     font-size: 40px;
 }
@@ -147,9 +150,87 @@ html {
     color: #2C2C2E;
     line-height: 23px;
 }
+.loan-action-heading {
+    font-size: 28px;
+    font-weight: bold;
+}
+.loan-action-button {
+    display: flex;
+    flex-direction: column;
+    margin: 25px 50px 25px 50px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 25px #CECECE5C;
+    padding: 50px 50px 0 50px;
+    list-style: none;
+    width: 262px;
+    height: 258px;
+    align-items:center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #2c2c2e;
+}
+.loan-action-button:hover {
+    text-decoration: none;
+    color: initial;
+}
+.icon-piggy-bank-icon {
+    padding-right: 14px;
+}
+.payment-schedule-btn-back {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCDCDC;
+    border-radius: 8px;
+    opacity: 1;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payment-schedule td {
+    text-align: center;
+    vertical-align: middle;
+}
+.payment-schedule td:first-child {
+    padding-left: 30px;
+}
+.payment-schedule-tbody {
+    border: 1px solid #dcdcdc;
+}
+.payment-schedule-tr th {
+    text-align: center;
+    border-top: none;
+}
+.payment-schedule-tr > th[aria-sort=none],
+.payment-schedule-tr > th[aria-sort=descending],
+.payment-schedule-tr > th[aria-sort=ascending] {
+    background-image: none !important;
+}
+.payment-schedule-tr > th::after {
+    font-family: "Font Awesome 5 Free";
+    content: '\f0dc';
+    float: right;
+    margin-top: 3px;
+}
+.payment-schedule-tr > [aria-sort=descending]::after {
+   content: '\f0dd';
+}
+.payment-schedule-tr > [aria-sort=ascending]::after {
+     content: '\f0de';
+}
+
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
+    }
+    .payment-schedule-btn-back {
+        width: 120px;
+    }
+    .loan-action-container{
+        margin-top: 50px;
+    }
+    .loan-action-heading{
+        padding-top: 20px;
     }
 }
 @media (min-width: 740px) {
@@ -188,5 +269,8 @@ html {
     }
     .client-portal-btn-submit {
         width: 50%;
+    }
+    .payment-schedule-tr th[aria-sort] {
+        background-position: right 20px center !important;
     }
 }
