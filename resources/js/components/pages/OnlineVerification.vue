@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
                 <span
-                    class="icon-Success-steps-icon client-portal-icon"
+                    class="icon-check-icon client-portal-icon"
                     :style="{color: portfolio.button_color}"
                     v-if="progressBar == 100"
                 />
@@ -36,12 +36,14 @@
                 >
                     Easy Online Verification as Fast as 5 minutes
                 </h2>
-                <client-name v-if="progressBar == 20" />
-                <client-address v-else-if="progressBar == 40" />
-                <client-birthday v-else-if="progressBar == 60" />
-                <client-military-status v-else-if="progressBar == 80" />
-                <client-bank-account v-else-if="progressBar == 90" />
-                <verification-complete v-else-if="progressBar == 100" />
+                <transition name="online-verification-transition">
+                    <client-name v-if="progressBar == 20" />
+                    <client-address v-else-if="progressBar == 40" />
+                    <client-birthday v-else-if="progressBar == 60" />
+                    <client-military-status v-else-if="progressBar == 80" />
+                    <client-bank-account v-else-if="progressBar == 90" />
+                    <verification-complete v-else-if="progressBar == 100" />
+                </transition>
             </div>
         </div>
         <div class="px-3">

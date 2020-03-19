@@ -126,12 +126,16 @@ html {
 }
 .client-portal-btn-primary{
     border-radius: 8px;
+    min-width: 190px;
+    max-width: 100%;
 }
 .client-portal-btn-secondary{
     color: #2c2c2e;
     background-color: white;
     border: 1px solid #DCDCDC;
     border-radius: 8px;
+    min-width: 120px;
+    max-width: 100%;
 }
 .client-portal-btn-secondary:hover,
 .client-portal-btn-secondary:focus,
@@ -255,6 +259,16 @@ html {
 }
 .online-verification-button-group{
     flex-direction: column-reverse;
+}
+.online-verification-transition-enter-active,
+.online-verification-transition-leave-active {
+    /* TODO Do not remove will add a better transition effect later */
+    /* transition: opacity 1s ease-in-out; */
+}
+.online-verification-transition-enter,
+.online-verification-transition-leave-to {
+    /* TODO Do not remove will add a better transition effect later */
+    /* opacity: 0; */
 }
 
 @media (min-width: 499px) {
