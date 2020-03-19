@@ -1,6 +1,7 @@
-// TODO this file might be change or be deleted need verification on how passport works.
-// This is kept only for the design
 <template>
+    <!--    TODO this file might be change or be deleted need verification on how passport works.
+            This is kept only for the design
+    -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -27,12 +28,8 @@
                     <b-button
                         class="client-portal-btn-primary w-100 border-0"
                         :style="{ 'background-color': login_button_color }"
-                        @mouseover="
-                            login_button_color = portfolio.button_hover_color
-                        "
-                        @mouseleave="
-                            login_button_color = portfolio.button_color
-                        "
+                        @mouseover="login_button_color = portfolio.button_hover_color"
+                        @mouseleave="login_button_color = portfolio.button_color"
                     >Login</b-button>
                 </b-form>
                 <div class="pt-4">

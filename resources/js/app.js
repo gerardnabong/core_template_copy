@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import BootstrapVue from 'bootstrap-vue'
 import Index from './components/templates/Index';
 import router from './router/router';
 import store from './storage/store';

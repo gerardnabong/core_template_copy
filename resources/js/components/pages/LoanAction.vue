@@ -1,4 +1,3 @@
-//TODO to="#" because no files were given for attachement
 <template>
     <div class="container">
         <div class="row justify-content-center loan-action-container mb-2">
@@ -6,7 +5,7 @@
                 <h2 class="client-portal-heading-text loan-action-heading">Loan Actions</h2>
             </div>
         </div>
-        <div class="row justify-content-center align-items-center loan-action-button-container">
+        <div class="row justify-content-center align-items-center mb-0">
             <router-link
                 to="/payment-schedule"
                 class="loan-action-button"
@@ -20,6 +19,7 @@
                 />
                 View Payment Schedule
             </router-link>
+            <!-- TODO to="#" because no files were given for attachement -->
             <router-link
                 to="#"
                 class="loan-action-button"
@@ -45,8 +45,6 @@ export default {
 
     data () {
         return {
-            payment_hover: null,
-            loan_hover: null,
             payment_icon_trigger: false,
             loan_icon_trigger: false,
         };
