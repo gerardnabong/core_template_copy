@@ -1,6 +1,7 @@
-// TODO this file might be change or be deleted need verification on how passport works.
-// This is kept only for the design
 <template>
+    <!--    TODO this file might be change or be deleted need verification on how passport works.
+            This is kept only for the design
+    -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">

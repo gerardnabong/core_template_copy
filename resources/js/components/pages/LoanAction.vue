@@ -1,4 +1,3 @@
-//TODO to="#" because no files were given for attachement
 <template>
     <div class="container">
         <div class="row justify-content-center loan-action-container mb-2">
@@ -20,6 +19,7 @@
                 />
                 View Payment Schedule
             </router-link>
+            <!-- TODO to="#" because no files were given for attachement -->
             <router-link
                 to="#"
                 class="loan-action-button"
