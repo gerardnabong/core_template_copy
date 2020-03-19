@@ -201,6 +201,23 @@ html {
     text-align: center;
     border-top: none;
 }
+.payment-schedule-tr>th[aria-sort=none],
+.payment-schedule-tr>th[aria-sort=descending],
+.payment-schedule-tr>th[aria-sort=ascending] {
+    background-image: none !important;
+}
+.payment-schedule-tr>th::after {
+    font-family: "Font Awesome 5 Free";
+    content: '\f0dc';
+    float: right;
+    margin-top: 3px;
+}
+.payment-schedule-tr>[aria-sort=descending]::after {
+   content: '\f0dd';
+}
+.payment-schedule-tr>[aria-sort=ascending]::after {
+     content: '\f0de';
+}
 
 @media (min-width: 499px) {
     .client-portal-btn-submit {
