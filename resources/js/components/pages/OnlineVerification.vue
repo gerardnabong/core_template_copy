@@ -35,7 +35,7 @@
                     class="client-portal-heading-text mb-4"
                     v-else-if="progressBar == 100"
                 >
-                    Success
+                    Success!
                 </h2>
                 <h2
                     class="client-portal-heading-text mb-4"
