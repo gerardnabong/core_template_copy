@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
                 <span
-                    class="icon-check-icon client-portal-icon"
+                    class="icon-Success-steps-icon client-portal-icon"
                     :style="{color: portfolio.button_color}"
                     v-if="progressBar == 100"
                 />

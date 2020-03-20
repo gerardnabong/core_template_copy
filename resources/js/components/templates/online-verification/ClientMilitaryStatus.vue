@@ -6,7 +6,7 @@
                 <b-form-group>
                     <b-form-radio-group
                         v-model="is_military"
-                        class="d-flex justify-content-around"
+                        class="d-flex justify-content-around online-verification"
                     >
                         <b-form-radio value="true">Yes</b-form-radio>
                         <b-form-radio value="false">No</b-form-radio>
@@ -65,6 +65,7 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
+        this.radio_button_color = this.portfolio.button_color;
     },
 };
 </script>

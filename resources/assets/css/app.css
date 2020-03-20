@@ -105,6 +105,9 @@ html {
 .client-portal-icon {
     font-size: 90px;
 }
+.not-found-icon {
+    font-size: 150px;
+}
 .client-portal-heading-text {
     font-weight: bold;
     font-size: 24px;
@@ -124,15 +127,15 @@ html {
 .client-portal-btn-primary:active {
     box-shadow: none;
 }
-.client-portal-btn-primary{
+.client-portal-btn-primary {
     border-radius: 8px;
     min-width: 190px;
     max-width: 100%;
 }
-.client-portal-btn-secondary{
+.client-portal-btn-secondary {
     color: #2c2c2e;
     background-color: white;
-    border: 1px solid #DCDCDC;
+    border: 1px solid #dcdcdc;
     border-radius: 8px;
     min-width: 120px;
     max-width: 100%;
@@ -142,7 +145,7 @@ html {
 .client-portal-btn-secondary:active {
     color: #2c2c2e;
     background-color: white;
-    border: 1px solid #DCDCDC;
+    border: 1px solid #dcdcdc;
 }
 .call-us-background {
     background: #ffffff 0% 0% no-repeat padding-box;
@@ -171,7 +174,7 @@ html {
 .client-portal-paragraph {
     text-align: center;
     letter-spacing: 0.34px;
-    color: #2C2C2E;
+    color: #2c2c2e;
     line-height: 23px;
 }
 .loan-action-heading {
@@ -182,13 +185,13 @@ html {
     display: flex;
     flex-direction: column;
     margin: 25px 50px 25px 50px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 0px 25px #CECECE5C;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 25px #cecece5c;
     padding: 50px;
     list-style: none;
     width: 262px;
     height: 258px;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     border-radius: 8px;
     color: #2c2c2e;
@@ -201,8 +204,8 @@ html {
     padding-right: 14px;
 }
 .payment-schedule-btn-back {
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 1px solid #DCDCDC;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #dcdcdc;
     border-radius: 8px;
     opacity: 1;
     width: 100%;
@@ -225,39 +228,39 @@ html {
     text-align: center;
     border-top: none;
 }
-.payment-schedule-tr > th[aria-sort=none],
-.payment-schedule-tr > th[aria-sort=descending],
-.payment-schedule-tr > th[aria-sort=ascending] {
+.payment-schedule-tr > th[aria-sort="none"],
+.payment-schedule-tr > th[aria-sort="descending"],
+.payment-schedule-tr > th[aria-sort="ascending"] {
     background-image: none !important;
 }
 .payment-schedule-tr > th::after {
     font-family: "Font Awesome 5 Free";
-    content: '\f0dc';
+    content: "\f0dc";
     float: right;
     margin-top: 3px;
 }
-.payment-schedule-tr > [aria-sort=descending]::after {
-   content: '\f0dd';
+.payment-schedule-tr > [aria-sort="descending"]::after {
+    content: "\f0dd";
 }
-.payment-schedule-tr > [aria-sort=ascending]::after {
-     content: '\f0de';
+.payment-schedule-tr > [aria-sort="ascending"]::after {
+    content: "\f0de";
 }
-.online-verification-progressbar-container{
-    background: #F2F2F2 0% 0% no-repeat padding-box;
+.online-verification-progressbar-container {
+    background: #f2f2f2 0% 0% no-repeat padding-box;
     border-radius: 7px;
     height: 20px;
 }
-.online-verification-progressbar{
+.online-verification-progressbar {
     height: 20px;
 }
-.online-verification-select{
+.online-verification-select {
     height: 38px;
     text-align-last: center;
 }
-.online-verification-select option{
+.online-verification-select option {
     text-align: center;
 }
-.online-verification-button-group{
+.online-verification-button-group {
     flex-direction: column-reverse;
 }
 .online-verification-transition-enter-active,
@@ -310,7 +313,7 @@ html {
     .loan-action-button-container :first-child {
         margin: 25px 50px 25px 50px;
     }
-    .online-verification-button-group{
+    .online-verification-button-group {
         flex-direction: row;
     }
 }
