@@ -22,21 +22,31 @@
                         :value="$store.getters.getProgressBar"
                         show-progress
                         class="online-verification-progressbar"
+                        :label="progressBarLabel"
                     />
                 </b-progress>
                 <h2
-                    class="client-portal-heading-text mb-5"
+                    class="client-portal-heading-text mb-4"
                     v-if="progressBar == 90"
                 >
                     Verify your Bank Account
                 </h2>
                 <h2
-                    class="client-portal-heading-text mb-5"
+                    class="client-portal-heading-text mb-4"
+                    v-else-if="progressBar == 100"
+                >
+                    Success
+                </h2>
+                <h2
+                    class="client-portal-heading-text mb-4"
                     v-else
                 >
                     Easy Online Verification as Fast as 5 minutes
                 </h2>
-                <transition name="online-verification-transition">
+                <transition
+                    name="online-verification-transition"
+                    mode="out-in"
+                >
                     <client-name v-if="progressBar == 20" />
                     <client-address v-else-if="progressBar == 40" />
                     <client-birthday v-else-if="progressBar == 60" />
@@ -81,6 +91,9 @@ export default {
     computed: {
         progressBar () {
             return this.$store.getters.getProgressBar;
+        },
+        progressBarLabel () {
+            return `${((this.progressBar / 100) * 100)}%`;
         }
     },
 

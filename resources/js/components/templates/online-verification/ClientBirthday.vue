@@ -4,7 +4,7 @@
         <b-form-group class="mb-3">
             <b-form-datepicker
                 v-model="birthday"
-                class="mb-2 client-portal-form-input"
+                class="mb-2 client-portal-form-input client-portal-date-picker"
                 placeholder="MM/DD/YYYY"
                 :date-format-options="date_format"
             />

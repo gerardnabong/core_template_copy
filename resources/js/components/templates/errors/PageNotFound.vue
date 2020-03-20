@@ -6,15 +6,15 @@
                     class="icon-icon not-found-icon"
                     :style="{ color: portfolio.button_color }"
                 ></span>
-                <div class="pt-4">
+                <div>
                     <h1 class="client-portal-heading-text">
                         Oops! Sorry we can't find that page
                     </h1>
-                    <p class="mt-4">
+                    <p class="mt-3">
                         Either something went wrong or the page doesn't exist anymore
                     </p>
                     <router-link
-                        class="btn color-white client-portal-btn-primary border-0 mt-5"
+                        class="btn color-white client-portal-btn-primary border-0 mt-3"
                         :style="{ 'background-color': home_button_color }"
                         @mouseover="home_button_color = portfolio.button_hover_color"
                         @mouseleave="home_button_color = portfolio.button_color"

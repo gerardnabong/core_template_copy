@@ -3,7 +3,7 @@
         <b-form-group class="mb-3">
             <b-form-input
                 v-model="routing_number"
-                placeholder="Bank Account Routing Number"
+                placeholder="Bank Routing Number"
                 class="client-portal-form-input"
             />
         </b-form-group>
@@ -15,16 +15,16 @@
             />
         </b-form-group>
         <b-button
-            class="client-portal-btn-primary border-0"
+            class="client-portal-btn-primary border-0 mb-2"
             :style="{ 'background-color': portfolio.button_color }"
             @click="verifyInput"
         >
             Send Request
         </b-button>
-        <div class="my-3">
+        <div class="mb-4 mt-3">
             Please check your email. You will be directed to our bank verification page.
         </div>
-        <div class="mt-3">
+        <div class="mt-4">
             <b-button
                 class="client-portal-btn-secondary"
                 @click="goBack"

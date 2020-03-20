@@ -50,6 +50,10 @@ html {
     text-align: center;
     border-radius: 8px;
     font-size: 16px;
+    min-height: 45px;
+}
+.client-portal-form-input::placeholder {
+    color: #a4a4a4;
 }
 .client-portal-button {
     border-radius: 8px;
@@ -106,7 +110,7 @@ html {
     font-size: 90px;
 }
 .not-found-icon {
-    font-size: 150px;
+    font-size: 200px;
 }
 .client-portal-heading-text {
     font-weight: bold;
@@ -130,7 +134,9 @@ html {
 .client-portal-btn-primary {
     border-radius: 8px;
     min-width: 190px;
+    width: 100%;
     max-width: 100%;
+    min-height: 45px;
 }
 .client-portal-btn-secondary {
     color: #2c2c2e;
@@ -139,6 +145,7 @@ html {
     border-radius: 8px;
     min-width: 120px;
     max-width: 100%;
+    min-height: 45px;
 }
 .client-portal-btn-secondary:hover,
 .client-portal-btn-secondary:focus,
@@ -266,12 +273,26 @@ html {
 .online-verification-transition-enter-active,
 .online-verification-transition-leave-active {
     /* TODO Do not remove will add a better transition effect later */
-    /* transition: opacity 1s ease-in-out; */
+    transition: 0.5s;
 }
-.online-verification-transition-enter,
+.online-verification-transition-enter {
+    transform: translate(100%, 0);
+    opacity: 1;
+}
 .online-verification-transition-leave-to {
     /* TODO Do not remove will add a better transition effect later */
-    /* opacity: 0; */
+    transform: translate(-100%, 0);
+    opacity: 0;
+}
+.client-portal-date-picker button {
+    visibility: hidden;
+    z-index: -1;
+    width: 0;
+    padding: 0;
+}
+.client-portal-date-picker label {
+    padding-top: 10px;
+    color: #a4a4a4 !important;
 }
 
 @media (min-width: 499px) {
@@ -315,6 +336,9 @@ html {
     }
     .online-verification-button-group {
         flex-direction: row;
+    }
+    .client-portal-btn-primary {
+        width: unset;
     }
 }
 

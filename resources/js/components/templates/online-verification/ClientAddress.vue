@@ -68,7 +68,7 @@ export default {
             zip_code: null,
             state: null,
             state_option: [
-                { value: null, text: 'State', disabled: true },
+                { value: null, text: 'Select State', disabled: true },
                 { 'value': "AL", 'text': 'Alabama' },
                 { 'value': "AK", 'text': 'Alaska' },
                 { 'value': "AZ", 'text': 'Arizona' },

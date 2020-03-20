@@ -4,7 +4,9 @@
             <header-client-portal />
             <div class="row no-gutters">
                 <div class="col-12 text-center client-portal-container">
-                    <router-view />
+                    <transition name="client-router-transition">
+                        <router-view />
+                    </transition>
                 </div>
             </div>
         </div>
