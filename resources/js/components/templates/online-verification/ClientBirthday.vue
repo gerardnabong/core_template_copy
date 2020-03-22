@@ -2,13 +2,24 @@
     <div>
         <div class="mb-4">How about your date of birth?</div>
         <b-form-group class="mb-3">
-            <b-form-datepicker
-                v-model="birthday"
-                class="mb-2 client-portal-form-input client-portal-date-picker"
-                placeholder="MM/DD/YYYY"
-                :date-format-options="date_format"
-                required
-            />
+            <b-input-group class="mb-3">
+                <b-form-input
+                    v-model="birthday"
+                    type="text"
+                    placeholder="MM/DD/YYYY"
+                    class="mb-2 client-portal-form-input client-portal-date-picker"
+                    :date-format-options="date_format"
+                />
+                <b-input-group-append class="client-portal-date-picker-appened">
+                    <b-form-datepicker
+                        v-model="birthday"
+                        button-only
+                        right
+                        :date-format-options="date_format"
+                        class="client-portal-date-picker-button"
+                    />
+                    </b-input-group-append">
+            </b-input-group>
         </b-form-group>
         <div class="row online-verification-button-group">
             <div class="col-md-5 mt-3">

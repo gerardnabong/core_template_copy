@@ -284,17 +284,29 @@ html {
     transform: translate(-100%, 0);
     opacity: 0;
 }
-.client-portal-date-picker > button {
-    visibility: hidden;
-    z-index: -1;
-    width: 0;
-    padding: 0;
-}
 .client-portal-date-picker label {
     padding-top: 10px;
     color: #a4a4a4 !important;
 }
-
+.client-portal-date-picker-appened {
+    height: 45px;
+}
+.client-portal-date-picker-button > button {
+    background-color: white;
+    color: #a4a4a4;
+    border-color: #dcdcdc;
+}
+.client-portal-date-picker-button > button:hover,
+.client-portal-date-picker-button > button:active,
+.client-portal-date-picker-button > button:focus,
+.client-portal-date-picker-button > button:not(:disabled):not(.disabled).active,
+.client-portal-date-picker-button > button:not(:disabled):not(.disabled):active,
+.client-portal-date-picker-button > button.dropdown-toggle {
+    background-color: white !important;
+    color: #a4a4a4 !important;
+    border-color: #dcdcdc !important;
+    box-shadow: none !important;
+}
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
