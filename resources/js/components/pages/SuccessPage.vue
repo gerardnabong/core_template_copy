@@ -4,7 +4,7 @@
             <div class="col-md-6 text-center pt-4">
                 <span
                     class="icon-check-icon client-portal-icon"
-                    :style="{color: portfolio.button_color}"
+                    :style="{color: portfolio.primary_color}"
                 />
             </div>
         </div>
@@ -38,7 +38,7 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.clientPortalButton = this.portfolio.button_color;
+        this.clientPortalButton = this.portfolio.primary_color;
     },
 };
 </script>

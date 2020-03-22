@@ -4,8 +4,8 @@
             <div class="col-md-6 text-center">
                 <span
                     class="icon-icon not-found-icon"
-                    :style="{ color: portfolio.button_color }"
-                ></span>
+                    :style="{ color: portfolio.primary_color }"
+                />
                 <div>
                     <h1 class="client-portal-heading-text">
                         Oops! Sorry we can't find that page
@@ -15,9 +15,9 @@
                     </p>
                     <router-link
                         class="btn color-white client-portal-btn-primary border-0 mt-3"
-                        :style="{ 'background-color': home_button_color }"
-                        @mouseover="home_button_color = portfolio.button_hover_color"
-                        @mouseleave="home_button_color = portfolio.button_color"
+                        :style="{ 'background-color': home_primary_color }"
+                        @mouseover="home_primary_color = portfolio.button_hover_color"
+                        @mouseleave="home_primary_color = portfolio.primary_color"
                         to="/"
                     >
                         Home
@@ -47,7 +47,7 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.home_button_color = this.portfolio.button_color;
+        this.home_primary_color = this.portfolio.primary_color;
     },
 };
 </script>

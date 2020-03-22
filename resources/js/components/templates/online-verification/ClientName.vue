@@ -7,6 +7,7 @@
                     v-model="first_name"
                     placeholder="First Name"
                     class="client-portal-form-input"
+                    required
                 />
             </b-form-group>
             <b-form-group class="mb-3">
@@ -14,11 +15,12 @@
                     v-model="last_name"
                     placeholder="Last Name"
                     class="client-portal-form-input"
+                    required
                 />
             </b-form-group>
             <b-button
                 class="client-portal-btn-primary border-0"
-                :style="{ 'background-color': portfolio.button_color }"
+                :style="{ 'background-color': portfolio.primary_color }"
                 @click="verifyInput"
             >
                 Continue

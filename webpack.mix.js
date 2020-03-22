@@ -64,7 +64,8 @@ mix.styles(
     [
         "node_modules/bootstrap/dist/css/bootstrap.min.css",
         "node_modules/bootstrap-vue/dist/bootstrap-vue.min.css",
-        "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+        "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+        "resources/assets/fonts/client_portal/style.css",
     ],
     "public/css/shared.css"
 );

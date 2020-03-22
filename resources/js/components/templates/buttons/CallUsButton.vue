@@ -7,7 +7,7 @@
             <div class="col-4 align-self-center call-us-icon pr-3">
                 <i
                     class="fas fa-phone fa-rotate-90 color-override"
-                    :style="{ color: portfolio.button_color }"
+                    :style="{ color: portfolio.primary_color }"
                 />
             </div>
             <div class="col-8">
@@ -15,7 +15,7 @@
                     <div class="col p-0">Call us at</div>
                     <div
                         class="col p-0 font-weight-bold font-size-22 color-override"
-                        :style="{ color: portfolio.button_color }"
+                        :style="{ color: portfolio.primary_color }"
                     >{{ portfolio.phone_number }}</div>
                 </div>
             </div>
@@ -30,13 +30,13 @@ export default {
     name: 'CallUsButton',
 
     computed: {
-        phone_number() {
+        phone_number () {
             var phone_number = this.portfolio.phone_number;
             return 'tel: +' + phone_number.replace(/-/g, '');
         },
     },
 
-    created() {
+    created () {
         this.portfolio = this.$jsVars.portfolio;
     },
 };

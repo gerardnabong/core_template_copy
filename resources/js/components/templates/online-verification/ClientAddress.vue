@@ -6,13 +6,16 @@
                 v-model="address"
                 placeholder="Address"
                 class="client-portal-form-input"
+                required
             />
         </b-form-group>
         <b-form-group class="mb-3">
+            <!-- TODO Create a validation rule that validate City is in a State -->
             <b-form-input
                 v-model="city"
                 placeholder="City"
                 class="client-portal-form-input"
+                required
             />
         </b-form-group>
         <b-form-group class="mb-3">
@@ -21,6 +24,7 @@
                 :options="state_option"
                 size="sm"
                 class="client-portal-form-input online-verification-select"
+                required
             />
         </b-form-group>
         <b-form-group class="mb-3">
@@ -28,6 +32,7 @@
                 v-model="zip_code"
                 placeholder="Zip Code"
                 class="client-portal-form-input"
+                required
             />
         </b-form-group>
         <div class="row online-verification-button-group">
@@ -40,10 +45,9 @@
                 </b-button>
             </div>
             <div class="col-md-7 mt-3">
-
                 <b-button
                     class="client-portal-btn-primary border-0 w-100"
-                    :style="{ 'background-color': portfolio.button_color }"
+                    :style="{ 'background-color': portfolio.primary_color }"
                     @click="verifyInput"
                 >
                     Continue
@@ -56,6 +60,8 @@
 <script>
 'use strict';
 
+import STATES from '~/fixed_variables/state_options';
+
 export default {
     name: 'ClientAddress',
 
@@ -67,60 +73,6 @@ export default {
             city: null,
             zip_code: null,
             state: null,
-            state_option: [
-                { value: null, text: 'Select State', disabled: true },
-                { 'value': "AL", 'text': 'Alabama' },
-                { 'value': "AK", 'text': 'Alaska' },
-                { 'value': "AZ", 'text': 'Arizona' },
-                { 'value': "AR", 'text': 'Arkansas' },
-                { 'value': "CA", 'text': 'California' },
-                { 'value': "CO", 'text': 'Colorado' },
-                { 'value': "CT", 'text': 'Connecticut' },
-                { 'value': "DE", 'text': 'Delaware' },
-                { 'value': "FL", 'text': 'Florida' },
-                { 'value': "GA", 'text': 'Georgia' },
-                { 'value': "HI", 'text': 'Hawaii' },
-                { 'value': "ID", 'text': 'Idaho' },
-                { 'value': "IL", 'text': 'Illinois' },
-                { 'value': "IN", 'text': 'Indiana' },
-                { 'value': "IA", 'text': 'Iowa' },
-                { 'value': "KS", 'text': 'Kansas' },
-                { 'value': "KY", 'text': 'Kentucky' },
-                { 'value': "LA", 'text': 'Louisiana' },
-                { 'value': "ME", 'text': 'Maine' },
-                { 'value': "MD", 'text': 'Maryland' },
-                { 'value': "MA", 'text': 'Massachusetts' },
-                { 'value': "MI", 'text': 'Michigan' },
-                { 'value': "MN", 'text': 'Minnesota' },
-                { 'value': "MS", 'text': 'Mississippi' },
-                { 'value': "MO", 'text': 'Missouri' },
-                { 'value': "MT", 'text': 'Montana' },
-                { 'value': "NE", 'text': 'Nebraska' },
-                { 'value': "NV", 'text': 'Nevada' },
-                { 'value': "NH", 'text': 'New Hampshire' },
-                { 'value': "NJ", 'text': 'New Jersey' },
-                { 'value': "NM", 'text': 'New Mexico' },
-                { 'value': "NY", 'text': 'New York' },
-                { 'value': "NC", 'text': 'North Carolina' },
-                { 'value': "ND", 'text': 'North Dakota' },
-                { 'value': "OH", 'text': 'Ohio' },
-                { 'value': "OK", 'text': 'Oklahoma' },
-                { 'value': "OR", 'text': 'Oregon' },
-                { 'value': "PA", 'text': 'Pennsylvania' },
-                { 'value': "RI", 'text': 'Rhode Island' },
-                { 'value': "SC", 'text': 'South Carolina' },
-                { 'value': "SD", 'text': 'South Dakota' },
-                { 'value': "TN", 'text': 'Tennessee' },
-                { 'value': "TX", 'text': 'Texas' },
-                { 'value': "UT", 'text': 'Utah' },
-                { 'value': "VT", 'text': 'Vermont' },
-                { 'value': "VA", 'text': 'Virginia' },
-                { 'value': "WA", 'text': 'Washington' },
-                { 'value': "DC", 'text': 'Washington D.C.' },
-                { 'value': "WI", 'text': 'Wisconsin' },
-                { 'value': "WV", 'text': 'West Virginia' },
-                { 'value': "WY", 'text': 'Wyoming' },
-            ],
         }
     },
 
@@ -137,6 +89,12 @@ export default {
             if (true) {
                 this.$store.commit('setProgressBar', 60);
             }
+        },
+    },
+
+    computed: {
+        state_option () {
+            return STATES;
         }
     }
 };

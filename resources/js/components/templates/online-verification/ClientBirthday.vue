@@ -7,6 +7,7 @@
                 class="mb-2 client-portal-form-input client-portal-date-picker"
                 placeholder="MM/DD/YYYY"
                 :date-format-options="date_format"
+                required
             />
         </b-form-group>
         <div class="row online-verification-button-group">
@@ -19,10 +20,9 @@
                 </b-button>
             </div>
             <div class="col-md-7 mt-3">
-
                 <b-button
                     class="client-portal-btn-primary border-0 w-100"
-                    :style="{ 'background-color': portfolio.button_color }"
+                    :style="{ 'background-color': portfolio.primary_color }"
                     @click="verifyInput"
                 >
                     Continue
@@ -35,6 +35,12 @@
 <script>
 'use strict';
 
+const DATE_FORMAT = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+};
+
 export default {
     name: 'ClientBirthday',
 
@@ -43,11 +49,6 @@ export default {
             // TODO will change when created Database Entry for Page
             page_id: 5,
             birthday: null,
-            date_format: {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-            },
         }
     },
 
@@ -66,5 +67,13 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
     },
+
+    computed: {
+        date_format () {
+            return {
+                DATE_FORMAT
+            }
+        }
+    }
 };
 </script>

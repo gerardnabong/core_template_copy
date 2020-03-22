@@ -8,11 +8,11 @@ import LoanAction from "~/components/pages/LoanAction";
 import LoanTransfer from "~/components/pages/LoanTransfer";
 import Login from "~/components/pages/Login";
 import NewLoan from "~/components/pages/NewLoan";
+import OnlineVerification from "~/components/pages/OnlineVerification";
 import OnProcess from "~/components/pages/OnProcess";
+import PageNotFound from "~/components/templates/errors/PageNotFound";
 import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
-import OnlineVerification from "~/components/pages/OnlineVerification";
-import PageNotFound from "~/components/templates/errors/PageNotFound";
 
 Vue.use(Router);
 

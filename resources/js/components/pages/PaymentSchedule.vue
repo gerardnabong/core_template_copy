@@ -44,17 +44,17 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         let headerStyleLeft = {
-            'background-color': this.portfolio.button_color,
+            'background-color': this.portfolio.primary_color,
             'color': 'white',
             'border-radius': '8px 0 0 0',
             'padding-left': '30px',
         };
         let headerStyleCenter = {
-            'background-color': this.portfolio.button_color,
+            'background-color': this.portfolio.primary_color,
             'color': 'white',
         };
         let headerStyleRight = {
-            'background-color': this.portfolio.button_color,
+            'background-color': this.portfolio.primary_color,
             'color': 'white',
             'border-radius': '0 8px 0 0',
         };

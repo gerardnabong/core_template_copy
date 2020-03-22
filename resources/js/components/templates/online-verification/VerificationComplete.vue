@@ -6,7 +6,7 @@
         </div>
         <b-button
             class="client-portal-btn-primary border-0"
-            :style="{ 'background-color': portfolio.button_color }"
+            :style="{ 'background-color': portfolio.primary_color }"
             @click="logout"
         >
             Logout

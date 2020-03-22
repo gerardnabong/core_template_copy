@@ -5,6 +5,7 @@
                 v-model="routing_number"
                 placeholder="Bank Routing Number"
                 class="client-portal-form-input"
+                required
             />
         </b-form-group>
         <b-form-group class="mb-3">
@@ -12,11 +13,12 @@
                 v-model="account_number"
                 placeholder="Bank Account Number"
                 class="client-portal-form-input"
+                required
             />
         </b-form-group>
         <b-button
             class="client-portal-btn-primary border-0 mb-2"
-            :style="{ 'background-color': portfolio.button_color }"
+            :style="{ 'background-color': portfolio.primary_color }"
             @click="verifyInput"
         >
             Send Request

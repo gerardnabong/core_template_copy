@@ -7,18 +7,19 @@
                     <b-form-radio-group
                         v-model="is_military"
                         class="d-flex justify-content-center online-verification"
+                        required
                     >
                         <b-form-radio
                             value="true"
                             class="military-radio-color pr-4"
-                            :style="{'--radio-color': radio_button_color}"
+                            :style="{'--radio-color': portfolio.primary_color}"
                         >
                             Yes
                         </b-form-radio>
                         <b-form-radio
                             value="false"
                             class="military-radio-color pl-4"
-                            :style="{'--radio-color': radio_button_color}"
+                            :style="{'--radio-color': portfolio.primary_color}"
                         >
                             No
                         </b-form-radio>
@@ -39,7 +40,7 @@
 
                 <b-button
                     class="client-portal-btn-primary border-0 w-100"
-                    :style="{ 'background-color': portfolio.button_color }"
+                    :style="{ 'background-color': portfolio.primary_color }"
                     @click="verifyInput"
                 >
                     Continue
@@ -77,15 +78,14 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.radio_button_color = this.portfolio.button_color;
     },
 };
 </script>
 
 <style>
-/* this is done so I can over-ride default bootstrap-vue radio color */
+/* TODO Find a way to get rid of var */
 .military-radio-color input:checked ~ .custom-control-label::before {
-    background-color: var(--radio-color, #007bff);
-    border-color: var(--radio-color, #007bff);
+    background-color: var(--radio-color);
+    border-color: var(--radio-color);
 }
 </style>
