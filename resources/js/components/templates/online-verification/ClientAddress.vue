@@ -28,11 +28,13 @@
             />
         </b-form-group>
         <b-form-group class="mb-3">
+            <!-- :mask is not working use v-mask instead -->
             <b-form-input
                 v-model="zip_code"
                 placeholder="Zip Code"
                 class="client-portal-form-input"
                 required
+                v-mask="'999999'"
             />
         </b-form-group>
         <div class="row online-verification-button-group">
@@ -54,12 +56,18 @@
                 </b-button>
             </div>
         </div>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 'use strict';
 
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import STATES from '~/fixed_variables/state_options';
 
 export default {
@@ -74,6 +82,10 @@ export default {
             zip_code: null,
             state: null,
         }
+    },
+
+    components: {
+        CallUsButton,
     },
 
     created () {

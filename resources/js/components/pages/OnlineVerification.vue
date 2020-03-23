@@ -56,18 +56,12 @@
                 </transition>
             </div>
         </div>
-        <div class="px-3">
-            <div class="d-flex justify-content-center my-5">
-                <call-us-button />
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
 'use strict';
 
-import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import ClientAddress from '~/components/templates/online-verification/ClientAddress';
 import ClientBankAccount from '~/components/templates/online-verification/ClientBankAccount';
 import ClientBirthday from '~/components/templates/online-verification/ClientBirthday';
@@ -81,7 +75,6 @@ export default {
     name: 'OnlineVerification',
 
     components: {
-        CallUsButton,
         ClientAddress,
         ClientBankAccount,
         ClientBirthday,

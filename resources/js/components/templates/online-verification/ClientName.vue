@@ -26,11 +26,20 @@
                 Continue
             </b-button>
         </div>
+        <div class="col">
+            <div class="px-3">
+                <div class="d-flex justify-content-center my-5">
+                    <call-us-button />
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 'use strict';
+
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
     name: 'CompleteName',
@@ -42,6 +51,10 @@ export default {
             first_name: null,
             last_name: null,
         }
+    },
+
+    components: {
+        CallUsButton,
     },
 
     methods: {

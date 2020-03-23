@@ -3,12 +3,14 @@
         <div class="mb-4">How about your date of birth?</div>
         <b-form-group class="mb-3">
             <b-input-group class="mb-3">
+                <!-- TODO ISSUE with date format cannot change format will find a fix -->
                 <b-form-input
                     v-model="birthday"
                     type="text"
-                    placeholder="MM/DD/YYYY"
+                    placeholder="YYYY/MM/DD"
                     class="mb-2 client-portal-form-input client-portal-date-picker"
                     :date-format-options="date_format"
+                    v-mask="'9999/99/99'"
                 />
                 <b-input-group-append class="client-portal-date-picker-appened">
                     <b-form-datepicker
@@ -18,7 +20,7 @@
                         :date-format-options="date_format"
                         class="client-portal-date-picker-button"
                     />
-                    </b-input-group-append">
+                </b-input-group-append>
             </b-input-group>
         </b-form-group>
         <div class="row online-verification-button-group">
@@ -40,11 +42,18 @@
                 </b-button>
             </div>
         </div>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 'use strict';
+
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 const DATE_FORMAT = {
     year: 'numeric',
@@ -61,6 +70,10 @@ export default {
             page_id: 5,
             birthday: null,
         }
+    },
+
+    components: {
+        CallUsButton,
     },
 
     methods: {

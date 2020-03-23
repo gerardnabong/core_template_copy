@@ -34,11 +34,18 @@
                 Back
             </b-button>
         </div>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 'use strict';
+
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
     name: 'ClientBankAccount',
@@ -50,6 +57,10 @@ export default {
             routing_number: null,
             account_number: null,
         }
+    },
+
+    components: {
+        CallUsButton,
     },
 
     methods: {

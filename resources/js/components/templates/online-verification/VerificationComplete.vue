@@ -11,11 +11,18 @@
         >
             Logout
         </b-button>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 'use strict';
+
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
     name: 'VerificationComplete',
@@ -25,6 +32,10 @@ export default {
             // TODO will change when created Database Entry for Page
             page_id: 8,
         }
+    },
+
+    components: {
+        CallUsButton,
     },
 
     methods: {

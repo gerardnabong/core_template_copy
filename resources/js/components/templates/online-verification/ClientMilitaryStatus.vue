@@ -47,11 +47,18 @@
                 </b-button>
             </div>
         </div>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 'use strict';
+
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
     name: 'ClientMilitaryStatus',
@@ -62,6 +69,10 @@ export default {
             page_id: 6,
             is_military: true,
         }
+    },
+
+    components: {
+        CallUsButton,
     },
 
     methods: {
