@@ -16,8 +16,8 @@
                     <router-link
                         class="btn color-white client-portal-btn-primary border-0 mt-3"
                         :style="{ 'background-color': home_primary_color }"
-                        @mouseover="home_primary_color = portfolio.primary_color_hover"
-                        @mouseleave="home_primary_color = portfolio.primary_color"
+                        @mouseover.native="home_primary_color = portfolio.primary_color_hover"
+                        @mouseleave.native="home_primary_color = portfolio.primary_color"
                         to="/"
                     >
                         Home
@@ -43,6 +43,12 @@ export default {
 
     components: {
         CallUsButton,
+    },
+
+    data () {
+        return {
+            home_primary_color: null,
+        }
     },
 
     created () {

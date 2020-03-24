@@ -19,7 +19,7 @@
             />
         </b-form-group>
         <b-button
-            class="client-portal-btn-primary border-0 mb-2"
+            class="client-portal-btn-primary border-0 mt-3 mb-2"
             :style="{ 'background-color': portfolio.primary_color }"
             @click="verifyInput"
         >

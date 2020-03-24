@@ -130,6 +130,7 @@ html {
 .client-portal-btn-primary:focus,
 .client-portal-btn-primary:active {
     box-shadow: none;
+    color: white;
 }
 .client-portal-btn-primary {
     border-radius: 8px;
@@ -137,6 +138,7 @@ html {
     width: 100%;
     max-width: 100%;
     min-height: 45px;
+    padding-top: 10px;
 }
 .client-portal-btn-secondary {
     color: #2c2c2e;

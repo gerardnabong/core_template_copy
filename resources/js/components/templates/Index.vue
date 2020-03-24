@@ -25,5 +25,20 @@ export default {
         HeaderClientPortal,
         FooterClientPortal,
     },
+
+    created () {
+        this.portfolio = this.$jsVars.portfolio;
+        this.loader = this.$loading.show({
+            opacity: 1,
+            color: this.portfolio.primary_color,
+            loader: 'dots',
+        });
+    },
+
+    mounted () {
+        setTimeout(() => {
+            this.loader.hide();
+        }, 300);
+    },
 };
 </script>

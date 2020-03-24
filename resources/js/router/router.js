@@ -2,6 +2,8 @@
 
 import Router from "vue-router";
 import Vue from "vue";
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 
 import ErrorPage from "~/components/pages/ErrorPage";
 import LoanAction from "~/components/pages/LoanAction";
@@ -15,6 +17,7 @@ import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
 
 Vue.use(Router);
+Vue.use(Loading);
 
 const ROUTES = [
     { path: "/", component: Login },
@@ -30,8 +33,12 @@ const ROUTES = [
     { path: "*", component: PageNotFound }
 ];
 
-export default new Router({
+const PORTFOLIO = JS_VARS.portfolio;
+
+const ROUTER = new Router({
     base: "/",
     mode: "history",
     routes: ROUTES
 });
+
+export default ROUTER;

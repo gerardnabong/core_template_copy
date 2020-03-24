@@ -28,8 +28,8 @@
                     <b-button
                         class="client-portal-btn-primary w-100 border-0"
                         :style="{ 'background-color': login_primary_color }"
-                        @mouseover="login_primary_color = portfolio.primary_color_hover"
-                        @mouseleave="login_primary_color = portfolio.primary_color"
+                        @mouseover.native="login_primary_color = portfolio.primary_color_hover"
+                        @mouseleave.native="login_primary_color = portfolio.primary_color"
                     >Login</b-button>
                 </b-form>
                 <div class="pt-4">
