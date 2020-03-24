@@ -29,6 +29,7 @@
             </b-form-select>
         </b-form-group>
         <b-form-group class="mb-3">
+            <!-- TODO will add validation if the zip is in the city -->
             <b-form-input
                 v-model="zip_code"
                 placeholder="Zip Code"
