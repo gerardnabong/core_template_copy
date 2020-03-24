@@ -26,10 +26,10 @@
                 class="client-portal-form-input online-verification-select"
                 required
             >
-                <b-form-select-option value="0">Select State</b-form-select-option>
             </b-form-select>
         </b-form-group>
         <b-form-group class="mb-3">
+            <!-- TODO will add validation if the zip is in the city -->
             <b-form-input
                 v-model="zip_code"
                 placeholder="Zip Code"
@@ -69,7 +69,7 @@
 'use strict';
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
-import STATES from '~/fixed_variables/state_options';
+import STATES from '~/fixed_variables/list_of_states';
 
 const PROGRESS_BAR_PREV = 20;
 const PROGRESS_BAR_NEXT = 60;
@@ -84,7 +84,7 @@ export default {
             address: null,
             city: null,
             zip_code: null,
-            state: 0,
+            state: null,
         }
     },
 
@@ -110,6 +110,8 @@ export default {
 
     computed: {
         state_option () {
+            let default_option = { 'value': null, 'text': 'Select State' };
+            STATES.unshift(default_option);
             return STATES;
         }
     }

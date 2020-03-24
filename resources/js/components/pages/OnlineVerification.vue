@@ -69,7 +69,7 @@ import ClientMilitaryStatus from '~/components/templates/online-verification/Cli
 import ClientName from '~/components/templates/online-verification/ClientName';
 import VerificationComplete from '~/components/templates/online-verification/VerificationComplete';
 
-const PROGRESS_BAR_INITIAL_VAUE = 20;
+const PROGRESS_BAR_INITIAL_VALUE = 20;
 
 export default {
     name: 'OnlineVerification',
@@ -95,7 +95,7 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
-        this.$store.commit('setProgressBar', PROGRESS_BAR_INITIAL_VAUE);
+        this.$store.commit('setProgressBar', PROGRESS_BAR_INITIAL_VALUE);
     },
 };
 </script>

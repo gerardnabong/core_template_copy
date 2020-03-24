@@ -13,7 +13,7 @@ class PortfolioTableSeeder extends Seeder
             'url' => 'localhost',
             'logo_url' => 'inbox_credit_white_logo.svg',
             'primary_color' => '#004F95',
-            'secondary_color'    => '#004F95',
+            'secondary_color' => '#004F95',
             'primary_color_hover' => '#014A8D',
             'header_image_mobile_url' => 'blue_arc_bg_header.svg',
             'header_image_url' => 'blue_arc_bg.svg',
