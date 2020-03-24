@@ -26,7 +26,6 @@
                 class="client-portal-form-input online-verification-select"
                 required
             >
-                <b-form-select-option value="0">Select State</b-form-select-option>
             </b-form-select>
         </b-form-group>
         <b-form-group class="mb-3">
@@ -69,7 +68,7 @@
 'use strict';
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
-import STATES from '~/fixed_variables/state_options';
+import STATES from '~/fixed_variables/list_of_states';
 
 const PROGRESS_BAR_PREV = 20;
 const PROGRESS_BAR_NEXT = 60;
@@ -110,6 +109,8 @@ export default {
 
     computed: {
         state_option () {
+            let default_option = { 'value': 0, 'text': 'Select State' };
+            STATES.unshift(default_option);
             return STATES;
         }
     }
