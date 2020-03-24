@@ -83,7 +83,7 @@ export default {
             address: null,
             city: null,
             zip_code: null,
-            state: 0,
+            state: null,
         }
     },
 
@@ -109,7 +109,7 @@ export default {
 
     computed: {
         state_option () {
-            let default_option = { 'value': 0, 'text': 'Select State' };
+            let default_option = { 'value': null, 'text': 'Select State' };
             STATES.unshift(default_option);
             return STATES;
         }
