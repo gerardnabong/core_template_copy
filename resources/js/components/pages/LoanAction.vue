@@ -40,6 +40,9 @@
 <script>
 'use strict';
 
+const COLOR_WHITE = 'white';
+const COLOR_DARK_GRAY = '#2C2C2E';
+
 export default {
     name: 'LoanAction',
 
@@ -53,41 +56,41 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.payment_hover = {
-            color: '#2C2C2E',
-            'background-color': 'white',
+            color: COLOR_DARK_GRAY,
+            'background-color': COLOR_WHITE,
         };
         this.loan_hover = {
-            color: '#2C2C2E',
-            'background-color': 'white',
+            color: COLOR_DARK_GRAY,
+            'background-color': COLOR_WHITE,
         };
     },
 
     methods: {
         triggerPaymentHover () {
             this.payment_hover = {
-                color: 'white',
+                color: COLOR_WHITE,
                 'background-color': this.portfolio.primary_color
             };
             this.payment_icon_trigger = true;
         },
         triggerPaymentHoverLeave () {
             this.payment_hover = {
-                color: '#2C2C2E',
-                'background-color': 'white'
+                color: COLOR_DARK_GRAY,
+                'background-color': COLOR_WHITE
             };
             this.payment_icon_trigger = false;
         },
         triggerLoanHover () {
             this.loan_hover = {
-                color: 'white',
+                color: COLOR_WHITE,
                 'background-color': this.portfolio.primary_color,
             };
             this.loan_icon_trigger = true;
         },
         triggerLoanHoverLeave () {
             this.loan_hover = {
-                color: '#2C2C2E',
-                'background-color': 'white',
+                color: COLOR_DARK_GRAY,
+                'background-color': COLOR_WHITE,
             };
             this.loan_icon_trigger = false;
         },
@@ -95,10 +98,10 @@ export default {
 
     computed: {
         changePaymentIconStyle () {
-            return { color: this.payment_icon_trigger ? 'white' : this.portfolio.primary_color }
+            return { color: this.payment_icon_trigger ? COLOR_WHITE : this.portfolio.primary_color }
         },
         changeLoanIconStyle () {
-            return { color: this.loan_icon_trigger ? 'white' : this.portfolio.primary_color }
+            return { color: this.loan_icon_trigger ? COLOR_WHITE : this.portfolio.primary_color }
         },
     }
 };

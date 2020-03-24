@@ -11,6 +11,7 @@
                     class="mb-2 client-portal-form-input client-portal-date-picker"
                     :date-format-options="date_format"
                     v-mask="'9999/99/99'"
+                    @mouseover='triggerDatePickerButton'
                 />
                 <b-input-group-append class="client-portal-date-picker-appened">
                     <b-form-datepicker
@@ -87,7 +88,10 @@ export default {
             if (true) {
                 this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
-        }
+        },
+        triggerDatePickerButton () {
+            $('.client-portal-date-picker-button button').trigger('click');
+        },
     },
 
     created () {
