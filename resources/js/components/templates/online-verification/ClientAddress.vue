@@ -25,7 +25,9 @@
                 size="sm"
                 class="client-portal-form-input online-verification-select"
                 required
-            />
+            >
+                <b-form-select-option value="0">Select State</b-form-select-option>
+            </b-form-select>
         </b-form-group>
         <b-form-group class="mb-3">
             <b-form-input
@@ -82,7 +84,7 @@ export default {
             address: null,
             city: null,
             zip_code: null,
-            state: null,
+            state: 0,
         }
     },
 
