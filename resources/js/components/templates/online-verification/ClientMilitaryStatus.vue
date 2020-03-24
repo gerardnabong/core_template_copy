@@ -84,7 +84,7 @@ export default {
         },
         verifyInput () {
             // TODO will add function to verify after api is created
-            if (this.is_military == 'false') {
+            if (this.is_military === 'false') {
                 this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
         }

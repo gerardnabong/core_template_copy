@@ -8,12 +8,12 @@ export default {
     getters: {
         getProgressBar: state => {
             return state.progressBar;
-        }
+        },
     },
 
     mutations: {
         setProgressBar (state, value) {
             state.progressBar = value;
-        }
+        },
     },
 }
