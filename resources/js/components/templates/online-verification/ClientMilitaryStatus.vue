@@ -60,6 +60,9 @@
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
+const PROGRESS_BAR_PREV = 60;
+const PROGRESS_BAR_NEXT = 90;
+
 export default {
     name: 'ClientMilitaryStatus',
 
@@ -77,12 +80,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', 60);
+            this.$store.commit('setProgressBar', PROGRESS_BAR_PREV);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (this.is_military == 'false') {
-                this.$store.commit('setProgressBar', 90);
+                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
         }
     },

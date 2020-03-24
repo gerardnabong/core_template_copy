@@ -16,7 +16,7 @@
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
-                        @mouseover="clientPortalButton = portfolio.button_hover_color"
+                        @mouseover="clientPortalButton = portfolio.primary_color_hover"
                         @mouseleave="clientPortalButton = portfolio.primary_color"
                     >Logout</b-button>
                 </div>

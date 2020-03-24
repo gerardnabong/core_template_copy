@@ -5,6 +5,7 @@
                 v-model="routing_number"
                 placeholder="Bank Routing Number"
                 class="client-portal-form-input"
+                v-mask="'999999999'"
                 required
             />
         </b-form-group>
@@ -13,6 +14,7 @@
                 v-model="account_number"
                 placeholder="Bank Account Number"
                 class="client-portal-form-input"
+                v-mask="'9999999999'"
                 required
             />
         </b-form-group>
@@ -47,6 +49,9 @@
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
+const PROGRESS_BAR_PREV = 80;
+const PROGRESS_BAR_NEXT = 100;
+
 export default {
     name: 'ClientBankAccount',
 
@@ -65,12 +70,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', 80);
+            this.$store.commit('setProgressBar', PROGRESS_BAR_PREV);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', 100);
+                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
         }
     },

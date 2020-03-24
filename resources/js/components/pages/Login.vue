@@ -8,7 +8,7 @@
                 <span
                     class="icon-login-icon client-portal-icon"
                     :style="{ color: portfolio.primary_color }"
-                ></span>
+                />
                 <b-form class="pt-4">
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
@@ -28,7 +28,7 @@
                     <b-button
                         class="client-portal-btn-primary w-100 border-0"
                         :style="{ 'background-color': login_primary_color }"
-                        @mouseover="login_primary_color = portfolio.button_hover_color"
+                        @mouseover="login_primary_color = portfolio.primary_color_hover"
                         @mouseleave="login_primary_color = portfolio.primary_color"
                     >Login</b-button>
                 </b-form>

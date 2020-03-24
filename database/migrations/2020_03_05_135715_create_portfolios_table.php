@@ -15,8 +15,8 @@ class CreatePortfoliosTable extends Migration
             $table->string('url')->index();
             $table->string('logo_url');
             $table->string('primary_color');
-            $table->string('icon_color');
-            $table->string('button_hover_color');
+            $table->string('secondary_color');
+            $table->string('primary_color_hover');
             $table->string('header_image_mobile_url');
             $table->string('header_image_url');
             $table->string('footer_image_url');

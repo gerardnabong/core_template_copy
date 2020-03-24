@@ -28,7 +28,6 @@
             />
         </b-form-group>
         <b-form-group class="mb-3">
-            <!-- :mask is not working use v-mask instead -->
             <b-form-input
                 v-model="zip_code"
                 placeholder="Zip Code"
@@ -70,6 +69,9 @@
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import STATES from '~/fixed_variables/state_options';
 
+const PROGRESS_BAR_PREV = 20;
+const PROGRESS_BAR_NEXT = 60;
+
 export default {
     name: 'ClientAddress',
 
@@ -94,12 +96,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', 20);
+            this.$store.commit('setProgressBar', PROGRESS_BAR_PREV);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', 60);
+                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
         },
     },

@@ -41,6 +41,8 @@
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
+const PROGRESS_BAR_NEXT = 40;
+
 export default {
     name: 'CompleteName',
 
@@ -61,7 +63,7 @@ export default {
         verifyInput () {
             // TODO will add function to verify first_name and last_name after api is created
             if (true) {
-                this.$store.commit('setProgressBar', 40);
+                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
         }
     },

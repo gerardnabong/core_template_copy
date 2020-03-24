@@ -60,6 +60,8 @@ const DATE_FORMAT = {
     month: '2-digit',
     day: '2-digit',
 };
+const PROGRESS_BAR_PREV = 40;
+const PROGRESS_BAR_NEXT = 80;
 
 export default {
     name: 'ClientBirthday',
@@ -78,12 +80,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', 40);
+            this.$store.commit('setProgressBar', PROGRESS_BAR_PREV);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', 80);
+                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
             }
         }
     },
@@ -95,7 +97,7 @@ export default {
     computed: {
         date_format () {
             return {
-                DATE_FORMAT
+                DATE_FORMAT,
             }
         }
     }
