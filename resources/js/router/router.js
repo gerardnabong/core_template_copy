@@ -2,8 +2,6 @@
 
 import Router from "vue-router";
 import Vue from "vue";
-import Loading from 'vue-loading-overlay';
-import 'vue-loading-overlay/dist/vue-loading.css';
 
 import ErrorPage from "~/components/pages/ErrorPage";
 import LoanAction from "~/components/pages/LoanAction";
@@ -17,7 +15,6 @@ import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
 
 Vue.use(Router);
-Vue.use(Loading);
 
 const ROUTES = [
     { path: "/", component: Login },
@@ -30,15 +27,11 @@ const ROUTES = [
     { path: "/payment-schedule", component: PaymentSchedule },
     { path: "/success", component: SuccessPage },
     // 404 Route should it should be on last to not overwrite the routing above
-    { path: "*", component: PageNotFound }
+    { path: "*", component: PageNotFound },
 ];
 
-const PORTFOLIO = JS_VARS.portfolio;
-
-const ROUTER = new Router({
+export default new Router({
     base: "/",
     mode: "history",
-    routes: ROUTES
+    routes: ROUTES,
 });
-
-export default ROUTER;

@@ -4,7 +4,11 @@
             <header-client-portal />
             <div class="row no-gutters">
                 <div class="col-12 text-center client-portal-container">
-                    <transition name="client-router-transition">
+                    <transition
+                        name="client-router-transition"
+                        v-on:before-enter="showLoader"
+                        v-on:after-enter="hideLoader"
+                    >
                         <router-view />
                     </transition>
                 </div>
@@ -26,18 +30,28 @@ export default {
         FooterClientPortal,
     },
 
+    methods: {
+        showLoader () {
+            this.loader = this.$loading.show({
+                opacity: 1,
+                color: this.portfolio.primary_color,
+                loader: 'dots',
+            });
+        },
+        hideLoader () {
+            this.loader.hide();
+            this.loader = null;
+        }
+    },
+
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.loader = this.$loading.show({
-            opacity: 1,
-            color: this.portfolio.primary_color,
-            loader: 'dots',
-        });
+        this.showLoader();
     },
 
     mounted () {
         setTimeout(() => {
-            this.loader.hide();
+            this.hideLoader();
         }, 300);
     },
 };
