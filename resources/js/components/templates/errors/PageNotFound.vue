@@ -4,7 +4,7 @@
             <div class="col-md-6 text-center">
                 <span
                     class="icon-icon not-found-icon"
-                    :style="{ color: portfolio.primary_color }"
+                    :style="{ color: portfolio.secondary_color }"
                 />
                 <div>
                     <h1 class="client-portal-heading-text">

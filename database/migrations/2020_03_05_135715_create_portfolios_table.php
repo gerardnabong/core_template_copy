@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Schema;
+use App\Model\Portfolio;
 
 class CreatePortfoliosTable extends Migration
 {
@@ -25,6 +27,75 @@ class CreatePortfoliosTable extends Migration
             $table->string('phone_number');
             $table->timestamps();
         });
+
+        Portfolio::insert($this->getPortfolios());
+    }
+
+    private function getPortfolios()
+    {
+        $portfolios = [
+            [
+                'url' => 'inboxcredit',
+                'logo_url' => 'inbox_credit_white_logo.svg',
+                'primary_color' => '#004F95',
+                'secondary_color' => '#004F95',
+                'primary_color_hover' => '#014A8D',
+                'header_image_mobile_url' => 'blue_arc_bg_header.svg',
+                'header_image_url' => 'blue_arc_bg.svg',
+                'footer_image_url' => 'wave_footer.svg',
+                'footer_image_mobile_url' => 'footer_wave_bg.svg',
+                'phone_number' => '1-855-573-4504',
+            ],
+            [
+                'url' => 'betterdaysloan',
+                'logo_url' => 'better_day_logo_desktop.svg',
+                'primary_color' => '#2CA6CF',
+                'secondary_color' => '#FAC401',
+                'primary_color_hover' => '#24A2CC',
+                'header_image_mobile_url' => 'better_day_header_mobile.svg',
+                'header_image_url' => 'better_day_header_desktop.svg',
+                'footer_image_url' => 'better_day_footer_desktop.svg',
+                'footer_image_mobile_url' => 'better_day_footer_mobile.svg',
+                'phone_number' => '866-258-0165',
+            ],
+            [
+                'url' => 'firstloan',
+                'logo_url' => 'better_day_logo_desktop.svg',
+                'primary_color' => '#0D64A5',
+                'secondary_color' => '#0D64A5',
+                'primary_color_hover' => '#0B5E9D',
+                'header_image_mobile_url' => 'better_day_header_mobile.svg',
+                'header_image_url' => 'better_day_header_desktop.svg',
+                'footer_image_url' => 'better_day_footer_desktop.svg',
+                'footer_image_mobile_url' => 'better_day_footer_mobile.svg',
+                'phone_number' => '866-258-0165',
+            ],
+            [
+                'url' => 'comet',
+                'logo_url' => 'better_day_logo_desktop.svg',
+                'primary_color' => '#FD6A00',
+                'secondary_color' => '#FD6A00',
+                'primary_color_hover' => '#F36804',
+                'header_image_mobile_url' => 'better_day_header_mobile.svg',
+                'header_image_url' => 'better_day_header_desktop.svg',
+                'footer_image_url' => 'better_day_footer_desktop.svg',
+                'footer_image_mobile_url' => 'better_day_footer_mobile.svg',
+                'phone_number' => '866-258-0165',
+            ],
+            [
+                'url' => 'inboxloan',
+                'logo_url' => 'better_day_logo_desktop.svg',
+                'primary_color' => '#004F95',
+                'secondary_color' => '#004F95',
+                'primary_color_hover' => '#014A8D',
+                'header_image_mobile_url' => 'better_day_header_mobile.svg',
+                'header_image_url' => 'better_day_header_desktop.svg',
+                'footer_image_url' => 'better_day_footer_desktop.svg',
+                'footer_image_mobile_url' => 'better_day_footer_mobile.svg',
+                'phone_number' => '866-258-0165',
+            ],
+        ];
+        return $portfolios;
     }
 
     public function down()

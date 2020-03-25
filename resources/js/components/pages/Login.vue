@@ -7,7 +7,7 @@
             <div class="col-md-6 text-center">
                 <span
                     class="icon-login-icon client-portal-icon"
-                    :style="{ color: portfolio.primary_color }"
+                    :style="{ color: portfolio.secondary_color }"
                 />
                 <b-form class="pt-4">
                     <h2 class="client-portal-heading-text">Login</h2>

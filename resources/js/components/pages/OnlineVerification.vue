@@ -4,12 +4,12 @@
             <div class="col-md-6 text-center pt-4">
                 <span
                     class="icon-Success-steps-icon client-portal-icon"
-                    :style="{color: portfolio.primary_color}"
+                    :style="{color: portfolio.secondary_color}"
                     v-if="progressBar === 100"
                 />
                 <span
                     class="icon-paper-document-icon client-portal-icon"
-                    :style="{color: portfolio.primary_color}"
+                    :style="{color: portfolio.secondary_color}"
                     v-else
                 />
             </div>
@@ -18,7 +18,7 @@
             <div class="col-md-6 text-center pt-4">
                 <b-progress class="online-verification-progressbar-container mb-4">
                     <b-progress-bar
-                        :style="{'background-color': portfolio.primary_color}"
+                        :style="{'background-color': portfolio.secondary_color}"
                         :value="$store.getters.getProgressBar"
                         show-progress
                         class="online-verification-progressbar"

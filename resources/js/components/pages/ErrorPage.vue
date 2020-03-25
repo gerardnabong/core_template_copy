@@ -4,7 +4,7 @@
             <div class="col-md-6 text-center pt-4">
                 <span
                     class="icon-sad-icon client-portal-icon"
-                    :style="{color: portfolio.primary_color}"
+                    :style="{color: portfolio.secondary_color}"
                 />
             </div>
         </div>
