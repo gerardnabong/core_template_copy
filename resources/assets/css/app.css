@@ -309,6 +309,13 @@ html {
     border-color: #dcdcdc !important;
     box-shadow: none !important;
 }
+.client-router-transition-enter-active, .client-router-transition-leave-active {
+  transition: opacity .25s ease-in-out;
+}
+
+.client-router-transition-enter, .client-router-transition-leave-to {
+  opacity: 0;
+}
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;

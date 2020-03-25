@@ -5,9 +5,8 @@
             <div class="row no-gutters">
                 <div class="col-12 text-center client-portal-container">
                     <transition
-                        name="client-router-transition"
                         v-on:before-enter="showLoader"
-                        v-on:after-enter="hideLoader"
+                        v-on:after-leave="hideLoader"
                     >
                         <router-view />
                     </transition>
@@ -36,11 +35,14 @@ export default {
                 opacity: 1,
                 color: this.portfolio.primary_color,
                 loader: 'dots',
+                transition: 'client-router-transition'
             });
         },
         hideLoader () {
-            this.loader.hide();
-            this.loader = null;
+            setTimeout(() => {
+                this.loader.hide();
+                this.loader = null;
+            }, 300);
         }
     },
 
@@ -50,9 +52,7 @@ export default {
     },
 
     mounted () {
-        setTimeout(() => {
-            this.hideLoader();
-        }, 300);
+        this.hideLoader();
     },
 };
 </script>
