@@ -68,7 +68,7 @@ class CreatePortfoliosTable extends Migration
                 'header_image_url' => 'first_loan_header_desktop.svg',
                 'footer_image_url' => 'first_loan_footer_desktop.svg',
                 'footer_image_mobile_url' => 'first_loan_footer_mobile.svg',
-                'phone_number' => '1-866-258-0165',
+                'phone_number' => '1-888-340-2911',
             ],
             [
                 'url' => 'comet',
@@ -80,7 +80,7 @@ class CreatePortfoliosTable extends Migration
                 'header_image_url' => 'comet_loan_header_desktop.svg',
                 'footer_image_url' => 'comet_loan_footer_desktop.svg',
                 'footer_image_mobile_url' => 'comet_loan_footer_mobile.svg',
-                'phone_number' => '1-866-258-0165',
+                'phone_number' => '1-888-552-6638',
             ],
             [
                 'url' => 'inboxloan',
@@ -92,7 +92,7 @@ class CreatePortfoliosTable extends Migration
                 'header_image_url' => 'blue_arc_bg.svg',
                 'footer_image_url' => 'wave_footer.svg',
                 'footer_image_mobile_url' => 'footer_wave_bg.svg',
-                'phone_number' => '1-855-573-4504',
+                'phone_number' => '1-800-930-9066',
             ],
         ];
         return $portfolios;
