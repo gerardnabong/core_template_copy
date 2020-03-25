@@ -38,11 +38,11 @@ export default {
                 transition: 'client-router-transition'
             });
         },
-        hideLoader () {
+        hideLoader (delay = 300) {
             setTimeout(() => {
                 this.loader.hide();
                 this.loader = null;
-            }, 300);
+            }, delay);
         }
     },
 
@@ -52,7 +52,8 @@ export default {
     },
 
     mounted () {
-        this.hideLoader();
+        this.hideLoader(500);
+
     },
 };
 </script>
