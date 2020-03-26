@@ -16,6 +16,7 @@ class CreatePortfoliosTable extends Migration
         Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('url')->index();
+            $table->string('portfolio_name');
             $table->string('logo_url');
             $table->string('primary_color');
             $table->string('secondary_color');
@@ -37,6 +38,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'inboxcredit',
                 'logo_url' => 'inbox_credit_white_logo.svg',
+                'portfolio_name' => 'Inbox Credit',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
@@ -49,6 +51,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'betterdaysloan',
                 'logo_url' => 'better_day_logo_desktop.svg',
+                'portfolio_name' => 'Better Days Loan',
                 'primary_color' => '#2CA6CF',
                 'secondary_color' => '#FAC401',
                 'primary_color_hover' => '#24A2CC',
@@ -61,6 +64,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'firstloan',
                 'logo_url' => 'first_loan_logo.svg',
+                'portfolio_name' => 'First Loan',
                 'primary_color' => '#0D64A5',
                 'secondary_color' => '#0D64A5',
                 'primary_color_hover' => '#0B5E9D',
@@ -73,6 +77,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'comet',
                 'logo_url' => 'comet_loan_logo.svg',
+                'portfolio_name' => 'Comet Loans',
                 'primary_color' => '#FD6A00',
                 'secondary_color' => '#FD6A00',
                 'primary_color_hover' => '#F36804',
@@ -85,6 +90,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'inboxloan',
                 'logo_url' => 'inbox_loan_logo.svg',
+                'portfolio_name' => 'Inbox Loans',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
