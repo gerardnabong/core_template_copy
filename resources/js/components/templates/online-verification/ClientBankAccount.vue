@@ -14,7 +14,8 @@
                 v-model="account_number"
                 placeholder="Bank Account Number"
                 class="client-portal-form-input"
-                v-mask="'999999999999999'"
+                min="9"
+                max="15"
                 required
             />
         </b-form-group>
