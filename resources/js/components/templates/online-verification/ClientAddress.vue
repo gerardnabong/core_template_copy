@@ -70,9 +70,7 @@
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import STATES from '~/fixed_variables/list_of_states';
-
-const PROGRESS_BAR_PREV = 20;
-const PROGRESS_BAR_NEXT = 60;
+import * as constants from '~/fixed_variables/online_verification_steps';
 
 export default {
     name: 'ClientAddress',
@@ -80,6 +78,7 @@ export default {
     data () {
         return {
             // TODO will change when created Database Entry for Page
+            // TODO create constant id
             page_id: 3,
             address: null,
             city: null,
@@ -98,12 +97,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', PROGRESS_BAR_PREV);
+            this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_ONE);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
+                this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_THREE);
             }
         },
     },
