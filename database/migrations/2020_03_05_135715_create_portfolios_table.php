@@ -51,7 +51,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'betterdaysloan',
                 'logo_url' => 'better_day_logo_desktop.svg',
-                'portfolio_name' => 'Better Days Loan',
+                'portfolio_name' => 'Better Day Loans',
                 'primary_color' => '#2CA6CF',
                 'secondary_color' => '#FAC401',
                 'primary_color_hover' => '#24A2CC',
@@ -90,7 +90,7 @@ class CreatePortfoliosTable extends Migration
             [
                 'url' => 'inboxloan',
                 'logo_url' => 'inbox_loan_logo.svg',
-                'portfolio_name' => 'Inbox Loans',
+                'portfolio_name' => 'Inbox Loan',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
