@@ -9,13 +9,18 @@
                     class="icon-login-icon client-portal-icon"
                     :style="{ color: portfolio.secondary_color }"
                 />
-                <b-form class="pt-4">
+                <b-form
+                    class="pt-4"
+                    @submit="login"
+                >
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
                             v-model="email"
                             placeholder="Email"
                             class="client-portal-form-input"
+                            required
+                            type="email"
                         />
                     </b-form-group>
                     <b-form-group>
@@ -23,9 +28,12 @@
                             v-model="ssn"
                             placeholder="SSN"
                             class="client-portal-form-input"
+                            required
+                            type="password"
                         />
                     </b-form-group>
                     <b-button
+                        type='submit'
                         class="client-portal-btn-primary w-100 border-0"
                         :style="{ 'background-color': login_primary_color }"
                         @mouseover="login_primary_color = portfolio.primary_color_hover"
@@ -66,8 +74,20 @@ export default {
     },
 
     methods: {
-        loginButtonClick () {
-            // TODO will add Login Event
+        login (event) {
+            event.preventDefault();
+            let data = {
+                'email_address': this.email,
+                'ssn': this.ssn,
+            }
+            console.log(data);
+            $.ajax({
+                type: 'POST',
+                url: '/find-client',
+                success: ((response) => {
+                    // TODO need working api to see the data
+                }),
+            });
         },
     },
 };
