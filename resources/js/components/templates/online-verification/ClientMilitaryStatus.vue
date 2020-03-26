@@ -82,9 +82,10 @@ export default {
         },
         verifyInput () {
             // TODO will add function to verify after api is created
-            if (this.is_military === false) {
+            if (!this.is_military) {
                 this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_FIVE);
             }
+            // TODO will add condition if client is active military
         }
     },
 
