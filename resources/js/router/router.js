@@ -30,8 +30,21 @@ const ROUTES = [
     { path: "*", component: PageNotFound },
 ];
 
-export default new Router({
+let router = new Router({
     base: "/",
     mode: "history",
     routes: ROUTES,
 });
+
+
+
+router.afterEach(() => {
+    const preLoader = document.querySelector('.client-portal-pre-loader');
+    if(preLoader) {
+       setTimeout(() => {
+           preLoader.parentNode.removeChild(preLoader);
+       },300);
+    }
+});
+
+export default router;
