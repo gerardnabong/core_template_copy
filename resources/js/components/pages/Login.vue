@@ -47,7 +47,10 @@
                 </div>
                 <div class="pt-5">
                     <p class="text-center font-size-12">
-                        Copyright &copy; 2020 Inbox Credit. All Rights Reserved.
+                        Copyright &copy;
+                        {{(new Date()).getFullYear()}}
+                        {{portfolio.portfolio_name}}.
+                        All Rights Reserved.
                     </p>
                 </div>
             </div>
