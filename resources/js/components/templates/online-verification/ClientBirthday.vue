@@ -55,14 +55,13 @@
 'use strict';
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
+import * as constants from '~/fixed_variables/online_verification_steps';
 
 const DATE_FORMAT = {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
 };
-const PROGRESS_BAR_PREV = 40;
-const PROGRESS_BAR_NEXT = 80;
 
 export default {
     name: 'ClientBirthday',
@@ -70,6 +69,7 @@ export default {
     data () {
         return {
             // TODO will change when created Database Entry for Page
+            // TODO create constant id
             page_id: 5,
             birthday: null,
         }
@@ -81,12 +81,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', PROGRESS_BAR_PREV);
+            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_TWO);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FOUR);
             }
         },
         triggerDatePickerButton () {
