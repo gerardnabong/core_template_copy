@@ -30,6 +30,7 @@ export default {
     data () {
         return {
             // TODO will change when created Database Entry for Page
+            // TODO create constant id
             page_id: 8,
         }
     },
