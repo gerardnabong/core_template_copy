@@ -97,12 +97,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_ONE);
+            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_ONE);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_THREE);
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_THREE);
             }
         },
     },

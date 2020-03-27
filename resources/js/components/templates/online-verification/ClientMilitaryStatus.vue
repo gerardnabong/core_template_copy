@@ -78,12 +78,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_THREE);
+            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_THREE);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (!this.is_military) {
-                this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_FIVE);
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FIVE);
             }
             // TODO will add condition if client is active military
         }

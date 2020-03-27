@@ -81,12 +81,12 @@ export default {
 
     methods: {
         goBack () {
-            this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_TWO);
+            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_TWO);
         },
         verifyInput () {
             // TODO will add function to verify after api is created
             if (true) {
-                this.$store.commit('setProgressBar', constants.PROGRESS_BAR_STEP_FOUR);
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FOUR);
             }
         },
         triggerDatePickerButton () {
