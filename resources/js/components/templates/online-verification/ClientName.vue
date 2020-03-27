@@ -40,8 +40,7 @@
 'use strict';
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
-
-const PROGRESS_BAR_NEXT = 40;
+import * as constants from '~/fixed_variables/online_verification_steps';
 
 export default {
     name: 'CompleteName',
@@ -49,6 +48,7 @@ export default {
     data () {
         return {
             // TODO will change when created Database Entry for Page
+            // TODO create constant id
             page_id: 2,
             first_name: null,
             last_name: null,
@@ -63,7 +63,7 @@ export default {
         verifyInput () {
             // TODO will add function to verify first_name and last_name after api is created
             if (true) {
-                this.$store.commit('setProgressBar', PROGRESS_BAR_NEXT);
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_TWO);
             }
         }
     },
