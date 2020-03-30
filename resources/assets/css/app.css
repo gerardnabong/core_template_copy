@@ -110,6 +110,9 @@ html {
 .font-size-28 {
     font-size: 28px;
 }
+.font-size-32 {
+    font-size: 32px;
+}
 .font-size-40 {
     font-size: 40px;
 }
@@ -323,6 +326,38 @@ html {
 .client-router-transition-enter, .client-router-transition-leave-to {
   opacity: 0;
 }
+.logout-gear {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform:translate(0,-50%);
+}
+.client-btn-none {
+    width: 100%;
+    background-color: white;
+    border:none;
+}
+.client-portal-dropdown-none .dropdown-item{
+    padding: 0;
+}
+.client-portal-dropdown-none button {
+    transition: none;
+}
+.client-btn-none:hover,
+.client-btn-none:active,
+.client-btn-none:focus,
+.client-portal-dropdown-none button:hover,
+.client-portal-dropdown-none button:active,
+.client-portal-dropdown-none button:focus,
+.client-portal-dropdown-none .dropdown-item:hover,
+.client-portal-dropdown-none .dropdown-item:active,
+.client-portal-dropdown-none .dropdown-item:focus {
+    background-color: white;
+    box-shadow: none;
+    color: #2c2c2e;
+    text-decoration: none;
+}
+
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
