@@ -102,6 +102,7 @@ export default {
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
+                    alert('Wecome! ' + response.email_address);
                 }),
                 error: ((response) => {
                     console.log(response);

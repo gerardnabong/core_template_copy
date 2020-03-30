@@ -22,4 +22,9 @@ class Portfolio extends Model
             }
         );
     }
+
+    public function login()
+    {
+        return $this->hasMany('App\Model\Login');
+    }
 }

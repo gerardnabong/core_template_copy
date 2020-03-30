@@ -29,7 +29,7 @@ class ApiController extends Controller
             $client = $this->saveClient($this->createClientArray($credentials, $request));
             return response()->json($client);
         } catch (\GuzzleHttp\Exception\RequestException $error) {
-            return response()->json($error);
+            return response()->json($error->getMessage(), $error->getCode());
         }
     }
 

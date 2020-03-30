@@ -2,6 +2,7 @@
 
 import Vuex from "vuex";
 import Vue from "vue";
+import createPersistedState from "vuex-persistedstate";
 
 import Client from "./modules/Client";
 import ProgressBar from "./modules/ProgressBar";
@@ -12,5 +13,6 @@ export default new Vuex.Store({
     modules: {
         ProgressBar,
         Client,
-    }
+    },
+    plugins: [createPersistedState()],
 });
