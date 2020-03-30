@@ -3,6 +3,7 @@
 import Vuex from "vuex";
 import Vue from "vue";
 
+import Client from "./modules/Client";
 import ProgressBar from "./modules/ProgressBar";
 
 Vue.use(Vuex);
@@ -10,5 +11,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     modules: {
         ProgressBar,
+        Client,
     }
 });

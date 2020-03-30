@@ -38,7 +38,15 @@
                         :style="{ 'background-color': login_primary_color }"
                         @mouseover="login_primary_color = portfolio.primary_color_hover"
                         @mouseleave="login_primary_color = portfolio.primary_color"
-                    >Login</b-button>
+                        :disabled="is_loading"
+                    >
+                        <b-spinner
+                            v-if="is_loading"
+                            small
+                            class="ml-3"
+                        />
+                        Login
+                    </b-button>
                 </b-form>
                 <div class="pt-4">
                     <p class="text-center font-size-13">
@@ -68,6 +76,7 @@ export default {
         return {
             email: null,
             ssn: null,
+            is_loading: false,
         };
     },
 
@@ -83,12 +92,22 @@ export default {
                 'email_address': this.email,
                 'ssn': this.ssn,
             }
-            console.log(data);
+
             $.ajax({
                 type: 'POST',
-                url: '/find-client',
+                url: '/api/login-client/',
+                data: data,
+                beforeSend: (() => {
+                    this.is_loading = true;
+                }),
                 success: ((response) => {
-                    // TODO need working api to see the data
+                    this.$store.commit('setClient', response);
+                }),
+                error: ((response) => {
+                    console.log(response);
+                }),
+                complete: (() => {
+                    this.is_loading = false;
                 }),
             });
         },

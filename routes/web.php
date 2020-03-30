@@ -13,6 +13,10 @@
 
 Route::get('/getPortfolio', 'WebsiteController@getPortfolio');
 
+Route::group(['prefix' => 'api'], function () {
+    Route::post('/login-client', 'ApiController@loginClient');
+});
+
 // TODO this should be deleted later because we'd better use whitelist later on - Albert
 Route::get('/', 'WebsiteController@index');
 // TODO add this later when authentication is way is known ->middleware('auth')

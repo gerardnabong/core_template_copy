@@ -19,8 +19,8 @@ class CreateLoginsTable extends Migration
             $table->string('ssn');
             $table->integer('portfolio_id');
             $table->integer('lead_id');
-            $table->integer('lead_status_id');
-            $table->timestamp('login_at');
+            $table->integer('lead_status_id')->nullable();
+            $table->timestamp('login_at')->useCurrent();
             $table->timestamps();
         });
     }

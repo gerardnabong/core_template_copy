@@ -2,6 +2,7 @@
 
 import Router from "vue-router";
 import Vue from "vue";
+import store from "~/storage/store";
 
 import ErrorPage from "~/components/pages/ErrorPage";
 import LoanAction from "~/components/pages/LoanAction";
@@ -36,7 +37,10 @@ let router = new Router({
     routes: ROUTES,
 });
 
-
+router.beforeResolve((to, from, next) => {
+    if (to.fullPath !== '/' && store.getters.getClient === null) next({ path: '/' });
+    else{ next(); }
+});
 
 router.afterEach(() => {
     const preLoader = document.querySelector('.client-portal-pre-loader');
