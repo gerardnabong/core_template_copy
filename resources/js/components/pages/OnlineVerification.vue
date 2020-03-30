@@ -68,8 +68,7 @@ import ClientBirthday from '~/components/templates/online-verification/ClientBir
 import ClientMilitaryStatus from '~/components/templates/online-verification/ClientMilitaryStatus';
 import ClientName from '~/components/templates/online-verification/ClientName';
 import VerificationComplete from '~/components/templates/online-verification/VerificationComplete';
-
-const ONLINE_VERIFICATION_INITIAL_VALUE = 20;
+import * as constants from '~/fixed_variables/online_verification_steps';
 
 export default {
     name: 'OnlineVerification',
@@ -95,7 +94,7 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
-        this.$store.commit('setProgressBar', ONLINE_VERIFICATION_INITIAL_VALUE);
+        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_ONE);
     },
 };
 </script>
