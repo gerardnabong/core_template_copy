@@ -45,12 +45,6 @@ export default {
         CallUsButton,
     },
 
-    data () {
-        return {
-            home_primary_color: null,
-        }
-    },
-
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.home_primary_color = this.portfolio.primary_color;
