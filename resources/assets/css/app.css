@@ -156,6 +156,29 @@ html {
     background-color: white;
     border: 1px solid #dcdcdc;
 }
+.client-portal-btn-primary {
+    border-radius: 8px;
+    min-width: 190px;
+    width: 100%;
+    max-width: 100%;
+    min-height: 45px;
+}
+.client-portal-btn-secondary {
+    color: #2c2c2e;
+    background-color: white;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    min-width: 120px;
+    max-width: 100%;
+    min-height: 45px;
+}
+.client-portal-btn-secondary:hover,
+.client-portal-btn-secondary:focus,
+.client-portal-btn-secondary:active {
+    color: #2c2c2e;
+    background-color: white;
+    border: 1px solid #dcdcdc;
+}
 .call-us-background {
     background: #ffffff 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 25px #cecece5c;

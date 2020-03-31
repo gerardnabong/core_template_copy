@@ -33,5 +33,5 @@ const ROUTES = [
 export default new Router({
     base: "/",
     mode: "history",
-    routes: ROUTES,
+    routes: ROUTES
 });
