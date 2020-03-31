@@ -331,6 +331,7 @@ html {
     top: 50%;
     right: -1px;
     transform:translate(0,-50%);
+    z-index: 9999;
 }
 .client-btn-none {
     width: 100%;
@@ -400,6 +401,7 @@ html {
     max-width: 100%;
     min-height: 45px;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 @media (min-width: 499px) {

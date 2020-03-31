@@ -29,7 +29,16 @@ class ApiController extends Controller
             $client = $this->saveClient($this->createClientArray($credentials, $request));
             return response()->json($client);
         } catch (\GuzzleHttp\Exception\RequestException $error) {
-            return response()->json($error->getMessage(), $error->getCode());
+            switch ($error->getCode()) {
+                case 422:
+                    $message = 'Invalid Credentials';
+                    break;
+                default:
+                    $message = 'An Erroc has Occured';
+                    break;
+            }
+
+            return response()->json($message, $error->getCode());
         }
     }
 

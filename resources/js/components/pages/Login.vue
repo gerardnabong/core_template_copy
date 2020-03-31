@@ -117,14 +117,7 @@ export default {
                     }, 3000);
                 }),
                 error: ((response) => {
-                    console.log(response);
-                    let content =
-                        '<h2>' +
-                        response.status +
-                        '</h2><p>' +
-                        response.statusText +
-                        "</p>";
-                    this.$refs['login-modal'].populate(content);
+                    this.$refs['login-modal'].populate(response.responseJSON);
                     this.$bvModal.show('login-modal');
                 }),
                 complete: (() => {
