@@ -1,3 +1,5 @@
+'use strict';
+
 export const ONLINE_VERIFICATION_STEP_ONE = 20;
 export const ONLINE_VERIFICATION_STEP_TWO = 40;
 export const ONLINE_VERIFICATION_STEP_THREE = 60;

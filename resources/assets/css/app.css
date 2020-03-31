@@ -327,9 +327,9 @@ html {
   opacity: 0;
 }
 .logout-gear {
-    position: absolute;
+    position: fixed;
     top: 50%;
-    right: 0;
+    right: -1px;
     transform:translate(0,-50%);
 }
 .client-btn-none {
@@ -342,10 +342,15 @@ html {
 }
 .client-portal-dropdown-none button {
     transition: none;
+    padding: 0;
 }
+
 .client-btn-none:hover,
 .client-btn-none:active,
 .client-btn-none:focus,
+.client-btn-none:not(:disabled):not(.disabled).active,
+.client-btn-none:not(:disabled):not(.disabled):active,
+.show>.client-btn-none.dropdown-toggle,
 .client-portal-dropdown-none button:hover,
 .client-portal-dropdown-none button:active,
 .client-portal-dropdown-none button:focus,
@@ -356,6 +361,45 @@ html {
     box-shadow: none;
     color: #2c2c2e;
     text-decoration: none;
+}
+.client-portal-gear-icon {
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 7px 0px 0px 7px;
+    width: 63px;
+    padding: 5px 0;
+}
+.client-portal-login-modal .modal-content {
+    border-radius: 8px;
+}
+.client-portal-login-modal .modal-body {
+    padding: 0;
+}
+.client-modal-background-image {
+    z-index: -1;
+    width: 100%;
+    margin-top: -1px;
+}
+.client-modal-background-image img {
+    border-radius: 8px;
+}
+.client-modal-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.client-portal-btn-modal:hover,
+.client-portal-btn-modal:focus,
+.client-portal-btn-modal:active {
+    box-shadow: none;
+    color: white;
+}
+.client-portal-btn-modal {
+    border-radius: 8px;
+    min-width: 150px;
+    max-width: 100%;
+    min-height: 45px;
+    padding-top: 10px;
 }
 
 @media (min-width: 499px) {

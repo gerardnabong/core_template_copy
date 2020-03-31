@@ -21,6 +21,7 @@ export default {
     methods: {
         logout () {
             this.$store.commit('setClient', null);
+            this.$router.push('/');
         }
     },
 

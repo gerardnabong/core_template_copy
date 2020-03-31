@@ -3,8 +3,11 @@
         <div class="col-12 container-fluid">
             <header-client-portal />
             <div class="row no-gutters">
-                <div class="col-12 text-center client-portal-container position-relative">
-                    <div class="logout-gear">
+                <div class="col-12 text-center client-portal-container">
+                    <div
+                        class="logout-gear"
+                        v-if="$store.getters.getClient !== null"
+                    >
                         <b-dropdown
                             right
                             no-caret
@@ -12,10 +15,12 @@
                             class="client-portal-dropdown-none"
                         >
                             <template v-slot:button-content>
-                                <span
-                                    class="icon-computer-gear-icon font-size-32"
-                                    :style="{ color: portfolio.secondary_color }"
-                                />
+                                <div
+                                    class="client-portal-gear-icon"
+                                    :style="{'background-color' : portfolio.secondary_color}"
+                                >
+                                    <i class="fas fa-cog fa-2x color-white" />
+                                </div>
                             </template>
                             <b-dropdown-item>
                                 <logout-button />
@@ -43,11 +48,13 @@ import LogoutButton from '~/components/templates/buttons/LogoutButton';
 
 export default {
     name: 'Index',
+
     components: {
         HeaderClientPortal,
         FooterClientPortal,
         LogoutButton,
     },
+
 
     methods: {
         showLoader () {

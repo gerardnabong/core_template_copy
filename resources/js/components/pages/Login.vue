@@ -63,14 +63,21 @@
                 </div>
             </div>
         </div>
+        <login-modal ref="login-modal" />
     </div>
 </template>
 
 <script>
 'use strict';
 
+import LoginModal from '~/components/templates/modal/LoginModal';
+
 export default {
     name: 'Login',
+
+    components: {
+        LoginModal,
+    },
 
     data () {
         return {
@@ -83,6 +90,7 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.login_primary_color = this.portfolio.primary_color;
+
     },
 
     methods: {
@@ -92,7 +100,6 @@ export default {
                 'email_address': this.email,
                 'ssn': this.ssn,
             }
-
             $.ajax({
                 type: 'POST',
                 url: '/api/login-client/',
@@ -102,10 +109,23 @@ export default {
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    alert('Wecome! ' + response.email_address);
+                    this.$refs['login-modal'].populate('Welcome, ' + response.email_address);
+                    this.$refs['login-modal'].hideOkButton(false);
+                    this.$bvModal.show('login-modal');
+                    setTimeout(() => {
+                        this.$router.go();
+                    }, 3000);
                 }),
                 error: ((response) => {
                     console.log(response);
+                    let content =
+                        '<h2>' +
+                        response.status +
+                        '</h2><p>' +
+                        response.statusText +
+                        "</p>";
+                    this.$refs['login-modal'].populate(content);
+                    this.$bvModal.show('login-modal');
                 }),
                 complete: (() => {
                     this.is_loading = false;
