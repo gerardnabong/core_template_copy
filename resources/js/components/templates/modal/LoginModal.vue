@@ -5,6 +5,7 @@
         :hide-footer="true"
         centered
         size="sm"
+        no-close-on-backdrop
         modal-class="client-portal-login-modal p-0"
     >
         <div class="row no-gutters">
@@ -22,8 +23,10 @@
                     >
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div
-                class="col-12 mt-4 text-center"
+                class="col-12 mt-4 text-center font-size-22 font-weight-bold"
                 v-html="modal_content"
             />
             <div class="col-12 my-4 text-center">

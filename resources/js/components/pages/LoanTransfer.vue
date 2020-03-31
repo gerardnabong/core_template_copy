@@ -10,14 +10,23 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <h2 class="client-portal-heading-text">Congratulations! You're qualified for a new loan!</h2>
+                <h2 class="client-portal-heading-text">Congratulations! You're qualified for additional fund!</h2>
                 <div class="mt-5">
+                    <b-form-group>
+                        <b-form-input
+                            v-model="loan_amount"
+                            placeholder="Loan Amount"
+                            class="client-portal-form-input"
+                            required
+                            type="number"
+                        />
+                    </b-form-group>
                     <p>Click the button to apply</p>
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
-                        @mouseover.native="clientPortalButton = portfolio.primary_color_hover"
-                        @mouseleave.native="clientPortalButton = portfolio.primary_color"
+                        @mouseover="clientPortalButton = portfolio.primary_color_hover"
+                        @mouseleave="clientPortalButton = portfolio.primary_color"
                     >Request for New Loan</b-button>
                 </div>
             </div>
@@ -40,6 +49,12 @@ export default {
 
     components: {
         CallUsButton,
+    },
+
+    data () {
+        return {
+            loan_amount: 200,
+        }
     },
 
     created () {
