@@ -8,7 +8,9 @@ import LoanAction from "~/components/pages/LoanAction";
 import LoanTransfer from "~/components/pages/LoanTransfer";
 import Login from "~/components/pages/Login";
 import NewLoan from "~/components/pages/NewLoan";
+import OnlineVerification from "~/components/pages/OnlineVerification";
 import OnProcess from "~/components/pages/OnProcess";
+import PageNotFound from "~/components/templates/errors/PageNotFound";
 import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
 
@@ -21,12 +23,15 @@ const ROUTES = [
     { path: "/loan-transfer", component: LoanTransfer },
     { path: "/new-loan", component: NewLoan },
     { path: "/on-process", component: OnProcess },
+    { path: "/online-verification", component: OnlineVerification },
     { path: "/payment-schedule", component: PaymentSchedule },
     { path: "/success", component: SuccessPage },
+    // 404 Route should it should be on last to not overwrite the routing above
+    { path: "*", component: PageNotFound }
 ];
 
 export default new Router({
     base: "/",
     mode: "history",
-    routes: ROUTES,
+    routes: ROUTES
 });

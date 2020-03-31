@@ -7,8 +7,8 @@
             <div class="col-md-6 text-center">
                 <span
                     class="icon-login-icon client-portal-icon"
-                    :style="{ color: portfolio.button_color }"
-                ></span>
+                    :style="{ color: portfolio.primary_color }"
+                />
                 <b-form class="pt-4">
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
@@ -27,9 +27,9 @@
                     </b-form-group>
                     <b-button
                         class="client-portal-btn-primary w-100 border-0"
-                        :style="{ 'background-color': login_button_color }"
-                        @mouseover="login_button_color = portfolio.button_hover_color"
-                        @mouseleave="login_button_color = portfolio.button_color"
+                        :style="{ 'background-color': login_primary_color }"
+                        @mouseover="login_primary_color = portfolio.primary_color_hover"
+                        @mouseleave="login_primary_color = portfolio.primary_color"
                     >Login</b-button>
                 </b-form>
                 <div class="pt-4">
@@ -62,7 +62,7 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.login_button_color = this.portfolio.button_color;
+        this.login_primary_color = this.portfolio.primary_color;
     },
 
     methods: {

@@ -10,12 +10,14 @@ class CreatePortfoliosTable extends Migration
 {
     public function up()
     {
+        // TODO will remove all assets to a static json file by next commit
         Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id')->unsigned();
             $table->string('url')->index();
             $table->string('logo_url');
-            $table->string('button_color');
-            $table->string('button_hover_color');
+            $table->string('primary_color');
+            $table->string('secondary_color');
+            $table->string('primary_color_hover');
             $table->string('header_image_mobile_url');
             $table->string('header_image_url');
             $table->string('footer_image_url');

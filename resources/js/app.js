@@ -4,13 +4,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import BootstrapVue from 'bootstrap-vue'
-import Index from './components/templates/Index';
-import router from './router/router';
-import store from './storage/store';
-import Vue from 'vue';
+import BootstrapVue from "bootstrap-vue";
+import Index from "./components/templates/Index";
+import router from "./router/router";
+import store from "./storage/store";
+import Vue from "vue";
+import VueInputMask from "vue-inputmask";
 
-window.Vue = require('vue');
+window.Vue = require("vue");
 
 /**
  * The following block of code may be used to automatically register your
@@ -31,6 +32,7 @@ window.Vue = require('vue');
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.use(VueInputMask.default);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
 new Vue({

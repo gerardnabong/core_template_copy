@@ -1,0 +1,86 @@
+<template>
+    <div>
+        <b-form-group class="mb-3">
+            <b-form-input
+                v-model="routing_number"
+                placeholder="Bank Routing Number"
+                class="client-portal-form-input"
+                v-mask="'999999999'"
+                required
+            />
+        </b-form-group>
+        <b-form-group class="mb-3">
+            <b-form-input
+                v-model="account_number"
+                placeholder="Bank Account Number"
+                class="client-portal-form-input"
+                maxlength="15"
+                required
+            />
+        </b-form-group>
+        <b-button
+            class="client-portal-btn-primary border-0 mb-2"
+            :style="{ 'background-color': portfolio.primary_color }"
+            @click="verifyInput"
+        >
+            Send Request
+        </b-button>
+        <div class="mb-4 mt-3">
+            Please check your email. You will be directed to our bank verification page.
+        </div>
+        <div class="mt-4">
+            <b-button
+                class="client-portal-btn-secondary"
+                @click="goBack"
+            >
+                Back
+            </b-button>
+        </div>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+'use strict';
+
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
+import * as constants from '~/fixed_variables/online_verification_steps';
+
+export default {
+    name: 'ClientBankAccount',
+
+    data () {
+        return {
+            // TODO will change when created Database Entry for Page
+            // TODO create constant id
+            page_id: 7,
+            routing_number: null,
+            account_number: null,
+        }
+    },
+
+    components: {
+        CallUsButton,
+    },
+
+    methods: {
+        goBack () {
+            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FOUR);
+        },
+        verifyInput () {
+            // TODO will add function to verify after api is created
+            if (true) {
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+            }
+        }
+    },
+
+    created () {
+        this.portfolio = this.$jsVars.portfolio;
+    },
+};
+</script>
