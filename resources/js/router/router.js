@@ -27,7 +27,7 @@ const ROUTES = [
     { path: "/payment-schedule", component: PaymentSchedule },
     { path: "/success", component: SuccessPage },
     // 404 Route should it should be on last to not overwrite the routing above
-    { path: "*", component: PageNotFound }
+    { path: "*", component: PageNotFound },
 ];
 
 export default new Router({

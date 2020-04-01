@@ -25,8 +25,7 @@
                 size="sm"
                 class="client-portal-form-input online-verification-select"
                 required
-            >
-            </b-form-select>
+            />
         </b-form-group>
         <b-form-group class="mb-3">
             <!-- TODO will add validation if the zip is in the city -->

@@ -4,8 +4,10 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import 'vue-loading-overlay/dist/vue-loading.css';
 import BootstrapVue from "bootstrap-vue";
 import Index from "./components/templates/Index";
+import Loading from 'vue-loading-overlay';
 import router from "./router/router";
 import store from "./storage/store";
 import Vue from "vue";
@@ -32,6 +34,7 @@ window.Vue = require("vue");
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
+Vue.use(Loading);
 Vue.use(VueInputMask.default);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
