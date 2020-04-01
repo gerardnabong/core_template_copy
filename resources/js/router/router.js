@@ -33,7 +33,7 @@ const ROUTES = [
 let router = new Router({
     base: "/",
     mode: "history",
-    routes: ROUTES,
+    routes: ROUTES
 });
 
 
