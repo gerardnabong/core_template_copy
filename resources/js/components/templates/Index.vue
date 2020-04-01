@@ -35,7 +35,7 @@ export default {
                 opacity: 1,
                 color: this.portfolio.primary_color,
                 loader: 'dots',
-                transition: 'client-router-transition'
+                transition: 'client-router-transition',
             });
         },
         hideLoader (delay = 300) {
