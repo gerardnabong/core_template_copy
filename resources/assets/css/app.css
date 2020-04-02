@@ -345,6 +345,10 @@ html {
     transition: none;
     padding: 0;
 }
+.client-portal-modal {
+    height: 32px;
+    border-radius: 8px 8px 0 0;
+}
 
 .client-btn-none:hover,
 .client-btn-none:active,
@@ -359,9 +363,17 @@ html {
 .client-portal-dropdown-none .dropdown-item:active,
 .client-portal-dropdown-none .dropdown-item:focus {
     background-color: white;
-    box-shadow: none;
+    box-shadow: none !important;
     color: #2c2c2e;
     text-decoration: none;
+}
+.client-portal-dropdown-none ul {
+    top: 10px !important;
+    left: -10px !important;
+    padding: 20px !important;
+    min-width: 0;
+    box-shadow: 0px 0px 25px #cecece5c;
+    border: none;
 }
 .client-portal-gear-icon {
     box-shadow: 0px 3px 6px #00000029;
@@ -371,6 +383,7 @@ html {
 }
 .client-portal-login-modal .modal-content {
     border-radius: 8px;
+    border: none;
 }
 .client-portal-login-modal .modal-body {
     padding: 0;

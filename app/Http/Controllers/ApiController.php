@@ -34,7 +34,7 @@ class ApiController extends Controller
                     $message = 'Invalid Credentials';
                     break;
                 default:
-                    $message = 'An Erroc has Occured';
+                    $message = 'An Error has occured';
                     break;
             }
 

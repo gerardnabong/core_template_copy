@@ -12,6 +12,7 @@
                 <b-form
                     class="pt-4"
                     @submit="login"
+                    ref="loading_container"
                 >
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
@@ -40,11 +41,6 @@
                         @mouseleave="login_primary_color = portfolio.primary_color"
                         :disabled="is_loading"
                     >
-                        <b-spinner
-                            v-if="is_loading"
-                            small
-                            class="ml-3"
-                        />
                         Login
                     </b-button>
                 </b-form>
@@ -106,10 +102,12 @@ export default {
                 data: data,
                 beforeSend: (() => {
                     this.is_loading = true;
+                    this.showLoader();
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    this.$refs['login-modal'].populate('Welcome, ' + response.email_address);
+                    this.$refs['login-modal'].populate(response.email_address);
+                    this.$refs['login-modal'].showSuccess();
                     this.$refs['login-modal'].hideOkButton(false);
                     this.$bvModal.show('login-modal');
                     setTimeout(() => {
@@ -122,8 +120,21 @@ export default {
                 }),
                 complete: (() => {
                     this.is_loading = false;
+                    this.hideLoader();
                 }),
             });
+        },
+        showLoader () {
+            this.loader = this.$loading.show({
+                color: this.portfolio.secondary_color,
+                loader: 'dots',
+                container: this.$refs.loading_container,
+                'is-full-page': false,
+            });
+        },
+        hideLoader () {
+            this.loader.hide();
+            this.loader = null;
         },
     },
 };

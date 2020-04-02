@@ -9,27 +9,23 @@
         modal-class="client-portal-login-modal p-0"
     >
         <div class="row no-gutters">
-            <div class="col-12 position-relative">
-                <div class="client-modal-background-image">
-                    <img
-                        :src="'/images/' + portfolio.header_image_mobile_url"
-                        class="w-100"
-                    >
-                </div>
-                <div class="client-modal-logo">
-                    <img
-                        :src="'/images/logo/' + portfolio.logo_url"
-                        class="w-100"
-                    >
-                </div>
-            </div>
-        </div>
-        <div class="row">
             <div
-                class="col-12 mt-4 text-center font-size-22 font-weight-bold"
+                class="col-12 client-portal-modal"
+                :style="{'background-color': portfolio.primary_color}"
+            />
+        </div>
+        <div class="row mt-4 mb-2">
+            <div
+                class="col-12 text-center font-size-22 font-weight-bold"
+                v-if="is_success"
+            >
+                Welcome
+            </div>
+            <div
+                class="col-12 mb-5 text-center font-size-16"
                 v-html="modal_content"
             />
-            <div class="col-12 my-4 text-center">
+            <div class="col-12 mb-3 pb-2 text-center">
                 <b-button
                     size="sm"
                     @click="$bvModal.hide('login-modal')"
@@ -62,6 +58,7 @@ export default {
         return {
             modal_content: null,
             hide_ok_button: true,
+            is_success: false,
         }
     },
 
@@ -76,7 +73,10 @@ export default {
         },
         hideOkButton (value) {
             this.hide_ok_button = value;
-        }
+        },
+        showSuccess () {
+            this.is_success = true;
+        },
     },
 };
 </script>
