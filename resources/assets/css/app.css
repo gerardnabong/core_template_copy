@@ -11,7 +11,7 @@ html {
 ::-webkit-scrollbar {
     width: 0px;
 }
-.client-portal-pre-loader{
+.client-portal-pre-loader {
     position: fixed;
     z-index: 9999;
     background: white;
