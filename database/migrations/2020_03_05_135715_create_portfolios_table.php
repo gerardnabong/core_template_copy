@@ -26,9 +26,9 @@ class CreatePortfoliosTable extends Migration
         Portfolio::insert($this->getPortfolios());
     }
 
-    private function getPortfolios()
+    private function getPortfolios(): array
     {
-        $portfolios = [
+        return [
             [
                 'url' => 'inboxcredit',
                 'name' => 'InboxCredit',
@@ -66,7 +66,6 @@ class CreatePortfoliosTable extends Migration
                 'phone_number' => '1-800-930-9066',
             ],
         ];
-        return $portfolios;
     }
 
     public function down()
