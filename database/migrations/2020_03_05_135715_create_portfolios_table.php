@@ -31,7 +31,7 @@ class CreatePortfoliosTable extends Migration
     {
         $portfolios = [
             [
-                'url' => 'inboxcredit1',
+                'url' => 'inboxcredit',
                 'name' => 'InboxCredit',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
