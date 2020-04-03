@@ -16,15 +16,6 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <b-progress class="online-verification-progressbar-container mb-4">
-                    <b-progress-bar
-                        :style="{'background-color': portfolio.secondary_color}"
-                        :value="$store.getters.getProgressBar"
-                        show-progress
-                        class="online-verification-progressbar"
-                        :label="progressBarLabel"
-                    />
-                </b-progress>
                 <h2
                     class="client-portal-heading-text mb-4"
                     v-if="progressBar === 90"
@@ -47,11 +38,7 @@
                     name="online-verification-transition"
                     mode="out-in"
                 >
-                    <client-name v-if="progressBar === 20" />
-                    <client-address v-else-if="progressBar === 40" />
-                    <client-birthday v-else-if="progressBar === 60" />
-                    <client-military-status v-else-if="progressBar === 80" />
-                    <client-bank-account v-else-if="progressBar === 90" />
+                    <client-bank-account v-if="progressBar === 90" />
                     <verification-complete v-else-if="progressBar === 100" />
                 </transition>
             </div>
@@ -94,7 +81,7 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
-        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_ONE);
+        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FIVE);
     },
 };
 </script>
