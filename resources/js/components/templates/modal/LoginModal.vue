@@ -22,15 +22,15 @@
                 Welcome
             </div>
             <div
-                class="col-12 mb-5 text-center font-size-16"
+                class="col-12 mb-5 text-center font-size-16 client-portal-login-message-content"
                 v-html="modal_content"
             />
-            <div class="col-12 mb-3 pb-2 text-center">
+            <div class="col-12 text-center">
                 <b-button
                     size="sm"
                     @click="$bvModal.hide('login-modal')"
                     v-if="hide_ok_button"
-                    class="client-portal-btn-modal border-0"
+                    class="client-portal-btn-modal border-0 mb-3 pb-2"
                     :style="{ 'background-color': ok_btn_color }"
                     @mouseover="ok_btn_color = portfolio.primary_color_hover"
                     @mouseleave="ok_btn_color = portfolio.primary_color"
