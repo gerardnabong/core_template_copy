@@ -4,7 +4,7 @@
             <div class="col-md-6 text-center">
                 <span
                     class="icon-icon not-found-icon"
-                    :style="{ color: portfolio.primary_color }"
+                    :style="{ color: portfolio.secondary_color }"
                 />
                 <div>
                     <h1 class="client-portal-heading-text">
@@ -16,8 +16,8 @@
                     <router-link
                         class="btn color-white client-portal-btn-primary border-0 mt-3"
                         :style="{ 'background-color': home_primary_color }"
-                        @mouseover="home_primary_color = portfolio.primary_color_hover"
-                        @mouseleave="home_primary_color = portfolio.primary_color"
+                        @mouseover.native="home_primary_color = portfolio.primary_color_hover"
+                        @mouseleave.native="home_primary_color = portfolio.primary_color"
                         to="/"
                     >
                         Home

@@ -69,7 +69,7 @@ export default {
         triggerPaymentHover () {
             this.payment_hover = {
                 color: COLOR_WHITE,
-                'background-color': this.portfolio.primary_color
+                'background-color': this.portfolio.secondary_color
             };
             this.payment_icon_trigger = true;
         },
@@ -83,7 +83,7 @@ export default {
         triggerLoanHover () {
             this.loan_hover = {
                 color: COLOR_WHITE,
-                'background-color': this.portfolio.primary_color,
+                'background-color': this.portfolio.secondary_color,
             };
             this.loan_icon_trigger = true;
         },
@@ -98,10 +98,10 @@ export default {
 
     computed: {
         changePaymentIconStyle () {
-            return { color: this.payment_icon_trigger ? COLOR_WHITE : this.portfolio.primary_color }
+            return { color: this.payment_icon_trigger ? COLOR_WHITE : this.portfolio.secondary_color }
         },
         changeLoanIconStyle () {
-            return { color: this.loan_icon_trigger ? COLOR_WHITE : this.portfolio.primary_color }
+            return { color: this.loan_icon_trigger ? COLOR_WHITE : this.portfolio.secondary_color }
         },
     }
 };
