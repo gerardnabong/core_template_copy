@@ -12,8 +12,7 @@
 </head>
 
 <body class="position-relative">
-    <div class="client-portal-pre-loader">
-    </div>
+    <div class="client-portal-pre-loader"></div>
     <div id="app"></div>
 </body>
 @include('js_vars')
