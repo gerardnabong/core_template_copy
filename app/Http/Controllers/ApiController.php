@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
-use GuzzleHttp\Client as GuzzleHttpClient;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\Response as GuzzleHttpResponse;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
+use GuzzleHttp\Client as GuzzleHttpClient;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response as GuzzleHttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Log;
