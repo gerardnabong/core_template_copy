@@ -74,10 +74,9 @@ let router = new Router({
 });
 
 router.beforeResolve((to, from, next) => {
-    if (to.fullPath !== '/' && store.getters.getClient === null) {
+    if (to.fullPath !== '/' && !store.getters.getClient) {
         next('/');
-    }
-    else if (to.fullPath === '/' && store.getters.getClient !== null) {
+    } else if (to.fullPath === '/' && store.getters.getClient ) {
         switch (store.getters.getClient.lead_status_id) {
             case constants.LEAD_STATUS_NEW_CLIENT_ID:
                 next('/online-verification');
@@ -96,8 +95,7 @@ router.beforeResolve((to, from, next) => {
                 next('/');
                 break;
         }
-    }
-    else if (to.matched.some(record => record.meta.requiredLeadStatus)) {
+    } else if (to.matched.some(record => record.meta.requiredLeadStatus)) {
         if (to.meta.requiredLeadStatus === store.getters.getClient.lead_status_id) {
             next();
         }
@@ -105,8 +103,7 @@ router.beforeResolve((to, from, next) => {
             next('/');
         }
 
-    }
-    else {
+    } else {
         next();
     }
 });

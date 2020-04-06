@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use \GuzzleHttp\Client as GuzzleHttpClient;
-use \GuzzleHttp\Exception\RequestException;
-use \GuzzleHttp\Psr7\Response as GuzzleHttpResponse;
+use App\Http\Requests\ApiLoginRequest;
+use GuzzleHttp\Client as GuzzleHttpClient;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response as GuzzleHttpResponse;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Log;
 
@@ -20,38 +20,38 @@ class ApiController extends Controller
 
     private const LEAD_ID_NEW_CLIENT = 38000;
 
-    public function loginClient(Request $request): JsonResponse
+    public function loginClient(ApiLoginRequest $request): JsonResponse
     {
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
         try {
             $client = new GuzzleHttpClient;
-            $clientRequest = $client->post(
+            $api_response = $client->post(
                 $url,
                 [
                     'form_params' => $request->all(),
                 ]
             );
-            $client = $this->saveClient($this->createClientArray($request, $clientRequest));
+            $client = $this->saveClient($this->createClientArray($request, $api_response));
             return response()->json($client);
-        } catch (RequestException $error) {
-            switch ($error->getCode()) {
+        } catch (RequestException $exception) {
+            switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
                     $message = 'Invalid Credentials';
                     break;
                 default:
                     $message = 'An Error has occured';
+                    Log::error($exception);
                     break;
             }
 
-            Log::error($error);
-            return response()->json($message, $error->getCode());
-        } catch (Exception $error) {
-            Log::error($error);
-            return response()->json('An Error has occured');
+            return response()->json(['message' => $message], $exception->getCode());
+        } catch (Exception $exception) {
+            Log::error($exception);
+            return response()->json(['message' => 'An Error has occured']);
         }
     }
 
-    private function createClientArray(Request $request, GuzzleHttpResponse $response): array
+    private function createClientArray(ApiLoginRequest $request, GuzzleHttpResponse $response): array
     {
         $client_data = json_decode($response->getBody()->getContents());
         return [

@@ -68,6 +68,8 @@
 
 import LoginModal from '~/components/templates/modal/LoginModal';
 
+const LOADING_TIMEOUT_MS = 3000;
+
 export default {
     name: 'Login',
 
@@ -96,8 +98,7 @@ export default {
                 'email_address': this.email,
                 'ssn': this.ssn,
             }
-            $.ajax({
-                type: 'POST',
+            $.post({
                 url: '/api/login-client/',
                 data: data,
                 beforeSend: (() => {
@@ -112,10 +113,11 @@ export default {
                     this.$bvModal.show('login-modal');
                     setTimeout(() => {
                         this.$router.go();
-                    }, 3000);
+                    }, LOADING_TIMEOUT_MS);
                 }),
                 error: ((response) => {
-                    this.$refs['login-modal'].populate(response.responseJSON);
+                    let message = this.createHTTPMessage(response.responseJSON);
+                    this.$refs['login-modal'].populate(message);
                     this.$bvModal.show('login-modal');
                 }),
                 complete: (() => {
@@ -123,6 +125,14 @@ export default {
                     this.hideLoader();
                 }),
             });
+        },
+        createHTTPMessage (responseJSON) {
+            let message = '<p>' + responseJSON.message;
+            for (let error in responseJSON.errors) {
+                message += '<br>' + responseJSON.errors[error];
+            }
+            message += '</p>';
+            return message;
         },
         showLoader () {
             this.loader = this.$loading.show({

@@ -6,7 +6,7 @@
                 <div class="col-12 text-center client-portal-container">
                     <div
                         class="logout-gear"
-                        v-if="$store.getters.getClient !== null"
+                        v-if="$store.getters.getClient"
                     >
                         <b-dropdown
                             right
