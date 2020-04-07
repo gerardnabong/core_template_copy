@@ -54,7 +54,11 @@ phases:
       - IMAGE_DIFINITION_PHP_FPM="{\"name\":\"php-fpm\",\"imageUri\":\"${REPOSITORY_URI_PHPFPM}:${IMAGE_TAG}\"}"
       - IMAGE_DIFINITION_NGINX="{\"name\":\"nginx\",\"imageUri\":\"${REPOSITORY_URI_NGINX}:${IMAGE_TAG}\"}"
       - echo "[${IMAGE_DIFINITION_PHP_FPM},${IMAGE_DIFINITION_NGINX}]" > imagedefinitions.json
-artifacts:
+  artifacts:
     files: imagedefinitions.json
     discard-paths: yes
+  cache:
+    paths:
+      - '/var/www/vendor/**/*'
+      - '/var/www/node_modules/**/*'
 
