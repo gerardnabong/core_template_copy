@@ -19,7 +19,7 @@ phases:
       #- echo Retrieve app config from Amazon S3...
       # This file is copied to S3 using the "docker/push-config-s3.sh" script
       # Adjust S3 bucket name and path as necessary
-      - aws s3 cp s3://client-portal/env/.env-dev .env
+      - aws s3 cp s3://aim-env-files/client-portal/.env-dev .env
       - echo APP_VERSION=$CODEBUILD_RESOLVED_SOURCE_VERSION >> .env
   build:
     commands:
