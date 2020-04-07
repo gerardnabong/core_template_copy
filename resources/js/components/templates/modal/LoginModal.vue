@@ -11,10 +11,10 @@
         <div class="row no-gutters">
             <div
                 class="col-12 client-portal-modal"
-                :style="{'background-color': portfolio.primary_color}"
+                :style="{'background-color': portfolio.secondary_color}"
             />
         </div>
-        <div class="row mt-4 mb-2">
+        <div class="row mt-4 pt-4 mb-2">
             <div
                 class="col-12 text-center font-size-22 font-weight-bold"
                 v-if="is_success"
@@ -22,10 +22,10 @@
                 Welcome
             </div>
             <div
-                class="col-12 mb-5 text-center font-size-16 client-portal-login-message-content"
+                class="col-12 mb-3 text-center font-size-16 client-portal-login-message-content"
                 v-html="modal_content"
             />
-            <div class="col-12 text-center">
+            <div class="col-12 mt-4 text-center">
                 <b-button
                     size="sm"
                     @click="$bvModal.hide('login-modal')"

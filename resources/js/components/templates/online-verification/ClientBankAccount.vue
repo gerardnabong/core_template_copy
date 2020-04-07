@@ -1,5 +1,14 @@
 <template>
     <div>
+        <div class="client-portal-paragraph">
+            <p>
+                We need to verify your bank account information in order to proceed.
+                Please enter your information below:
+            </p>
+            <p class="mb-4 font-italic">
+                (Note, a new window or tab will open)
+            </p>
+        </div>
         <b-form-group class="mb-3">
             <b-form-input
                 v-model="routing_number"
@@ -19,25 +28,18 @@
             />
         </b-form-group>
         <b-button
-            class="client-portal-btn-primary border-0 mt-3 mb-2"
+            class="client-portal-btn-primary border-0 mt-3 mb-3"
             :style="{ 'background-color': portfolio.primary_color }"
             @click="verifyInput"
         >
             Send Request
         </b-button>
-        <div class="mb-4 mt-3">
-            Please check your email. You will be directed to our bank verification page.
+        <div class="my-4 client-portal-paragraph">
+            If you would like to complete your bank verification over the phone.
+            Please click the call us button below:
         </div>
-        <div class="mt-4">
-            <b-button
-                class="client-portal-btn-secondary"
-                @click="goBack"
-            >
-                Back
-            </b-button>
-        </div>
-        <div class="px-3">
-            <div class="d-flex justify-content-center my-5">
+        <div>
+            <div class="d-flex justify-content-center my-4">
                 <call-us-button />
             </div>
         </div>

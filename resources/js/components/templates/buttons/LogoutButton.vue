@@ -1,7 +1,7 @@
 <template>
     <b-button
         @click="logout"
-        class="client-btn-none color-darkgray font-weight-bold"
+        class="client-btn-none color-darkgray font-weight-semibold"
     >Logout</b-button>
 </template>
 
