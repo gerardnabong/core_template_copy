@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
+use App\Http\Requests\LogoutRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
@@ -17,19 +18,16 @@ use Log;
 
 class ApiController extends Controller
 {
-
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
+        // TODO: create facade for those apis for mock the response in tests
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
         try {
             $client = new GuzzleHttpClient;
-            $api_response = $client->post(
-                $url,
-                [
-                    'form_params' => $request->all(),
-                ]
-            );
-            $client = $this->saveClient($this->createClientArray($request, $api_response));
+            $api_response = $client->post($url, ['form_params' => $request->all()]);
+            $api_decoded_response = $this->decodeApiResponse($api_response);
+            $client_data = $this->createClientArray($api_decoded_response);
+            $client = $this->saveClient($client_data, $api_decoded_response, $request);
             return response()->json($client);
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
@@ -41,7 +39,6 @@ class ApiController extends Controller
                     Log::error($exception);
                     break;
             }
-
             return response()->json(['message' => $message], $exception->getCode());
         } catch (Exception $exception) {
             Log::error($exception);
@@ -49,20 +46,33 @@ class ApiController extends Controller
         }
     }
 
-    private function createClientArray(ApiLoginRequest $request, GuzzleHttpResponse $response): array
+    public function decodeApiResponse(GuzzleHttpResponse $api_response): object
     {
-        $client_data = json_decode($response->getBody()->getContents());
+        return json_decode($api_response->getBody()->getContents());
+    }
+
+    private function createClientArray(object $response): array
+    {
         return [
-            'email_address' => $client_data->email_address,
-            'ssn' => $request->ssn,
             'portfolio_id' => Portfolio::getPortfolio()->id,
-            'lead_id' => $client_data->id,
-            'lead_status_id' => $client_data->client_status ?? Client::LEAD_ID_NEW_CLIENT,
+            'lead_id' => $response->id,
+            'lead_status_id' => $response->client_status ?? Client::CLIENT_STATUS_NEW_CLIENT,
+
         ];
     }
 
-    private function saveClient($client): Client
+    private function saveClient(array $client_Data, object $api_response, ApiLoginRequest $request): Client
     {
-        return Client::create($client);
+        // TODO: Implement Spatie/Laravel Permission based on lead_status_id
+        $client = Client::create($client_Data);
+        $client->email_address = $api_response->email_address;
+        $client->ssn = $request->ssn;
+        $client->hash = Client::setHashClient($client);
+        return $client;
+    }
+
+    public function logout(LogoutRequest $request)
+    {
+        Client::logout($request->hashKey);
     }
 }

@@ -1,7 +1,4 @@
 <template>
-    <!--    TODO this file might be change or be deleted need verification on how passport works.
-            This is kept only for the design
-    -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -17,7 +14,7 @@
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
-                            v-model="email"
+                            v-model="formData.email_address"
                             placeholder="Email"
                             class="client-portal-form-input"
                             required
@@ -26,7 +23,7 @@
                     </b-form-group>
                     <b-form-group>
                         <b-form-input
-                            v-model="ssn"
+                            v-model="formData.ssn"
                             placeholder="SSN"
                             class="client-portal-form-input"
                             required
@@ -59,14 +56,14 @@
                 </div>
             </div>
         </div>
-        <login-modal ref="login-modal" />
+        <welcome-message-modal ref="loginModal" />
     </div>
 </template>
 
 <script>
 'use strict';
 
-import LoginModal from '~/components/templates/modal/LoginModal';
+import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 
 const LOADING_TIMEOUT_MS = 3000;
 
@@ -74,13 +71,15 @@ export default {
     name: 'Login',
 
     components: {
-        LoginModal,
+        WelcomeMessageModal,
     },
 
     data () {
         return {
-            email: null,
-            ssn: null,
+            formData: {
+                email_address: null,
+                ssn: null,
+            },
             is_loading: false,
         };
     },
@@ -94,45 +93,34 @@ export default {
     methods: {
         login (event) {
             event.preventDefault();
-            let data = {
-                'email_address': this.email,
-                'ssn': this.ssn,
-            }
+            let loginModal = this.$refs['loginModal'];
             $.post({
                 url: '/api/login-client/',
-                data: data,
+                data: this.formData,
                 beforeSend: (() => {
                     this.is_loading = true;
                     this.showLoader();
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    this.$refs['login-modal'].populate(response.email_address);
-                    this.$refs['login-modal'].showSuccess();
-                    this.$refs['login-modal'].hideOkButton(false);
-                    this.$bvModal.show('login-modal');
+                    loginModal.populate('lorem');
+                    loginModal.showSuccess();
+                    loginModal.hideOkButton(false);
+                    this.$bvModal.show('welcome-message');
                     setTimeout(() => {
                         this.$router.go();
                     }, LOADING_TIMEOUT_MS);
                 }),
                 error: ((response) => {
-                    let message = this.createHTTPMessage(response.responseJSON);
-                    this.$refs['login-modal'].populate(message);
-                    this.$bvModal.show('login-modal');
+                    let message = response.responseJSON;
+                    loginModal.populate(message);
+                    this.$bvModal.show('welcome-message');
                 }),
                 complete: (() => {
                     this.is_loading = false;
                     this.hideLoader();
                 }),
             });
-        },
-        createHTTPMessage (responseJSON) {
-            let message = '<p>' + responseJSON.message;
-            for (let error in responseJSON.errors) {
-                message += '<br>' + responseJSON.errors[error];
-            }
-            message += '</p>';
-            return message;
         },
         showLoader () {
             this.loader = this.$loading.show({

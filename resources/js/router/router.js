@@ -93,7 +93,6 @@ router.beforeResolve((to, from, next) => {
             default:
                 store.commit('setClient', null);
                 next('/');
-                break;
         }
     } else if (to.matched.some(record => record.meta.requiredLeadStatus)) {
         if (to.meta.requiredLeadStatus === store.getters.getClient.lead_status_id) {
@@ -101,7 +100,6 @@ router.beforeResolve((to, from, next) => {
         } else {
             next('/');
         }
-
     } else {
         next();
     }

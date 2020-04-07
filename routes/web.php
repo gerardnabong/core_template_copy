@@ -15,6 +15,7 @@ Route::get('getPortfolio', 'WebsiteController@getPortfolio');
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('login-client', 'ApiController@loginClient');
+    Route::post('logout', 'ApiController@logout');
 });
 
 // TODO this should be deleted later because we'd better use whitelist later on - Albert

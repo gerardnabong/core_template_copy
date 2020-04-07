@@ -19,7 +19,6 @@ class CreateClientInputsTable extends Migration
         });
     }
 
-
     public function down()
     {
         Schema::dropIfExists('client_inputs');

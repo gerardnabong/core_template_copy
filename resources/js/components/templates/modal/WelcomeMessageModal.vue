@@ -1,6 +1,6 @@
 <template>
     <b-modal
-        id="login-modal"
+        id="welcome-message-modal"
         :hide-header="true"
         :hide-footer="true"
         centered
@@ -48,7 +48,7 @@
 import HeaderClientPortal from '~/components/templates/Header';
 
 export default {
-    Name: 'LoginModal',
+    Name: 'WelcomeMessageModal',
 
     components: {
         HeaderClientPortal,
@@ -69,7 +69,12 @@ export default {
 
     methods: {
         populate (content) {
-            this.modal_content = content;
+            let message = '<p>' + content.message;
+            for (let error in content.errors) {
+                message += '<br>' + content.errors[error];
+            }
+            message += '</p>';
+            this.modal_content = message;
         },
         hideOkButton (value) {
             this.hide_ok_button = value;
