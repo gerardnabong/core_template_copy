@@ -14,7 +14,7 @@ class CreateClientInputsTable extends Migration
             $table->increments('id')->unsigned();
             $table->string('input_name');
             $table->string('input_value');
-            $table->integer('client_interaction_id');
+            $table->integer('client_interaction_id')->unsigned();
             $table->timestamps();
         });
     }

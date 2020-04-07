@@ -51,7 +51,7 @@ export default {
     Name: 'LoginModal',
 
     components: {
-        HeaderClientPortal
+        HeaderClientPortal,
     },
 
     data () {

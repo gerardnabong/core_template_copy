@@ -18,8 +18,6 @@ use Log;
 class ApiController extends Controller
 {
 
-    private const LEAD_ID_NEW_CLIENT = 38000;
-
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
@@ -59,7 +57,7 @@ class ApiController extends Controller
             'ssn' => $request->ssn,
             'portfolio_id' => Portfolio::getPortfolio()->id,
             'lead_id' => $client_data->id,
-            'lead_status_id' => $client_data->client_status ?? self::LEAD_ID_NEW_CLIENT,
+            'lead_status_id' => $client_data->client_status ?? Client::LEAD_ID_NEW_CLIENT,
         ];
     }
 

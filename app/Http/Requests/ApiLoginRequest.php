@@ -17,7 +17,7 @@ class ApiLoginRequest extends FormRequest
     {
         return [
             'email_address' => 'required|email:rfc',
-            'ssn'   => 'required',
+            'ssn'   => 'required|min:9|numeric',
         ];
     }
 }

@@ -79,16 +79,16 @@ router.beforeResolve((to, from, next) => {
     } else if (to.fullPath === '/' && store.getters.getClient ) {
         switch (store.getters.getClient.lead_status_id) {
             case constants.LEAD_STATUS_NEW_CLIENT_ID:
-                next('/online-verification');
+                next('online-verification');
                 break;
             case constants.LEAD_STATUS_RETURNING_CLIENT_ID:
-                next('/new-loan');
+                next('new-loan');
                 break;
             case constants.LEAD_STATUS_LOAN_TRANSFER_CLIENT_ID:
-                next('/loan-transfer');
+                next('loan-transfer');
                 break;
             case constants.LEAD_STATUS_LOAN_ON_GOING_CLIENT_ID:
-                next('/loan-action');
+                next('loan-action');
                 break;
             default:
                 store.commit('setClient', null);
@@ -98,8 +98,7 @@ router.beforeResolve((to, from, next) => {
     } else if (to.matched.some(record => record.meta.requiredLeadStatus)) {
         if (to.meta.requiredLeadStatus === store.getters.getClient.lead_status_id) {
             next();
-        }
-        else {
+        } else {
             next('/');
         }
 
