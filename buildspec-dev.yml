@@ -1,0 +1,60 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - pip install --upgrade awscli==1.18.26 ### Here is my update - and it works
+      - aws --version
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 928364608251.dkr.ecr.us-east-1.amazonaws.com/dev-client-portal_php-fpm
+        # Copy "RepositoryURI" from output of CloudFormation Stack "laravel-ecr"
+      - REPOSITORY_URI_NGINX=928364608251.dkr.ecr.us-east-1.amazonaws.com/dev-client-portal_nginx
+      - REPOSITORY_URI_PHPFPM=928364608251.dkr.ecr.us-east-1.amazonaws.com/dev-client-portal_php-fpm
+      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - printenv
+      - echo -n "$CODEBUILD_LOG_PATH" > /tmp/build_id.out
+        #- printf "%s:%s" "$REPOSITORY_URI_NGINX" "$(cat /tmp/build_id.out)" > /tmp/build_tag_nginx.out
+        #- printf "%s:%s" "$REPOSITORY_URI_PHPFPM" "$(cat /tmp/build_id.out)" > /tmp/build_tag_phpfpm.out
+      - printf '{"tag":"%s"}' "$(cat /tmp/build_id.out)" > /tmp/build.json
+      #- echo Retrieve app config from Amazon S3...
+      # This file is copied to S3 using the "docker/push-config-s3.sh" script
+      # Adjust S3 bucket name and path as necessary
+      - aws s3 cp s3://client-portal/env/.env-dev .env
+      - echo APP_VERSION=$CODEBUILD_RESOLVED_SOURCE_VERSION >> .env
+  build:
+    commands:
+      - echo Composer Install
+      - composer install
+      - echo NPM Install
+      - npm install
+      - echo NPM Build
+      - npm run dev
+      - echo Database Migration
+      - php artisan migrate --force
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $REPOSITORY_URI_NGINX:$IMAGE_TAG -f Dockerfile-nginx-ecs .
+      - docker tag $REPOSITORY_URI_NGINX:$IMAGE_TAG $REPOSITORY_URI_NGINX:latest
+      - docker build -t $REPOSITORY_URI_PHPFPM:$IMAGE_TAG -f Dockerfile-phpfpm-ecs .
+      - docker tag $REPOSITORY_URI_PHPFPM:$IMAGE_TAG $REPOSITORY_URI_PHPFPM:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI_NGINX:$IMAGE_TAG
+      - docker push $REPOSITORY_URI_NGINX:latest
+      - docker push $REPOSITORY_URI_PHPFPM:$IMAGE_TAG
+      - docker push $REPOSITORY_URI_PHPFPM:latest
+      #- docker push "$(cat /tmp/build_tag_nginx.out)"
+      #- docker push "$(cat /tmp/build_tag_phpfpm.out)"
+      #- echo Writing image definitions...
+      #- printf '[{"name":"laravel_app","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > image_definitions-laravel_app.json
+      #- printf '[{"name":"laravel_cron","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > image_definitions-laravel_cron.json
+      - echo Writing image definitions file...
+      - IMAGE_DIFINITION_PHP_FPM="{\"name\":\"php-fpm\",\"imageUri\":\"${REPOSITORY_URI_PHPFPM}:${IMAGE_TAG}\"}"
+      - IMAGE_DIFINITION_NGINX="{\"name\":\"nginx\",\"imageUri\":\"${REPOSITORY_URI_NGINX}:${IMAGE_TAG}\"}"
+      - echo "[${IMAGE_DIFINITION_PHP_FPM},${IMAGE_DIFINITION_NGINX}]" > imagedefinitions.json
+artifacts:
+    files: imagedefinitions.json
+    discard-paths: yes
+
