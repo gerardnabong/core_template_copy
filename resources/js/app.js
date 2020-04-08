@@ -33,7 +33,7 @@ window.Vue = require("vue");
  */
 $.ajaxSetup({
     headers: {
-        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
     }
 });
 

@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
-                <span
-                    class="icon-login-icon client-portal-icon"
+                <i
+                    class="fas fa-handshake client-portal-icon"
                     :style="{ color: portfolio.secondary_color }"
                 />
                 <b-form
@@ -14,7 +14,13 @@
                     @submit="login"
                     ref="loading_container"
                 >
-                    <h2 class="client-portal-heading-text">Login</h2>
+                    <h2 class="client-portal-heading-text">
+                        <!-- TODO Firstname will be base on the redirect link url -->
+                        Welcome, FIRSTNAME! <br> We’re happy to be working with you!
+                    </h2>
+                    <p class="client-portal-paragraph mt-4">
+                        To get started, we need to create your user account:
+                    </p>
                     <b-form-group class="pt-4">
                         <b-form-input
                             v-model="email"
@@ -35,13 +41,13 @@
                     </b-form-group>
                     <b-button
                         type='submit'
-                        class="client-portal-btn-primary w-100 border-0"
+                        class="client-portal-btn-primary px-5 border-0 mt-2"
                         :style="{ 'background-color': login_primary_color }"
                         @mouseover="login_primary_color = portfolio.primary_color_hover"
                         @mouseleave="login_primary_color = portfolio.primary_color"
                         :disabled="is_loading"
                     >
-                        Login
+                        Setup my Account
                     </b-button>
                 </b-form>
                 <div class="pt-4">
@@ -69,7 +75,7 @@
 import LoginModal from '~/components/templates/modal/LoginModal';
 
 export default {
-    name: 'Login',
+    name: 'LeadRegistration',
 
     components: {
         LoginModal,

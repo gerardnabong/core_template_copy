@@ -42,8 +42,6 @@
 <script>
 'use strict';
 
-const INITIAL_LOAN_AMOUNT = 200;
-
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 
 export default {
@@ -55,7 +53,7 @@ export default {
 
     data () {
         return {
-            loan_amount: INITIAL_LOAN_AMOUNT,
+            loan_amount: 200,
         }
     },
 
