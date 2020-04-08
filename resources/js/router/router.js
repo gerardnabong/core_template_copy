@@ -3,7 +3,7 @@
 import Router from "vue-router";
 import Vue from "vue";
 import store from "~/storage/store";
-import * as constants from '~/fixed_variables/lead_status_id';
+import * as constants from '~/fixed_variables/client_status_id';
 
 import ErrorPage from "~/components/pages/ErrorPage";
 import LoanAction from "~/components/pages/LoanAction";
@@ -37,32 +37,32 @@ const ROUTES = [
     {
         path: "/loan-action",
         component: LoanAction,
-        meta: { requiredLeadStatus: constants.LEAD_STATUS_LOAN_ON_GOING_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
     },
     {
         path: "/loan-transfer",
         component: LoanTransfer,
-        meta: { requiredLeadStatus: constants.LEAD_STATUS_LOAN_TRANSFER_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_TRANSFER_CLIENT_ID },
     },
     {
         path: "/new-loan",
         component: NewLoan,
-        meta: { requiredLeadStatus: constants.LEAD_STATUS_RETURNING_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_RETURNING_CLIENT_ID },
     },
     {
         path: "/on-process",
         component: OnProcess,
-        meta: { requiredLeadStatus: constants.LEAD_STATUS_NEW_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID },
     },
     {
         path: "/online-verification",
         component: OnlineVerification,
-        meta: { requiredLeadStatus: constants.LEAD_STATUS_NEW_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID },
      },
     {
         path: "/payment-schedule",
         component: PaymentSchedule,
-        meta: { requiredLeadStatus: constants.LEAD_STATUS_LOAN_ON_GOING_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
      },
     {
         path: "/success",
@@ -86,27 +86,26 @@ const public_links = [
 router.beforeResolve((to, from, next) => {
     if (!public_links.includes(to.fullPath) && !store.getters.getClient) {
         next('/');
-    }
-    else if (public_links.includes(to.fullPath) && store.getters.getClient) {
-        switch (store.getters.getClient.lead_status_id) {
-            case constants.LEAD_STATUS_NEW_CLIENT_ID:
+    } else if (to.fullPath === '/' && store.getters.getClient ) {
+        switch (store.getters.getClient.client_status_id) {
+            case constants.CLIENT_STATUS_NEW_CLIENT_ID:
                 next('online-verification');
                 break;
-            case constants.LEAD_STATUS_RETURNING_CLIENT_ID:
+            case constants.CLIENT_STATUS_RETURNING_CLIENT_ID:
                 next('new-loan');
                 break;
-            case constants.LEAD_STATUS_LOAN_TRANSFER_CLIENT_ID:
+            case constants.CLIENT_STATUS_LOAN_TRANSFER_CLIENT_ID:
                 next('loan-transfer');
                 break;
-            case constants.LEAD_STATUS_LOAN_ON_GOING_CLIENT_ID:
+            case constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID:
                 next('loan-action');
                 break;
             default:
                 store.commit('setClient', null);
                 next('/');
         }
-    } else if (to.matched.some(record => record.meta.requiredLeadStatus)) {
-        if (to.meta.requiredLeadStatus === store.getters.getClient.lead_status_id) {
+    } else if (to.matched.some(record => record.meta.requiredClientStatus)) {
+        if (to.meta.requiredClientStatus === store.getters.getClient.client_status_id) {
             next();
         } else {
             next('/');

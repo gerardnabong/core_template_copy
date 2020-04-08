@@ -454,6 +454,9 @@ html {
     white-space: pre-wrap;
     overflow-wrap: break-word;
 }
+.client-portal-alert {
+    border-radius: 8px;
+}
 
 @media (min-width: 499px) {
     .client-portal-btn-submit {

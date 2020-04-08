@@ -77,13 +77,11 @@ export default {
         showSuccess () {
             this.is_success = false;
         },
-        createHTTPmessage (content) {
-            let message = '<p>' + content.message;
-            for (let error in content.errors) {
-                message += '<br>' + content.errors[error];
-            }
-            message += '</p>';
-            return message;
+        show () {
+            this.$bvModal.show('welcome-message-modal');
+        },
+        hide () {
+            this.$bvModal.hide('welcome-message-modal');
         }
     },
 };
