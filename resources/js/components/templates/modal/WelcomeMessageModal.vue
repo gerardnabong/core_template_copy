@@ -22,7 +22,7 @@
                 Welcome
             </div>
             <div
-                class="col-12 mb-5 text-center font-size-16 client-portal-login-message-content px-4"
+                class="col-12 mb-3 text-center font-size-16 client-portal-login-message-content px-4"
                 v-html="modal_content"
             />
             <div class="col-12 mt-4 text-center">

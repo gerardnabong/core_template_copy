@@ -355,7 +355,7 @@ html {
 }
 .logout-gear {
     position: fixed;
-    top: 50%;
+    top: 35%;
     right: -1px;
     transform:translate(0,-50%);
     z-index: 100;
