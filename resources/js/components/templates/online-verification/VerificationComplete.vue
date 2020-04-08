@@ -4,13 +4,6 @@
             We are reviewing your application now!
             One of our team members will be calling you shortly.
         </div>
-        <b-button
-            class="client-portal-btn-primary border-0 mt-2"
-            :style="{ 'background-color': portfolio.primary_color }"
-            @click="logout"
-        >
-            Logout
-        </b-button>
         <div class="mt-5">
             <p class="client-portal-paragraph">
                 If you would like to speak with us now,
