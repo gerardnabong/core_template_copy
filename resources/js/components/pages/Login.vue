@@ -66,13 +66,13 @@
 <script>
 'use strict';
 
-import LoginModal from '~/components/templates/modal/LoginModal';
+import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 
 export default {
     name: 'Login',
 
     components: {
-        LoginModal,
+        WelcomeMessageModal,
     },
 
     data () {

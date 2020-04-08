@@ -72,13 +72,13 @@
 <script>
 'use strict';
 
-import LoginModal from '~/components/templates/modal/LoginModal';
+import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 
 export default {
     name: 'LeadRegistration',
 
     components: {
-        LoginModal,
+        WelcomeMessageModal,
     },
 
     data () {
