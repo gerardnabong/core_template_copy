@@ -28,7 +28,7 @@
             <div class="col-12 text-center">
                 <b-button
                     size="sm"
-                    @click="$bvModal.hide('login-modal')"
+                    @click="$bvModal.hide('welcome-message-modal')"
                     v-if="hide_ok_button"
                     class="client-portal-btn-modal border-0 mb-3 pb-2"
                     :style="{ 'background-color': ok_btn_color }"

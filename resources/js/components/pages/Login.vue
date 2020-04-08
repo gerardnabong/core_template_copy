@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <login-modal ref="login-modal" />
+        <welcome-message-modal ref="loginModal" />
     </div>
 </template>
 
@@ -91,6 +91,7 @@ export default {
 
     methods: {
         login (event) {
+            let loginModal = this.$refs['loginModal'];
             event.preventDefault();
             let data = {
                 'email_address': this.email,
@@ -106,17 +107,17 @@ export default {
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    this.$refs['login-modal'].populate(response.email_address);
-                    this.$refs['login-modal'].showSuccess();
-                    this.$refs['login-modal'].hideOkButton(false);
-                    this.$bvModal.show('login-modal');
+                    loginModal.populate(response);
+                    loginModal.showSuccess();
+                    loginModal.hideOkButton(false);
+                    this.$bvModal.show('welcome-message-modal');
                     setTimeout(() => {
                         this.$router.go();
                     }, 3000);
                 }),
                 error: ((response) => {
-                    this.$refs['login-modal'].populate(response.responseJSON);
-                    this.$bvModal.show('login-modal');
+                    loginModal.populate(response.responseJSON);
+                    this.$bvModal.show('welcome-message-modal');
                 }),
                 complete: (() => {
                     this.is_loading = false;
