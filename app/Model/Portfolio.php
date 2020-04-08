@@ -25,8 +25,8 @@ class Portfolio extends Model
         );
     }
 
-    public function login(): HasMany
+    public function client(): HasMany
     {
-        return $this->hasMany(Login::class);
+        return $this->hasMany(Client::class);
     }
 }

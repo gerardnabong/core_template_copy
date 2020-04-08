@@ -57,13 +57,12 @@ class ApiController extends Controller
         return [
             'portfolio_id' => Portfolio::getPortfolio()->id,
             'lead_id' => $response->id,
-            'lead_status_id' => $response->client_status ?? Client::CLIENT_STATUS_NEW_CLIENT,
+            'client_status_id' => $response->client_status ?? Client::CLIENT_STATUS_NEW_CLIENT,
         ];
     }
 
     private function saveClient(array $client_Data, stdClass $api_response, ApiLoginRequest $request): Client
     {
-        // TODO: Implement Spatie/Laravel Permission based on lead_status_id
         $client = Client::create($client_Data);
         $client->email_address = $api_response->email_address;
         $client->ssn = $request->ssn;

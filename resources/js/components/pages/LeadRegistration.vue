@@ -21,6 +21,24 @@
                     <p class="client-portal-paragraph mt-4">
                         To get started, we need to create your user account:
                     </p>
+                    <b-alert
+                        show
+                        variant="danger"
+                        v-if="error"
+                        class="client-portal-alert"
+                    >
+                        <div v-html="error.message" />
+                        <div
+                            v-for="error_type in error.errors"
+                            :key="error_type"
+                        >
+                            <div
+                                v-for="error_message in error_type"
+                                :key="error_message"
+                                v-html="error_message"
+                            />
+                        </div>
+                    </b-alert>
                     <b-form-group class="pt-4">
                         <b-form-input
                             v-model="email"
@@ -59,89 +77,25 @@
                     <p class="text-center font-size-12">
                         Copyright &copy;
                         {{(new Date()).getFullYear()}}
-                        {{portfolio.name}}.
+                        {{portfolio.display_name}}.
                         All Rights Reserved.
                     </p>
                 </div>
             </div>
         </div>
-        <login-modal ref="login-modal" />
+        <lwelcome-message-modal ref="loginResultModal" />
     </div>
 </template>
 
 <script>
 'use strict';
 
-import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
+import Login from '~/mixin/login';
 
 export default {
     name: 'LeadRegistration',
 
-    components: {
-        WelcomeMessageModal,
-    },
+    mixins: [Login],
 
-    data () {
-        return {
-            email: null,
-            ssn: null,
-            is_loading: false,
-        };
-    },
-
-    created () {
-        this.portfolio = this.$jsVars.portfolio;
-        this.login_primary_color = this.portfolio.primary_color;
-
-    },
-
-    methods: {
-        login (event) {
-            event.preventDefault();
-            let data = {
-                'email_address': this.email,
-                'ssn': this.ssn,
-            }
-            $.ajax({
-                type: 'POST',
-                url: '/api/login-client/',
-                data: data,
-                beforeSend: (() => {
-                    this.is_loading = true;
-                    this.showLoader();
-                }),
-                success: ((response) => {
-                    this.$store.commit('setClient', response);
-                    this.$refs['login-modal'].populate(response.email_address);
-                    this.$refs['login-modal'].showSuccess();
-                    this.$refs['login-modal'].hideOkButton(false);
-                    this.$bvModal.show('login-modal');
-                    setTimeout(() => {
-                        this.$router.go();
-                    }, 3000);
-                }),
-                error: ((response) => {
-                    this.$refs['login-modal'].populate(response.responseJSON);
-                    this.$bvModal.show('login-modal');
-                }),
-                complete: (() => {
-                    this.is_loading = false;
-                    this.hideLoader();
-                }),
-            });
-        },
-        showLoader () {
-            this.loader = this.$loading.show({
-                color: this.portfolio.secondary_color,
-                loader: 'dots',
-                container: this.$refs.loading_container,
-                'is-full-page': false,
-            });
-        },
-        hideLoader () {
-            this.loader.hide();
-            this.loader = null;
-        },
-    },
 };
 </script>
