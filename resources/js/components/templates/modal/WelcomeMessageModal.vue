@@ -28,7 +28,7 @@
             <div class="col-12 text-center">
                 <b-button
                     size="sm"
-                    @click="$bvModal.hide('login-modal')"
+                    @click="$bvModal.hide('welcome-message-modal')"
                     v-if="hide_ok_button"
                     class="client-portal-btn-modal border-0 mb-3 pb-2"
                     :style="{ 'background-color': ok_btn_color }"
@@ -69,12 +69,7 @@ export default {
 
     methods: {
         populate (content) {
-            let message = '<p>' + content.message;
-            for (let error in content.errors) {
-                message += '<br>' + content.errors[error];
-            }
-            message += '</p>';
-            this.modal_content = message;
+            this.modal_content = content;
         },
         hideOkButton (value) {
             this.hide_ok_button = value;
@@ -82,6 +77,14 @@ export default {
         showSuccess () {
             this.is_success = false;
         },
+        createHTTPmessage (content) {
+            let message = '<p>' + content.message;
+            for (let error in content.errors) {
+                message += '<br>' + content.errors[error];
+            }
+            message += '</p>';
+            return message;
+        }
     },
 };
 </script>

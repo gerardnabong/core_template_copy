@@ -94,6 +94,7 @@ export default {
         login (event) {
             event.preventDefault();
             let loginModal = this.$refs['loginModal'];
+            let message;
             $.post({
                 url: '/api/login-client/',
                 data: this.formData,
@@ -103,18 +104,20 @@ export default {
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    loginModal.populate('lorem');
+                    // TODO Add Proper Welcome Message
+                    message = 'lorem';
+                    loginModal.populate(message);
                     loginModal.showSuccess();
                     loginModal.hideOkButton(false);
-                    this.$bvModal.show('welcome-message');
+                    this.$bvModal.show('welcome-message-modal');
                     setTimeout(() => {
                         this.$router.go();
                     }, LOADING_TIMEOUT_MS);
                 }),
                 error: ((response) => {
-                    let message = response.responseJSON;
+                    message = loginModal.createHTTPmessage(response.responseJSON);
                     loginModal.populate(message);
-                    this.$bvModal.show('welcome-message');
+                    this.$bvModal.show('welcome-message-modal');
                 }),
                 complete: (() => {
                     this.is_loading = false;
