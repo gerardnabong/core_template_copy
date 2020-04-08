@@ -6,6 +6,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Portfolio extends Model
 {
@@ -23,8 +24,8 @@ class Portfolio extends Model
         );
     }
 
-    public function login()
+    public function login(): HasMany
     {
-        return $this->hasMany('App\Model\Login');
+        return $this->hasMany(Login::class);
     }
 }

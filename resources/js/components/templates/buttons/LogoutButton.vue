@@ -22,7 +22,7 @@ export default {
         logout () {
             this.$store.commit('setClient', null);
             this.$router.push('/');
-        }
+        },
     },
 
     created () {

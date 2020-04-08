@@ -1,6 +1,6 @@
 <template>
     <b-modal
-        id="login-modal"
+        id="welcome-message-modal"
         :hide-header="true"
         :hide-footer="true"
         centered
@@ -22,13 +22,13 @@
                 Welcome
             </div>
             <div
-                class="col-12 mb-3 text-center font-size-16 client-portal-login-message-content"
+                class="col-12 mb-5 text-center font-size-16 client-portal-login-message-content px-4"
                 v-html="modal_content"
             />
             <div class="col-12 mt-4 text-center">
                 <b-button
                     size="sm"
-                    @click="$bvModal.hide('login-modal')"
+                    @click="$bvModal.hide('welcome-message-modal')"
                     v-if="hide_ok_button"
                     class="client-portal-btn-modal border-0 mb-3 pb-2"
                     :style="{ 'background-color': ok_btn_color }"
@@ -48,10 +48,10 @@
 import HeaderClientPortal from '~/components/templates/Header';
 
 export default {
-    Name: 'LoginModal',
+    Name: 'WelcomeMessageModal',
 
     components: {
-        HeaderClientPortal
+        HeaderClientPortal,
     },
 
     data () {
@@ -75,8 +75,16 @@ export default {
             this.hide_ok_button = value;
         },
         showSuccess () {
-            this.is_success = true;
+            this.is_success = false;
         },
+        createHTTPmessage (content) {
+            let message = '<p>' + content.message;
+            for (let error in content.errors) {
+                message += '<br>' + content.errors[error];
+            }
+            message += '</p>';
+            return message;
+        }
     },
 };
 </script>
