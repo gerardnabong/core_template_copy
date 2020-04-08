@@ -4,13 +4,13 @@
             <div class="client-portal-background-image">
                 <img
                     class="w-100"
-                    :src="'/images/' + portfolio.name + '/header_mobile.svg'"
+                    :src="'/images/' + portfolio.asset_directory + '/header_mobile.svg'"
                 />
             </div>
             <router-link to="/">
                 <img
                     class="client-portal-header-logo"
-                    :src="'/images/' + portfolio.name + '/logo.svg'"
+                    :src="'/images/' + portfolio.asset_directory + '/logo.svg'"
                 />
             </router-link>
         </div>
@@ -18,13 +18,13 @@
             <div class="client-portal-background-image">
                 <img
                     class="w-100"
-                    :src="'/images/' + portfolio.name + '/header_desktop.svg'"
+                    :src="'/images/' + portfolio.asset_directory + '/header_desktop.svg'"
                 />
             </div>
             <router-link to="/">
                 <img
                     class="client-portal-header-logo"
-                    :src="'/images/' + portfolio.name + '/logo.svg'"
+                    :src="'/images/' + portfolio.asset_directory + '/logo.svg'"
                 />
             </router-link>
         </div>

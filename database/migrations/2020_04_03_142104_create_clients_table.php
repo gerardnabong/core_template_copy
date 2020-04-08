@@ -14,7 +14,7 @@ class CreateClientsTable extends Migration
             $table->increments('id')->unsigned();
             $table->integer('portfolio_id')->unsigned();
             $table->integer('lead_id')->unsigned();
-            $table->integer('lead_status_id')->unsigned()->nullable();
+            $table->integer('client_status_id')->unsigned()->nullable();
             $table->timestamp('login_at')->useCurrent();
             $table->timestamps();
         });

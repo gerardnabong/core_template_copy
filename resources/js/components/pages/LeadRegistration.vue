@@ -21,6 +21,24 @@
                     <p class="client-portal-paragraph mt-4">
                         To get started, we need to create your user account:
                     </p>
+                    <b-alert
+                        show
+                        variant="danger"
+                        v-if="error"
+                        class="client-portal-alert"
+                    >
+                        <div v-html="error.message" />
+                        <div
+                            v-for="error_type in error.errors"
+                            :key="error_type"
+                        >
+                            <div
+                                v-for="error_message in error_type"
+                                :key="error_message"
+                                v-html="error_message"
+                            />
+                        </div>
+                    </b-alert>
                     <b-form-group class="pt-4">
                         <b-form-input
                             v-model="formData.email_address"
@@ -59,93 +77,27 @@
                     <p class="text-center font-size-12">
                         Copyright &copy;
                         {{(new Date()).getFullYear()}}
-                        {{portfolio.name}}.
+                        {{portfolio.display_name}}.
                         All Rights Reserved.
                     </p>
                 </div>
             </div>
         </div>
-        <welcome-message-modal ref="loginModal" />
+        <welcome-message-modal ref="loginResultModal" />
     </div>
 </template>
 
 <script>
 'use strict';
 
-import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
+import Login from '~/mixin/login';
 
 const LOADING_TIMEOUT_MS = 3000;
 
 export default {
     name: 'LeadRegistration',
 
-    components: {
-        WelcomeMessageModal,
-    },
+    mixins: [Login],
 
-    data () {
-        return {
-            formData: {
-                email_address: null,
-                ssn: null,
-            },
-            is_loading: false,
-        };
-    },
-
-    created () {
-        this.portfolio = this.$jsVars.portfolio;
-        this.login_primary_color = this.portfolio.primary_color;
-
-    },
-
-    methods: {
-        login (event) {
-            event.preventDefault();
-            let loginModal = this.$refs['loginModal'];
-            let message;
-            $.post({
-                url: '/api/login-client/',
-                data: this.formData,
-                beforeSend: (() => {
-                    this.is_loading = true;
-                    this.showLoader();
-                }),
-                success: ((response) => {
-                    this.$store.commit('setClient', response);
-                    // TODO Add Proper Welcome Message
-                    message = 'lorem';
-                    loginModal.populate(message);
-                    loginModal.showSuccess();
-                    loginModal.hideOkButton(false);
-                    this.$bvModal.show('welcome-message-modal');
-                    setTimeout(() => {
-                        this.$router.go();
-                    }, LOADING_TIMEOUT_MS);
-                }),
-                error: ((response) => {
-                    message = loginModal.createHTTPmessage(response.responseJSON);
-                    loginModal.populate(message);
-                    this.$bvModal.show('welcome-message-modal');
-                }),
-                complete: (() => {
-                    this.is_loading = false;
-                    this.hideLoader();
-                }),
-            });
-        },
-        showLoader () {
-            this.loader = this.$loading.show({
-                color: this.portfolio.secondary_color,
-                loader: 'dots',
-                container: this.$refs.loading_container,
-                'is-full-page': false,
-            });
-        },
-        hideLoader () {
-            this.loader.hide();
-            this.loader = null;
-        },
-    },
 };
 </script>

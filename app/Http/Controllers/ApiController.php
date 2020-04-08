@@ -15,6 +15,7 @@ use GuzzleHttp\Psr7\Response as GuzzleHttpResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Log;
+use stdClass;
 
 class ApiController extends Controller
 {
@@ -46,24 +47,22 @@ class ApiController extends Controller
         }
     }
 
-    public function decodeApiResponse(GuzzleHttpResponse $api_response): object
+    public function decodeApiResponse(GuzzleHttpResponse $api_response): stdClass
     {
         return json_decode($api_response->getBody()->getContents());
     }
 
-    private function createClientArray(object $response): array
+    private function createClientArray(stdClass $response): array
     {
         return [
             'portfolio_id' => Portfolio::getPortfolio()->id,
             'lead_id' => $response->id,
-            'lead_status_id' => $response->client_status ?? Client::CLIENT_STATUS_NEW_CLIENT,
-
+            'client_status_id' => $response->client_status ?? Client::CLIENT_STATUS_NEW_CLIENT,
         ];
     }
 
-    private function saveClient(array $client_Data, object $api_response, ApiLoginRequest $request): Client
+    private function saveClient(array $client_Data, stdClass $api_response, ApiLoginRequest $request): Client
     {
-        // TODO: Implement Spatie/Laravel Permission based on lead_status_id
         $client = Client::create($client_Data);
         $client->email_address = $api_response->email_address;
         $client->ssn = $request->ssn;
@@ -71,7 +70,7 @@ class ApiController extends Controller
         return $client;
     }
 
-    public function logout(LogoutRequest $request)
+    public function logout(LogoutRequest $request): void
     {
         Client::logout($request->hashKey);
     }
