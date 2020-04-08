@@ -14,7 +14,6 @@
                 v-model="formData.routing_number"
                 placeholder="Bank Routing Number"
                 class="client-portal-form-input"
-                v-mask="'999999999'"
                 required
             />
         </b-form-group>
@@ -25,7 +24,6 @@
                 class="client-portal-form-input"
                 minlength="9"
                 maxlength="17"
-                v-mask="'999999999'"
                 required
             />
         </b-form-group>
