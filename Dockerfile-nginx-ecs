@@ -3,6 +3,9 @@ FROM nginx:alpine
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"
 
 COPY docker/nginx/nginx.conf /etc/nginx/
+COPY docker/nginx/sites /etc/nginx/sites-available
+COPY docker/nginx/ssl /etc/nginx/ssl
+
 ADD . /var/www
 # If you're in China, or you need to change sources, will be set CHANGE_SOURCE to true in .env.
 
