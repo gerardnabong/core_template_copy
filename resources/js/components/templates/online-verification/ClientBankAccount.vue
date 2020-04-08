@@ -23,7 +23,9 @@
                 v-model="account_number"
                 placeholder="Bank Account Number"
                 class="client-portal-form-input"
-                maxlength="15"
+                minlength="9"
+                maxlength="17"
+                v-mask="'999999999'"
                 required
             />
         </b-form-group>
