@@ -29,35 +29,35 @@ class CreatePortfoliosTable extends Migration
     {
         return [
             [
-                'url' => 'inboxcredit',
+                'url' => 'inbox-credit-dev.customerportal.com',
                 'name' => 'InboxCredit',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-855-573-4504',
             ], [
-                'url' => 'betterdaysloan',
+                'url' => 'better-day-dev.customerportal.com',
                 'name' => 'BetterDayLoans',
                 'primary_color' => '#2CA6CF',
                 'secondary_color' => '#FAC401',
                 'primary_color_hover' => '#24A2CC',
                 'phone_number' => '1-866-258-0165',
             ], [
-                'url' => 'firstloan',
+                'url' => 'first-loan-dev.customerportal.com',
                 'name' => 'FirstLoan',
                 'primary_color' => '#0D64A5',
                 'secondary_color' => '#0D64A5',
                 'primary_color_hover' => '#0B5E9D',
                 'phone_number' => '1-888-340-2911',
             ], [
-                'url' => 'comet',
+                'url' => 'comet-dev.customerportal.com',
                 'name' => 'CometLoans',
                 'primary_color' => '#FD6A00',
                 'secondary_color' => '#FD6A00',
                 'primary_color_hover' => '#F36804',
                 'phone_number' => '1-888-552-6638',
             ], [
-                'url' => 'inboxloan',
+                'url' => 'inbox-loan-dev.customerportal.com',
                 'name' => 'InboxLoan',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
