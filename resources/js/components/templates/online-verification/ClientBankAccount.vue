@@ -11,7 +11,7 @@
         </div>
         <b-form-group class="mb-3">
             <b-form-input
-                v-model="routing_number"
+                v-model="formData.routing_number"
                 placeholder="Bank Routing Number"
                 class="client-portal-form-input"
                 v-mask="'999999999'"
@@ -20,7 +20,7 @@
         </b-form-group>
         <b-form-group class="mb-3">
             <b-form-input
-                v-model="account_number"
+                v-model="formData.account_number"
                 placeholder="Bank Account Number"
                 class="client-portal-form-input"
                 minlength="9"
@@ -62,8 +62,10 @@ export default {
             // TODO will change when created Database Entry for Page
             // TODO create constant id
             page_id: 7,
-            routing_number: null,
-            account_number: null,
+            formData: {
+                routing_number: null,
+                account_number: null,
+            },
         }
     },
 
