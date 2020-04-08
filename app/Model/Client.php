@@ -28,7 +28,7 @@ class Client extends Model
         return Cache::get(self::CLIENT_CACHE_KEY . $hash);
     }
 
-    public static function setHashClient(Client $client)
+    public static function setHashClient(Client $client): String
     {
         $hash = Hash::make($client->id);
         Cache::put(self::CLIENT_CACHE_KEY . $hash, $client, Carbon::now()->addHour(self::CLIENT_CACHE_TIME_HOURS));
