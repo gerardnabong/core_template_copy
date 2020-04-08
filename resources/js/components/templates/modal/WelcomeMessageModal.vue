@@ -80,7 +80,7 @@ export default {
             this.hide_ok_button = value;
         },
         showSuccess () {
-            this.is_success = false;
+            this.is_success = true;
         },
     },
 };
