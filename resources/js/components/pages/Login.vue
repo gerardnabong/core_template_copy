@@ -1,7 +1,4 @@
 <template>
-    <!--    TODO this file might be change or be deleted need verification on how passport works.
-            This is kept only for the design
-    -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -17,7 +14,7 @@
                     <h2 class="client-portal-heading-text">Login</h2>
                     <b-form-group class="pt-4">
                         <b-form-input
-                            v-model="email"
+                            v-model="formData.email_address"
                             placeholder="Email"
                             class="client-portal-form-input"
                             required
@@ -26,7 +23,7 @@
                     </b-form-group>
                     <b-form-group>
                         <b-form-input
-                            v-model="ssn"
+                            v-model="formData.ssn"
                             placeholder="SSN"
                             class="client-portal-form-input"
                             required
@@ -68,6 +65,8 @@
 
 import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 
+const LOADING_TIMEOUT_MS = 3000;
+
 export default {
     name: 'Login',
 
@@ -77,8 +76,10 @@ export default {
 
     data () {
         return {
-            email: null,
-            ssn: null,
+            formData: {
+                email_address: null,
+                ssn: null,
+            },
             is_loading: false,
         };
     },
@@ -91,33 +92,29 @@ export default {
 
     methods: {
         login (event) {
-            let loginModal = this.$refs['loginModal'];
             event.preventDefault();
-            let data = {
-                'email_address': this.email,
-                'ssn': this.ssn,
-            }
-            $.ajax({
-                type: 'POST',
+            let loginModal = this.$refs['loginModal'];
+            $.post({
                 url: '/api/login-client/',
-                data: data,
+                data: this.formData,
                 beforeSend: (() => {
                     this.is_loading = true;
                     this.showLoader();
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    loginModal.populate(response);
+                    loginModal.populate('lorem');
                     loginModal.showSuccess();
                     loginModal.hideOkButton(false);
-                    this.$bvModal.show('welcome-message-modal');
+                    this.$bvModal.show('welcome-message');
                     setTimeout(() => {
                         this.$router.go();
-                    }, 3000);
+                    }, LOADING_TIMEOUT_MS);
                 }),
                 error: ((response) => {
-                    loginModal.populate(response.responseJSON);
-                    this.$bvModal.show('welcome-message-modal');
+                    let message = response.responseJSON;
+                    loginModal.populate(message);
+                    this.$bvModal.show('welcome-message');
                 }),
                 complete: (() => {
                     this.is_loading = false;

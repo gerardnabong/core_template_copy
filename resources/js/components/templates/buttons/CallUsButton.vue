@@ -1,12 +1,25 @@
 <template>
     <a
         :href="phone_number"
-        class="client-portal-btn-primary color-white text-decoration-none font-weight-semibold border-0 mb-3"
-        :style="{ 'background-color': callUsButtonColor }"
-        @mouseover="callUsButtonColor = portfolio.primary_color_hover"
-        @mouseleave="callUsButtonColor = portfolio.primary_color"
+        class="text-decoration-none card call-us-background py-3 px-2 border-0 call-us-button color-darkgray"
     >
-        {{ portfolio.phone_number }}
+        <div class="row justify-content-center no-gutters">
+            <div class="col-4 align-self-center call-us-icon pr-3">
+                <i
+                    class="fas fa-phone fa-rotate-90 color-override"
+                    :style="{ color: portfolio.secondary_color }"
+                />
+            </div>
+            <div class="col-8">
+                <div class="row flex-column call-us-text">
+                    <div class="col p-0">Call us at</div>
+                    <div
+                        class="col p-0 font-weight-bold font-size-22 color-override"
+                        :style="{ color: portfolio.primary }"
+                    ><span class="color-dark-gray">{{ portfolio.phone_number }}</span></div>
+                </div>
+            </div>
+        </div>
     </a>
 </template>
 
@@ -25,7 +38,6 @@ export default {
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.callUsButtonColor = this.portfolio.primary_color;
     },
 };
 </script>

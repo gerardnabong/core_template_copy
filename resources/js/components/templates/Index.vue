@@ -6,7 +6,7 @@
                 <div class="col-12 text-center client-portal-container">
                     <div
                         class="logout-gear"
-                        v-if="$store.getters.getClient !== null"
+                        v-if="$store.getters.getClient"
                     >
                         <b-dropdown
                             right
@@ -60,7 +60,7 @@ export default {
         showLoader () {
             this.loader = this.$loading.show({
                 opacity: 1,
-                color: this.portfolio.secondary_color,
+                color: this.portfolio.primary_color,
                 loader: 'dots',
                 transition: 'client-router-transition',
             });

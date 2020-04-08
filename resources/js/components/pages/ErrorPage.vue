@@ -18,22 +18,14 @@
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
-                        @mouseover="clientPortalButton = portfolio.primary_color_hover"
-                        @mouseleave="clientPortalButton = portfolio.primary_color"
+                        @mouseover.native="clientPortalButton = portfolio.primary_color_hover"
+                        @mouseleave.native="clientPortalButton = portfolio.primary_color"
                     >Try Again</b-button>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center mt-5 mb-3">
-                <div class="client-portal-paragraph">
-                    If you would like to complete your bank verification over the phone.
-                    Please click the call us button below:
-                </div>
-            </div>
-        </div>
         <div class="px-3">
-            <div class="d-flex justify-content-center mb-5">
+            <div class="d-flex justify-content-center my-5">
                 <call-us-button />
             </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
-    <div class="container mt-5">
-        <div class="row mt-5 justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
             <div class="col-md-6 text-center">
                 <span
                     class="icon-icon not-found-icon"
@@ -23,6 +23,11 @@
                         Home
                     </router-link>
                 </div>
+            </div>
+        </div>
+        <div class="px-3">
+            <div class="d-flex justify-content-center my-5">
+                <call-us-button />
             </div>
         </div>
     </div>

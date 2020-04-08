@@ -1,7 +1,7 @@
 <template>
     <b-button
         @click="logout"
-        class="client-btn-none color-darkgray font-weight-semibold"
+        class="client-btn-none color-darkgray font-weight-bold"
     >Logout</b-button>
 </template>
 
@@ -22,7 +22,7 @@ export default {
         logout () {
             this.$store.commit('setClient', null);
             this.$router.push('/');
-        }
+        },
     },
 
     created () {
