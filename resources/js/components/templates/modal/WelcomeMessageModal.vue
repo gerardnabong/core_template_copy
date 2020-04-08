@@ -14,7 +14,7 @@
                 :style="{'background-color': portfolio.secondary_color}"
             />
         </div>
-        <div class="row mt-4 pt-4 mb-2">
+        <div class="row mt-2 pt-4 mb-2">
             <div
                 class="col-12 text-center font-size-22 font-weight-bold"
                 v-if="is_success"
@@ -22,10 +22,10 @@
                 Welcome
             </div>
             <div
-                class="col-12 mb-3 text-center font-size-16 client-portal-login-message-content px-4"
+                class="col-12 text-center font-size-16 client-portal-login-message-content px-4"
                 v-html="modal_content"
             />
-            <div class="col-12 mt-4 text-center">
+            <div class="col-12 mt-4 mb-3 text-center">
                 <b-button
                     size="sm"
                     @click="$bvModal.hide('welcome-message-modal')"
