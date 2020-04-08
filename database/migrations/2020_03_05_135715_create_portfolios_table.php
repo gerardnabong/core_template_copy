@@ -29,21 +29,56 @@ class CreatePortfoliosTable extends Migration
     {
         return [
             [
-                'url' => 'inboxcredit',
+                'url' => 'inbox-credit-dev',
+                'name' => 'InboxCreditDev',
+                'primary_color' => '#004F95',
+                'secondary_color' => '#004F95',
+                'primary_color_hover' => '#014A8D',
+                'phone_number' => '1-855-573-4504',
+            ], [
+                'url' => 'better-day-dev',
+                'name' => 'BetterDayLoansDev',
+                'primary_color' => '#2CA6CF',
+                'secondary_color' => '#FAC401',
+                'primary_color_hover' => '#24A2CC',
+                'phone_number' => '1-866-258-0165',
+            ], [
+                'url' => 'first-loan-dev',
+                'name' => 'FirstLoanDev',
+                'primary_color' => '#0D64A5',
+                'secondary_color' => '#0D64A5',
+                'primary_color_hover' => '#0B5E9D',
+                'phone_number' => '1-888-340-2911',
+            ], [
+                'url' => 'comet-dev',
+                'name' => 'CometLoansDev',
+                'primary_color' => '#FD6A00',
+                'secondary_color' => '#FD6A00',
+                'primary_color_hover' => '#F36804',
+                'phone_number' => '1-888-552-6638',
+            ], [
+                'url' => 'inbox-loan-dev',
+                'name' => 'InboxLoanDev',
+                'primary_color' => '#004F95',
+                'secondary_color' => '#004F95',
+                'primary_color_hover' => '#014A8D',
+                'phone_number' => '1-800-930-9066',
+            ], [
+                'url' => 'inbox-credit',
                 'name' => 'InboxCredit',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-855-573-4504',
             ], [
-                'url' => 'betterdaysloan',
+                'url' => 'better-day',
                 'name' => 'BetterDayLoans',
                 'primary_color' => '#2CA6CF',
                 'secondary_color' => '#FAC401',
                 'primary_color_hover' => '#24A2CC',
                 'phone_number' => '1-866-258-0165',
             ], [
-                'url' => 'firstloan',
+                'url' => 'first-loan',
                 'name' => 'FirstLoan',
                 'primary_color' => '#0D64A5',
                 'secondary_color' => '#0D64A5',
@@ -57,13 +92,14 @@ class CreatePortfoliosTable extends Migration
                 'primary_color_hover' => '#F36804',
                 'phone_number' => '1-888-552-6638',
             ], [
-                'url' => 'inboxloan',
+                'url' => 'inbox-loan',
                 'name' => 'InboxLoan',
                 'primary_color' => '#004F95',
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-800-930-9066',
             ],
+
         ];
     }
 
