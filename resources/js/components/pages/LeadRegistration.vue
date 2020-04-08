@@ -83,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <lwelcome-message-modal ref="loginResultModal" />
+        <welcome-message-modal ref="loginResultModal" />
     </div>
 </template>
 
