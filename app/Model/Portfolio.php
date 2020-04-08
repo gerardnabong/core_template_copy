@@ -15,12 +15,12 @@ class Portfolio extends Model
 
     public static function getPortfolio(): Portfolio
     {
-        $urlPart = explode('.', $_SERVER["HTTP_HOST"]);
+        $url_part = explode('.', $_SERVER["HTTP_HOST"]);
         return cache()->remember(
-            self::PORTFOLIO_CACHE_KEY . $urlPart[0],
+            self::PORTFOLIO_CACHE_KEY . $url_part[0],
             Carbon::now()->addMinute(self::PORTFOLIO_CACHE_TIME_MIN),
-            function () use ($urlPart) {
-                return Portfolio::where('url', $urlPart[0])->firstOrFail();
+            function () use ($url_part) {
+                return Portfolio::where('url', $url_part[0])->firstOrFail();
             }
         );
     }
