@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
@@ -73,5 +74,10 @@ class ApiController extends Controller
     public function logout(LogoutRequest $request): void
     {
         Client::logout($request->hashKey);
+    }
+
+    public function verifyBankDetails(VerifyBankDetailRequest $request): void
+    {
+        // TODO add implementation when the api is available
     }
 }

@@ -86,7 +86,7 @@ const public_links = [
 router.beforeResolve((to, from, next) => {
     if (!public_links.includes(to.fullPath) && !store.getters.getClient) {
         next('/');
-    } else if (to.fullPath === '/' && store.getters.getClient ) {
+    } else if (public_links.includes(to.fullPath) && store.getters.getClient ) {
         switch (store.getters.getClient.client_status_id) {
             case constants.CLIENT_STATUS_NEW_CLIENT_ID:
                 next('online-verification');

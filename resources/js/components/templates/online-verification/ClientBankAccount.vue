@@ -9,22 +9,46 @@
                 (Note, a new window or tab will open)
             </p>
         </div>
+        <b-alert
+            show
+            variant="danger"
+            v-if="error"
+            class="client-portal-alert"
+        >
+            <div v-html="error.message" />
+            <div
+                v-for="error_type in error.errors"
+                :key="error_type"
+            >
+                <div
+                    v-for="error_message in error_type"
+                    :key="error_message"
+                    v-html="error_message"
+                />
+            </div>
+        </b-alert>
         <b-form-group class="mb-3">
-            <b-form-input
+            <vue-mask
                 v-model="formData.routing_number"
                 placeholder="Bank Routing Number"
-                class="client-portal-form-input"
+                class="form-control client-portal-form-input"
                 required
+                maxlength="9"
+                mask="000000000"
+                :raw="false"
             />
         </b-form-group>
         <b-form-group class="mb-3">
-            <b-form-input
+            <vue-mask
                 v-model="formData.account_number"
                 placeholder="Bank Account Number"
-                class="client-portal-form-input"
+                class="form-control client-portal-form-input"
                 minlength="9"
                 maxlength="17"
                 required
+                mask="DDDDDDDDDDDDDDDDD"
+                :options='number_and_dashes'
+                :raw="false"
             />
         </b-form-group>
         <b-button
@@ -51,6 +75,7 @@
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import * as constants from '~/fixed_variables/online_verification_steps';
+import vueMask from 'vue-jquery-mask';
 
 export default {
     name: 'ClientBankAccount',
@@ -64,11 +89,18 @@ export default {
                 routing_number: null,
                 account_number: null,
             },
+            number_and_dashes: {
+                translation: {
+                    'D': { pattern: /[\d -]+/ },
+                }
+            },
+            error: null,
         }
     },
 
     components: {
         CallUsButton,
+        vueMask,
     },
 
     methods: {
@@ -76,10 +108,21 @@ export default {
             this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FOUR);
         },
         verifyInput () {
-            // TODO will add function to verify after api is created
-            if (true) {
-                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
-            }
+            this.error = null;
+            $.post({
+                data: this.formData,
+                url: '/api/verify-bank-details',
+                success: (response) => {
+                    // TODO Implement after API is Available
+                    console.log(response);
+                    // if (true) {
+                    //     this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+                    // }
+                },
+                error: (response) => {
+                    this.error = response.responseJSON;
+                }
+            });
         }
     },
 
