@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/health_check', function (){
+/*
+    Note for in the codebuild process im injecting the app version so
+    that we can make sure if we are running the up to date version
+    so creating this health_check so that you don have to worry
+    about catching your domain not found error for now - Warrence Lim
+*/
+Route::get('/health_check', function () {
     return env('APP_VERSION');
 });
 
