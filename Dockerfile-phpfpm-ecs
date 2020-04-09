@@ -12,7 +12,7 @@
 # Note: Base Image name format {image-tag}-{php-version}
 #docker-compose
 
-ARG LARADOCK_PHP_VERSION=7.2
+ARG LARADOCK_PHP_VERSION=7.4
 FROM laradock/php-fpm:2.7-${LARADOCK_PHP_VERSION}
 
 LABEL maintainer="Mahmoud Zalt <mahmoud@zalt.me>"

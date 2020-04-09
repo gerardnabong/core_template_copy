@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/health_check', function (){
+    return env('APP_VERSION');
+});
+
 Route::get('/getPortfolio', 'WebsiteController@getPortfolio');
 
 // TODO this should be deleted later because we'd better use whitelist later on - Albert
