@@ -14,6 +14,8 @@ import PageNotFound from "~/components/templates/errors/PageNotFound";
 import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
 
+const PRE_LOADER_WHITE_BACKGROUND_TIMER_MS = 300;
+
 Vue.use(Router);
 
 const ROUTES = [
@@ -30,8 +32,19 @@ const ROUTES = [
     { path: "*", component: PageNotFound },
 ];
 
-export default new Router({
+let router = new Router({
     base: "/",
     mode: "history",
     routes: ROUTES
 });
+
+router.afterEach(() => {
+    const preLoader = document.querySelector('.client-portal-pre-loader');
+    if (preLoader) {
+        setTimeout(() => {
+            preLoader.parentNode.removeChild(preLoader);
+        }, PRE_LOADER_WHITE_BACKGROUND_TIMER_MS);
+    }
+});
+
+export default router;

@@ -4,7 +4,7 @@
             <div class="col-md-6 text-center pt-4">
                 <span
                     class="icon-piggy-bank-icon client-portal-icon"
-                    :style="{color: portfolio.primary_color}"
+                    :style="{color: portfolio.secondary_color}"
                 />
             </div>
         </div>
@@ -16,8 +16,8 @@
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
-                        @mouseover="clientPortalButton = portfolio.primary_color_hover"
-                        @mouseleave="clientPortalButton = portfolio.primary_color"
+                        @mouseover.native="clientPortalButton = portfolio.primary_color_hover"
+                        @mouseleave.native="clientPortalButton = portfolio.primary_color"
                     >Request for New Loan</b-button>
                 </div>
             </div>

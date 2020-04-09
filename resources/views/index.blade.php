@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="{{mix('/css/app.css')}}">
 </head>
 
-<body>
+<body class="position-relative">
+    <div class="client-portal-pre-loader"></div>
     <div id="app"></div>
 </body>
 @include('js_vars')
