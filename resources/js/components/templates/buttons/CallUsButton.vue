@@ -7,7 +7,7 @@
             <div class="col-4 align-self-center call-us-icon pr-3">
                 <i
                     class="fas fa-phone fa-rotate-90 color-override"
-                    :style="{ color: portfolio.secondary_color }"
+                    :style="{ color: portfolio.primary_color }"
                 />
             </div>
             <div class="col-8">
@@ -15,8 +15,8 @@
                     <div class="col p-0">Call us at</div>
                     <div
                         class="col p-0 font-weight-bold font-size-22 color-override"
-                        :style="{ color: portfolio.primary }"
-                    ><span class="color-dark-gray">{{ portfolio.phone_number }}</span></div>
+                        :style="{ color: portfolio.primary_color }"
+                    >{{ portfolio.phone_number }}</div>
                 </div>
             </div>
         </div>

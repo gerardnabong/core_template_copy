@@ -4,7 +4,7 @@
             <div class="col-md-6 text-center pt-4">
                 <span
                     class="icon-sad-icon client-portal-icon"
-                    :style="{color: portfolio.secondary_color}"
+                    :style="{color: portfolio.primary_color}"
                 />
             </div>
         </div>
@@ -18,8 +18,8 @@
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
-                        @mouseover.native="clientPortalButton = portfolio.primary_color_hover"
-                        @mouseleave.native="clientPortalButton = portfolio.primary_color"
+                        @mouseover="clientPortalButton = portfolio.primary_color_hover"
+                        @mouseleave="clientPortalButton = portfolio.primary_color"
                     >Try Again</b-button>
                 </div>
             </div>

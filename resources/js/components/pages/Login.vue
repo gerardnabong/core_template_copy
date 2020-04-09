@@ -7,7 +7,7 @@
             <div class="col-md-6 text-center">
                 <span
                     class="icon-login-icon client-portal-icon"
-                    :style="{ color: portfolio.secondary_color }"
+                    :style="{ color: portfolio.primary_color }"
                 />
                 <b-form class="pt-4">
                     <h2 class="client-portal-heading-text">Login</h2>
@@ -39,10 +39,7 @@
                 </div>
                 <div class="pt-5">
                     <p class="text-center font-size-12">
-                        Copyright &copy;
-                        {{(new Date()).getFullYear()}}
-                        {{portfolio.name}}.
-                        All Rights Reserved.
+                        Copyright &copy; 2020 Inbox Credit. All Rights Reserved.
                     </p>
                 </div>
             </div>

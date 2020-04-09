@@ -4,7 +4,7 @@
             <div class="client-portal-background-image">
                 <img
                     class="w-100"
-                    :src="'/images/' + portfolio.name + '/footer_mobile.svg'"
+                    :src="'/images/' + portfolio.footer_image_mobile_url"
                 />
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="client-portal-background-image">
                 <img
                     class="w-100"
-                    :src="'/images/' + portfolio.name + '/footer_desktop.svg'"
+                    :src="'/images/' + portfolio.footer_image_url"
                 />
             </div>
         </div>
@@ -25,7 +25,7 @@
 export default {
     Name: 'Footer',
 
-    created () {
+    created() {
         this.portfolio = this.$jsVars.portfolio;
     },
 };
