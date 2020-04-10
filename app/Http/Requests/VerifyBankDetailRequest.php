@@ -16,7 +16,7 @@ class VerifyBankDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_number' => 'required|min:9|max:17|regex:/[\d -]+$/',
+            'account_number' => 'required|min:5|max:17|regex:/[\d -]+$/',
             'routing_number'   => 'required|digits:9|numeric',
         ];
     }

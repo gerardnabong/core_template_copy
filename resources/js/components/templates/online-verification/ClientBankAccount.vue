@@ -43,7 +43,7 @@
                 v-model="formData.account_number"
                 placeholder="Bank Account Number"
                 class="form-control client-portal-form-input"
-                minlength="9"
+                minlength="5"
                 maxlength="17"
                 required
                 mask="0DDDDDDDDDDDDDDDD"
