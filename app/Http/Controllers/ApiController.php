@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\RemoveClientCacheRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
@@ -66,12 +67,13 @@ class ApiController extends Controller
         $client = Client::create($client_Data);
         $client->email_address = $api_response->email_address;
         $client->ssn = $request->ssn;
+        $client->first_name = $api_response->first_name;
         $client->hash = Client::setHashClient($client);
         return $client;
     }
 
     public function logout(LogoutRequest $request): void
     {
-        Client::logout($request->hashKey);
+        Client::logout($request->hash);
     }
 }

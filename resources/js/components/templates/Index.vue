@@ -55,7 +55,6 @@ export default {
         LogoutButton,
     },
 
-
     methods: {
         showLoader () {
             this.loader = this.$loading.show({
@@ -80,7 +79,6 @@ export default {
 
     mounted () {
         this.hideLoader(500);
-
     },
 };
 </script>

@@ -11,7 +11,7 @@ class CreateClientInputsTable extends Migration
     public function up()
     {
         Schema::create('client_inputs', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('input_name');
             $table->string('input_value');
             $table->integer('client_interaction_id')->unsigned();

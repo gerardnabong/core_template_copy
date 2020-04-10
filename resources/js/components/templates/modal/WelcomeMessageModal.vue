@@ -21,9 +21,10 @@
             >
                 Welcome
             </div>
-            <div
-                class="col-12 mb-5 text-center font-size-16 client-portal-login-message-content px-4"
-                v-html="modal_content"
+            <p
+                class="mt-2 mb-5 text-center font-size-16 client-portal-login-message-content mx-auto"
+                v-if="$store.getters.getClient"
+                v-html="$store.getters.getClient.first_name"
             />
             <div class="col-12 text-center">
                 <b-button
@@ -56,7 +57,6 @@ export default {
 
     data () {
         return {
-            modal_content: null,
             hide_ok_button: true,
             is_success: false,
         }
@@ -75,7 +75,7 @@ export default {
             this.hide_ok_button = value;
         },
         showSuccess () {
-            this.is_success = false;
+            this.is_success = true;
         },
         show () {
             this.$bvModal.show('welcome-message-modal');

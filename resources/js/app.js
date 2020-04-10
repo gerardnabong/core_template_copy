@@ -48,3 +48,14 @@ new Vue({
     render: h => h(Index),
     el: "#app"
 });
+
+// TODO TO FIX THE REFRESH ERROR
+window.onbeforeunload = function () {
+    if(store.getters.getClient) {
+        $.get({
+            url: 'api/logout',
+            data: store.getters.getClient,
+        })
+        store.commit('setClient', null);
+    }
+}

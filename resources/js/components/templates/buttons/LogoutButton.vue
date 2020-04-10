@@ -11,13 +11,6 @@
 export default {
     name: 'LogoutButton',
 
-    computed: {
-        phone_number () {
-            var phone_number = this.portfolio.phone_number;
-            return 'tel: +' + phone_number.replace(/-/g, '');
-        },
-    },
-
     methods: {
         logout () {
             this.$store.commit('setClient', null);

@@ -12,7 +12,7 @@ class CreatePortfoliosTable extends Migration
     public function up()
     {
         Schema::create('portfolios', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('url')->index();
             $table->string('display_name');
             $table->string('primary_color');
