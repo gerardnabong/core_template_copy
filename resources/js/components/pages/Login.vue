@@ -33,7 +33,7 @@
                             </div>
                         </b-alert>
                         <b-form-input
-                            v-model="formData.email_address"
+                            v-model="form_data.email_address"
                             placeholder="Email"
                             class="client-portal-form-input"
                             required
@@ -42,7 +42,7 @@
                     </b-form-group>
                     <b-form-group>
                         <b-form-input
-                            v-model="formData.ssn"
+                            v-model="form_data.ssn"
                             placeholder="SSN"
                             class="client-portal-form-input"
                             required

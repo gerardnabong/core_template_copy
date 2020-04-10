@@ -7,7 +7,7 @@ const LOADING_TIMEOUT_MS = 3000;
 export default({
     data () {
         return {
-            formData: {
+            form_data: {
                 email_address: null,
                 ssn: null,
             },
@@ -32,7 +32,7 @@ export default({
             let message;
             $.post({
                 url: '/api/login-client/',
-                data: this.formData,
+                data: this.form_data,
                 beforeSend: (() => {
                     this.is_loading = true;
                     this.showLoader();
