@@ -46,7 +46,7 @@
                 minlength="9"
                 maxlength="17"
                 required
-                mask="DDDDDDDDDDDDDDDDD"
+                mask="0DDDDDDDDDDDDDDDD"
                 :options='number_and_dashes'
                 :raw="false"
             />
