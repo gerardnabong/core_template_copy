@@ -14,7 +14,7 @@ class Client extends Model
 {
     public const CLIENT_STATUS_NEW_CLIENT = 38000;
     public const CLIENT_CACHE_KEY = 'client';
-    private const CLIENT_CACHE_TIME_HOURS = 1;
+    private const CLIENT_CACHE_TIME_IN_HOUR = 1;
 
     protected $guarded = ['id'];
 
@@ -23,15 +23,15 @@ class Client extends Model
         return $this->belongsTo(Portfolio::class);
     }
 
-    public static function getHashClient(String $hash): Client
+    public static function getHashClient(string $hash): Client
     {
         return Cache::get(self::CLIENT_CACHE_KEY . $hash);
     }
 
-    public static function setHashClient(Client $client): String
+    public static function setHashClient(Client $client): string
     {
-        $hash = Hash::make($client->id);
-        Cache::put(self::CLIENT_CACHE_KEY . $hash, $client, Carbon::now()->addHour(self::CLIENT_CACHE_TIME_HOURS));
+        $hash = Hash::make($client->id . $client->email . $client->ssn);
+        Cache::put(self::CLIENT_CACHE_KEY . $hash, $client, Carbon::now()->addHour(self::CLIENT_CACHE_TIME_IN_HOUR));
         return $hash;
     }
 
