@@ -29,7 +29,7 @@ class ApiController extends Controller
             $api_response = $client->post($url, ['form_params' => $request->all()]);
             $api_decoded_response = $this->decodeApiResponse($api_response);
             $client_data = $this->createClientArray($api_decoded_response);
-            $client = $this->saveClient($client_data, $api_decoded_response, $request);
+            $client = $this->saveClient($request, $client_data, $api_decoded_response);
             return response()->json($client);
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
@@ -62,7 +62,7 @@ class ApiController extends Controller
         ];
     }
 
-    private function saveClient(array $client_Data, stdClass $api_response, ApiLoginRequest $request): Client
+    private function saveClient(ApiLoginRequest $request, array $client_Data, stdClass $api_response): Client
     {
         $client = Client::create($client_Data);
         $client->email_address = $api_response->email_address;
