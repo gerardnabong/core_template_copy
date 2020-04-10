@@ -15,7 +15,7 @@ Route::get('getPortfolio', 'WebsiteController@getPortfolio');
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('login-client', 'ApiController@loginClient');
-    Route::post('logout', 'ApiController@logout');
+    Route::get('logout', 'ApiController@logout');
 });
 
 // Health Check for checking deployed version - Warrence Lim

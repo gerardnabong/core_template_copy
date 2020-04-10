@@ -11,7 +11,6 @@ import Loading from 'vue-loading-overlay';
 import router from "./router/router";
 import store from "./storage/store";
 import Vue from "vue";
-import VueInputMask from "vue-inputmask";
 
 window.Vue = require("vue");
 
@@ -41,7 +40,6 @@ $.ajaxSetup({
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(Loading);
-Vue.use(VueInputMask.default);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
 new Vue({
