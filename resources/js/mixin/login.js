@@ -23,7 +23,6 @@ export default({
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.login_primary_color = this.portfolio.primary_color;
-
     },
 
     methods: {
