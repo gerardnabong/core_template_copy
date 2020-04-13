@@ -1,6 +1,7 @@
 'use strict';
 
 import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
+import Loading from '~/mixin/loading';
 
 const LOADING_TIMEOUT_MS = 3000;
 
@@ -11,10 +12,11 @@ export default({
                 email_address: null,
                 ssn: null,
             },
-            is_loading: false,
             error: null,
         };
     },
+
+    mixins: [Loading],
 
     components: {
         WelcomeMessageModal,
@@ -53,18 +55,6 @@ export default({
                     this.hideLoader();
                 }),
             });
-        },
-        showLoader () {
-            this.loader = this.$loading.show({
-                color: this.portfolio.secondary_color,
-                loader: 'dots',
-                container: this.$refs.loading_container,
-                'is-full-page': false,
-            });
-        },
-        hideLoader () {
-            this.loader.hide();
-            this.loader = null;
         },
     },
 });
