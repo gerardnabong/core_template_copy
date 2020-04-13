@@ -17,7 +17,7 @@
         <div class="row mt-4 mb-2">
             <div
                 class="col-12 text-center font-size-22 font-weight-bold"
-                v-if="is_success"
+                v-if="isSuccess"
             >
                 Welcome
             </div>
@@ -30,7 +30,7 @@
                 <b-button
                     size="sm"
                     @click="$bvModal.hide('welcome-message-modal')"
-                    v-if="hide_ok_button"
+                    v-if="!hideOk"
                     class="client-portal-btn-modal border-0 mb-3 pb-2"
                     :style="{ 'background-color': ok_btn_color }"
                     @mouseover="ok_btn_color = portfolio.primary_color_hover"
@@ -49,7 +49,7 @@
 import HeaderClientPortal from '~/components/templates/Header';
 
 export default {
-    Name: 'WelcomeMessageModal',
+    name: 'WelcomeMessageModal',
 
     components: {
         HeaderClientPortal,
@@ -57,8 +57,8 @@ export default {
 
     data () {
         return {
-            hide_ok_button: true,
-            is_success: false,
+            hideOk: false,
+            isSuccess: false,
         }
     },
 
@@ -68,14 +68,11 @@ export default {
     },
 
     methods: {
-        populate (content) {
-            this.modal_content = content;
-        },
-        hideOkButton (value) {
-            this.hide_ok_button = value;
+        hideOkButton () {
+            this.hideOk = true;
         },
         showSuccess () {
-            this.is_success = true;
+            this.isSuccess = true;
         },
         show () {
             this.$bvModal.show('welcome-message-modal');

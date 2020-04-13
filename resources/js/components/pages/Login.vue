@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <welcome-message-modal ref="welcomeMessageModal " />
+        <welcome-message-modal ref="welcomeMessageModal" />
     </div>
 </template>
 

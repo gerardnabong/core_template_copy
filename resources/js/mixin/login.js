@@ -38,9 +38,9 @@ export default({
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    let loginModal = this.$refs['welcomeMessageModal '];
+                    let loginModal = this.$refs['welcomeMessageModal'];
                     loginModal.showSuccess();
-                    loginModal.hideOkButton(false);
+                    loginModal.hideOkButton();
                     loginModal.show();
                     setTimeout(() => {
                         this.$router.go();
