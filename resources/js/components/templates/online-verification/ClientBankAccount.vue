@@ -75,8 +75,10 @@
 
 import * as constants from '~/fixed_variables/constants';
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
-import vueMask from 'vue-jquery-mask';
 import Loading from '~/mixin/loading';
+import vueMask from 'vue-jquery-mask';
+
+const DECISION_LOGIC_TIMEOUT_LIMIT_MS = 60000;
 
 export default {
     name: 'ClientBankAccount',
