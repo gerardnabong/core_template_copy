@@ -122,7 +122,7 @@ export default {
                     this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
                 },
                 error: (response) => {
-                    this.error = response;
+                    this.error = response.responseJSON;
                 },
                 complete: (() => {
                     this.is_loading = false;
