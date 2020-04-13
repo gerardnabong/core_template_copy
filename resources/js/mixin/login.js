@@ -40,7 +40,6 @@ export default({
                     this.$store.commit('setClient', response);
                     let loginModal = this.$refs['welcomeMessageModal'];
                     loginModal.showSuccess();
-                    loginModal.hideOkButton();
                     loginModal.show();
                     setTimeout(() => {
                         this.$router.go();

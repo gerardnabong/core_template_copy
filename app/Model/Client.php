@@ -30,7 +30,7 @@ class Client extends Model
 
     public static function setHashClient(Client $client): string
     {
-        $hash = Hash::make($client->id . $client->email . $client->ssn);
+        $hash = Hash::make($client->id . $client->email . $client->ssn . env('APP_KEY'));
         Cache::put(self::CLIENT_CACHE_KEY . $hash, $client, Carbon::now()->addHour(self::CLIENT_CACHE_TIME_IN_HOUR));
         return $hash;
     }
