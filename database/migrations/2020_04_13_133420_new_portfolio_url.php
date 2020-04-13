@@ -11,7 +11,13 @@ class NewPortfolioUrl extends Migration
 {
     public function up()
     {
+        Schema::table('clients', function (Blueprint $table) {
+            $table->dropForeign('clients_portfolio_id_foreign');
+        });
         Portfolio::truncate();
+        Schema::table('clients', function (Blueprint $table) {
+            $table->foreign('portfolio_id')->references('id')->on('portfolios');
+        });
         Portfolio::insert($this->getPortfolios());
     }
 
