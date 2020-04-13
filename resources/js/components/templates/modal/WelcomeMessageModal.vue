@@ -79,7 +79,7 @@ export default {
         },
         hide () {
             this.$bvModal.hide('welcome-message-modal');
-        }
+        },
     },
 };
 </script>
