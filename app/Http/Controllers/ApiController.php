@@ -22,7 +22,6 @@ class ApiController extends Controller
 {
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
-        // TODO: create facade for those apis for mock the response in tests
         $response = null;
         $status_code = Response::HTTP_OK;
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
