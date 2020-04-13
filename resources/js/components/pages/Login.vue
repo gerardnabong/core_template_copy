@@ -33,7 +33,7 @@
                             </div>
                         </b-alert>
                         <b-form-input
-                            v-model="form_data.email_address"
+                            v-model="formData.email_address"
                             placeholder="Email"
                             class="client-portal-form-input"
                             required
@@ -42,7 +42,7 @@
                     </b-form-group>
                     <b-form-group>
                         <b-form-input
-                            v-model="form_data.ssn"
+                            v-model="formData.ssn"
                             placeholder="SSN"
                             class="client-portal-form-input"
                             required
@@ -52,10 +52,10 @@
                     <b-button
                         type='submit'
                         class="client-portal-btn-primary w-100 border-0"
-                        :style="{ 'background-color': login_primary_color }"
-                        @mouseover="login_primary_color = portfolio.primary_color_hover"
-                        @mouseleave="login_primary_color = portfolio.primary_color"
-                        :disabled="is_loading"
+                        :style="{ 'background-color': loginPrimaryColor }"
+                        @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
+                        @mouseleave="loginPrimaryColor = portfolio.primary_color"
+                        :disabled="isLoading"
                     >
                         Login
                     </b-button>
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <welcome-message-modal ref="loginResultModal" />
+        <welcome-message-modal ref="welcomeMessageModal" />
     </div>
 </template>
 
