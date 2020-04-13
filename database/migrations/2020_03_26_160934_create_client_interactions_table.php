@@ -19,6 +19,7 @@ class CreateClientInteractionsTable extends Migration
             $table->timestamp('clicked_at');
             $table->timestamp('visited_at');
             $table->boolean('is_successful')->default(false);
+            $table->foreign('page_id')->references('id')->on('pages');
             $table->timestamps();
         });
 
@@ -27,6 +28,7 @@ class CreateClientInteractionsTable extends Migration
 
     private function addForeignKey()
     {
+        // TODO add new migration for foreign keys as this might be in the development git and might cause an error
         Schema::table('client_inputs', function (Blueprint $table) {
             $table->foreign('client_interaction_id')->references('id')->on('client_inputs');
         });
