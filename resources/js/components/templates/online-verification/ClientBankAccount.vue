@@ -108,6 +108,7 @@ export default {
             this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FOUR);
         },
         verifyInput () {
+            this.formData['hash'] = this.getHash;
             this.error = null;
             $.post({
                 data: this.formData,
@@ -120,9 +121,15 @@ export default {
                     // }
                 },
                 error: (response) => {
-                    this.error = response.responseJSON;
+                    this.error = response;
                 }
             });
+        }
+    },
+
+    computed: {
+        getHash () {
+            return this.$store.getters.getClient.hash;
         }
     },
 

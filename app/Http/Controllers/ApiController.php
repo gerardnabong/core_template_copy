@@ -82,8 +82,42 @@ class ApiController extends Controller
         Client::logout($request->hash);
     }
 
-    public function verifyBankDetails(VerifyBankDetailRequest $request): void
+    public function verifyBankDetails(VerifyBankDetailRequest $request): JsonResponse
     {
-        // TODO add implementation when the api is available
+        $response = null;
+        $hash_client = Client::getHashClient($request->hash);
+        $api_request_data = [
+            'email_address' => $hash_client->email_address,
+            'ssn'   => $hash_client->ssn,
+            'id'    => $hash_client->lead_id,
+        ];
+        $status_code = Response::HTTP_OK;
+        $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+        try {
+            $client = new GuzzleHttpClient;
+            $api_response = $client->post($url, ['form_params' => $api_request_data]);
+            $api_decoded_response = $this->decodeApiResponse($api_response);
+            $client_data = $this->createClientArray($api_decoded_response);
+            $client = $this->saveClient($request, $client_data, $api_decoded_response);
+            $response = $client;
+        } catch (RequestException $exception) {
+            switch ($exception->getCode()) {
+                case Response::HTTP_UNPROCESSABLE_ENTITY:
+                case Response::HTTP_NOT_FOUND:
+                    // $message = 'Invalid Credentials';
+                    break;
+                default:
+                    // $message = 'An Error has occured';
+                    Log::error($exception);
+                    break;
+            }
+            $response = ['message1' => $exception];
+            $status_code = $exception->getCode();
+        } catch (Exception $exception) {
+            Log::error($exception);
+            $response = [['message2' => $$exception]];
+        }
+
+        return response()->json($response, $status_code);
     }
 }
