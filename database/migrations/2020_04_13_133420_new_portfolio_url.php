@@ -11,14 +11,22 @@ class NewPortfolioUrl extends Migration
 {
     public function up()
     {
-        Schema::table('clients', function (Blueprint $table) {
-            $table->dropForeign('clients_portfolio_id_foreign');
+        Schema::drop('portfolios');
+        Schema::create('portfolios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('url')->index();
+            $table->string('display_name');
+            $table->string('primary_color');
+            $table->string('secondary_color');
+            $table->string('primary_color_hover');
+            $table->string('phone_number');
+            $table->string('asset_directory');
+            $table->timestamps();
         });
-        Portfolio::truncate();
+        Portfolio::insert($this->getPortfolios());
         Schema::table('clients', function (Blueprint $table) {
             $table->foreign('portfolio_id')->references('id')->on('portfolios');
         });
-        Portfolio::insert($this->getPortfolios());
     }
 
     private function getPortfolios(): array
