@@ -1,5 +1,5 @@
 <template>
-    <div ref="loading">
+    <div ref="loading_container">
         <div class="client-portal-paragraph">
             <p>
                 We need to verify your bank account information in order to proceed.

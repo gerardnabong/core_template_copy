@@ -11,7 +11,7 @@ export default {
             this.loader = this.$loading.show({
                 color: this.portfolio.secondary_color,
                 loader: 'dots',
-                container: this.$refs.loading,
+                container: this.$refs.loading_container,
                 'is-full-page': false,
             });
         },
