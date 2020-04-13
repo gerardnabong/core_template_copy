@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="loading">
         <div class="client-portal-paragraph">
             <p>
                 We need to verify your bank account information in order to proceed.
@@ -76,9 +76,12 @@
 import * as constants from '~/fixed_variables/constants';
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import vueMask from 'vue-jquery-mask';
+import Loading from '~/mixin/loading';
 
 export default {
     name: 'ClientBankAccount',
+
+    mixins: [Loading],
 
     data () {
         return {
@@ -104,25 +107,27 @@ export default {
     },
 
     methods: {
-        goBack () {
-            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FOUR);
-        },
         verifyInput () {
             this.formData['hash'] = this.getHash;
             this.error = null;
             $.post({
                 data: this.formData,
                 url: '/api/verify-bank-details',
+                beforeSend: (() => {
+                    this.is_loading = true;
+                    this.showLoader();
+                }),
                 success: (response) => {
-                    // TODO Implement after API is Available
-                    console.log(response);
-                    // if (true) {
-                    //     this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
-                    // }
+                    window.open(response, '_blank');
+                    this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
                 },
                 error: (response) => {
                     this.error = response;
-                }
+                },
+                complete: (() => {
+                    this.is_loading = false;
+                    this.hideLoader();
+                }),
             });
         }
     },

@@ -20,6 +20,8 @@ use stdClass;
 
 class ApiController extends Controller
 {
+    const DECISION_LOGIC_URL = 'https://www.decisionlogic.com/';
+
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
         $response = null;
@@ -96,26 +98,23 @@ class ApiController extends Controller
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post($url, ['form_params' => $api_request_data]);
-            $api_decoded_response = $this->decodeApiResponse($api_response);
-            $client_data = $this->createClientArray($api_decoded_response);
-            $client = $this->saveClient($request, $client_data, $api_decoded_response);
-            $response = $client;
+            $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
                 case Response::HTTP_NOT_FOUND:
-                    // $message = 'Invalid Credentials';
+                    $message = 'Invalid Credentials';
                     break;
                 default:
-                    // $message = 'An Error has occured';
+                    $message = 'An Error has occured';
                     Log::error($exception);
                     break;
             }
-            $response = ['message1' => $exception];
+            $response = ['message' => $message];
             $status_code = $exception->getCode();
         } catch (Exception $exception) {
             Log::error($exception);
-            $response = [['message2' => $$exception]];
+            $response = [['message' => 'An Error has occured']];
         }
 
         return response()->json($response, $status_code);
