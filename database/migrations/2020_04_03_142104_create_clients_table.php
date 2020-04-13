@@ -11,12 +11,13 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->integer('portfolio_id')->unsigned();
             $table->integer('lead_id')->unsigned();
             $table->integer('client_status_id')->unsigned()->nullable();
             $table->timestamp('login_at')->useCurrent();
             $table->timestamps();
+            $table->foreign('portfolio_id')->references('id')->on('portfolios');
         });
     }
 

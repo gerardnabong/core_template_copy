@@ -7,11 +7,11 @@ const LOADING_TIMEOUT_MS = 3000;
 export default({
     data () {
         return {
-            form_data: {
+            formData: {
                 email_address: null,
                 ssn: null,
             },
-            is_loading: false,
+            isLoading: false,
             error: null,
         };
     },
@@ -22,7 +22,7 @@ export default({
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
-        this.login_primary_color = this.portfolio.primary_color;
+        this.loginPrimaryColor = this.portfolio.primary_color;
     },
 
     methods: {
@@ -31,19 +31,16 @@ export default({
             let message;
             $.post({
                 url: '/api/login-client/',
-                data: this.form_data,
+                data: this.formData,
                 beforeSend: (() => {
-                    this.is_loading = true;
+                    this.isLoading = true;
                     this.showLoader();
                 }),
                 success: ((response) => {
                     this.$store.commit('setClient', response);
-                    let loginModal = this.$refs['loginResultModal'];
-                    // TODO Add Proper Welcome Message
-                    message = 'lorem';
-                    loginModal.populate(message);
+                    let loginModal = this.$refs['welcomeMessageModal'];
                     loginModal.showSuccess();
-                    loginModal.hideOkButton(false);
+                    loginModal.hideOkButton();
                     loginModal.show();
                     setTimeout(() => {
                         this.$router.go();
@@ -53,7 +50,7 @@ export default({
                     this.error = response.responseJSON;
                 }),
                 complete: (() => {
-                    this.is_loading = false;
+                    this.isLoading = false;
                     this.hideLoader();
                 }),
             });

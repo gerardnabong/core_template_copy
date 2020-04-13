@@ -13,7 +13,7 @@ use Cache;
 class Client extends Model
 {
     public const CLIENT_STATUS_NEW_CLIENT = 38000;
-    public const CLIENT_CACHE_KEY = 'client';
+    public const CLIENT_CACHE_KEY = 'client_detail';
     private const CLIENT_CACHE_TIME_IN_HOUR = 1;
 
     protected $guarded = ['id'];
@@ -23,7 +23,7 @@ class Client extends Model
         return $this->belongsTo(Portfolio::class);
     }
 
-    public static function getHashClient(string $hash): Client
+    public static function getHashClient(string $hash): ?Client
     {
         return Cache::get(self::CLIENT_CACHE_KEY . $hash);
     }

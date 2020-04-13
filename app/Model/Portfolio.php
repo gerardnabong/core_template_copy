@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Portfolio extends Model
 {
-    const PORTFOLIO_CACHE_KEY = 'portfolio';
+    const PORTFOLIO_CACHE_KEY = 'portfolio_details';
     const PORTFOLIO_CACHE_TIME_MIN = 20;
 
     public static function getPortfolio(): Portfolio

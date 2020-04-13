@@ -3,7 +3,7 @@
 import Router from "vue-router";
 import Vue from "vue";
 import store from "~/storage/store";
-import * as constants from '~/fixed_variables/client_status_id';
+import * as constants from '~/fixed_variables/constants';
 
 import ErrorPage from "~/components/pages/ErrorPage";
 import LoanAction from "~/components/pages/LoanAction";

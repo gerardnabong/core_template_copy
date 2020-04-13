@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
+use App\Http\Requests\RemoveClientCacheRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
@@ -23,6 +24,8 @@ class ApiController extends Controller
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
         // TODO: create facade for those apis for mock the response in tests
+        $response = null;
+        $status_code = Response::HTTP_OK;
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
         try {
             $client = new GuzzleHttpClient;
@@ -30,7 +33,7 @@ class ApiController extends Controller
             $api_decoded_response = $this->decodeApiResponse($api_response);
             $client_data = $this->createClientArray($api_decoded_response);
             $client = $this->saveClient($request, $client_data, $api_decoded_response);
-            return response()->json($client);
+            $response = $client;
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
@@ -42,11 +45,14 @@ class ApiController extends Controller
                     Log::error($exception);
                     break;
             }
-            return response()->json(['message' => $message], $exception->getCode());
+            $response = ['message' => $message];
+            $status_code = $exception->getCode();
         } catch (Exception $exception) {
             Log::error($exception);
-            return response()->json(['message' => 'An Error has occured']);
+            $response = [['message' => 'An Error has occured']];
         }
+
+        return response()->json($response, $status_code);
     }
 
     public function decodeApiResponse(GuzzleHttpResponse $api_response): stdClass
@@ -68,13 +74,14 @@ class ApiController extends Controller
         $client = Client::create($client_Data);
         $client->email_address = $api_response->email_address;
         $client->ssn = $request->ssn;
+        $client->first_name = $api_response->first_name;
         $client->hash = Client::setHashClient($client);
         return $client;
     }
 
     public function logout(LogoutRequest $request): void
     {
-        Client::logout($request->hashKey);
+        Client::logout($request->hash);
     }
 
     public function verifyBankDetails(VerifyBankDetailRequest $request): void
