@@ -4,6 +4,29 @@
             <header-client-portal />
             <div class="row no-gutters">
                 <div class="col-12 text-center client-portal-container">
+                    <div
+                        class="logout-gear"
+                        v-if="$store.getters.getClient"
+                    >
+                        <b-dropdown
+                            right
+                            no-caret
+                            variant='link'
+                            class="client-portal-dropdown-none"
+                        >
+                            <template v-slot:button-content>
+                                <div
+                                    class="client-portal-gear-icon"
+                                    :style="{'background-color' : portfolio.secondary_color}"
+                                >
+                                    <i class="fas fa-cog fa-2x color-white" />
+                                </div>
+                            </template>
+                            <b-dropdown-item>
+                                <logout-button />
+                            </b-dropdown-item>
+                        </b-dropdown>
+                    </div>
                     <transition
                         v-on:before-enter="showLoader"
                         v-on:after-leave="hideLoader"
@@ -21,12 +44,15 @@
 
 import HeaderClientPortal from '~/components/templates/Header';
 import FooterClientPortal from '~/components/templates/Footer';
+import LogoutButton from '~/components/templates/buttons/LogoutButton';
 
 export default {
     name: 'Index',
+
     components: {
         HeaderClientPortal,
         FooterClientPortal,
+        LogoutButton,
     },
 
     methods: {
@@ -53,7 +79,6 @@ export default {
 
     mounted () {
         this.hideLoader(500);
-
     },
 };
 </script>
