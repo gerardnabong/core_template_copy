@@ -30,7 +30,7 @@
                 <b-button
                     size="sm"
                     @click="$bvModal.hide('welcome-message-modal')"
-                    v-if="!hideOk"
+                    v-if="showOk"
                     class="client-portal-btn-modal border-0 mb-3 pb-2"
                     :style="{ 'background-color': ok_btn_color }"
                     @mouseover="ok_btn_color = portfolio.primary_color_hover"
@@ -57,7 +57,7 @@ export default {
 
     data () {
         return {
-            hideOk: false,
+            showOk: false,
             isSuccess: false,
         }
     },
@@ -68,8 +68,8 @@ export default {
     },
 
     methods: {
-        hideOkButton () {
-            this.hideOk = true;
+        showOkButton () {
+            this.showOk = true;
         },
         showSuccess () {
             this.isSuccess = true;
@@ -79,7 +79,7 @@ export default {
         },
         hide () {
             this.$bvModal.hide('welcome-message-modal');
-        }
+        },
     },
 };
 </script>

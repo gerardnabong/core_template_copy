@@ -15,6 +15,7 @@ class Portfolio extends Model
 
     public static function getPortfolio(): Portfolio
     {
+        // TODO find a way this might be exploited -- joel
         $url_part = explode('.', $_SERVER["HTTP_HOST"]);
         return cache()->remember(
             self::PORTFOLIO_CACHE_KEY . $url_part[0],
