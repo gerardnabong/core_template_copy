@@ -7,11 +7,11 @@ const LOADING_TIMEOUT_MS = 3000;
 export default({
     data () {
         return {
-            formData: {
+            form_data: {
                 email_address: null,
                 ssn: null,
             },
-            isLoading: false,
+            is_loading: false,
             error: null,
         };
     },
@@ -31,9 +31,9 @@ export default({
             let message;
             $.post({
                 url: '/api/login-client/',
-                data: this.formData,
+                data: this.form_data,
                 beforeSend: (() => {
-                    this.isLoading = true;
+                    this.is_loading = true;
                     this.showLoader();
                 }),
                 success: ((response) => {
@@ -49,7 +49,7 @@ export default({
                     this.error = response.responseJSON;
                 }),
                 complete: (() => {
-                    this.isLoading = false;
+                    this.is_loading = false;
                     this.hideLoader();
                 }),
             });
