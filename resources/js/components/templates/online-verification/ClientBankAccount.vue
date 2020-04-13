@@ -29,7 +29,7 @@
         </b-alert>
         <b-form-group class="mb-3">
             <vue-mask
-                v-model="formData.routing_number"
+                v-model="form_data.routing_number"
                 placeholder="Bank Routing Number"
                 class="form-control client-portal-form-input"
                 required
@@ -40,7 +40,7 @@
         </b-form-group>
         <b-form-group class="mb-3">
             <vue-mask
-                v-model="formData.account_number"
+                v-model="form_data.account_number"
                 placeholder="Bank Account Number"
                 class="form-control client-portal-form-input"
                 minlength="5"
@@ -88,7 +88,7 @@ export default {
             // TODO will change when created Database Entry for Page
             // TODO create constant id
             page_id: 7,
-            formData: {
+            form_data: {
                 routing_number: null,
                 account_number: null,
             },
@@ -108,10 +108,10 @@ export default {
 
     methods: {
         verifyInput () {
-            this.formData['hash'] = this.getHash;
+            this.form_data['hash'] = this.getHash;
             this.error = null;
             $.post({
-                data: this.formData,
+                data: this.form_data,
                 url: '/api/verify-bank-details',
                 beforeSend: (() => {
                     this.is_loading = true;
