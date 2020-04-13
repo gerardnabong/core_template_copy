@@ -73,8 +73,9 @@
 <script>
 'use strict';
 
-import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import * as constants from '~/fixed_variables/constants';
+import CallUsButton from '~/components/templates/buttons/CallUsButton';
+import vueMask from 'vue-jquery-mask';
 
 export default {
     name: 'ClientBankAccount',
