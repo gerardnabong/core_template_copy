@@ -4,13 +4,6 @@
             You have completed the online verification.
             A customer representative will contact you soon.
         </div>
-        <b-button
-            class="client-portal-btn-primary border-0"
-            :style="{ 'background-color': portfolio.primary_color }"
-            @click="logout"
-        >
-            Logout
-        </b-button>
         <div class="px-3">
             <div class="d-flex justify-content-center my-5">
                 <call-us-button />

@@ -4,7 +4,7 @@
             <div class="client-portal-background-image">
                 <img
                     class="w-100"
-                    :src="'/images/' + portfolio.name + '/footer_mobile.svg'"
+                    :src="'/images/' + portfolio.asset_directory + '/footer_mobile.svg'"
                 />
             </div>
         </div>
@@ -12,7 +12,7 @@
             <div class="client-portal-background-image">
                 <img
                     class="w-100"
-                    :src="'/images/' + portfolio.name + '/footer_desktop.svg'"
+                    :src="'/images/' + portfolio.asset_directory + '/footer_desktop.svg'"
                 />
             </div>
         </div>

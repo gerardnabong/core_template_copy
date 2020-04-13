@@ -11,7 +11,6 @@ import Loading from 'vue-loading-overlay';
 import router from "./router/router";
 import store from "./storage/store";
 import Vue from "vue";
-import VueInputMask from "vue-inputmask";
 
 window.Vue = require("vue");
 
@@ -31,11 +30,16 @@ window.Vue = require("vue");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
+    }
+});
+
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(Loading);
-Vue.use(VueInputMask.default);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
 new Vue({
@@ -44,3 +48,14 @@ new Vue({
     render: h => h(Index),
     el: "#app"
 });
+
+// TODO TO FIX THE REFRESH ERROR
+// window.onbeforeunload = function () {
+//     if(store.getters.getClient) {
+//         $.get({
+//             url: 'api/logout',
+//             data: store.getters.getClient,
+//         })
+//         store.commit('setClient', null);
+//     }
+// }

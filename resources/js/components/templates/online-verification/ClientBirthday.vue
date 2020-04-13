@@ -55,7 +55,7 @@
 'use strict';
 
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
-import * as constants from '~/fixed_variables/online_verification_steps';
+import * as constants from '~/fixed_variables/constants';
 
 const DATE_FORMAT = {
     year: 'numeric',
