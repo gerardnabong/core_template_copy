@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
-use App\Http\Requests\RemoveClientCacheRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
 use Exception;
