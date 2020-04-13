@@ -11,7 +11,17 @@
 |
 */
 
-Route::get('/getPortfolio', 'WebsiteController@getPortfolio');
+Route::get('getPortfolio', 'WebsiteController@getPortfolio');
+
+Route::group(['prefix' => 'api'], function () {
+    Route::post('login-client', 'ApiController@loginClient');
+    Route::get('logout', 'ApiController@logout');
+});
+
+// Health Check for checking deployed version - Warrence Lim
+Route::get('/health_check', function () {
+    return env('APP_VERSION');
+});
 
 // TODO this should be deleted later because we'd better use whitelist later on - Albert
 Route::get('/', 'WebsiteController@index');

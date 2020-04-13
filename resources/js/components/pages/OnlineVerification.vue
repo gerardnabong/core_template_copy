@@ -68,7 +68,7 @@ import ClientBirthday from '~/components/templates/online-verification/ClientBir
 import ClientMilitaryStatus from '~/components/templates/online-verification/ClientMilitaryStatus';
 import ClientName from '~/components/templates/online-verification/ClientName';
 import VerificationComplete from '~/components/templates/online-verification/VerificationComplete';
-import * as constants from '~/fixed_variables/online_verification_steps';
+import * as constants from '~/fixed_variables/constants';
 
 export default {
     name: 'OnlineVerification',

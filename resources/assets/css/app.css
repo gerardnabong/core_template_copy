@@ -110,6 +110,9 @@ html {
 .font-size-28 {
     font-size: 28px;
 }
+.font-size-32 {
+    font-size: 32px;
+}
 .font-size-40 {
     font-size: 40px;
 }
@@ -346,6 +349,104 @@ html {
 .client-router-transition-enter, .client-router-transition-leave-to {
   opacity: 0;
 }
+.logout-gear {
+    position: fixed;
+    top: 50%;
+    right: -1px;
+    transform:translate(0,-50%);
+    z-index: 9999;
+}
+.client-btn-none {
+    width: 100%;
+    background-color: white;
+    border:none;
+}
+.client-portal-dropdown-none .dropdown-item {
+    padding: 0;
+}
+.client-portal-dropdown-none button {
+    transition: none;
+    padding: 0;
+}
+.client-portal-modal {
+    height: 32px;
+    border-radius: 8px 8px 0 0;
+}
+
+.client-btn-none:hover,
+.client-btn-none:active,
+.client-btn-none:focus,
+.client-btn-none:not(:disabled):not(.disabled).active,
+.client-btn-none:not(:disabled):not(.disabled):active,
+.show>.client-btn-none.dropdown-toggle,
+.client-portal-dropdown-none button:hover,
+.client-portal-dropdown-none button:active,
+.client-portal-dropdown-none button:focus,
+.client-portal-dropdown-none .dropdown-item:hover,
+.client-portal-dropdown-none .dropdown-item:active,
+.client-portal-dropdown-none .dropdown-item:focus {
+    background-color: white;
+    box-shadow: none !important;
+    color: #2c2c2e;
+    text-decoration: none;
+}
+.client-portal-dropdown-none ul {
+    top: 10px !important;
+    left: -10px !important;
+    padding: 20px !important;
+    min-width: 0;
+    box-shadow: 0px 0px 25px #cecece5c;
+    border: none;
+}
+.client-portal-gear-icon {
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 7px 0px 0px 7px;
+    width: 63px;
+    padding: 5px 0;
+}
+.client-portal-login-modal .modal-content {
+    border-radius: 8px;
+    border: none;
+}
+.client-portal-login-modal .modal-body {
+    padding: 0;
+}
+.client-modal-background-image {
+    z-index: -1;
+    width: 100%;
+    margin-top: -1px;
+}
+.client-modal-background-image img {
+    border-radius: 8px;
+}
+.client-modal-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.client-portal-btn-modal:hover,
+.client-portal-btn-modal:focus,
+.client-portal-btn-modal:active {
+    box-shadow: none;
+    color: white;
+}
+.client-portal-btn-modal {
+    border-radius: 8px;
+    min-width: 150px;
+    max-width: 100%;
+    min-height: 45px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.client-portal-login-message-content {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+.client-portal-alert {
+    border-radius: 8px;
+}
+
 @media (min-width: 499px) {
     .client-portal-btn-submit {
         width: 50%;
