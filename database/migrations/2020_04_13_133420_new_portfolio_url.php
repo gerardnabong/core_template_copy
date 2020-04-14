@@ -33,7 +33,7 @@ class NewPortfolioUrl extends Migration
     {
         return [
             [
-                'url' => 'inbox-credit-dev',
+                'url' => 'dev.portal.inboxcredit.com',
                 'display_name' => 'Inbox Credit',
                 'asset_directory' => 'InboxCreditDev',
                 'primary_color' => '#004F95',
@@ -41,7 +41,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-855-573-4504',
             ], [
-                'url' => 'better-day-dev',
+                'url' => 'dev.portal.betterdayloan.com',
                 'display_name' => 'Better Day Loan',
                 'asset_directory' => 'BetterDayLoansDev',
                 'primary_color' => '#2CA6CF',
@@ -49,7 +49,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#24A2CC',
                 'phone_number' => '1-866-258-0165',
             ], [
-                'url' => 'first-loan-dev',
+                'url' => 'dev.portal.firstloan.com',
                 'display_name' => 'First Loan',
                 'asset_directory' => 'FirstLoanDev',
                 'primary_color' => '#0D64A5',
@@ -57,7 +57,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#0B5E9D',
                 'phone_number' => '1-888-340-2911',
             ], [
-                'url' => 'comet-dev',
+                'url' => 'dev.portal.cometloan.com',
                 'display_name' => 'Comet Loans',
                 'asset_directory' => 'CometLoansDev',
                 'primary_color' => '#FD6A00',
@@ -65,7 +65,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#F36804',
                 'phone_number' => '1-888-552-6638',
             ], [
-                'url' => 'inbox-loan-dev',
+                'url' => 'dev.portal.inboxloan.com',
                 'display_name' => 'Inbox Loan',
                 'asset_directory' => 'InboxLoanDev',
                 'primary_color' => '#004F95',
@@ -73,7 +73,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-800-930-9066',
             ], [
-                'url' => 'inbox-credit',
+                'url' => 'portal.inboxcredit.com',
                 'display_name' => 'Inbox Credit',
                 'asset_directory' => 'InboxCredit',
                 'primary_color' => '#004F95',
@@ -81,7 +81,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-855-573-4504',
             ], [
-                'url' => 'better-day',
+                'url' => 'portal.betterdayloan.com',
                 'display_name' => 'Better Day Loan',
                 'asset_directory' => 'BetterDayLoans',
                 'primary_color' => '#2CA6CF',
@@ -89,7 +89,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#24A2CC',
                 'phone_number' => '1-866-258-0165',
             ], [
-                'url' => 'first-loan',
+                'url' => 'portal.firstloan.com',
                 'display_name' => 'First Loan',
                 'asset_directory' => 'FirstLoan',
                 'primary_color' => '#0D64A5',
@@ -97,7 +97,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#0B5E9D',
                 'phone_number' => '1-888-340-2911',
             ], [
-                'url' => 'comet',
+                'url' => 'portal.cometloans.com',
                 'display_name' => 'Comet Loans',
                 'asset_directory' => 'CometLoans',
                 'primary_color' => '#FD6A00',
@@ -105,7 +105,7 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#F36804',
                 'phone_number' => '1-888-552-6638',
             ], [
-                'url' => 'inbox-loan',
+                'url' => 'portal.inboxloan.com',
                 'display_name' => 'Inbox Loan',
                 'asset_directory' => 'InboxLoan',
                 'primary_color' => '#004F95',
