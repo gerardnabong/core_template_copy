@@ -21,7 +21,6 @@ use stdClass;
 class ApiController extends Controller
 {
     const DECISION_LOGIC_URL = 'https://www.decisionlogic.com/';
-    const WAF_KEY = 'fP8MMiJ7iWne799zR3w8IaQfHiFXwwvsOhfPyOJQ0U';
 
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
@@ -33,7 +32,7 @@ class ApiController extends Controller
             $api_response = $client->post(
                 $url,
                 [
-                    'query' => ['waf' => self::WAF_KEY],
+                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
                     'form_params' => $request->all(),
                 ]
             );
@@ -92,43 +91,48 @@ class ApiController extends Controller
 
     public function verifyBankDetails(VerifyBankDetailRequest $request): JsonResponse
     {
+        // TODO Create a global function for checking and returning expired cache
         $response = null;
         $status_code = Response::HTTP_OK;
-        $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
-        try {
-            $hash_client = Client::getHashClient($request->token);
+        $hash_client = Client::getHashClient($request->token);
+        if (!$hash_client) {
             $api_request_data = [
                 'email_address' => $hash_client->email_address,
                 'ssn' => $hash_client->ssn,
                 'id' => $hash_client->lead_id,
             ];
-            $client = new GuzzleHttpClient;
-            $api_response = $client->post(
-                $url,
-                [
-                    'query' => ['waf' => self::WAF_KEY],
-                    'form_params' => $api_request_data,
-                ]
-            );
-            $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
-        } catch (RequestException $exception) {
-            switch ($exception->getCode()) {
-                case Response::HTTP_UNPROCESSABLE_ENTITY:
-                case Response::HTTP_NOT_FOUND:
-                    $message = 'Invalid Credentials';
-                    break;
-                default:
-                    $message = 'An Error has occured';
-                    Log::error($exception);
-                    break;
+            $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+            try {
+                $client = new GuzzleHttpClient;
+                $api_response = $client->post(
+                    $url,
+                    [
+                        'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                        'form_params' => $api_request_data,
+                    ]
+                );
+                $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
+            } catch (RequestException $exception) {
+                switch ($exception->getCode()) {
+                    case Response::HTTP_UNPROCESSABLE_ENTITY:
+                    case Response::HTTP_NOT_FOUND:
+                        $message = 'Invalid Credentials';
+                        break;
+                    default:
+                        $message = 'An Error has occured';
+                        Log::error($exception);
+                        break;
+                }
+                $response = ['message' => $message];
+                $status_code = $exception->getCode();
+            } catch (Exception $exception) {
+                Log::error($exception);
+                $response = [['message' => 'An Error has occured']];
             }
-            $response = ['message' => $message];
-            $status_code = $exception->getCode();
-        } catch (Exception $exception) {
-            Log::error($exception);
-            $response = [['message' => 'An Error has occured']];
+        } else {
+            $response = ['message' => 'Expired Session'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
         }
-
         return response()->json($response, $status_code);
     }
 }

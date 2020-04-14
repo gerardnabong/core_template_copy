@@ -125,6 +125,13 @@ export default {
                 },
                 error: (response) => {
                     this.error = response.responseJSON;
+                    // TODO set code to global constants
+                    if (response.status === 401) {
+                        setTimeout(() => {
+                            this.$store.commit('setClient', null);
+                            this.$router.push('/');
+                        }, 3000);
+                    }
                 },
                 complete: () => {
                     this.hideLoader();
