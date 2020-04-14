@@ -115,7 +115,6 @@ class ApiController extends Controller
             } catch (RequestException $exception) {
                 switch ($exception->getCode()) {
                     case Response::HTTP_UNPROCESSABLE_ENTITY:
-                    case Response::HTTP_NOT_FOUND:
                         $message = 'Invalid Credentials';
                         break;
                     default:

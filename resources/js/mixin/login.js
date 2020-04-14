@@ -33,10 +33,10 @@ export default({
             $.post({
                 url: '/api/login-client/',
                 data: this.form_data,
-                beforeSend: (() => {
+                beforeSend: () => {
                     this.showLoader();
-                }),
-                success: ((response) => {
+                },
+                success: (response) => {
                     this.$store.commit('setClient', response);
                     let loginModal = this.$refs['welcomeMessageModal'];
                     loginModal.showSuccess();
@@ -44,13 +44,13 @@ export default({
                     setTimeout(() => {
                         this.$router.go();
                     }, LOADING_TIMEOUT_MS);
-                }),
-                error: ((response) => {
+                },
+                error: (response) => {
                     this.error = response.responseJSON;
-                }),
-                complete: (() => {
+                },
+                complete: () => {
                     this.hideLoader();
-                }),
+                },
             });
         },
     },
