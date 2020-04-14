@@ -116,6 +116,9 @@ html {
 .font-size-40 {
     font-size: 40px;
 }
+.font-weight-semibold {
+    font-weight: 600;
+}
 .client-portal-icon {
     font-size: 90px;
 }
@@ -149,6 +152,7 @@ html {
     max-width: 100%;
     min-height: 45px;
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 .client-portal-btn-secondary {
     color: #2c2c2e;
@@ -351,10 +355,10 @@ html {
 }
 .logout-gear {
     position: fixed;
-    top: 50%;
+    top: 35%;
     right: -1px;
     transform:translate(0,-50%);
-    z-index: 9999;
+    z-index: 100;
 }
 .client-btn-none {
     width: 100%;
@@ -385,10 +389,16 @@ html {
 .client-portal-dropdown-none .dropdown-item:hover,
 .client-portal-dropdown-none .dropdown-item:active,
 .client-portal-dropdown-none .dropdown-item:focus {
-    background-color: white;
     box-shadow: none !important;
     color: #2c2c2e;
     text-decoration: none;
+}
+.client-btn-none:not(:disabled):not(.disabled):active,
+.client-portal-dropdown-none button:active,
+.client-portal-dropdown-none a button:hover,
+.client-portal-dropdown-none a button:active,
+.client-portal-dropdown-none a button:focus {
+    background-color: white;
 }
 .client-portal-dropdown-none ul {
     top: 10px !important;
@@ -396,6 +406,7 @@ html {
     padding: 20px !important;
     min-width: 0;
     box-shadow: 0px 0px 25px #cecece5c;
+    transform: translate3d(-35px, 38px, 0px) !important;
     border: none;
 }
 .client-portal-gear-icon {

@@ -15,6 +15,7 @@ import OnProcess from "~/components/pages/OnProcess";
 import PageNotFound from "~/components/templates/errors/PageNotFound";
 import PaymentSchedule from "~/components/pages/PaymentSchedule";
 import SuccessPage from "~/components/pages/SuccessPage";
+import LeadRegistration from "~/components/pages/LeadRegistration";
 
 const PRE_LOADER_WHITE_BACKGROUND_TIMER_MS = 300;
 
@@ -24,6 +25,10 @@ const ROUTES = [
     {
         path: "/",
         component: Login,
+    },
+    {
+        path: "/register",
+        component: LeadRegistration,
     },
     {
         path: "/error",
@@ -73,10 +78,15 @@ let router = new Router({
     routes: ROUTES
 });
 
+const public_links = [
+    '/',
+    '/register',
+]
+
 router.beforeResolve((to, from, next) => {
-    if (to.fullPath !== '/' && !store.getters.getClient) {
+    if (!public_links.includes(to.fullPath) && !store.getters.getClient) {
         next('/');
-    } else if (to.fullPath === '/' && store.getters.getClient ) {
+    } else if (public_links.includes(to.fullPath) && store.getters.getClient ) {
         switch (store.getters.getClient.client_status_id) {
             case constants.CLIENT_STATUS_NEW_CLIENT_ID:
                 next('online-verification');
