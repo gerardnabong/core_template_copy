@@ -95,7 +95,7 @@ class ApiController extends Controller
         $response = null;
         $status_code = Response::HTTP_OK;
         $hash_client = Client::getHashClient($request->token);
-        if (!$hash_client) {
+        if ($hash_client) {
             $api_request_data = [
                 'email_address' => $hash_client->email_address,
                 'ssn' => $hash_client->ssn,
