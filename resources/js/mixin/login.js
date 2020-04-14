@@ -34,7 +34,6 @@ export default({
                 url: '/api/login-client/',
                 data: this.form_data,
                 beforeSend: (() => {
-                    this.is_loading = true;
                     this.showLoader();
                 }),
                 success: ((response) => {
@@ -50,7 +49,6 @@ export default({
                     this.error = response.responseJSON;
                 }),
                 complete: (() => {
-                    this.is_loading = false;
                     this.hideLoader();
                 }),
             });
