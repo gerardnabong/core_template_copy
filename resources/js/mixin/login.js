@@ -1,7 +1,7 @@
 'use strict';
 
-import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 import Loading from '~/mixin/loading';
+import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 
 const LOADING_TIMEOUT_MS = 3000;
 
@@ -30,7 +30,6 @@ export default({
     methods: {
         login (event) {
             event.preventDefault();
-            let message;
             $.post({
                 url: '/api/login-client/',
                 data: this.form_data,

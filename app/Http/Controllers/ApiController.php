@@ -95,10 +95,12 @@ class ApiController extends Controller
         ];
         $status_code = Response::HTTP_OK;
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post($url, ['form_params' => $api_request_data]);
             $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
+            $this->setLeadChange($hash_client, $response);
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
@@ -118,5 +120,25 @@ class ApiController extends Controller
         }
 
         return response()->json($response, $status_code);
+    }
+
+    public function setLeadChange(Client $client, string $response): void
+    {
+        $url = env('MIX_PORTFOLIO_API_URL') . 'api/update-client';
+        $form_data = [
+            'email_address' => $client->email_address,
+            'ssn'   => $client->ssn,
+            'id'    => $client->lead_id,
+            'field' => 'decision_logic',
+            'description' => $response,
+        ];
+        try {
+            $client = new GuzzleHttpClient;
+            $client->post($url, ['form_params' => $form_data]);
+        } catch (RequestException $exception) {
+            Log::error($exception);
+        } catch (Exception $exception) {
+            Log::error($exception);
+        }
     }
 }
