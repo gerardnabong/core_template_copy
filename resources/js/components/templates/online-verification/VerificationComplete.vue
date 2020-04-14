@@ -1,11 +1,18 @@
 <template>
     <div>
-        <div class="mb-4">
-            You have completed the online verification.
-            A customer representative will contact you soon.
+        <div class="mb-2">
+            We are reviewing your application now!
+            One of our team members will be calling you shortly.
         </div>
-        <div class="px-3">
-            <div class="d-flex justify-content-center my-5">
+        <div class="mt-5">
+            <p class="client-portal-paragraph">
+                If you would like to speak with us now,
+                please click the call button below.
+                Thank you!
+            </p>
+        </div>
+        <div>
+            <div class="d-flex justify-content-center mb-5">
                 <call-us-button />
             </div>
         </div>

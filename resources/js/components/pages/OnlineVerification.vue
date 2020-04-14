@@ -5,7 +5,7 @@
                 <span
                     class="icon-Success-steps-icon client-portal-icon"
                     :style="{color: portfolio.secondary_color}"
-                    v-if="progressBar === 100"
+                    v-if="progress_bar === 100"
                 />
                 <span
                     class="icon-paper-document-icon client-portal-icon"
@@ -16,24 +16,15 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <b-progress class="online-verification-progressbar-container mb-4">
-                    <b-progress-bar
-                        :style="{'background-color': portfolio.secondary_color}"
-                        :value="$store.getters.getProgressBar"
-                        show-progress
-                        class="online-verification-progressbar"
-                        :label="progressBarLabel"
-                    />
-                </b-progress>
                 <h2
                     class="client-portal-heading-text mb-4"
-                    v-if="progressBar === 90"
+                    v-if="progress_bar === 90"
                 >
                     Verify your Bank Account
                 </h2>
                 <h2
                     class="client-portal-heading-text mb-4"
-                    v-else-if="progressBar === 100"
+                    v-else-if="progress_bar === 100"
                 >
                     Success!
                 </h2>
@@ -47,12 +38,8 @@
                     name="online-verification-transition"
                     mode="out-in"
                 >
-                    <client-name v-if="progressBar === 20" />
-                    <client-address v-else-if="progressBar === 40" />
-                    <client-birthday v-else-if="progressBar === 60" />
-                    <client-military-status v-else-if="progressBar === 80" />
-                    <client-bank-account v-else-if="progressBar === 90" />
-                    <verification-complete v-else-if="progressBar === 100" />
+                    <client-bank-account v-if="progress_bar === 90" />
+                    <verification-complete v-else-if="progress_bar === 100" />
                 </transition>
             </div>
         </div>
@@ -83,18 +70,15 @@ export default {
     },
 
     computed: {
-        progressBar () {
+        progress_bar () {
             return this.$store.getters.getProgressBar;
-        },
-        progressBarLabel () {
-            return `${((this.progressBar / 100) * 100)}%`;
         },
     },
 
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
-        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_ONE);
+        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_FIVE);
     },
 };
 </script>
