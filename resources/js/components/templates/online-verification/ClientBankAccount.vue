@@ -121,6 +121,7 @@ export default {
                 }),
                 success: (response) => {
                     window.open(response, '_blank');
+                    // TODO add logic for success verification in decision logic
                     this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
                 },
                 error: (response) => {
