@@ -91,7 +91,7 @@ class ApiController extends Controller
 
     public function verifyBankDetails(VerifyBankDetailRequest $request): JsonResponse
     {
-        // TODO Create a global function for checking and returning expired cache
+        // TODO Create a global function for checking and returning expired cachee
         $response = null;
         $status_code = Response::HTTP_OK;
         $hash_client = Client::getHashClient($request->token);
