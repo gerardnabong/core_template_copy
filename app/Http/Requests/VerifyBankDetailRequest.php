@@ -17,7 +17,8 @@ class VerifyBankDetailRequest extends FormRequest
     {
         return [
             'account_number' => 'required|min:5|max:17|regex:/[\d -]+$/',
-            'routing_number'   => 'required|digits:9|numeric',
+            'routing_number' => 'required|digits:9|numeric',
+            'token' => 'required',
         ];
     }
 }

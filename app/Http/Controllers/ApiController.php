@@ -21,6 +21,7 @@ use stdClass;
 class ApiController extends Controller
 {
     const DECISION_LOGIC_URL = 'https://www.decisionlogic.com/';
+    const WAF_KEY = 'fP8MMiJ7iWne799zR3w8IaQfHiFXwwvsOhfPyOJQ0U';
 
     public function loginClient(ApiLoginRequest $request): JsonResponse
     {
@@ -29,7 +30,13 @@ class ApiController extends Controller
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
         try {
             $client = new GuzzleHttpClient;
-            $api_response = $client->post($url, ['form_params' => $request->all()]);
+            $api_response = $client->post(
+                $url,
+                [
+                    'query' => ['waf' => self::WAF_KEY],
+                    'form_params' => $request->all(),
+                ]
+            );
             $api_decoded_response = $this->decodeApiResponse($api_response);
             $client_data = $this->createClientArray($api_decoded_response);
             $client = $this->saveClient($request, $client_data, $api_decoded_response);
@@ -37,7 +44,6 @@ class ApiController extends Controller
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
-                case Response::HTTP_NOT_FOUND:
                     $message = 'Invalid Credentials';
                     break;
                 default:
@@ -87,20 +93,24 @@ class ApiController extends Controller
     public function verifyBankDetails(VerifyBankDetailRequest $request): JsonResponse
     {
         $response = null;
-        $hash_client = Client::getHashClient($request->hash);
-        $api_request_data = [
-            'email_address' => $hash_client->email_address,
-            'ssn'   => $hash_client->ssn,
-            'id'    => $hash_client->lead_id,
-        ];
         $status_code = Response::HTTP_OK;
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
-
         try {
+            $hash_client = Client::getHashClient($request->token);
+            $api_request_data = [
+                'email_address' => $hash_client->email_address,
+                'ssn' => $hash_client->ssn,
+                'id' => $hash_client->lead_id,
+            ];
             $client = new GuzzleHttpClient;
-            $api_response = $client->post($url, ['form_params' => $api_request_data]);
+            $api_response = $client->post(
+                $url,
+                [
+                    'query' => ['waf' => self::WAF_KEY],
+                    'form_params' => $api_request_data,
+                ]
+            );
             $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
-            $this->setLeadChange($hash_client, $response);
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
@@ -122,23 +132,8 @@ class ApiController extends Controller
         return response()->json($response, $status_code);
     }
 
-    public function setLeadChange(Client $client, string $response): void
+    public function redirectToLogin()
     {
-        $url = env('MIX_PORTFOLIO_API_URL') . 'api/update-client';
-        $form_data = [
-            'email_address' => $client->email_address,
-            'ssn'   => $client->ssn,
-            'id'    => $client->lead_id,
-            'field' => 'decision_logic',
-            'description' => $response,
-        ];
-        try {
-            $client = new GuzzleHttpClient;
-            $client->post($url, ['form_params' => $form_data]);
-        } catch (RequestException $exception) {
-            Log::error($exception);
-        } catch (Exception $exception) {
-            Log::error($exception);
-        }
+        return redirect('/');
     }
 }

@@ -97,7 +97,7 @@ export default {
             number_and_dashes: {
                 translation: {
                     'D': { pattern: /[\d -]+/ },
-                }
+                },
             },
             error: null,
         }
@@ -110,15 +110,14 @@ export default {
 
     methods: {
         verifyInput () {
-            this.form_data['hash'] = this.getHash;
+            let form_data = Object.assign({}, this.form_data, { token: this.token });
             this.error = null;
             $.post({
-                data: this.form_data,
+                data: form_data,
                 url: '/api/verify-bank-details',
-                beforeSend: (() => {
-                    this.is_loading = true;
+                beforeSend: () => {
                     this.showLoader();
-                }),
+                },
                 success: (response) => {
                     window.open(response, '_blank');
                     // TODO add logic for success verification in decision logic
@@ -127,16 +126,15 @@ export default {
                 error: (response) => {
                     this.error = response.responseJSON;
                 },
-                complete: (() => {
-                    this.is_loading = false;
+                complete: () => {
                     this.hideLoader();
-                }),
+                },
             });
         }
     },
 
     computed: {
-        getHash () {
+        token () {
             return this.$store.getters.getClient.hash;
         }
     },

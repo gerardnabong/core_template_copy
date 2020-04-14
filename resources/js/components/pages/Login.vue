@@ -88,8 +88,5 @@ export default {
     name: 'Login',
 
     mixins: [Login],
-
-
-
 };
 </script>

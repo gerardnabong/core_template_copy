@@ -15,7 +15,7 @@
             >
                 <span
                     class="icon-credit-card-icon client-portal-icon mb-3"
-                    :style="changePaymentIconStyle"
+                    :style="change_payment_icon_style"
                 />
                 View Payment Schedule
             </router-link>
@@ -29,7 +29,7 @@
             >
                 <span
                     class="icon-piggy-bank-icon client-portal-icon mb-3"
-                    :style="changeLoanIconStyle"
+                    :style="change_loan_icon_style"
                 />
                 Download Loan Agreement
             </router-link>
@@ -97,10 +97,10 @@ export default {
     },
 
     computed: {
-        changePaymentIconStyle () {
+        change_payment_icon_style () {
             return { color: this.payment_icon_trigger ? COLOR_WHITE : this.portfolio.secondary_color }
         },
-        changeLoanIconStyle () {
+        change_loan_icon_style () {
             return { color: this.loan_icon_trigger ? COLOR_WHITE : this.portfolio.secondary_color }
         },
     }

@@ -11,6 +11,9 @@ class NewPortfolioUrl extends Migration
 {
     public function up()
     {
+        Schema::table('clients', function (Blueprint $table) {
+            $table->dropForeign('clients_portfolio_id_foreign');
+        });
         Schema::drop('portfolios');
         Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id');
@@ -31,7 +34,7 @@ class NewPortfolioUrl extends Migration
 
     private function getPortfolios(): array
     {
-        return [
+        $dev_portfolios = [
             [
                 'url' => 'dev.portal.inboxcredit.com',
                 'display_name' => 'Inbox Credit',
@@ -72,7 +75,11 @@ class NewPortfolioUrl extends Migration
                 'secondary_color' => '#004F95',
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-800-930-9066',
-            ], [
+            ],
+        ];
+
+        $prod_portfolio = [
+            [
                 'url' => 'portal.inboxcredit.com',
                 'display_name' => 'Inbox Credit',
                 'asset_directory' => 'InboxCredit',
@@ -113,7 +120,8 @@ class NewPortfolioUrl extends Migration
                 'primary_color_hover' => '#014A8D',
                 'phone_number' => '1-800-930-9066',
             ],
-
         ];
+
+        return (env('APP_ENV') === 'production') ? $prod_portfolio : $dev_portfolios;
     }
 }

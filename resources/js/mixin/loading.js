@@ -8,6 +8,7 @@ export default {
     },
     methods: {
         showLoader () {
+            this.is_loading = true;
             this.loader = this.$loading.show({
                 color: this.portfolio.secondary_color,
                 loader: 'dots',
@@ -16,6 +17,7 @@ export default {
             });
         },
         hideLoader () {
+            this.is_loading = false;
             this.loader.hide();
             this.loader = null;
         },
