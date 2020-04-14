@@ -131,9 +131,4 @@ class ApiController extends Controller
 
         return response()->json($response, $status_code);
     }
-
-    public function redirectToLogin()
-    {
-        return redirect('/');
-    }
 }
