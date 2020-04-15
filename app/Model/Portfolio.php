@@ -13,6 +13,8 @@ class Portfolio extends Model
     const PORTFOLIO_CACHE_KEY = 'portfolio_details';
     const PORTFOLIO_CACHE_TIME_MIN = 20;
 
+    protected $guarded = ['id'];
+
     public static function getPortfolio(): Portfolio
     {
         $url = str_replace(array('http://', 'https://'), '', url(''));
