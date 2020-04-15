@@ -67,6 +67,7 @@
                 <call-us-button />
             </div>
         </div>
+        <decision-logic-verify-modal ref="decisionModal" />
     </div>
 </template>
 
@@ -75,6 +76,7 @@
 
 import * as constants from '~/fixed_variables/constants';
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
+import DecisionLogicVerifyModal from '~/components/templates/modal/DecisionLogicVerifyModal';
 import Loading from '~/mixin/loading';
 import vueMask from 'vue-jquery-mask';
 
@@ -106,6 +108,7 @@ export default {
     components: {
         CallUsButton,
         vueMask,
+        DecisionLogicVerifyModal,
     },
 
     methods: {
@@ -120,8 +123,10 @@ export default {
                 },
                 success: (response) => {
                     window.open(response, '_blank');
+                    let decisionModal = this.$refs['decisionModal'];
+                    decisionModal.show();
                     // TODO add logic for success verification in decision logic
-                    this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+                    // this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
                 },
                 error: (response) => {
                     this.error = response.responseJSON;
