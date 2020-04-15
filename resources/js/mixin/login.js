@@ -1,5 +1,6 @@
 'use strict';
 
+import Loading from '~/mixin/loading';
 import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
 
 const LOADING_TIMEOUT_MS = 3000;
@@ -7,14 +8,15 @@ const LOADING_TIMEOUT_MS = 3000;
 export default({
     data () {
         return {
-            formData: {
+            form_data: {
                 email_address: null,
                 ssn: null,
             },
-            isLoading: false,
             error: null,
         };
     },
+
+    mixins: [Loading],
 
     components: {
         WelcomeMessageModal,
@@ -28,15 +30,13 @@ export default({
     methods: {
         login (event) {
             event.preventDefault();
-            let message;
             $.post({
                 url: '/api/login-client/',
-                data: this.formData,
-                beforeSend: (() => {
-                    this.isLoading = true;
+                data: this.form_data,
+                beforeSend: () => {
                     this.showLoader();
-                }),
-                success: ((response) => {
+                },
+                success: (response) => {
                     this.$store.commit('setClient', response);
                     let loginModal = this.$refs['welcomeMessageModal'];
                     loginModal.showSuccess();
@@ -44,27 +44,14 @@ export default({
                     setTimeout(() => {
                         this.$router.go();
                     }, LOADING_TIMEOUT_MS);
-                }),
-                error: ((response) => {
+                },
+                error: (response) => {
                     this.error = response.responseJSON;
-                }),
-                complete: (() => {
-                    this.isLoading = false;
+                },
+                complete: () => {
                     this.hideLoader();
-                }),
+                },
             });
-        },
-        showLoader () {
-            this.loader = this.$loading.show({
-                color: this.portfolio.secondary_color,
-                loader: 'dots',
-                container: this.$refs.loading_container,
-                'is-full-page': false,
-            });
-        },
-        hideLoader () {
-            this.loader.hide();
-            this.loader = null;
         },
     },
 });

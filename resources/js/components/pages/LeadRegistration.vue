@@ -41,7 +41,7 @@
                     </b-alert>
                     <b-form-group class="pt-4">
                         <b-form-input
-                            v-model="formData.email_address"
+                            v-model="form_data.email_address"
                             placeholder="Email"
                             class="client-portal-form-input"
                             required
@@ -50,7 +50,7 @@
                     </b-form-group>
                     <b-form-group>
                         <b-form-input
-                            v-model="formData.ssn"
+                            v-model="form_data.ssn"
                             placeholder="SSN"
                             class="client-portal-form-input"
                             required
@@ -63,7 +63,7 @@
                         :style="{ 'background-color': loginPrimaryColor }"
                         @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                         @mouseleave="loginPrimaryColor = portfolio.primary_color"
-                        :disabled="isLoading"
+                        :disabled="is_loading"
                     >
                         Setup my Account
                     </b-button>
@@ -91,6 +91,8 @@
 'use strict';
 
 import Login from '~/mixin/login';
+
+const LOADING_TIMEOUT_MS = 3000;
 
 export default {
     name: 'LeadRegistration',
