@@ -4,7 +4,6 @@
         :hide-header="true"
         :hide-footer="true"
         centered
-        size="sm"
         no-close-on-backdrop
         modal-class="client-portal-login-modal p-0"
     >
@@ -15,19 +14,26 @@
             />
         </div>
         <div class="row mt-2 pt-4 mb-2">
+            <div class="col-12 px-5">
+                <error-alert />
+            </div>
             <div class="col-12 mt-2 mb-3 text-center">
-                <h2>Request Successful!</h2>
+                <h5 class="font-size-22 font-weight-bold mb-4">Request Successful!</h5>
                 <p>To proceed, please complete the form by clicking
-                    <a href="#">here</a>.
+                    <a
+                        :href="url"
+                        target="_blank"
+                    >here</a>.
                 </p>
                 <b-button
                     size="sm"
                     @click="checkVerification"
                     v-if="show_ok"
-                    class="client-portal-btn-modal border-0 mb-3 pb-2"
+                    class="client-portal-btn-modal border-0 mt-3 pb-2 px-4"
                     :style="{ 'background-color': ok_btn_color }"
                     @mouseover="ok_btn_color = portfolio.primary_color_hover"
                     @mouseleave="ok_btn_color = portfolio.primary_color"
+                    :disabled="disable_button"
                 >
                     Verify Request Code Status
                 </b-button>
@@ -39,14 +45,23 @@
 <script>
 'use strict';
 
+import * as constants from '~/fixed_variables/constants';
+import ErrorAlert from '~/components/templates/errors/ErrorAlert';
+
 export default {
     name: 'DecisionLogicVerifyModal',
 
+    components: {
+        ErrorAlert,
+    },
 
     data () {
         return {
             show_ok: false,
             is_success: false,
+            url: null,
+            disable_button: false,
+            retry_counter: 0,
         }
     },
 
@@ -69,8 +84,41 @@ export default {
             this.$bvModal.hide('decision-logic-verify');
         },
         checkVerification () {
-            console.log('test');
-        }
+            let form_data = {
+                hash: this.$store.getters.getClient.hash,
+            };
+            this.retry_counter++;
+            if (this.retry_counter < 2) {
+                $.post({
+                    url: '/api/check-verification-status',
+                    data: form_data,
+                    beforeSend: () => {
+                        this.disable_button = true;
+                    },
+                    success: () => {
+                        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+                        this.hide();
+                    },
+                    error: (response) => {
+                        if (response.status === 401) {
+                            setTimeout(() => {
+                                this.$store.commit('setClient', null);
+                                this.$router.push('/');
+                            }, 3000);
+                        }
+                        this.$store.commit('setError', response.responseJSON);
+                    },
+                    completed: () => {
+                        this.disable_button = false;
+                    }
+                });
+            } else {
+
+            }
+        },
+        updateUrl (url) {
+            this.url = url;
+        },
     },
 };
 </script>

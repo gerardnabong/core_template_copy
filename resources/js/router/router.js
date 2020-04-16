@@ -21,6 +21,8 @@ const PRE_LOADER_WHITE_BACKGROUND_TIMER_MS = 300;
 
 Vue.use(Router);
 
+store.commit('setError',null);
+
 const ROUTES = [
     {
         path: "/",

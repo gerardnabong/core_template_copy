@@ -9,24 +9,7 @@
                 (Note, a new window or tab will open)
             </p>
         </div>
-        <b-alert
-            show
-            variant="danger"
-            v-if="error"
-            class="client-portal-alert"
-        >
-            <div v-html="error.message" />
-            <div
-                v-for="error_type in error.errors"
-                :key="error_type"
-            >
-                <div
-                    v-for="error_message in error_type"
-                    :key="error_message"
-                    v-html="error_message"
-                />
-            </div>
-        </b-alert>
+        <error-alert />
         <b-form-group class="mb-3">
             <vue-mask
                 v-model="form_data.routing_number"
@@ -77,6 +60,7 @@
 import * as constants from '~/fixed_variables/constants';
 import CallUsButton from '~/components/templates/buttons/CallUsButton';
 import DecisionLogicVerifyModal from '~/components/templates/modal/DecisionLogicVerifyModal';
+import ErrorAlert from '~/components/templates/errors/ErrorAlert';
 import Loading from '~/mixin/loading';
 import vueMask from 'vue-jquery-mask';
 
@@ -101,7 +85,6 @@ export default {
                     'D': { pattern: /[\d -]+/ },
                 },
             },
-            error: null,
         }
     },
 
@@ -109,6 +92,7 @@ export default {
         CallUsButton,
         vueMask,
         DecisionLogicVerifyModal,
+        ErrorAlert,
     },
 
     methods: {
@@ -124,19 +108,19 @@ export default {
                 success: (response) => {
                     window.open(response, '_blank');
                     let decisionModal = this.$refs['decisionModal'];
+                    decisionModal.updateUrl(response);
+                    decisionModal.showOkButton();
                     decisionModal.show();
-                    // TODO add logic for success verification in decision logic
-                    // this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
                 },
                 error: (response) => {
-                    this.error = response.responseJSON;
+                    this.$store.commit('setError', response.responseJSON);
                     // TODO set code to global constants
-                    if (response.status === 401) {
-                        setTimeout(() => {
-                            this.$store.commit('setClient', null);
-                            this.$router.push('/');
-                        }, 3000);
-                    }
+                    // if (response.status === 401) {
+                    //     setTimeout(() => {
+                    //         this.$store.commit('setClient', null);
+                    //         this.$router.push('/');
+                    //     }, 3000);
+                    // }
                 },
                 complete: () => {
                     this.hideLoader();

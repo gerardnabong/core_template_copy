@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
+use App\Http\Requests\CheckVerificationRequest;
 use App\Http\Requests\LogoutRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
@@ -128,6 +129,19 @@ class ApiController extends Controller
                 Log::error($exception);
                 $response = [['message' => 'An Error has occured']];
             }
+        } else {
+            $response = ['message' => 'Expired Session'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function checkVerificationStatus(CheckVerificationRequest $request): JsonResponse
+    {
+        $client = Client::getHashClient($request->hash);
+        if ($client) {
+            $response = [];
+            $status_code = Response::HTTP_OK;
         } else {
             $response = ['message' => 'Expired Session'];
             $status_code = Response::HTTP_UNAUTHORIZED;
