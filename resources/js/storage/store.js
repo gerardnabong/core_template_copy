@@ -16,5 +16,7 @@ export default new Vuex.Store({
         Client,
         Error,
     },
-    plugins: [createPersistedState()],
+    plugins: [createPersistedState({
+        paths: ['Client','ProgressBar'],
+    }),],
 });
