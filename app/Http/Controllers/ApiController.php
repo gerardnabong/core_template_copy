@@ -51,10 +51,8 @@ class ApiController extends Controller
                     break;
             }
             $response = ['message' => $message];
-            dd('api failed', $exception);
             $status_code = $exception->getCode();
         } catch (Exception $exception) {
-            dd('general error failed', $exception);
             Log::error($exception);
             $response = [['message' => 'An Error has occured']];
         }
