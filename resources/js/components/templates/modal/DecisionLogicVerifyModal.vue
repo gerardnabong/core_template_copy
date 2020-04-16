@@ -100,12 +100,12 @@ export default {
                         this.hide();
                     },
                     error: (response) => {
-                        // if (response.status === 401) {
-                        //     setTimeout(() => {
-                        //         this.$store.commit('setClient', null);
-                        //         this.$router.push('/');
-                        //     }, 3000);
-                        // }
+                        if (response.status === 401) {
+                            setTimeout(() => {
+                                this.$store.commit('setClient', null);
+                                this.$router.push('/');
+                            }, 3000);
+                        }
                         this.$store.commit('setError', response.responseJSON);
                     },
                     complete: () => {
