@@ -139,7 +139,7 @@ class ApiController extends Controller
     public function checkVerificationStatus(CheckVerificationRequest $request): JsonResponse
     {
         $client = Client::getHashClient($request->hash);
-        if ($client) {
+        if (!$client) {
             $response = [];
             $status_code = Response::HTTP_OK;
         } else {

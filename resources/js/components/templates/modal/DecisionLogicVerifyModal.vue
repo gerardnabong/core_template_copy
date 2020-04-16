@@ -88,7 +88,7 @@ export default {
                 hash: this.$store.getters.getClient.hash,
             };
             this.retry_counter++;
-            if (this.retry_counter < 2) {
+            if (this.retry_counter <= 2) {
                 $.post({
                     url: '/api/check-verification-status',
                     data: form_data,
@@ -100,20 +100,20 @@ export default {
                         this.hide();
                     },
                     error: (response) => {
-                        if (response.status === 401) {
-                            setTimeout(() => {
-                                this.$store.commit('setClient', null);
-                                this.$router.push('/');
-                            }, 3000);
-                        }
+                        // if (response.status === 401) {
+                        //     setTimeout(() => {
+                        //         this.$store.commit('setClient', null);
+                        //         this.$router.push('/');
+                        //     }, 3000);
+                        // }
                         this.$store.commit('setError', response.responseJSON);
                     },
-                    completed: () => {
+                    complete: () => {
                         this.disable_button = false;
                     }
                 });
             } else {
-
+                this.$router.push({ path: '/error', query: { type: 'online-verification' } });
             }
         },
         updateUrl (url) {

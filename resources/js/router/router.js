@@ -33,6 +33,7 @@ const ROUTES = [
     {
         path: "/error",
         component: ErrorPage,
+        name: 'error',
     },
     {
         path: "/loan-action",

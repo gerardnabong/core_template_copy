@@ -98,7 +98,7 @@ export default {
     methods: {
         verifyInput () {
             let form_data = Object.assign({}, this.form_data, { token: this.token });
-            this.error = null;
+            this.$store.commit('setError', null);
             $.post({
                 data: form_data,
                 url: '/api/verify-bank-details',
@@ -115,12 +115,12 @@ export default {
                 error: (response) => {
                     this.$store.commit('setError', response.responseJSON);
                     // TODO set code to global constants
-                    // if (response.status === 401) {
-                    //     setTimeout(() => {
-                    //         this.$store.commit('setClient', null);
-                    //         this.$router.push('/');
-                    //     }, 3000);
-                    // }
+                    if (response.status === 401) {
+                        setTimeout(() => {
+                            this.$store.commit('setClient', null);
+                            this.$router.push('/');
+                        }, 3000);
+                    }
                 },
                 complete: () => {
                     this.hideLoader();
