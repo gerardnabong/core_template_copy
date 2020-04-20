@@ -148,19 +148,13 @@ class ApiController extends Controller
     public function registerClient(ApiLoginRequest $request): JsonResponse
     {
         $client = $this->loginClient($request);
-        try {
-            $response = json_decode($client->content());
-            $status_code = $client->status();
-            if ($response->client_status_id !== Client::CLIENT_STATUS_NEW_CLIENT) {
-                Client::logout($response->hash);
-                $response = ['message' => 'Invalid Credentials'];
-                $status_code = Response::HTTP_UNAUTHORIZED;
-            }
-        } catch (Exception $exception) {
-            Log::error($exception);
+        $response = json_decode($client->content());
+        $status_code = $client->status();
+        if (isset($response->client_status_id) && $response->client_status_id !== Client::CLIENT_STATUS_NEW_CLIENT) {
+            Client::logout($response->hash);
+            $response = ['message' => 'Invalid Credentials'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
         }
-
-
         return response()->json($response, $status_code);
     }
 }
