@@ -39,8 +39,13 @@ class ApiController extends Controller
             );
             $api_decoded_response = $this->decodeApiResponse($api_response);
             $client_data = $this->createClientArray($api_decoded_response);
-            $client = $this->saveClient($request, $client_data, $api_decoded_response);
-            $response = $client;
+            if ($client_data['client_status_id']) {
+                $client = $this->saveClient($request, $client_data, $api_decoded_response);
+                $response = $client;
+            } else {
+                $response = ['message' => 'Client not found'];
+                $status_code = Response::HTTP_NOT_FOUND;
+            }
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
@@ -71,7 +76,7 @@ class ApiController extends Controller
         return [
             'portfolio_id' => Portfolio::getPortfolio()->id,
             'lead_id' => $response->id,
-            'client_status_id' => $response->client_status ?? Client::CLIENT_STATUS_NEW_CLIENT,
+            'client_status_id' => $response->client_status,
         ];
     }
 
