@@ -101,8 +101,8 @@ class ApiController extends Controller
                 'email_address' => $hash_client->email_address,
                 'ssn' => $hash_client->ssn,
                 'id' => $hash_client->lead_id,
-                'account_number' => $request->account_number,
-                'routing_number' => $request->routing_number,
+                'bank_account_number' => $request->account_number,
+                'bank_routing_number' => $request->routing_number,
             ];
             $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
             try {
