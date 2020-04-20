@@ -42,8 +42,8 @@ class ApiController extends Controller
                 $client = $this->saveClient($request, $client_data, $api_decoded_response);
                 $response = $client;
             } else {
-                $response = ['message' => 'Invalid Credentials'];
-                $status_code = Response::HTTP_UNPROCESSABLE_ENTITY;
+                $response = ['message' => 'Client not found'];
+                $status_code = Response::HTTP_NOT_FOUND;
             }
         } catch (RequestException $exception) {
             switch ($exception->getCode()) {
