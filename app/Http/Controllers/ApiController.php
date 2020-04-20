@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\SendRedirectHashRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
@@ -133,5 +134,25 @@ class ApiController extends Controller
             $status_code = Response::HTTP_UNAUTHORIZED;
         }
         return response()->json($response, $status_code);
+    }
+
+    public function sendRedirectQuery(SendRedirectHashRequest $request): void
+    {
+        try {
+            $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+            $client = new GuzzleHttpClient;
+            $client->post(
+                $url,
+                [
+                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                    'form_params' => $request->hash,
+                ]
+            );
+        } catch (RequestException $exception) {
+            Log::error($exception);
+            $this->sendRedirectQuery($request);
+        } catch (Exception $exception) {
+            Log::error($exception);
+        }
     }
 }
