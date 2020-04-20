@@ -27,13 +27,18 @@ class ApiController extends Controller
         $response = null;
         $status_code = Response::HTTP_OK;
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
+        $form_params = [
+            'email_address' => $request->email_address,
+            'ssn'   => $request->ssn,
+            'portfolio_id' => Portfolio::getPortfolio()->lead_portfolio_id,
+        ];
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post(
                 $url,
                 [
                     'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
-                    'form_params' => $request->all(),
+                    'form_params' => $form_params,
                 ]
             );
             $api_decoded_response = $this->decodeApiResponse($api_response);
@@ -137,6 +142,25 @@ class ApiController extends Controller
             $response = ['message' => 'Expired Session'];
             $status_code = Response::HTTP_UNAUTHORIZED;
         }
+        return response()->json($response, $status_code);
+    }
+
+    public function registerClient(ApiLoginRequest $request): JsonResponse
+    {
+        $client = $this->loginClient($request);
+        try {
+            $response = json_decode($client->content());
+            $status_code = $client->status();
+            if ($response->client_status_id !== Client::CLIENT_STATUS_NEW_CLIENT) {
+                Client::logout($response->hash);
+                $response = ['message' => 'Invalid Credentials'];
+                $status_code = Response::HTTP_UNAUTHORIZED;
+            }
+        } catch (Exception $exception) {
+            Log::error($exception);
+        }
+
+
         return response()->json($response, $status_code);
     }
 }

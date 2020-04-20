@@ -15,6 +15,7 @@ Route::get('getPortfolio', 'WebsiteController@getPortfolio');
 
 Route::group(['prefix' => 'api'], function () {
     Route::post('login-client', 'ApiController@loginClient')->name('login.client');
+    Route::post('register', 'ApiController@registerClient')->name('register.client');
     Route::get('logout', 'ApiController@logout');
     Route::post('verify-bank-details', 'ApiController@verifyBankDetails');
 });

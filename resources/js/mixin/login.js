@@ -29,9 +29,10 @@ export default({
 
     methods: {
         login (event) {
+            let url = this.$router.currentRoute.path === '/' ? '/api/login-client/' : 'api/register';
             event.preventDefault();
             $.post({
-                url: '/api/login-client/',
+                url: url,
                 data: this.form_data,
                 beforeSend: () => {
                     this.showLoader();

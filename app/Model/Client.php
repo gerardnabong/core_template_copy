@@ -36,7 +36,7 @@ class Client extends Model
     }
 
 
-    public static function logout(int $client_hash): void
+    public static function logout(string $client_hash): void
     {
         Cache::forget(self::CLIENT_CACHE_KEY . $client_hash);
     }
