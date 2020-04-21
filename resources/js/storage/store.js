@@ -14,5 +14,7 @@ export default new Vuex.Store({
         ProgressBar,
         Client,
     },
-    plugins: [createPersistedState()],
+    plugins: [createPersistedState({
+        storage: window.sessionStorage,
+    })],
 });
