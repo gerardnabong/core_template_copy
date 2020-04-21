@@ -35,7 +35,6 @@ class Client extends Model
         return $hash;
     }
 
-
     public static function logout(string $client_hash): void
     {
         Cache::forget(self::CLIENT_CACHE_KEY . $client_hash);

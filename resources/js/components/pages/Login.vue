@@ -56,6 +56,7 @@
                         @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                         @mouseleave="loginPrimaryColor = portfolio.primary_color"
                         :disabled="is_loading"
+                        @click.prevent
                     >
                         Login
                     </b-button>
@@ -88,5 +89,11 @@ export default {
     name: 'Login',
 
     mixins: [Login],
+
+    computed: {
+        url () {
+            return '/api/login-client';
+        }
+    }
 };
 </script>

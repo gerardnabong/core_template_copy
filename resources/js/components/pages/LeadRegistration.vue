@@ -64,6 +64,7 @@
                         @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                         @mouseleave="loginPrimaryColor = portfolio.primary_color"
                         :disabled="is_loading"
+                        @click.prevent
                     >
                         Setup my Account
                     </b-button>
@@ -98,5 +99,11 @@ export default {
     name: 'LeadRegistration',
 
     mixins: [Login],
+
+    computed: {
+        url () {
+            return '/api/register';
+        }
+    }
 };
 </script>

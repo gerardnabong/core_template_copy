@@ -29,7 +29,7 @@ class ApiController extends Controller
         $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
         $form_params = [
             'email_address' => $request->email_address,
-            'ssn'   => $request->ssn,
+            'ssn' => $request->ssn,
             'portfolio_id' => Portfolio::getPortfolio()->lead_portfolio_id,
         ];
         try {
