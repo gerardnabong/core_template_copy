@@ -12,6 +12,24 @@ class Portfolio extends Model
 {
     const PORTFOLIO_CACHE_KEY = 'portfolio_details';
     const PORTFOLIO_CACHE_TIME_MIN = 20;
+    const PORTFOLIO_LEAD_ID = [
+        [
+            'display_name' => 'Inbox Credit',
+            'lead_portfolio_id' => '19004',
+        ], [
+            'display_name' => 'Better Day Loan',
+            'lead_portfolio_id' => '19007',
+        ], [
+            'display_name' => 'First Loan',
+            'lead_portfolio_id' => '19006',
+        ], [
+            'display_name' => 'Comet Loans',
+            'lead_portfolio_id' => '19003',
+        ], [
+            'display_name' => 'Inbox Loan',
+            'lead_portfolio_id' => '19000',
+        ]
+    ];
 
     public static function getPortfolio(): Portfolio
     {

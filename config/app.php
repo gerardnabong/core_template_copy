@@ -235,7 +235,7 @@ return [
     | config below are Required for CP to work
     */
 
-    'waf' => env('DECISION_LOGO_WAF_KEY'),
+    'waf' => env('DECISION_LOGIC_WAF_KEY'),
     'api_url' => env('MIX_PORTFOLIO_API_URL'),
 
 ];
