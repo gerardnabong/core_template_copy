@@ -97,7 +97,7 @@ export default {
     mixins: [Login],
 
     created () {
-        this.hash = this.$route.query.q;
+        this.hash = this.$route.params.hash;
         $.post({
             url: 'api/send-redirect-query',
             data: { hash: this.hash },
