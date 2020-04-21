@@ -8,7 +8,7 @@ function config_safe(string $key, string $expected_type = 'string')
 {
     $value = config($key);
     if ($value === null) {
-        throw new GLobalHelperException('config_missing_key');
+        throw new GLobalHelperException('config_missing_key', ['key' => $key]);
     }
     $actual_type = gettype($value);
     if ($expected_type !== $actual_type) {
