@@ -8,7 +8,7 @@
                 />
                 <b-form
                     class="pt-4"
-                    @submit="login"
+                    @submit.prevent="login"
                     ref="loading_container"
                 >
 
@@ -56,7 +56,6 @@
                         @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                         @mouseleave="loginPrimaryColor = portfolio.primary_color"
                         :disabled="is_loading"
-                        @click.prevent
                     >
                         Login
                     </b-button>
@@ -93,7 +92,7 @@ export default {
     computed: {
         url () {
             return '/api/login-client';
-        }
-    }
+        },
+    },
 };
 </script>

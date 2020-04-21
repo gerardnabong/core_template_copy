@@ -26,7 +26,7 @@ class ApiController extends Controller
     {
         $response = null;
         $status_code = Response::HTTP_OK;
-        $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
+        $url = config_safe('app.api_url') . 'api/find-client';
         $form_params = [
             'email_address' => $request->email_address,
             'ssn' => $request->ssn,
@@ -37,7 +37,7 @@ class ApiController extends Controller
             $api_response = $client->post(
                 $url,
                 [
-                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                    'query' => ['waf' => config_safe('app.waf')],
                     'form_params' => $form_params,
                 ]
             );
@@ -111,13 +111,13 @@ class ApiController extends Controller
                 'ssn' => $hash_client->ssn,
                 'id' => $hash_client->lead_id,
             ];
-            $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+            $url = config_safe('app.api_url') . 'api/request-client-code';
             try {
                 $client = new GuzzleHttpClient;
                 $api_response = $client->post(
                     $url,
                     [
-                        'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                        'query' => ['waf' => config_safe('app.waf')],
                         'form_params' => $api_request_data,
                     ]
                 );

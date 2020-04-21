@@ -11,7 +11,7 @@
                 />
                 <b-form
                     class="pt-4"
-                    @submit="login"
+                    @submit.prevent="login"
                     ref="loading_container"
                 >
                     <h2 class="client-portal-heading-text">
@@ -64,7 +64,6 @@
                         @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                         @mouseleave="loginPrimaryColor = portfolio.primary_color"
                         :disabled="is_loading"
-                        @click.prevent
                     >
                         Setup my Account
                     </b-button>
@@ -103,7 +102,7 @@ export default {
     computed: {
         url () {
             return '/api/register';
-        }
-    }
+        },
+    },
 };
 </script>
