@@ -57,12 +57,12 @@ export default {
 
     data () {
         return {
-            show_ok: false,
-            is_success: false,
-            url: null,
             disable_button: false,
-            retry_counter: 0,
             form_data: null,
+            is_success: false,
+            retry_counter: 0,
+            show_ok: false,
+            url: null,
         }
     },
 
@@ -120,7 +120,7 @@ export default {
             }
         },
         updateData (data) {
-            this.url = data.dl_url + data.dl_code;
+            this.url = data.decision_logic_url + data.request_code;
             this.form_data = data;
             this.form_data = Object.assign({}, this.form_data, { token: this.$store.getters.getClient.hash });
         },

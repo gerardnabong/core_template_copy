@@ -126,8 +126,8 @@ class ApiController extends Controller
                     ]
                 );
                 $response = [
-                    'dl_url' => self::DECISION_LOGIC_URL,
-                    'dl_code' =>  json_decode($api_response->getBody()->getContents()),
+                    'decision_logic_url' => self::DECISION_LOGIC_URL,
+                    'request_code' =>  json_decode($api_response->getBody()->getContents()),
                     'bank_account_number' => $request->account_number,
                     'bank_routing_number' => $request->routing_number,
                 ];
@@ -165,7 +165,7 @@ class ApiController extends Controller
                 'bank_account_number' => $request->bank_account_number,
                 'bank_routing_number' => $request->bank_routing_number,
                 'id' => $client->lead_id,
-                'request_code' => $request->dl_code,
+                'request_code' => $request->request_code,
             ];
             try {
                 $client = new GuzzleHttpClient;
@@ -176,7 +176,7 @@ class ApiController extends Controller
                         'form_params' => $form_params,
                     ]
                 );
-                $response =  json_decode($api_response->getBody()->getContents());
+                $response = json_decode($api_response->getBody()->getContents());
             } catch (RequestException $exception) {
                 switch ($exception->getCode()) {
                     case Response::HTTP_UNPROCESSABLE_ENTITY:

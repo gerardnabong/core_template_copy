@@ -56,6 +56,7 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
+        // TODO Add other error page redirects in the future
         switch (this.$route.query.type) {
             case 'online-verification':
                 this.heading_message = 'Request Code Not Completed';

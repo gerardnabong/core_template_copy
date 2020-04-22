@@ -106,7 +106,7 @@ export default {
                     this.showLoader();
                 },
                 success: (response) => {
-                    let url = response.dl_url + response.dl_code
+                    let url = response.decision_logic_url + response.request_code
                     window.open(url, '_blank');
                     let decisionModal = this.$refs['decisionModal'];
                     decisionModal.updateData(response);
