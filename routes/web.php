@@ -19,6 +19,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('logout', 'ApiController@logout')->name('logout');
     Route::post('verify-bank-details', 'ApiController@verifyBankDetails')->name('verify.bank_details');
     Route::post('check-verification-status', 'ApiController@checkVerificationStatus')->name('verify.status');
+    Route::post('send-redirect-query', 'ApiController@sendRedirectQuery');
 });
 
 // Health Check for checking deployed version - Warrence Lim
