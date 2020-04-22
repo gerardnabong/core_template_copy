@@ -158,7 +158,7 @@ class ApiController extends Controller
             $client->post(
                 $url,
                 [
-                    'query' => ['waf' => env('DECISION_LOGIC_WAF_KEY')],
+                    'query' => ['waf' => config_safe('app.waf')],
                     'form_params' => $form_params,
                 ]
             );
