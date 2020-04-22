@@ -99,7 +99,7 @@ export default {
     created () {
         this.hash = this.$route.params.hash;
         $.post({
-            url: 'api/send-redirect-query',
+            url: '/api/send-redirect-query',
             data: { hash: this.hash },
         })
     },
