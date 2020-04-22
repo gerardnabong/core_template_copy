@@ -33,7 +33,7 @@ class ApiController extends Controller
             $api_response = $client->post(
                 $url,
                 [
-                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                    'query' => ['waf' => env('DECISION_LOGIC_WAF_KEY')],
                     'form_params' => $request->all(),
                 ]
             );
@@ -115,7 +115,7 @@ class ApiController extends Controller
                 $api_response = $client->post(
                     $url,
                     [
-                        'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                        'query' => ['waf' => env('DECISION_LOGIC_WAF_KEY')],
                         'form_params' => $api_request_data,
                     ]
                 );
