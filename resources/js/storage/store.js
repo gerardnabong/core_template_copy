@@ -7,6 +7,7 @@ import Cookies from 'js-cookie';
 
 import Client from "./modules/Client";
 import ProgressBar from "./modules/ProgressBar";
+import Error from "./modules/Error";
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     modules: {
         ProgressBar,
         Client,
+        Error,
     },
     // TODO Find a better solution for this part also set in the future that only the hash will be save on the client
     plugins: [createPersistedState({
@@ -24,5 +26,9 @@ export default new Vuex.Store({
             setItem: (key, value) => Cookies.set(key, value, { expires: EXPIRE_IN_2HRS }),
             removeItem: key => Cookies.remove(key),
         },
+        paths: [
+            'Client',
+            'ProgressBar',
+        ],
     })],
 });

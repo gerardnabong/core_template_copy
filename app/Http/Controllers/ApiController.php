@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
+use App\Http\Requests\CheckVerificationRequest;
 use App\Http\Requests\LogoutRequest;
 use App\Http\Requests\SendRedirectHashRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
@@ -111,6 +112,8 @@ class ApiController extends Controller
                 'email_address' => $hash_client->email_address,
                 'ssn' => $hash_client->ssn,
                 'id' => $hash_client->lead_id,
+                'bank_account_number' => $request->account_number,
+                'bank_routing_number' => $request->routing_number,
             ];
             $url = config_safe('app.api_url') . 'api/request-client-code';
             try {
@@ -122,7 +125,12 @@ class ApiController extends Controller
                         'form_params' => $api_request_data,
                     ]
                 );
-                $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
+                $response = [
+                    'decision_logic_url' => self::DECISION_LOGIC_URL,
+                    'request_code' =>  json_decode($api_response->getBody()->getContents()),
+                    'bank_account_number' => $request->account_number,
+                    'bank_routing_number' => $request->routing_number,
+                ];
             } catch (RequestException $exception) {
                 switch ($exception->getCode()) {
                     case Response::HTTP_UNPROCESSABLE_ENTITY:
@@ -146,6 +154,50 @@ class ApiController extends Controller
         return response()->json($response, $status_code);
     }
 
+    public function checkVerificationStatus(CheckVerificationRequest $request): JsonResponse
+    {
+        $client = Client::getHashClient($request->token);
+        $response = [];
+        $status_code = Response::HTTP_OK;
+        if ($client) {
+            $url = config_safe('app.api_url') . 'api/verify-status';
+            $form_params = [
+                'bank_account_number' => $request->bank_account_number,
+                'bank_routing_number' => $request->bank_routing_number,
+                'id' => $client->lead_id,
+                'request_code' => $request->request_code,
+            ];
+            try {
+                $client = new GuzzleHttpClient;
+                $api_response = $client->post(
+                    $url,
+                    [
+                        'query' => ['waf' => config_safe('app.waf')],
+                        'form_params' => $form_params,
+                    ]
+                );
+                $response = json_decode($api_response->getBody()->getContents());
+            } catch (RequestException $exception) {
+                switch ($exception->getCode()) {
+                    case Response::HTTP_UNPROCESSABLE_ENTITY:
+                        $message = 'Invalid Credentials';
+                        break;
+                    default:
+                        $message = 'An Error has occured';
+                        Log::error($exception);
+                        break;
+                }
+                $response = ['message' => $message];
+                $status_code = $exception->getCode();
+            } catch (Exception $exception) {
+                Log::error($exception);
+                $response = [['message' => 'An Error has occured']];
+            }
+        } else {
+            $response = ['message' => 'Expired Session'];
+        }
+        return response()->json($response, $status_code);
+    }
     public function sendRedirectQuery(SendRedirectHashRequest $request): void
     {
         try {
