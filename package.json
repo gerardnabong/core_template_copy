@@ -28,6 +28,7 @@
         "bootstrap-vue": "^2.7.0",
         "es6-promise": "^4.2.8",
         "jquery": "^3.4.1",
+        "js-cookie": "^2.2.1",
         "vue": "^2.6.11",
         "vue-jquery-mask": "^1.0.3",
         "vue-loading-overlay": "^3.3.2",

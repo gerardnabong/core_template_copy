@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\SendRedirectHashRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
@@ -26,14 +27,19 @@ class ApiController extends Controller
     {
         $response = null;
         $status_code = Response::HTTP_OK;
-        $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
+        $url = config_safe('app.api_url') . 'api/find-client';
+        $form_params = [
+            'email_address' => $request->email_address,
+            'ssn' => $request->ssn,
+            'portfolio_id' => Portfolio::getPortfolio()->lead_portfolio_id,
+        ];
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post(
                 $url,
                 [
-                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
-                    'form_params' => $request->all(),
+                    'query' => ['waf' => config_safe('app.waf')],
+                    'form_params' => $form_params,
                 ]
             );
             $api_decoded_response = $this->decodeApiResponse($api_response);
@@ -106,13 +112,13 @@ class ApiController extends Controller
                 'ssn' => $hash_client->ssn,
                 'id' => $hash_client->lead_id,
             ];
-            $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+            $url = config_safe('app.api_url') . 'api/request-client-code';
             try {
                 $client = new GuzzleHttpClient;
                 $api_response = $client->post(
                     $url,
                     [
-                        'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                        'query' => ['waf' => config_safe('app.waf')],
                         'form_params' => $api_request_data,
                     ]
                 );
@@ -135,6 +141,73 @@ class ApiController extends Controller
             }
         } else {
             $response = ['message' => 'Expired Session'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function sendRedirectQuery(SendRedirectHashRequest $request): void
+    {
+        try {
+            $url = env('MIX_PORTFOLIO_API_URL') . 'api/channel-tracking';
+            $client = new GuzzleHttpClient;
+            $form_params = [
+                'hash' => $request->hash,
+                'ip_address' => $this->getIp(),
+            ];
+            $client->post(
+                $url,
+                [
+                    'query' => ['waf' => config_safe('app.waf')],
+                    'form_params' => $form_params,
+                ]
+            );
+        } catch (RequestException $exception) {
+            Log::error($exception);
+            $this->sendRedirectQuery($request);
+        } catch (Exception $exception) {
+            Log::error($exception);
+        }
+    }
+
+    private function getIP(): string
+    {
+        $ip_address = '0.0.0.0'; // safety incase ip is hidden / localhost
+        $keys = [
+            'HTTP_CLIENT_IP',
+            'HTTP_X_FORWARDED_FOR',
+            'HTTP_X_FORWARDED',
+            'HTTP_X_CLUSTER_CLIENT_IP',
+            'HTTP_FORWARDED_FOR',
+            'HTTP_FORWARDED',
+            'REMOTE_ADDR',
+        ];
+
+        foreach ($keys as $key) {
+            $ip = $_SERVER[$key] ?? null;
+            if (
+                $ip &&
+                filter_var(
+                    $ip,
+                    FILTER_VALIDATE_IP,
+                    FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+                ) !== false
+            ) {
+                $ip_address = $ip;
+                break;
+            }
+        }
+        return $ip_address;
+    }
+
+    public function registerClient(ApiLoginRequest $request): JsonResponse
+    {
+        $client = $this->loginClient($request);
+        $response = json_decode($client->content());
+        $status_code = $client->status();
+        if (isset($response->client_status_id) && $response->client_status_id !== Client::CLIENT_STATUS_NEW_CLIENT) {
+            Client::logout($response->hash);
+            $response = ['message' => 'Invalid Credentials'];
             $status_code = Response::HTTP_UNAUTHORIZED;
         }
         return response()->json($response, $status_code);

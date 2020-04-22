@@ -8,7 +8,7 @@
                 />
                 <b-form
                     class="pt-4"
-                    @submit="login"
+                    @submit.prevent="login"
                     ref="loading_container"
                 >
 
