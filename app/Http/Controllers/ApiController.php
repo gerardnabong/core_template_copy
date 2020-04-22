@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\NewLoanRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
@@ -32,7 +33,7 @@ class ApiController extends Controller
             $api_response = $client->post(
                 $url,
                 [
-                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                    'query' => ['waf' => env('DECISION_LOGIC_WAF_KEY')],
                     'form_params' => $request->all(),
                 ]
             );
@@ -112,11 +113,56 @@ class ApiController extends Controller
                 $api_response = $client->post(
                     $url,
                     [
-                        'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                        'query' => ['waf' => env('DECISION_LOGIC_WAF_KEY')],
                         'form_params' => $api_request_data,
                     ]
                 );
                 $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
+            } catch (RequestException $exception) {
+                switch ($exception->getCode()) {
+                    case Response::HTTP_UNPROCESSABLE_ENTITY:
+                        $message = 'Invalid Credentials';
+                        break;
+                    default:
+                        $message = 'An Error has occured';
+                        Log::error($exception);
+                        break;
+                }
+                $response = ['message' => $message];
+                $status_code = $exception->getCode();
+            } catch (Exception $exception) {
+                Log::error($exception);
+                $response = [['message' => 'An Error has occured']];
+            }
+        } else {
+            $response = ['message' => 'Expired Session'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function requestNewLoan(NewLoanRequest $request): JsonResponse
+    {
+        $response = [];
+        $status_code = Response::HTTP_OK;
+        $hash_client = Client::getHashClient($request->token);
+        if ($hash_client) {
+            $api_request_data = [
+                'email_address' => $hash_client->email_address,
+                'ssn' => $hash_client->ssn,
+                'id' => $hash_client->lead_id,
+            ];
+            $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-new-loan'; //Change API for new loan request
+            try {
+                $client = new GuzzleHttpClient;
+                $api_response = $client->post(
+                    $url,
+                    [
+                        'query' => ['waf' => env('DECISION_LOGIC_WAF_KEY')],
+                        'form_params' => $api_request_data,
+                    ]
+                );
+                $response = json_decode($api_response->getBody()->getContents());
             } catch (RequestException $exception) {
                 switch ($exception->getCode()) {
                     case Response::HTTP_UNPROCESSABLE_ENTITY:

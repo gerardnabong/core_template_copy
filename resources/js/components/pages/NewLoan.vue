@@ -16,8 +16,9 @@
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
-                        @mouseover.native="clientPortalButton = portfolio.primary_color_hover"
-                        @mouseleave.native="clientPortalButton = portfolio.primary_color"
+                        @mouseover="clientPortalButton = portfolio.primary_color_hover"
+                        @mouseleave="clientPortalButton = portfolio.primary_color"
+                        @click="requestLoan"
                     >Request for New Loan</b-button>
                 </div>
             </div>
@@ -46,5 +47,23 @@ export default {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
     },
+
+    methods: {
+        requestLoan () {
+            let form_data = {
+                'token': this.$store.getters.getClient.hash,
+            };
+            $.post({
+                url: 'api/request-new-loan',
+                data: form_data,
+                success: (response) => {
+                    this.$router.push('/success');
+                },
+                error: (response) => {
+                    this.$router.push('/error');
+                }
+            });
+        }
+    }
 };
 </script>

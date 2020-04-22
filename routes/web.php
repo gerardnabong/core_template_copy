@@ -17,6 +17,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('login-client', 'ApiController@loginClient')->name('login.client');
     Route::get('logout', 'ApiController@logout');
     Route::post('verify-bank-details', 'ApiController@verifyBankDetails');
+    Route::post('request-new-loan', 'ApiController@requestNewLoan')->name('newloan');
 });
 
 // Health Check for checking deployed version - Warrence Lim
