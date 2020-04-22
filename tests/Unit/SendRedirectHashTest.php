@@ -11,7 +11,10 @@ class SendRedirectHashTest extends TestCase
 {
     public function testIfHashIsSend()
     {
-        $this->postJson('/api/send-redirect-query', ['hash' => 'dwasdwasdwadsda'])->assertOk();
+        $this->postJson(
+            '/api/send-redirect-query',
+            ['hash' => 'OzbQws6rcdwatpzvOjilnlWZnRhNxshGj8hDKnqIkte6l2bZusMQ06LisuYmAELu5a3e16c32f69a']
+        )->assertOk();
     }
 
     public function testIfHashIsNotIncluded()

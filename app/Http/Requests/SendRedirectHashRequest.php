@@ -24,7 +24,7 @@ class SendRedirectHashRequest extends FormRequest
     public function rules()
     {
         return [
-            'hash' => 'required',
+            'hash' => 'required|string|size:77',
         ];
     }
 }
