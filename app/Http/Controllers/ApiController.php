@@ -173,30 +173,28 @@ class ApiController extends Controller
     private function getIP(): string
     {
         $ip_address = '0.0.0.0'; // safety incase ip is hidden / localhost
-        foreach (array(
+        $keys = [
             'HTTP_CLIENT_IP',
             'HTTP_X_FORWARDED_FOR',
             'HTTP_X_FORWARDED',
             'HTTP_X_CLUSTER_CLIENT_IP',
             'HTTP_FORWARDED_FOR',
-            'HTTP_FORWARDED', '
-                REMOTE_ADDR'
-        ) as $key) {
-            if (array_key_exists($key, $_SERVER) === true) {
-                foreach (explode(',', $_SERVER[$key]) as $ip) {
-                    $ip = trim($ip); // just to be safe
-                    if (
-                        filter_var(
-                            $ip,
-                            FILTER_VALIDATE_IP,
-                            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
-                        )
-                        !== false
-                    ) {
-                        $ip_address = $ip;
-                        break;
-                    }
-                }
+            'HTTP_FORWARDED',
+            'REMOTE_ADDR',
+        ];
+
+        foreach ($keys as $key) {
+            $ip = $_SERVER[$key] ?? null;
+            if (
+                $ip &&
+                filter_var(
+                    $ip,
+                    FILTER_VALIDATE_IP,
+                    FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+                ) !== false
+            ) {
+                $ip_address = $ip;
+                break;
             }
         }
         return $ip_address;
