@@ -62,6 +62,9 @@ export default {
             url: null,
             disable_button: false,
             retry_counter: 0,
+            dl_code: null,
+            bank_account_number: null,
+            bank_routing_number: null,
         }
     },
 
@@ -85,7 +88,10 @@ export default {
         },
         checkVerification () {
             let form_data = {
-                hash: this.$store.getters.getClient.hash,
+                token: this.$store.getters.getClient.hash,
+                dl_code: this.dl_code,
+                bank_account_number: this.bank_account_number,
+                bank_routing_number: this.bank_routing_number,
             };
             this.retry_counter++;
             if (this.retry_counter <= 2) {
@@ -95,9 +101,13 @@ export default {
                     beforeSend: () => {
                         this.disable_button = true;
                     },
-                    success: () => {
-                        this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
-                        this.hide();
+                    success: (response) => {
+                        if (constants.DL_REDIRECT_PAGE_SUCCESS.includes(response)) {
+                            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+                            this.hide();
+                        } else if (constants.DL_REDIRECT_PAGE_ERROR.includes(response)) {
+                            this.$router.push({ path: '/error', query: { type: 'online-verification' } });
+                        }
                     },
                     error: (response) => {
                         if (response.status === 401) {
@@ -116,8 +126,9 @@ export default {
                 this.$router.push({ path: '/error', query: { type: 'online-verification' } });
             }
         },
-        updateUrl (url) {
-            this.url = url;
+        updateUrl (data) {
+            this.url = data.dl_url + data.dl_code;
+            this.dl_code = data.dl_code;
         },
     },
 };

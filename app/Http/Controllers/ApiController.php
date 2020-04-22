@@ -124,7 +124,12 @@ class ApiController extends Controller
                         'form_params' => $api_request_data,
                     ]
                 );
-                $response = self::DECISION_LOGIC_URL . json_decode($api_response->getBody()->getContents());
+                $response = [
+                    'dl_url' => self::DECISION_LOGIC_URL,
+                    'dl_code' =>  json_decode($api_response->getBody()->getContents()),
+                    'bank_account_number' => $request->account_number,
+                    'bank_routing_number' => $request->routing_number,
+                ];
             } catch (RequestException $exception) {
                 switch ($exception->getCode()) {
                     case Response::HTTP_UNPROCESSABLE_ENTITY:
@@ -150,12 +155,43 @@ class ApiController extends Controller
 
     public function checkVerificationStatus(CheckVerificationRequest $request): JsonResponse
     {
-        $client = Client::getHashClient($request->hash);
+        $client = Client::getHashClient($request->token);
         $response = [];
         $status_code = Response::HTTP_OK;
         if ($client) {
-            $response = [];
-            $status_code = Response::HTTP_OK;
+            $url = config_safe('app.api_url') . 'api/verify-status';
+            $form_params = [
+                'bank_account_number' => $request->bank_account_number,
+                'bank_routing_number' => $request->bank_routing_number,
+                'id' => $client->lead_id,
+                'request_code' => $request->dl_code,
+            ];
+            try {
+                $client = new GuzzleHttpClient;
+                $api_response = $client->post(
+                    $url,
+                    [
+                        'query' => ['waf' => config_safe('app.waf')],
+                        'form_params' => $form_params,
+                    ]
+                );;
+                $response =  json_decode($api_response->getBody()->getContents());
+            } catch (RequestException $exception) {
+                switch ($exception->getCode()) {
+                    case Response::HTTP_UNPROCESSABLE_ENTITY:
+                        $message = 'Invalid Credentials';
+                        break;
+                    default:
+                        $message = 'An Error has occured';
+                        Log::error($exception);
+                        break;
+                }
+                $response = ['message' => $message];
+                $status_code = $exception->getCode();
+            } catch (Exception $exception) {
+                Log::error($exception);
+                $response = [['message' => 'An Error has occured']];
+            }
         } else {
             $response = ['message' => 'Expired Session'];
         }

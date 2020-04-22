@@ -14,7 +14,10 @@ class CheckVerificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'hash' => 'required',
+            'token' => 'required',
+            'dl_code' => 'required',
+            'bank_account_number' => 'required|min:5|max:17|regex:/[\d -]+$/',
+            'bank_routing_number' => 'required|digits:9|numeric',
         ];
     }
 }

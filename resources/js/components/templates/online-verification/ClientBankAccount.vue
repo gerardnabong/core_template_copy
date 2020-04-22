@@ -106,9 +106,10 @@ export default {
                     this.showLoader();
                 },
                 success: (response) => {
-                    window.open(response, '_blank');
+                    let url = response.url + response.dl_code
+                    window.open(url, '_blank');
                     let decisionModal = this.$refs['decisionModal'];
-                    decisionModal.updateUrl(response);
+                    decisionModal.updateData(response);
                     decisionModal.showOkButton();
                     decisionModal.show();
                 },

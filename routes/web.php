@@ -16,9 +16,9 @@ Route::get('getPortfolio', 'WebsiteController@getPortfolio');
 Route::group(['prefix' => 'api'], function () {
     Route::post('login-client', 'ApiController@loginClient')->name('login.client');
     Route::post('register', 'ApiController@registerClient')->name('register.client');
-    Route::get('logout', 'ApiController@logout');
+    Route::get('logout', 'ApiController@logout')->name('logout');
     Route::post('verify-bank-details', 'ApiController@verifyBankDetails')->name('verify.bank_details');
-    Route::post('check-verification-status', 'ApiController@checkVerificationStatus');
+    Route::post('check-verification-status', 'ApiController@checkVerificationStatus')->name('verify.status');
 });
 
 // Health Check for checking deployed version - Warrence Lim
