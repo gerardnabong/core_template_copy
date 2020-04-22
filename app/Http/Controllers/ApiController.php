@@ -172,7 +172,7 @@ class ApiController extends Controller
 
     private function getIP(): string
     {
-        $ip_address = '0.0.0.0';
+        $ip_address = '0.0.0.0'; // safety incase ip is hidden / localhost
         foreach (array(
             'HTTP_CLIENT_IP',
             'HTTP_X_FORWARDED_FOR',
