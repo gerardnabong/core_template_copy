@@ -11,7 +11,7 @@
                 />
                 <b-form
                     class="pt-4"
-                    @submit="login"
+                    @submit.prevent="login"
                     ref="loading_container"
                 >
                     <h2 class="client-portal-heading-text">
@@ -98,5 +98,11 @@ export default {
     name: 'LeadRegistration',
 
     mixins: [Login],
+
+    computed: {
+        url () {
+            return '/api/register';
+        },
+    },
 };
 </script>

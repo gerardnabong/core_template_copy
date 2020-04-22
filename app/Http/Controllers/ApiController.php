@@ -26,14 +26,19 @@ class ApiController extends Controller
     {
         $response = null;
         $status_code = Response::HTTP_OK;
-        $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
+        $url = config_safe('app.api_url') . 'api/find-client';
+        $form_params = [
+            'email_address' => $request->email_address,
+            'ssn' => $request->ssn,
+            'portfolio_id' => Portfolio::getPortfolio()->lead_portfolio_id,
+        ];
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post(
                 $url,
                 [
-                    'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
-                    'form_params' => $request->all(),
+                    'query' => ['waf' => config_safe('app.waf')],
+                    'form_params' => $form_params,
                 ]
             );
             $api_decoded_response = $this->decodeApiResponse($api_response);
@@ -106,13 +111,13 @@ class ApiController extends Controller
                 'ssn' => $hash_client->ssn,
                 'id' => $hash_client->lead_id,
             ];
-            $url = env('MIX_PORTFOLIO_API_URL') . 'api/request-client-code';
+            $url = config_safe('app.api_url') . 'api/request-client-code';
             try {
                 $client = new GuzzleHttpClient;
                 $api_response = $client->post(
                     $url,
                     [
-                        'query' => ['waf' => env('DECISION_LOGO_WAF_KEY')],
+                        'query' => ['waf' => config_safe('app.waf')],
                         'form_params' => $api_request_data,
                     ]
                 );
@@ -135,6 +140,19 @@ class ApiController extends Controller
             }
         } else {
             $response = ['message' => 'Expired Session'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function registerClient(ApiLoginRequest $request): JsonResponse
+    {
+        $client = $this->loginClient($request);
+        $response = json_decode($client->content());
+        $status_code = $client->status();
+        if (isset($response->client_status_id) && $response->client_status_id !== Client::CLIENT_STATUS_NEW_CLIENT) {
+            Client::logout($response->hash);
+            $response = ['message' => 'Invalid Credentials'];
             $status_code = Response::HTTP_UNAUTHORIZED;
         }
         return response()->json($response, $status_code);
