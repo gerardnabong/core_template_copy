@@ -14,8 +14,8 @@ class DecisionLogicTest extends TestCase
     private function login(): void
     {
         $params = [
-            'email_address' => 'celine.oropesa@email.com',
-            'ssn' => '357422009',
+            'email_address' => 'john_buster@email.com',
+            'ssn' => '583139200',
         ];
         $this->client = $this->postJson(route('login.client'), $params);
     }
@@ -24,8 +24,8 @@ class DecisionLogicTest extends TestCase
     {
         $this->login();
         $params = [
-            'account_number' => '2467859400',
-            'routing_number' => '040120000',
+            'account_number' => '210129010',
+            'routing_number' => '111323809',
             'token' => $this->client['hash'],
         ];
 
@@ -37,30 +37,30 @@ class DecisionLogicTest extends TestCase
         $this->login();
         $params = [
             'account_number' => '2467859410',
-            'routing_number' => '040120000',
+            'routing_number' => '111323809',
             'token' => $this->client['hash'],
         ];
 
-        $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
     public function testIfUserIsHasInalidRoutingNumber()
     {
         $this->login();
         $params = [
-            'account_number' => '2467859400',
+            'account_number' => '210129010',
             'routing_number' => '040121000',
             'token' => $this->client['hash'],
         ];
 
-        $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
     public function testIfHashIsMissing()
     {
         $params = [
-            'account_number' => '2467859400',
-            'routing_number' => '040120000',
+            'account_number' => '210129010',
+            'routing_number' => '111323809',
         ];
 
         $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);

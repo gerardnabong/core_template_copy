@@ -174,7 +174,7 @@ class ApiController extends Controller
                         'query' => ['waf' => config_safe('app.waf')],
                         'form_params' => $form_params,
                     ]
-                );;
+                );
                 $response =  json_decode($api_response->getBody()->getContents());
             } catch (RequestException $exception) {
                 switch ($exception->getCode()) {

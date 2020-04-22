@@ -62,9 +62,7 @@ export default {
             url: null,
             disable_button: false,
             retry_counter: 0,
-            dl_code: null,
-            bank_account_number: null,
-            bank_routing_number: null,
+            form_data: null,
         }
     },
 
@@ -87,17 +85,12 @@ export default {
             this.$bvModal.hide('decision-logic-verify');
         },
         checkVerification () {
-            let form_data = {
-                token: this.$store.getters.getClient.hash,
-                dl_code: this.dl_code,
-                bank_account_number: this.bank_account_number,
-                bank_routing_number: this.bank_routing_number,
-            };
             this.retry_counter++;
+            this.$store.commit('setError', null);
             if (this.retry_counter <= 2) {
                 $.post({
                     url: '/api/check-verification-status',
-                    data: form_data,
+                    data: this.form_data,
                     beforeSend: () => {
                         this.disable_button = true;
                     },
@@ -126,9 +119,10 @@ export default {
                 this.$router.push({ path: '/error', query: { type: 'online-verification' } });
             }
         },
-        updateUrl (data) {
+        updateData (data) {
             this.url = data.dl_url + data.dl_code;
-            this.dl_code = data.dl_code;
+            this.form_data = data;
+            this.form_data = Object.assign({}, this.form_data, { token: this.$store.getters.getClient.hash });
         },
     },
 };

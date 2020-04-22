@@ -19,6 +19,10 @@ export default new Vuex.Store({
         Client,
         Error,
     },
+    filter :{
+        Client,
+        ProgressBar,
+    },
     // TODO Find a better solution for this part also set in the future that only the hash will be save on the client
     plugins: [createPersistedState({
         storage: {
