@@ -94,10 +94,13 @@ router.beforeResolve((to, from, next) => {
             case constants.CLIENT_STATUS_RETURNING_CLIENT_ID:
                 next('new-loan');
                 break;
+            case constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID:
+                next('on-process');
+                break;
             case constants.CLIENT_STATUS_LOAN_TRANSFER_CLIENT_ID:
                 next('loan-transfer');
                 break;
-            case constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID:
+            case constants.CLIENT_STATUS_LOAN_ACTION_CLIENT_ID:
                 next('loan-action');
                 break;
             default:
