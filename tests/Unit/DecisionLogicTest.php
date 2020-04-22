@@ -65,4 +65,16 @@ class DecisionLogicTest extends TestCase
 
         $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
     }
+
+    public function testifRequestClientCodeIsWorking()
+    {
+        $this->login();
+        $params = [
+            'account_number' => '210129010',
+            'routing_number' => '111323809',
+            'token' => $this->client['hash'],
+        ];
+
+        $this->postJson(route('verify.bank_details'), $params)->assertOk();
+    }
 }
