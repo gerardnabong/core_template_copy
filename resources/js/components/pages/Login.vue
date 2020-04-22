@@ -8,7 +8,7 @@
                 />
                 <b-form
                     class="pt-4"
-                    @submit="login"
+                    @submit.prevent="login"
                     ref="loading_container"
                 >
 
@@ -88,5 +88,11 @@ export default {
     name: 'Login',
 
     mixins: [Login],
+
+    computed: {
+        url () {
+            return '/api/login-client';
+        },
+    },
 };
 </script>

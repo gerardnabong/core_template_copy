@@ -1,7 +1,4 @@
 <template>
-    <!--    TODO this file might be change or be deleted need verification on how passport works.
-            This is kept only for the design
-    -->
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -11,12 +8,12 @@
                 />
                 <b-form
                     class="pt-4"
-                    @submit="login"
+                    @submit.prevent="login"
                     ref="loading_container"
                 >
                     <h2 class="client-portal-heading-text">
                         <!-- TODO Firstname will be base on the redirect link url -->
-                        Welcome, FIRSTNAME! <br> We’re happy to be working with you!
+                        Welcome! <br> We’re happy to be working with you!
                     </h2>
                     <p class="client-portal-paragraph mt-4">
                         To get started, we need to create your user account:
@@ -98,5 +95,19 @@ export default {
     name: 'LeadRegistration',
 
     mixins: [Login],
-};
+
+    created () {
+        this.hash = this.$route.params.hash;
+        $.post({
+            url: '/api/send-redirect-query',
+            data: { hash: this.hash },
+        })
+    },
+
+    computed: {
+        url () {
+            return '/api/register';
+        },
+    }
+}
 </script>

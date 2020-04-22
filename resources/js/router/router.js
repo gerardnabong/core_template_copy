@@ -27,7 +27,7 @@ const ROUTES = [
         component: Login,
     },
     {
-        path: "/register",
+        path: "/register/:hash",
         component: LeadRegistration,
     },
     {
@@ -79,14 +79,14 @@ let router = new Router({
 });
 
 const public_links = [
-    '/',
-    '/register',
+    '',
+    '/register/:hash',
 ]
 
 router.beforeResolve((to, from, next) => {
-    if (!public_links.includes(to.fullPath) && !store.getters.getClient) {
+    if (!public_links.includes(to.matched[0].path) && !store.getters.getClient) {
         next('/');
-    } else if (public_links.includes(to.fullPath) && store.getters.getClient ) {
+    } else if (public_links.includes(to.matched[0].path) && store.getters.getClient ) {
         switch (store.getters.getClient.client_status_id) {
             case constants.CLIENT_STATUS_NEW_CLIENT_ID:
                 next('online-verification');
