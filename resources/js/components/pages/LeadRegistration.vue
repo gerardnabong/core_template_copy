@@ -103,5 +103,11 @@ export default {
             data: { hash: this.hash },
         })
     },
-};
+
+    computed: {
+        url () {
+            return '/api/register';
+        },
+    }
+}
 </script>
