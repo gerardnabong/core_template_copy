@@ -28,10 +28,9 @@ export default({
     },
 
     methods: {
-        login (event) {
-            event.preventDefault();
+        login () {
             $.post({
-                url: '/api/login-client/',
+                url: this.url,
                 data: this.form_data,
                 beforeSend: () => {
                     this.showLoader();
