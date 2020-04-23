@@ -61,7 +61,6 @@ class ApiController extends Controller
                 default:
                     $message = 'An Error has occured';
                     Log::error($exception);
-                    break;
             }
             $response = ['message' => $message];
             $status_code = $exception->getCode();
@@ -140,7 +139,6 @@ class ApiController extends Controller
                     default:
                         $message = 'An Error has occured';
                         Log::error($exception);
-                        break;
                 }
                 $response = ['message' => $message];
                 $status_code = $exception->getCode();
@@ -186,7 +184,6 @@ class ApiController extends Controller
                     default:
                         $message = 'An Error has occured';
                         Log::error($exception);
-                        break;
                 }
                 $response = ['message' => $message];
                 $status_code = $exception->getCode();
@@ -294,7 +291,6 @@ class ApiController extends Controller
                     default:
                         $message = 'An Error has occured';
                         Log::error($exception);
-                        break;
                 }
                 $response = ['message' => $message];
                 $status_code = $exception->getCode();
