@@ -58,7 +58,7 @@ class Portfolio extends Model
     {
         $suffix = '';
         if (config_safe('app.env')  !== 'production') {
-            $suffix = '-demo';
+            $suffix = '-dev';
         }
         return 'https://' . $this->portfolio_api_url . $suffix . self::VERTICAL_URL;
     }
