@@ -54,12 +54,12 @@ class Portfolio extends Model
         return $this->hasMany(Client::class);
     }
 
-    public function getPortfolioApiUrl(): string
+    public function getPortfolioApiUrl(string $url): string
     {
         $suffix = '';
         if (config_safe('app.env')  !== 'production') {
             $suffix = '-demo';
         }
-        return 'https://' . $this->portfolio_api_url . $suffix . self::VERTICAL_URL;
+        return 'https://' . $this->portfolio_api_url . $suffix . self::VERTICAL_URL . $url;
     }
 }

@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Model\Portfolio;
-
 function config_safe(string $key, string $expected_type = 'string')
 {
     $value = config($key);
@@ -19,9 +17,4 @@ function config_safe(string $key, string $expected_type = 'string')
         ]);
     }
     return $value;
-}
-
-function getPortfolioApiUrl(): string
-{
-    return Portfolio::getPortfolio()->getPortfolioApiUrl();
 }
