@@ -116,7 +116,6 @@ class ApiController extends Controller
                 'bank_routing_number' => $request->routing_number,
             ];
             $url = Portfolio::getPortfolio()->getPortfolioApiUrl('api/request-client-code');
-            dd($url, $api_request_data);
             try {
                 $client = new GuzzleHttpClient;
                 $api_response = $client->post(
