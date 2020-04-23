@@ -20,6 +20,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('verify-bank-details', 'ApiController@verifyBankDetails')->name('verify.bank_details');
     Route::post('check-verification-status', 'ApiController@checkVerificationStatus')->name('verify.status');
     Route::post('send-redirect-query', 'ApiController@sendRedirectQuery');
+    Route::post('request-new-loan', 'ApiController@requestNewLoan')->name('request.new.loan');
 });
 
 // Health Check for checking deployed version - Warrence Lim

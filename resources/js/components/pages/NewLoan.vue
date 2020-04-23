@@ -61,7 +61,7 @@ export default {
                     this.$router.push('/success');
                 },
                 error: (response) => {
-                    this.$router.push('/error');
+                    this.$router.push({ path: '/error', query: { type: 'new-loan' } });
                 }
             });
         }

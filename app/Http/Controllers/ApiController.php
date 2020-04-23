@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\CheckVerificationRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\NewLoanRequest;
 use App\Http\Requests\SendRedirectHashRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
