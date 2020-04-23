@@ -38,7 +38,7 @@ const ROUTES = [
     {
         path: "/loan-action",
         component: LoanAction,
-        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ACTION_CLIENT_ID },
     },
     {
         path: "/loan-transfer",
@@ -53,18 +53,18 @@ const ROUTES = [
     {
         path: "/on-process",
         component: OnProcess,
-        meta: { requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
     },
     {
         path: "/online-verification",
         component: OnlineVerification,
         meta: { requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID },
-     },
+    },
     {
         path: "/payment-schedule",
         component: PaymentSchedule,
         meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
-     },
+    },
     {
         path: "/success",
         component: SuccessPage,
