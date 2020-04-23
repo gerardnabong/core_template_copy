@@ -4,7 +4,7 @@
         :show="error"
         class="client-portal-alert"
     >
-        <div v-html="error.message" />
+        <div v-html="error.message || error" />
         <div
             v-for="error_type in error.errors"
             :key="error_type"
