@@ -63,6 +63,11 @@ export default {
                 this.content = 'The request failed for some reason, but you are still on track.';
                 this.url = '/online-verification';
                 break;
+            case 'new-loan':
+                this.heading_message = 'Oops! Something went wrong';
+                this.content = 'The request failed for some reason, but you are still on track.';
+                this.url = '/new-loan';
+                break;
         }
     },
 

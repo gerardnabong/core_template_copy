@@ -6,7 +6,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VerifyBankDetailRequest extends FormRequest
+class NewLoanRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,8 +16,7 @@ class VerifyBankDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_number' => 'required|min:5|max:17|regex:/[\d -]+$/',
-            'routing_number' => 'required|digits:9|numeric',
+            'lead_id' => 'required|integer',
             'token' => 'required|string|between:50,70',
         ];
     }

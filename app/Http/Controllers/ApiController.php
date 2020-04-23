@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\CheckVerificationRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\NewLoanRequest;
 use App\Http\Requests\SendRedirectHashRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
@@ -60,7 +61,6 @@ class ApiController extends Controller
                 default:
                     $message = 'An Error has occured';
                     Log::error($exception);
-                    break;
             }
             $response = ['message' => $message];
             $status_code = $exception->getCode();
@@ -139,7 +139,6 @@ class ApiController extends Controller
                     default:
                         $message = 'An Error has occured';
                         Log::error($exception);
-                        break;
                 }
                 $response = ['message' => $message];
                 $status_code = $exception->getCode();
@@ -185,7 +184,6 @@ class ApiController extends Controller
                     default:
                         $message = 'An Error has occured';
                         Log::error($exception);
-                        break;
                 }
                 $response = ['message' => $message];
                 $status_code = $exception->getCode();
@@ -260,6 +258,49 @@ class ApiController extends Controller
         if (isset($response->client_status_id) && $response->client_status_id !== Client::CLIENT_STATUS_NEW_CLIENT) {
             Client::logout($response->hash);
             $response = ['message' => 'Invalid Credentials'];
+            $status_code = Response::HTTP_UNAUTHORIZED;
+        }
+        return response()->json($response, $status_code);
+    }
+
+    public function requestNewLoan(NewLoanRequest $request): JsonResponse
+    {
+        $response = [];
+        $status_code = Response::HTTP_OK;
+        $hash_client = Client::getHashClient($request->token);
+        if ($hash_client) {
+            $api_request_data = [
+                'id' => $hash_client->lead_id,
+            ];
+            $url = config_safe('app.api_url') . 'api/reapply-lead';
+            try {
+                $client = new GuzzleHttpClient;
+                $api_response = $client->post(
+                    $url,
+                    [
+                        'query' => ['waf' => config_safe('app.waf')],
+                        'form_params' => $api_request_data,
+                    ]
+                );
+                $response = json_decode($api_response->getBody()->getContents());
+            } catch (RequestException $exception) {
+                switch ($exception->getCode()) {
+                    case Response::HTTP_UNPROCESSABLE_ENTITY:
+                        $message = 'Invalid Credentials';
+                        break;
+                    default:
+                        $message = 'An Error has occured';
+                        Log::error($exception);
+                }
+                $response = ['message' => $message];
+                $status_code = $exception->getCode();
+            } catch (Exception $exception) {
+                Log::error($exception);
+                $response = [['message' => 'An Error has occured']];
+                $status_code = $exception->getCode();
+            }
+        } else {
+            $response = ['message' => 'Expired Session'];
             $status_code = Response::HTTP_UNAUTHORIZED;
         }
         return response()->json($response, $status_code);
