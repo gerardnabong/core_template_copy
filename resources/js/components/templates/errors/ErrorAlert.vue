@@ -1,7 +1,8 @@
 <template>
     <b-alert
+        show
         variant="danger"
-        :show="error"
+        v-if="error"
         class="client-portal-alert"
     >
         <div v-html="error.message || error" />
