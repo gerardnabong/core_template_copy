@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApiLoginRequest;
 use App\Http\Requests\LogoutRequest;
+use App\Http\Requests\NewLoanRequest;
+use App\Http\Requests\SendRedirectHashRequest;
 use App\Http\Requests\VerifyBankDetailRequest;
 use App\Model\Client;
 use App\Model\Portfolio;
@@ -143,6 +145,60 @@ class ApiController extends Controller
             $status_code = Response::HTTP_UNAUTHORIZED;
         }
         return response()->json($response, $status_code);
+    }
+
+    public function sendRedirectQuery(SendRedirectHashRequest $request): void
+    {
+        try {
+            $url = env('MIX_PORTFOLIO_API_URL') . 'api/channel-tracking';
+            $client = new GuzzleHttpClient;
+            $form_params = [
+                'hash' => $request->hash,
+                'ip_address' => $this->getIp(),
+            ];
+            $client->post(
+                $url,
+                [
+                    'query' => ['waf' => config_safe('app.waf')],
+                    'form_params' => $form_params,
+                ]
+            );
+        } catch (RequestException $exception) {
+            Log::error($exception);
+            $this->sendRedirectQuery($request);
+        } catch (Exception $exception) {
+            Log::error($exception);
+        }
+    }
+
+    private function getIP(): string
+    {
+        $ip_address = '0.0.0.0'; // safety incase ip is hidden / localhost
+        $keys = [
+            'HTTP_CLIENT_IP',
+            'HTTP_X_FORWARDED_FOR',
+            'HTTP_X_FORWARDED',
+            'HTTP_X_CLUSTER_CLIENT_IP',
+            'HTTP_FORWARDED_FOR',
+            'HTTP_FORWARDED',
+            'REMOTE_ADDR',
+        ];
+
+        foreach ($keys as $key) {
+            $ip = $_SERVER[$key] ?? null;
+            if (
+                $ip &&
+                filter_var(
+                    $ip,
+                    FILTER_VALIDATE_IP,
+                    FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+                ) !== false
+            ) {
+                $ip_address = $ip;
+                break;
+            }
+        }
+        return $ip_address;
     }
 
     public function registerClient(ApiLoginRequest $request): JsonResponse
