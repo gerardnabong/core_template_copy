@@ -12,8 +12,8 @@ class LoginClientTest extends TestCase
     public function testSuccessLoginClient()
     {
         $params = [
-            'email_address' => 'celine.oropesa@email.com',
-            'ssn' => '357422009',
+            'email_address' => 'john_buster@email.com',
+            'ssn' => '583139200',
         ];
         $response = $this->post(route('login.client'), $params);
         $response->assertOk();
@@ -36,7 +36,7 @@ class LoginClientTest extends TestCase
     public function testErrorLoginClient()
     {
         $params = [
-            'email_address' => 'celine.oropesa@email.com',
+            'email_address' => 'john_buster@email.com',
             'ssn' => '357422000',
         ];
         $response = $this->post(route('login.client'), $params);
@@ -49,8 +49,8 @@ class LoginClientTest extends TestCase
     public function testSuccessRegisterClient()
     {
         $params = [
-            'email_address' => 'celine.oropesa@email.com',
-            'ssn' => '357422009',
+            'email_address' => 'john_buster@email.com',
+            'ssn' => '583139200',
         ];
         $response = $this->post(route('register.client'), $params);
         $response->assertOk();

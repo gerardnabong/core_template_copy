@@ -2,6 +2,7 @@
 
 import Loading from '~/mixin/loading';
 import WelcomeMessageModal from '~/components/templates/modal/WelcomeMessageModal';
+import ErrorAlert from '~/components/templates/errors/ErrorAlert';
 
 const LOADING_TIMEOUT_MS = 3000;
 
@@ -20,6 +21,7 @@ export default({
 
     components: {
         WelcomeMessageModal,
+        ErrorAlert,
     },
 
     created () {
@@ -45,7 +47,7 @@ export default({
                     }, LOADING_TIMEOUT_MS);
                 },
                 error: (response) => {
-                    this.error = response.responseJSON;
+                    this.$store.commit('setError', response.responseJSON);
                 },
                 complete: () => {
                     this.hideLoader();
