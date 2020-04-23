@@ -16,16 +16,11 @@
         </div>
         <div class="row mt-2 pt-4 mb-2">
             <div
-                class="col-12 text-center font-size-22 font-weight-bold"
+                class="col-12 text-center font-size-16 font-weight-bold"
                 v-if="is_success"
             >
-                Welcome
+                Logging you in...
             </div>
-            <p
-                class="mt-2 mb-2 text-center font-size-16 client-portal-login-message-content mx-auto"
-                v-if="$store.getters.getClient"
-                v-html="$store.getters.getClient.first_name"
-            />
             <div class="col-12 mt-2 mb-3 text-center">
                 <b-button
                     size="sm"
