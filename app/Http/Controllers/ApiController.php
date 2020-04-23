@@ -301,6 +301,7 @@ class ApiController extends Controller
             } catch (Exception $exception) {
                 Log::error($exception);
                 $response = [['message' => 'An Error has occured']];
+                $status_code = $exception->getCode();
             }
         } else {
             $response = ['message' => 'Expired Session'];

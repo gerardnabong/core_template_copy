@@ -17,7 +17,7 @@ class NewLoanRequest extends FormRequest
     {
         return [
             'lead_id' => 'required|integer',
-            'token' => 'required',
+            'token' => 'required|string',
         ];
     }
 }
