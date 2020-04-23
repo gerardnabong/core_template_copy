@@ -29,7 +29,7 @@ class ApiController extends Controller
     {
         $response = null;
         $status_code = Response::HTTP_OK;
-        $url = config_safe('app.api_url') . 'api/find-client';
+        $url = getPortfolioApiUrl() . 'api/find-client';
         $form_params = [
             'email_address' => $request->email_address,
             'ssn' => $request->ssn,
@@ -115,7 +115,7 @@ class ApiController extends Controller
                 'bank_account_number' => $request->account_number,
                 'bank_routing_number' => $request->routing_number,
             ];
-            $url = config_safe('app.api_url') . 'api/request-client-code';
+            $url = getPortfolioApiUrl() . 'api/request-client-code';
             try {
                 $client = new GuzzleHttpClient;
                 $api_response = $client->post(
@@ -159,7 +159,7 @@ class ApiController extends Controller
         $response = [];
         $status_code = Response::HTTP_OK;
         if ($client) {
-            $url = config_safe('app.api_url') . 'api/verify-status';
+            $url = getPortfolioApiUrl() . 'api/verify-status';
             $form_params = [
                 'bank_account_number' => $request->bank_account_number,
                 'bank_routing_number' => $request->bank_routing_number,
@@ -272,7 +272,7 @@ class ApiController extends Controller
             $api_request_data = [
                 'id' => $hash_client->lead_id,
             ];
-            $url = config_safe('app.api_url') . 'api/reapply-lead';
+            $url = getPortfolioApiUrl() . 'api/reapply-lead';
             try {
                 $client = new GuzzleHttpClient;
                 $api_response = $client->post(
