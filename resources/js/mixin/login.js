@@ -42,9 +42,9 @@ export default({
                     let loginModal = this.$refs['welcomeMessageModal'];
                     loginModal.showSuccess();
                     loginModal.show();
-                    // setTimeout(() => {
-                    //     this.$router.go();
-                    // }, LOADING_TIMEOUT_MS);
+                    setTimeout(() => {
+                        this.$router.go();
+                    }, LOADING_TIMEOUT_MS);
                 },
                 error: (response) => {
                     this.$store.commit('setError', response.responseJSON);
