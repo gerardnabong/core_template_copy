@@ -30,6 +30,11 @@ class ApiController extends Controller
         $response = null;
         $status_code = Response::HTTP_OK;
         $url = Portfolio::getPortfolio()->getPortfolioApiUrl('api/find-client');
+        $form_params = [
+            'email_address' => $request->email_address,
+            'ssn' => $request->ssn,
+            'portfolio_id' => Portfolio::getPortfolio()->lead_portfolio_id,
+        ];
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post(
@@ -49,6 +54,7 @@ class ApiController extends Controller
                 $status_code = Response::HTTP_NOT_FOUND;
             }
         } catch (RequestException $exception) {
+            dd($exception);
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
                     $message = 'Invalid Credentials';
@@ -61,6 +67,7 @@ class ApiController extends Controller
             $status_code = $exception->getCode();
         } catch (Exception $exception) {
             Log::error($exception);
+            dd($exception);
             $response = [['message' => 'An Error has occured']];
         }
 
