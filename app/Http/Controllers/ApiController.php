@@ -29,7 +29,7 @@ class ApiController extends Controller
     {
         $response = null;
         $status_code = Response::HTTP_OK;
-        $url = env('MIX_PORTFOLIO_API_URL') . 'api/find-client';
+        $url = Portfolio::getPortfolio()->getPortfolioApiUrl('api/find-client');
         dd($url, $request, $_SERVER);
         try {
             $client = new GuzzleHttpClient;
