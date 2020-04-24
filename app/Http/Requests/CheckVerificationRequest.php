@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class VerifyBankDetailRequest extends FormRequest
+class CheckVerificationRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,9 +14,10 @@ class VerifyBankDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            'account_number' => 'required|min:5|max:17|regex:/[\d -]+$/',
-            'routing_number' => 'required|digits:9|numeric',
             'token' => 'required|string|between:50,70',
+            'request_code' => 'required',
+            'bank_account_number' => 'required|min:5|max:17|regex:/[\d -]+$/',
+            'bank_routing_number' => 'required|digits:9|numeric',
         ];
     }
 }

@@ -13,12 +13,6 @@
                 <h2 class="client-portal-heading-text">Your application is still on process</h2>
                 <div class="mt-5">
                     <p class="client-portal-paragraph">A customer representative will contact you soon!</p>
-                    <b-button
-                        class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
-                        :style="{ 'background-color': clientPortalButton }"
-                        @mouseover.native="clientPortalButton = portfolio.primary_color_hover"
-                        @mouseleave.native="clientPortalButton = portfolio.primary_color"
-                    >Logout</b-button>
                 </div>
             </div>
         </div>

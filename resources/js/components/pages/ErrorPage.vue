@@ -10,16 +10,17 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-6 text-center pt-4">
-                <h2 class="client-portal-heading-text">Oops! Something went wrong</h2>
+                <h2 class="client-portal-heading-text mb-4">{{heading_message}}</h2>
                 <div class="mt-3">
                     <p class="client-portal-paragraph">
-                        The request failed for some reason, but you are still on track.
+                        {{content}}
                     </p>
                     <b-button
                         class="client-portal-button client-portal-btn-primary client-portal-btn-submit mt-3"
                         :style="{ 'background-color': clientPortalButton }"
                         @mouseover="clientPortalButton = portfolio.primary_color_hover"
                         @mouseleave="clientPortalButton = portfolio.primary_color"
+                        @click="tryAgain"
                     >Try Again</b-button>
                 </div>
             </div>
@@ -55,6 +56,25 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.clientPortalButton = this.portfolio.primary_color;
+        // TODO Add other error page redirects in the future
+        switch (this.$route.query.type) {
+            case 'online-verification':
+                this.heading_message = 'Request Code Not Completed';
+                this.content = 'The request failed for some reason, but you are still on track.';
+                this.url = '/online-verification';
+                break;
+            case 'new-loan':
+                this.heading_message = 'Oops! Something went wrong';
+                this.content = 'The request failed for some reason, but you are still on track.';
+                this.url = '/new-loan';
+                break;
+        }
     },
+
+    methods: {
+        tryAgain () {
+            this.$router.push(this.url);
+        }
+    }
 };
 </script>
