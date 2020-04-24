@@ -10,3 +10,10 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+public/*
+!public/index.php
+!public/.htaccess
+package-lock.json
+composer.lock
+resources\js\components\ExampleComponent.vue
+ngrok*
