@@ -28,7 +28,7 @@ phases:
       - echo NPM Install
       - npm install
       - echo NPM Build
-      - npm run dev
+      - npm run prod
       - echo Database Migration
       - php artisan migrate --force
       - echo Build started on `date`
