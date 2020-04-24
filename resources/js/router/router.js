@@ -27,17 +27,18 @@ const ROUTES = [
         component: Login,
     },
     {
-        path: "/register",
+        path: "/register/:hash",
         component: LeadRegistration,
     },
     {
         path: "/error",
         component: ErrorPage,
+        name: 'error',
     },
     {
         path: "/loan-action",
         component: LoanAction,
-        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ACTION_CLIENT_ID },
     },
     {
         path: "/loan-transfer",
@@ -52,18 +53,18 @@ const ROUTES = [
     {
         path: "/on-process",
         component: OnProcess,
-        meta: { requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID },
+        meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
     },
     {
         path: "/online-verification",
         component: OnlineVerification,
         meta: { requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID },
-     },
+    },
     {
         path: "/payment-schedule",
         component: PaymentSchedule,
         meta: { requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID },
-     },
+    },
     {
         path: "/success",
         component: SuccessPage,
@@ -79,14 +80,14 @@ let router = new Router({
 });
 
 const public_links = [
-    '/',
-    '/register',
+    '',
+    '/register/:hash',
 ]
 
 router.beforeResolve((to, from, next) => {
-    if (!public_links.includes(to.fullPath) && !store.getters.getClient) {
+    if (!public_links.includes(to.matched[0].path) && !store.getters.getClient) {
         next('/');
-    } else if (public_links.includes(to.fullPath) && store.getters.getClient ) {
+    } else if (public_links.includes(to.matched[0].path) && store.getters.getClient ) {
         switch (store.getters.getClient.client_status_id) {
             case constants.CLIENT_STATUS_NEW_CLIENT_ID:
                 next('online-verification');
@@ -94,10 +95,13 @@ router.beforeResolve((to, from, next) => {
             case constants.CLIENT_STATUS_RETURNING_CLIENT_ID:
                 next('new-loan');
                 break;
+            case constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID:
+                next('on-process');
+                break;
             case constants.CLIENT_STATUS_LOAN_TRANSFER_CLIENT_ID:
                 next('loan-transfer');
                 break;
-            case constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID:
+            case constants.CLIENT_STATUS_LOAN_ACTION_CLIENT_ID:
                 next('loan-action');
                 break;
             default:
