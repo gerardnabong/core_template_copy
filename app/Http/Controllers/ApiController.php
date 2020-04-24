@@ -54,7 +54,6 @@ class ApiController extends Controller
                 $status_code = Response::HTTP_NOT_FOUND;
             }
         } catch (RequestException $exception) {
-            dd($exception);
             switch ($exception->getCode()) {
                 case Response::HTTP_UNPROCESSABLE_ENTITY:
                     $message = 'Invalid Credentials';
@@ -67,7 +66,6 @@ class ApiController extends Controller
             $status_code = $exception->getCode();
         } catch (Exception $exception) {
             Log::error($exception);
-            dd($exception);
             $response = [['message' => 'An Error has occured']];
         }
 
