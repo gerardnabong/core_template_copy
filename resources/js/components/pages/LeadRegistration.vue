@@ -1,7 +1,10 @@
 <template>
     <div class="container">
         <div class="row client-portal-vertical-height align-items-center justify-content-center">
-            <div class="col-md-6 text-center">
+            <div
+                class="col-md-6 text-center"
+                ref="loading_container"
+            >
                 <i
                     class="fas fa-handshake client-portal-icon"
                     :style="{ color: portfolio.secondary_color }"
@@ -16,7 +19,6 @@
                     <div class="col-sm-6">
                         <b-button
                             type='button'
-                            to="/success"
                             class="client-portal-btn-primary mx-auto border-0 mt-2"
                             :style="{ 'background-color': loginPrimaryColor }"
                             @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
@@ -29,7 +31,6 @@
                     <div class="col-sm-6">
                         <b-button
                             type='button'
-                            to="/online-verification"
                             class="client-portal-btn-primary mx-auto border-0 mt-2"
                             :style="{ 'background-color': loginPrimaryColor }"
                             @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
@@ -51,13 +52,14 @@
 
 import Login from '~/mixin/login';
 import Loading from '~/mixin/loading';
+import PageAction from '~/mixin/page_action';
 
 const LOADING_TIMEOUT_MS = 3000;
 
 export default {
     name: 'LeadRegistration',
 
-    mixins: [Login, Loading],
+    mixins: [Login, Loading, PageAction],
 
     created () {
         this.hash = this.$route.params.hash;
@@ -77,6 +79,6 @@ export default {
         url () {
             return '/api/register';
         },
-    }
+    },
 }
 </script>
