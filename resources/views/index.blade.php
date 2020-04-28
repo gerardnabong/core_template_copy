@@ -29,7 +29,8 @@
     y.configure=function(i,j){y("configure",i,j);k.c[i]=j};
     k=y._={s:[],t:[+new Date],c:{},l:a};
     })(window,document,"static.olark.com/jsclient/loader.js");
-    / Add configuration calls below this comment /
-    olark.identify('1312-801-10-5548');</script>
+    /*Add configuration calls below this comment*/
+    olark.identify('1312-801-10-5548');
+</script>
 <!-- end olark code -->
 </html>
