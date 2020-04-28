@@ -55,6 +55,9 @@ import Loading from '~/mixin/loading';
 import PageAction from '~/mixin/page_action';
 
 const LOADING_TIMEOUT_MS = 3000;
+const CALL_US_BUTTON_DATA = [
+
+];
 
 export default {
     name: 'LeadRegistration',

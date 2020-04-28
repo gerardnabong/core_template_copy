@@ -6,7 +6,7 @@ export default {
         let form_data = data;
         $.post({
             url: '/api/save-client-action',
-            data: action,
+            data: form_data,
             success: (response) => {
 
             },
