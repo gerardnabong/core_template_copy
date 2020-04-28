@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row client-portal-vertical-height align-items-center justify-content-center">
             <div class="col-md-6 text-center">
                 <span
                     class="icon-login-icon client-portal-icon"

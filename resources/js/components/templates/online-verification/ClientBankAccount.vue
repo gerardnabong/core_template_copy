@@ -2,48 +2,24 @@
     <div ref="loading_container">
         <div class="client-portal-paragraph">
             <p>
-                We need to verify your bank account information in order to proceed.
-                Please enter your information below:
+                {{store.getters.getClient.first_name}}, the next step in the process is to verify your
+                banking information electronically, for this we use a system called Decision Logic.
             </p>
             <p class="mb-4 font-italic">
                 (Note, a new window or tab will open)
             </p>
         </div>
-        <error-alert />
-        <b-form-group class="mb-3">
-            <vue-mask
-                v-model="form_data.routing_number"
-                placeholder="Bank Routing Number"
-                class="form-control client-portal-form-input"
-                required
-                maxlength="9"
-                mask="000000000"
-                :raw="false"
-            />
-        </b-form-group>
-        <b-form-group class="mb-3">
-            <vue-mask
-                v-model="form_data.account_number"
-                placeholder="Bank Account Number"
-                class="form-control client-portal-form-input"
-                minlength="5"
-                maxlength="17"
-                required
-                mask="0DDDDDDDDDDDDDDDD"
-                :options='number_and_dashes'
-                :raw="false"
-            />
-        </b-form-group>
         <b-button
             class="client-portal-btn-primary border-0 mt-3 mb-3"
             :style="{ 'background-color': portfolio.primary_color }"
             @click="verifyInput"
         >
-            Send Request
+            Launch Request
         </b-button>
         <div class="my-4 client-portal-paragraph">
-            If you would like to complete your bank verification over the phone.
-            Please click the call us button below:
+            Decision Logic is a third party verification system that allows us to request an
+            online statement directly with you bank. It only takes a few minutes and is completely secure,
+            all you need is your online banking credentials to verify your identity with your bank.
         </div>
         <div>
             <div class="d-flex justify-content-center my-4">
@@ -65,6 +41,7 @@ import Loading from '~/mixin/loading';
 import vueMask from 'vue-jquery-mask';
 
 const DECISION_LOGIC_TIMEOUT_LIMIT_MS = 60000;
+const PAGE_ID = 7;
 
 export default {
     name: 'ClientBankAccount',
@@ -73,13 +50,6 @@ export default {
 
     data () {
         return {
-            // TODO will change when created Database Entry for Page
-            // TODO create constant id
-            page_id: 7,
-            form_data: {
-                routing_number: null,
-                account_number: null,
-            },
             number_and_dashes: {
                 translation: {
                     'D': { pattern: /[\d -]+/ },
@@ -97,7 +67,8 @@ export default {
 
     methods: {
         verifyInput () {
-            let form_data = Object.assign({}, this.form_data, { token: this.token });
+            // let form_data = Object.assign({}, this.form_data, { token: this.token });
+            let form_data = [];
             this.$store.commit('setError', null);
             $.post({
                 data: form_data,

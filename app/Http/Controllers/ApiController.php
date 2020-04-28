@@ -33,7 +33,6 @@ class ApiController extends Controller
         $form_params = [
             'email_address' => $request->email_address,
             'ssn' => $request->ssn,
-            'portfolio_id' => Portfolio::getPortfolio()->lead_portfolio_id,
         ];
         try {
             $client = new GuzzleHttpClient;
@@ -86,12 +85,14 @@ class ApiController extends Controller
         ];
     }
 
-    private function saveClient(ApiLoginRequest $request, array $client_Data, stdClass $api_response): Client
+    private function saveClient(ApiLoginRequest $request, array $client_data, stdClass $api_response): Client
     {
-        $client = Client::create($client_Data);
+        $client = Client::create($client_data);
         $client->email_address = $api_response->email_address;
         $client->ssn = $request->ssn;
         $client->first_name = $api_response->first_name;
+        $client->bank_account_number = $api_response->bank_account_number;
+        $client->bank_routing_number = $api_response->bank_routing_number;
         $client->hash = Client::setHashClient($client);
         return $client;
     }
