@@ -21,6 +21,9 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('check-verification-status', 'ApiController@checkVerificationStatus')->name('verify.status');
     Route::post('send-redirect-query', 'ApiController@sendRedirectQuery');
     Route::post('request-new-loan', 'ApiController@requestNewLoan')->name('request.new.loan');
+    Route::resource('client-interaction', 'ClientInteractionController')->only([
+        'store', 'update'
+    ]);
 });
 
 // Health Check for checking deployed version - Warrence Lim

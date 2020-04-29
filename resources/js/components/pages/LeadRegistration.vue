@@ -24,6 +24,7 @@
                             @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                             @mouseleave="loginPrimaryColor = portfolio.primary_color"
                             :disabled="is_loading"
+                            @click.prevent="btnCallMe"
                         >
                             Call Me Now
                         </b-button>
@@ -36,6 +37,7 @@
                             @mouseover="loginPrimaryColor = portfolio.primary_color_hover"
                             @mouseleave="loginPrimaryColor = portfolio.primary_color"
                             :disabled="is_loading"
+                            @click.prevent="btnBankVerification"
                         >
                             Instant Bank Verification
                         </b-button>
@@ -50,14 +52,12 @@
 <script>
 'use strict';
 
-import Login from '~/mixin/login';
+import * as constants from '~/fixed_variables/constants';
 import Loading from '~/mixin/loading';
+import Login from '~/mixin/login';
 import PageAction from '~/mixin/page_action';
 
 const LOADING_TIMEOUT_MS = 3000;
-const CALL_US_BUTTON_DATA = [
-
-];
 
 export default {
     name: 'LeadRegistration',
@@ -65,23 +65,54 @@ export default {
     mixins: [Login, Loading, PageAction],
 
     created () {
-        this.hash = this.$route.params.hash;
-        // $.post({
-        //     url: '/api/send-redirect-query',
-        //     data: { hash: this.hash },
-        //     success: (response) => {
-        //         this.$store.commit('setClient', response);
-        //     },
-        //     error: (response) => {
-        //         this.$store.commit('setError', response.responseJSON);
-        //     },
-        // });
+        let hash = this.$route.params.hash;
+        $.post({
+            url: '/api/send-redirect-query',
+            data: { hash: hash },
+            beforeSend: () => {
+                this.showLoader();
+            },
+            success: (response) => {
+                this.$store.commit('setClient', response);
+            },
+            error: (response) => {
+                this.$store.commit('setError', response.responseJSON);
+            },
+            complete: () => {
+                this.hideLoader();
+            }
+        });
     },
 
     computed: {
         url () {
             return '/api/register';
         },
+
+        page_id () {
+            return constants.PAGE_REGISTER_ID;
+        }
     },
+
+    methods: {
+        btnCallMe () {
+            let data = {
+                button_name: 'call_me',
+                is_button_click: 1,
+                clicked_at: this.moment().format('YYYY-MM-DD HH:mm:ss'),
+            };
+            this.saveAction(data);
+            this.$router.push('/success');
+        },
+        btnBankVerification () {
+            let data = {
+                button_name: 'instant_bank_verification',
+                is_button_click: 1,
+                clicked_at: this.moment().format('YYYY-MM-DD HH:mm:ss'),
+            };
+            this.saveAction(data);
+            this.$router.push('/online-verification');
+        }
+    }
 }
 </script>

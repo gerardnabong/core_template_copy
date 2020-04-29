@@ -10,6 +10,7 @@ class AddRegisterPageDetail extends Migration
     public function up()
     {
         $page = [
+            'id' => '10001',
             'name' => 'register',
             'url' => '/register',
         ];

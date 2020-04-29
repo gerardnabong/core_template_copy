@@ -27,8 +27,14 @@ const ROUTES = [
         component: Login,
     },
     {
-        path: "/register/:hash",
+        path: "/register",
         component: LeadRegistration,
+        children: [
+            {
+                path: ':hash',
+                component: LeadRegistration,
+            }
+        ],
     },
     {
         path: "/error",
@@ -85,7 +91,14 @@ const public_links = [
 ]
 
 router.beforeResolve((to, from, next) => {
-    if (!public_links.includes(to.matched[0].path) && !store.getters.getClient) {
+    let is_public_link = false;
+    to.matched.forEach(element => {
+        if (public_links.includes(element.path)) {
+            is_public_link = true;
+            return;
+        }
+    });
+    if (!is_public_link && !store.getters.getClient) {
         next('/');
     } else if (public_links.includes(to.matched[0].path) && store.getters.getClient ) {
         switch (store.getters.getClient.client_status_id) {

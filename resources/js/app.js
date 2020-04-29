@@ -11,6 +11,7 @@ import Loading from 'vue-loading-overlay';
 import router from "./router/router";
 import store from "./storage/store";
 import Vue from "vue";
+import moment from 'moment';
 
 window.Vue = require("vue");
 
@@ -42,6 +43,7 @@ Vue.use(BootstrapVue);
 Vue.use(Loading);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
+Vue.prototype.moment = moment;
 new Vue({
     router,
     store,

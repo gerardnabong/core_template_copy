@@ -29,6 +29,7 @@
         "es6-promise": "^4.2.8",
         "jquery": "^3.4.1",
         "js-cookie": "^2.2.1",
+        "moment": "^2.24.0",
         "vue": "^2.6.11",
         "vue-jquery-mask": "^1.0.3",
         "vue-loading-overlay": "^3.3.2",

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientInteraction extends Model
 {
-    //
+    protected $guarded = ['id'];
 }
