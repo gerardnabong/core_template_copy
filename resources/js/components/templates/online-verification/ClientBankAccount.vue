@@ -2,7 +2,7 @@
     <div ref="loading_container">
         <div class="client-portal-paragraph">
             <p>
-                {{store.getters.getClient.first_name}}, the next step in the process is to verify your
+                {{$store.getters.getClient.first_name}}, the next step in the process is to verify your
                 banking information electronically, for this we use a system called Decision Logic.
             </p>
             <p class="mb-4 font-italic">

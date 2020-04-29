@@ -15,9 +15,18 @@ class ApiLoginRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'email_address' => 'required|email:rfc',
-            'ssn'   => 'required|digits:9|numeric',
-        ];
+        $rules = [];
+        if ($this->has('hash')) {
+            $rules = [
+                'hash' => 'required|string|size:77',
+            ];
+        } else {
+            $rules = [
+                'email_address' => 'required|email:rfc',
+                'ssn'   => 'required|digits:9|numeric',
+            ];
+        }
+
+        return $rules;
     }
 }

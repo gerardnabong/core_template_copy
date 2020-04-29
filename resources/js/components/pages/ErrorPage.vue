@@ -68,6 +68,11 @@ export default {
                 this.content = 'The request failed for some reason, but you are still on track.';
                 this.url = '/new-loan';
                 break;
+            case 'register':
+                this.heading_message = 'Oops! Something went wrong';
+                this.content = 'The request failed for some reason, but you are still on track.';
+                this.url = '/register/' + this.$route.query.hash;
+                break;
         }
     },
 

@@ -30,10 +30,17 @@ class ApiController extends Controller
         $response = null;
         $status_code = Response::HTTP_OK;
         $url = Portfolio::getPortfolio()->getPortfolioApiUrl('api/find-client');
-        $form_params = [
-            'email_address' => $request->email_address,
-            'ssn' => $request->ssn,
-        ];
+        if ($request->has('hash')) {
+            $form_params = [
+                'hash' => $request->hash,
+                'ip_address' => $this->getIp(),
+            ];
+        } else {
+            $form_params = [
+                'email_address' => $request->email_address,
+                'ssn' => $request->ssn,
+            ];
+        }
         try {
             $client = new GuzzleHttpClient;
             $api_response = $client->post(
@@ -46,7 +53,7 @@ class ApiController extends Controller
             $api_decoded_response = $this->decodeApiResponse($api_response);
             $client_data = $this->createClientArray($api_decoded_response);
             if ($client_data['client_status_id']) {
-                $client = $this->saveClient($request, $client_data, $api_decoded_response);
+                $client = $this->saveClient($client_data, $api_decoded_response);
                 $response = $client;
             } else {
                 $response = ['message' => 'Client not found'];
@@ -85,14 +92,14 @@ class ApiController extends Controller
         ];
     }
 
-    private function saveClient(ApiLoginRequest $request, array $client_data, stdClass $api_response): Client
+    private function saveClient(array $client_data, stdClass $api_response): Client
     {
         $client = Client::create($client_data);
-        $client->email_address = $api_response->email_address;
-        $client->ssn = $request->ssn;
-        $client->first_name = $api_response->first_name;
         $client->bank_account_number = $api_response->bank_account_number;
         $client->bank_routing_number = $api_response->bank_routing_number;
+        $client->email_address = $api_response->email_address;
+        $client->first_name = $api_response->first_name;
+        $client->ssn = $api_response->ssn;
         $client->hash = Client::setHashClient($client);
         return $client;
     }

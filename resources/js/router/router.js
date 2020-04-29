@@ -88,6 +88,7 @@ let router = new Router({
 const public_links = [
     '',
     '/register/:hash',
+    '/error',
 ]
 
 router.beforeResolve((to, from, next) => {

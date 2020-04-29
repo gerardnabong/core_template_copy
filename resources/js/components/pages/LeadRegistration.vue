@@ -67,7 +67,7 @@ export default {
     created () {
         let hash = this.$route.params.hash;
         $.post({
-            url: '/api/send-redirect-query',
+            url: '/api/login-client',
             data: { hash: hash },
             beforeSend: () => {
                 this.showLoader();
@@ -76,7 +76,8 @@ export default {
                 this.$store.commit('setClient', response);
             },
             error: (response) => {
-                this.$store.commit('setError', response.responseJSON);
+                // TODO Fix Error where loading is not remove unless refresh
+                // this.$router.push({ path: '/error', query: { type: 'register', hash: hash } });
             },
             complete: () => {
                 this.hideLoader();
