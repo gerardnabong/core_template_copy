@@ -48,6 +48,8 @@
 import * as constants from '~/fixed_variables/constants';
 import ErrorAlert from '~/components/templates/errors/ErrorAlert';
 
+const GO_TO_SUCCESS_PAGE_TIMER = 15000;
+
 export default {
     name: 'DecisionLogicVerifyModal',
 
@@ -60,7 +62,6 @@ export default {
             disable_button: false,
             form_data: null,
             is_success: false,
-            retry_counter: 0,
             show_ok: false,
             url: null,
         }
@@ -69,6 +70,10 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.ok_btn_color = this.portfolio.primary_color;
+        setTimeout(() => {
+            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+            this.hide();
+        }, GO_TO_SUCCESS_PAGE_TIMER);
     },
 
     methods: {
@@ -85,39 +90,18 @@ export default {
             this.$bvModal.hide('decision-logic-verify');
         },
         checkVerification () {
-            this.retry_counter++;
-            this.$store.commit('setError', null);
-            if (this.retry_counter <= 2) {
-                $.post({
-                    url: '/api/check-verification-status',
-                    data: this.form_data,
-                    beforeSend: () => {
-                        this.disable_button = true;
-                    },
-                    success: (response) => {
-                        if (constants.DL_REDIRECT_PAGE_SUCCESS.includes(response)) {
-                            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
-                            this.hide();
-                        } else if (constants.DL_REDIRECT_PAGE_ERROR.includes(response)) {
-                            this.$router.push({ path: '/error', query: { type: 'online-verification' } });
-                        }
-                    },
-                    error: (response) => {
-                        if (response.status === 401) {
-                            setTimeout(() => {
-                                this.$store.commit('setClient', null);
-                                this.$router.push('/');
-                            }, 3000);
-                        }
-                        this.$store.commit('setError', response.responseJSON);
-                    },
-                    complete: () => {
-                        this.disable_button = false;
-                    }
-                });
-            } else {
-                this.$router.push({ path: '/error', query: { type: 'online-verification' } });
-            }
+            $.post({
+                url: '/api/check-verification-status',
+                data: this.form_data,
+                beforeSend: () => {
+                    this.disable_button = true;
+                },
+                complete: () => {
+                    this.disable_button = false;
+                    this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+                    this.hide();
+                }
+            });
         },
         updateData (data) {
             this.url = data.decision_logic_url + data.request_code;

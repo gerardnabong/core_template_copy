@@ -67,8 +67,11 @@ export default {
 
     methods: {
         verifyInput () {
-            // let form_data = Object.assign({}, this.form_data, { token: this.token });
-            let form_data = [];
+            let form_data = {
+                account_number: this.client.bank_account_number,
+                routing_number: this.client.bank_routing_number,
+                token: this.client.hash,
+            };
             this.$store.commit('setError', null);
             $.post({
                 data: form_data,
@@ -102,8 +105,8 @@ export default {
     },
 
     computed: {
-        token () {
-            return this.$store.getters.getClient.hash;
+        client () {
+            return this.$store.getters.getClient;
         }
     },
 
