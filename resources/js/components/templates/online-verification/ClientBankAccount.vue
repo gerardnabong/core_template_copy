@@ -73,6 +73,7 @@ export default {
                 token: this.client.hash,
             };
             this.$store.commit('setError', null);
+            let decisionModal = this.$refs['decisionModal'];
             $.post({
                 data: form_data,
                 url: '/api/verify-bank-details',
@@ -82,10 +83,7 @@ export default {
                 success: (response) => {
                     let url = response.decision_logic_url + response.request_code
                     window.open(url, '_blank');
-                    let decisionModal = this.$refs['decisionModal'];
                     decisionModal.updateData(response);
-                    decisionModal.showOkButton();
-                    decisionModal.show();
                 },
                 error: (response) => {
                     this.$store.commit('setError', response.responseJSON);
@@ -99,6 +97,8 @@ export default {
                 },
                 complete: () => {
                     this.hideLoader();
+                    decisionModal.showOkButton();
+                    decisionModal.show();
                 },
             });
         }

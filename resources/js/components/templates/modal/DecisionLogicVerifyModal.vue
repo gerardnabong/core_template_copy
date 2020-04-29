@@ -14,9 +14,6 @@
             />
         </div>
         <div class="row mt-2 pt-4 mb-2">
-            <div class="col-12 px-5">
-                <error-alert />
-            </div>
             <div class="col-12 mt-2 mb-3 text-center">
                 <h5 class="font-size-22 font-weight-bold mb-4">Request Successful!</h5>
                 <p>To proceed, please complete the form by clicking
@@ -46,7 +43,6 @@
 'use strict';
 
 import * as constants from '~/fixed_variables/constants';
-import ErrorAlert from '~/components/templates/errors/ErrorAlert';
 
 const GO_TO_SUCCESS_PAGE_TIMER = 15000;
 
@@ -54,7 +50,6 @@ export default {
     name: 'DecisionLogicVerifyModal',
 
     components: {
-        ErrorAlert,
     },
 
     data () {
