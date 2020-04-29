@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Tests\Unit;
@@ -12,8 +13,8 @@ class LoginClientTest extends TestCase
     public function testSuccessLoginClient()
     {
         $params = [
-            'email_address' => 'john_buster@email.com',
-            'ssn' => '583139200',
+            'email_address' => 'albert.valdez-232@arbcalls.com',
+            'ssn' => '368760577',
         ];
         $response = $this->post(route('login.client'), $params);
         $response->assertOk();
@@ -29,14 +30,14 @@ class LoginClientTest extends TestCase
         $response = $this->post(route('login.client'), $params);
         $response->assertNotFound();
         $response->assertExactJson([
-            'message' => 'Client not found',
+            'message' => 'An Error has occured',
         ]);
     }
 
     public function testErrorLoginClient()
     {
         $params = [
-            'email_address' => 'john_buster@email.com',
+            'email_address' => 'albert.valdez-232@arbcalls.com',
             'ssn' => '357422000',
         ];
         $response = $this->post(route('login.client'), $params);
@@ -49,10 +50,10 @@ class LoginClientTest extends TestCase
     public function testSuccessRegisterClient()
     {
         $params = [
-            'email_address' => 'john_buster@email.com',
-            'ssn' => '583139200',
+            'email_address' => 'albert.valdez-232@arbcalls.com',
+            'ssn' => '368760577',
         ];
-        $response = $this->post(route('register.client'), $params);
+        $response = $this->post(route('login.client'), $params);
         $response->assertOk();
         $response->assertJsonPath('client_status_id', Client::CLIENT_STATUS_NEW_CLIENT);
     }
@@ -63,7 +64,7 @@ class LoginClientTest extends TestCase
             'email_address' => 'abigail+test@arbcalls.com',
             'ssn' => '303157353',
         ];
-        $response = $this->post(route('register.client'), $params);
-        $response->assertStatus(Response::HTTP_UNAUTHORIZED);
+        $response = $this->post(route('login.client'), $params);
+        $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
 }

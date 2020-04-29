@@ -14,8 +14,8 @@ class DecisionLogicTest extends TestCase
     private function login(): void
     {
         $params = [
-            'email_address' => 'john_buster@email.com',
-            'ssn' => '583139200',
+            'email_address' => 'albert.valdez-232@arbcalls.com',
+            'ssn' => '368760577',
         ];
         $this->client = $this->postJson(route('login.client'), $params);
     }
@@ -24,8 +24,8 @@ class DecisionLogicTest extends TestCase
     {
         $this->login();
         $params = [
-            'account_number' => '210129010',
-            'routing_number' => '111323809',
+            'account_number' => '7497512',
+            'routing_number' => '071112222',
             'token' => $this->client['hash'],
         ];
 
@@ -37,7 +37,7 @@ class DecisionLogicTest extends TestCase
         $this->login();
         $params = [
             'account_number' => '2467859410',
-            'routing_number' => '111323809',
+            'routing_number' => '071112222',
             'token' => $this->client['hash'],
         ];
 
@@ -48,7 +48,7 @@ class DecisionLogicTest extends TestCase
     {
         $this->login();
         $params = [
-            'account_number' => '210129010',
+            'account_number' => '7497512',
             'routing_number' => '040121000',
             'token' => $this->client['hash'],
         ];
@@ -59,8 +59,8 @@ class DecisionLogicTest extends TestCase
     public function testIfHashIsMissing()
     {
         $params = [
-            'account_number' => '210129010',
-            'routing_number' => '111323809',
+            'account_number' => '7497512',
+            'routing_number' => '071112222',
         ];
 
         $this->postJson(route('verify.bank_details'), $params)->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -70,8 +70,8 @@ class DecisionLogicTest extends TestCase
     {
         $this->login();
         $params = [
-            'account_number' => '210129010',
-            'routing_number' => '111323809',
+            'account_number' => '7497512',
+            'routing_number' => '071112222',
             'token' => $this->client['hash'],
         ];
 
