@@ -42,4 +42,4 @@ export const DL_REDIRECT_PAGE_ERROR = [
 // PAGE ID
 export const PAGE_REGISTER_ID = 10001;
 
-
+export const APP_NAME = 'Customer Portal';
