@@ -39,5 +39,4 @@ export const DL_REDIRECT_PAGE_ERROR = [
     FINANCIAL_INSTITUTION_ERROR,
     OTHER_ERROR,
 ]
-
-
+export const APP_NAME = 'Customer Portal';
