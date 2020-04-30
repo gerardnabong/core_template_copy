@@ -216,19 +216,26 @@ function metaSEO(direction) {
 
 router.beforeEach((to, from, next) => {
     let seo = metaSEO(to);
-    if (seo) document.title = `${seo.meta.title} | ${constants.APP_NAME}`;
-    Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
-    if (!seo) return next();
-        seo.meta.metaTags.map(tagDef => {
-        const tag = document.createElement('meta');
-        Object.keys(tagDef).forEach(key => {
-            tag.setAttribute(key, tagDef[key]);
-        });
-        tag.setAttribute('data-vue-router-controlled', '');
+    if (seo) {
+        document.title = `${seo.meta.title} | ${constants.APP_NAME}`;
+    }
+    Array
+        .from(document.querySelectorAll('[data-vue-router-controlled]'))
+        .forEach(el => el.parentNode.removeChild(el));
+    if (!seo) {
+        return next();
+    }
+    seo.meta.metaTags
+        .map(tag_def => {
+            const tag = document.createElement('meta');
+            Object.keys(tag_def).forEach(key => {
+                tag.setAttribute(key, tag_def[key]);
+            });
+            tag.setAttribute('data-vue-router-controlled', '');
 
-        return tag;
-    })
-    .forEach(tag => document.head.appendChild(tag));
+            return tag;
+        })
+        .forEach(tag => document.head.appendChild(tag));
     next();
 });
 
