@@ -12,6 +12,7 @@ export default {
 
     methods: {
         saveAction (data = null) {
+            this.updatePageFormData();
             let form_data = Object.assign({}, this.page_form_data, data);
             let url = '/api/client-interaction/';
             let type = 'POST';
@@ -30,13 +31,17 @@ export default {
                 },
             });
         },
+        updatePageFormData () {
+            this.page_form_data.page_id = this.page_id;
+            this.page_form_data.lead_id = this.client.lead_id;
+            this.page_form_data.client_hash = this.client.hash;
+        },
     },
 
     created () {
-        this.page_form_data.page_id = this.page_id;
-        this.page_form_data.lead_id = this.client.lead_id;
-        this.page_form_data.client_hash = this.client.hash;
-        this.saveAction();
+        this.$nextTick(() => {
+            this.saveAction();
+        });
     },
 
     computed: {
