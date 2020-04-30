@@ -51,7 +51,7 @@ Vue.use(VueGtag, {
             page_title: JS_VARS.portfolio.display_name,
             page_path: to.path,
         }
-      }
+    }
 }, router);
 new Vue({
     router,
