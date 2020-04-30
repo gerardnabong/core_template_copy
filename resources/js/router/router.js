@@ -26,11 +26,11 @@ const ROUTES = [
         path: "/",
         component: Login,
         meta: {
-            title: 'Login | Customer Portal',
+            title: 'Login',
             metaTags: [
                 {
                     name: 'Login description',
-                    content: 'Login Content'
+                    content: 'Login Content',
                 }
             ]
         }
@@ -39,11 +39,11 @@ const ROUTES = [
         path: "/register/:hash",
         component: LeadRegistration,
         meta: {
-            title: 'Register | Customer Portal',
+            title: 'Register',
             metaTags: [
                 {
                     name: 'Register description',
-                    content: 'Register Content'
+                    content: 'Register Content',
                 }
             ]
         }
@@ -53,11 +53,11 @@ const ROUTES = [
         component: ErrorPage,
         name: 'error',
         meta: {
-            title: 'Error | Customer Portal',
+            title: 'Error',
             metaTags: [
                 {
                     name: 'Error description',
-                    content: 'Error Content'
+                    content: 'Error Content',
                 }
             ]
         },
@@ -67,11 +67,11 @@ const ROUTES = [
         component: LoanAction,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_LOAN_ACTION_CLIENT_ID,
-            title: 'LoanAction | Customer Portal',
+            title: 'LoanAction',
             metaTags: [
                 {
                     name: 'LoanAction description',
-                    content: 'LoanAction Content'
+                    content: 'LoanAction Content',
                 }
             ]
         },
@@ -81,11 +81,11 @@ const ROUTES = [
         component: LoanTransfer,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_LOAN_TRANSFER_CLIENT_ID,
-            title: 'LoanTransfer | Customer Portal',
+            title: 'LoanTransfer',
             metaTags: [
                 {
                     name: 'LoanTransfer description',
-                    content: 'LoanTransfer Content'
+                    content: 'LoanTransfer Content',
                 }
             ]
         },
@@ -95,11 +95,11 @@ const ROUTES = [
         component: NewLoan,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_RETURNING_CLIENT_ID,
-            title: 'NewLoan | Customer Portal',
+            title: 'NewLoan',
             metaTags: [
                 {
                     name: 'NewLoan description',
-                    content: 'NewLoan Content'
+                    content: 'NewLoan Content',
                 }
             ]
         },
@@ -109,11 +109,11 @@ const ROUTES = [
         component: OnProcess,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID,
-            title: 'OnProcess | Customer Portal',
+            title: 'OnProcess',
             metaTags: [
                 {
                     name: 'OnProcess description',
-                    content: 'OnProcess Content'
+                    content: 'OnProcess Content',
                 }
             ]
         },
@@ -123,11 +123,11 @@ const ROUTES = [
         component: OnlineVerification,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_NEW_CLIENT_ID,
-            title: 'OnlineVerification | Customer Portal',
+            title: 'OnlineVerification',
             metaTags: [
                 {
                     name: 'OnlineVerification description',
-                    content: 'OnlineVerification Content'
+                    content: 'OnlineVerification Content',
                 }
             ]
         },
@@ -137,11 +137,11 @@ const ROUTES = [
         component: PaymentSchedule,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID,
-            title: 'PaymentSchedule | Customer Portal',
+            title: 'PaymentSchedule',
             metaTags: [
                 {
                     name: 'PaymentSchedule description',
-                    content: 'PaymentSchedule Content'
+                    content: 'PaymentSchedule Content',
                 }
             ]
         },
@@ -151,11 +151,11 @@ const ROUTES = [
         component: SuccessPage,
         meta: {
             requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID,
-            title: 'Success | Customer Portal',
+            title: 'Success',
             metaTags: [
                 {
                     name: 'Success description',
-                    content: 'Success Content'
+                    content: 'Success Content',
                 }
             ]
         },
@@ -210,14 +210,16 @@ router.beforeResolve((to, from, next) => {
     }
 });
 
+function metaSEO(direction) {
+    return direction.matched.slice().reverse().find(route => route.meta);
+}
+
 router.beforeEach((to, from, next) => {
-    const nearestWithTitle = to.matched.slice().reverse().find(route => route.meta && route.meta.title);
-    const nearestWithMeta = to.matched.slice().reverse().find(route => route.meta && route.meta.metaTags);
-    const previousNearestWithMeta = from.matched.slice().reverse().find(route => route.meta && route.meta.metaTags);
-    if (nearestWithTitle) document.title = nearestWithTitle.meta.title;
+    let seo = metaSEO(to);
+    if (seo) document.title = `${seo.meta.title} | ${constants.APP_NAME}`;
     Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
-    if (!nearestWithMeta) return next();
-    nearestWithMeta.meta.metaTags.map(tagDef => {
+    if (!seo) return next();
+        seo.meta.metaTags.map(tagDef => {
         const tag = document.createElement('meta');
         Object.keys(tagDef).forEach(key => {
             tag.setAttribute(key, tagDef[key]);

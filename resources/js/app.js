@@ -5,6 +5,7 @@
  */
 
 import 'vue-loading-overlay/dist/vue-loading.css';
+import * as constants from '~/fixed_variables/constants';
 import BootstrapVue from "bootstrap-vue";
 import Index from "./components/templates/Index";
 import Loading from 'vue-loading-overlay';
@@ -36,7 +37,6 @@ $.ajaxSetup({
         'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content'),
     }
 });
-
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(Loading);
@@ -44,12 +44,12 @@ Vue.use(Loading);
 Vue.prototype.$jsVars = JS_VARS;
 Vue.use(VueGtag, {
     config: { id: JS_VARS.portfolio.ua_tag },
-    appName: 'Client Portal',
+    appName: constants.APP_NAME,
     pageTrackerScreenviewEnabled: true,
     pageTrackerTemplate(to) {
         return {
-          page_title: JS_VARS.portfolio.display_name,
-          page_path: to.path
+            page_title: JS_VARS.portfolio.display_name,
+            page_path: to.path,
         }
       }
 }, router);
