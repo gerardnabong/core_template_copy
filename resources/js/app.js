@@ -11,6 +11,7 @@ import Loading from 'vue-loading-overlay';
 import router from "./router/router";
 import store from "./storage/store";
 import Vue from "vue";
+import VueGtag from "vue-gtag";
 
 window.Vue = require("vue");
 
@@ -36,12 +37,22 @@ $.ajaxSetup({
     }
 });
 
-
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(Loading);
 // TODO will create PortfolioUtil that handle all functionalities that involved portfolio data
 Vue.prototype.$jsVars = JS_VARS;
+Vue.use(VueGtag, {
+    config: { id: JS_VARS.portfolio.ua_tag },
+    appName: 'Client Portal',
+    pageTrackerScreenviewEnabled: true,
+    pageTrackerTemplate(to) {
+        return {
+          page_title: JS_VARS.portfolio.display_name,
+          page_path: to.path
+        }
+      }
+}, router);
 new Vue({
     router,
     store,

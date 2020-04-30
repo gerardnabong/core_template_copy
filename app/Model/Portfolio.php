@@ -17,22 +17,27 @@ class Portfolio extends Model
             'display_name' => 'Inbox Credit',
             'lead_portfolio_id' => '19004',
             'portfolio_api_url' => 'inbox-credit',
+            'ua_tag' => 'UA-163724728-4',
         ], [
             'display_name' => 'Better Day Loan',
             'lead_portfolio_id' => '19007',
             'portfolio_api_url' => 'better-day',
+            'ua_tag' => 'UA-163724728-1',
         ], [
             'display_name' => 'First Loan',
             'lead_portfolio_id' => '19006',
             'portfolio_api_url' => 'first-loan',
+            'ua_tag' => 'UA-163724728-2',
         ], [
             'display_name' => 'Comet Loans',
             'lead_portfolio_id' => '19003',
             'portfolio_api_url' => 'comet',
+            'ua_tag' => 'UA-163724728-3',
         ], [
             'display_name' => 'Inbox Loan',
             'lead_portfolio_id' => '19000',
             'portfolio_api_url' => 'inbox-loan',
+            'ua_tag' => 'UA-163724728-5',
         ]
     ];
     const VERTICAL_URL = '.vertical.arbcalls.com/';
