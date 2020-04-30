@@ -150,7 +150,6 @@ const ROUTES = [
         path: "/success",
         component: SuccessPage,
         meta: {
-            requiredClientStatus: constants.CLIENT_STATUS_LOAN_ON_GOING_CLIENT_ID,
             title: 'Success',
             metaTags: [
                 {
