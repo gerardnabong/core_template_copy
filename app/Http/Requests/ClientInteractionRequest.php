@@ -17,7 +17,8 @@ class ClientInteractionRequest extends FormRequest
     {
         return [
             'lead_id' => 'required|integer',
-            'page_id' => 'required|integer'
+            'page_id' => 'required|integer',
+            'client_hash' => 'required|string',
         ];
     }
 }

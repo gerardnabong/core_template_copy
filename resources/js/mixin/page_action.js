@@ -34,8 +34,14 @@ export default {
 
     created () {
         this.page_form_data.page_id = this.page_id;
-        // sample lead_id this should get from vuex client
-        this.page_form_data.lead_id = 1001,
+        this.page_form_data.lead_id = this.client.lead_id;
+        this.page_form_data.client_hash = this.client.hash;
         this.saveAction();
+    },
+
+    computed: {
+        client () {
+            return this.$store.getters.getClient;
+        }
     }
 }
