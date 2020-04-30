@@ -53,7 +53,6 @@ class ClientInteractionController extends Controller
             );
         } catch (RequestException $exception) {
             Log::error($exception);
-            $this->sendRedirectQuery($request);
         } catch (Exception $exception) {
             Log::error($exception);
         }
