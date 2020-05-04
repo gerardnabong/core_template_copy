@@ -65,10 +65,6 @@ export default {
     created () {
         this.portfolio = this.$jsVars.portfolio;
         this.ok_btn_color = this.portfolio.primary_color;
-        setTimeout(() => {
-            this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
-            this.hide();
-        }, GO_TO_SUCCESS_PAGE_TIMER);
     },
 
     methods: {
@@ -80,6 +76,10 @@ export default {
         },
         show () {
             this.$bvModal.show('decision-logic-verify');
+            setTimeout(() => {
+                this.$store.commit('setProgressBar', constants.ONLINE_VERIFICATION_STEP_SIX);
+                this.hide();
+            }, GO_TO_SUCCESS_PAGE_TIMER);
         },
         hide () {
             this.$bvModal.hide('decision-logic-verify');
