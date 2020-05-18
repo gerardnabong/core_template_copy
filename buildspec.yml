@@ -26,8 +26,10 @@ phases:
     commands:
       - echo Composer Install
       - composer install
+      - composer update
       - echo NPM Install
       - npm install
+      - npm update
       - echo NPM Build
       - npm rebuild
       - npm run dev
