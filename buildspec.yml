@@ -37,19 +37,19 @@ phases:
       #- php artisan migrate --force
       - echo Build started on `date`
       #- echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI_APACHE:$IMAGE_TAG -f Dockerfile-nginx-ecs .
-      - docker tag $REPOSITORY_URI_APACHE:$IMAGE_TAG $REPOSITORY_URI_APACHE:latest
-      - docker build -t $REPOSITORY_URI_PHPFPM:$IMAGE_TAG -f Dockerfile-phpfpm-ecs .
-      - docker tag $REPOSITORY_URI_PHPFPM:$IMAGE_TAG $REPOSITORY_URI_PHPFPM:latest
+      #- docker build -t $REPOSITORY_URI_APACHE:$IMAGE_TAG -f Dockerfile-nginx-ecs .
+      #- docker tag $REPOSITORY_URI_APACHE:$IMAGE_TAG $REPOSITORY_URI_APACHE:latest
+      #- docker build -t $REPOSITORY_URI_PHPFPM:$IMAGE_TAG -f Dockerfile-phpfpm-ecs .
+      #- docker tag $REPOSITORY_URI_PHPFPM:$IMAGE_TAG $REPOSITORY_URI_PHPFPM:latest
 
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI_APACHE:$IMAGE_TAG
-      - docker push $REPOSITORY_URI_APACHE:latest
-      - docker push $REPOSITORY_URI_PHPFPM:$IMAGE_TAG
-      - docker push $REPOSITORY_URI_PHPFPM:latest
+      #- docker push $REPOSITORY_URI_APACHE:$IMAGE_TAG
+      #- docker push $REPOSITORY_URI_APACHE:latest
+      #- docker push $REPOSITORY_URI_PHPFPM:$IMAGE_TAG
+      #- docker push $REPOSITORY_URI_PHPFPM:latest
       
       #- docker push "$(cat /tmp/build_tag_nginx.out)"
       #- docker push "$(cat /tmp/build_tag_phpfpm.out)"
