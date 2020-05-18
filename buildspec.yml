@@ -8,8 +8,8 @@ phases:
       - aws --version
       - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 928364608251.dkr.ecr.ap-southeast-1.amazonaws.com
         # Copy "RepositoryURI" from output of CloudFormation Stack "laravel-ecr"
-      - REPOSITORY_URI_APACHE=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/apache
-      - REPOSITORY_URI_PHPFPM=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/phpfpm
+      - REPOSITORY_URI_APACHE=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/nginx2
+      - REPOSITORY_URI_PHPFPM=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/phpfpm2
       #- IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=latest
       #- printenv
@@ -34,7 +34,7 @@ phases:
       #- echo Database Migration
       #- php artisan migrate --force
       - echo Build started on `date`
-      - echo Building the Docker image...
+      #- echo Building the Docker image...
       #- docker build -t $REPOSITORY_URI_APACHE:$IMAGE_TAG -f Dockerfile-nginx-ecs .
       #- docker tag $REPOSITORY_URI_APACHE:$IMAGE_TAG $REPOSITORY_URI_APACHE:latest
       #- docker build -t $REPOSITORY_URI_PHPFPM:$IMAGE_TAG -f Dockerfile-phpfpm-ecs .
@@ -56,7 +56,7 @@ phases:
       #- printf '[{"name":"laravel_cron","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > image_definitions-laravel_cron.json
       - echo Writing image definitions file...
       - IMAGE_DIFINITION_PHP_FPM="{\"name\":\"php-fpm\",\"imageUri\":\"${REPOSITORY_URI_PHPFPM}:${IMAGE_TAG}\"}"
-      - IMAGE_DIFINITION_APACHE="{\"name\":\"apache2\",\"imageUri\":\"${REPOSITORY_URI_APACHE}:${IMAGE_TAG}\"}"
+      - IMAGE_DIFINITION_APACHE="{\"name\":\"nginx\",\"imageUri\":\"${REPOSITORY_URI_APACHE}:${IMAGE_TAG}\"}"
       - echo "[${IMAGE_DIFINITION_PHP_FPM},${IMAGE_DIFINITION_APACHE}]" > imagedefinitions.json
       
       
