@@ -26,8 +26,8 @@ phases:
     commands:
       - echo Composer Install
       - composer install
+      - composer dump-autoload
       - composer update
-      - php composer.phar require aws/aws-sdk-php
       - echo NPM Install
       - npm install
       - npm update
