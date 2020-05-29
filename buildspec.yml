@@ -24,10 +24,10 @@ phases:
       #- echo APP_VERSION=$CODEBUILD_RESOLVED_SOURCE_VERSION >> .env
   build:
     commands:
-      #- echo Composer Install
-      #- composer install
-      #- composer update
-      #- composer require aws/aws-sdk-php
+      - echo Composer Install
+      - composer install
+      - composer update
+      - composer require aws/aws-sdk-php
       - echo NPM Install
       - npm install
       - npm update
