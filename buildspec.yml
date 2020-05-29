@@ -26,9 +26,7 @@ phases:
     commands:
       - echo Composer Install
       - composer install
-      - composer update
-      - composer dump-autoload
-      - composer require aws/aws-sdk-php
+      - composer update   
       - echo NPM Install
       - npm install
       - npm update
@@ -68,8 +66,5 @@ phases:
 artifacts:
   files: imagedefinitions.json
   discard-paths: yes
-cache:
-  paths:
-    - '/var/www/vendor/**/*'
-    - '/var/www/node_modules/**/*'
+
 
