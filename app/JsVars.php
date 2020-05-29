@@ -8,8 +8,8 @@ use App\Model\Portfolio;
 
 class JSVars
 {
-    public static function getPortfolio(): Portfolio
-    {
-        return Portfolio::getPortfolio();
-    }
+    // public static function getPortfolio(): Portfolio
+    // {
+    //     return Portfolio::getPortfolio();
+    // }
 }
