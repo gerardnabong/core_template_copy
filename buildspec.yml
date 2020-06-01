@@ -10,8 +10,8 @@ phases:
         # Copy "RepositoryURI" from output of CloudFormation Stack "laravel-ecr"
       - REPOSITORY_URI_NGINX=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/nginxtest
       - REPOSITORY_URI_PHPFPM=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/phpfpmtest
-      - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
-      #- IMAGE_TAG=latest
+      #- IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=latest
       #- printenv
       #- echo -n "$CODEBUILD_LOG_PATH" > /tmp/build_id.out
         #- printf "%s:%s" "$REPOSITORY_URI_NGINX" "$(cat /tmp/build_id.out)" > /tmp/build_tag_nginx.out
