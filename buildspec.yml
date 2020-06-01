@@ -12,7 +12,7 @@ phases:
       - REPOSITORY_URI_PHPFPM=928364608251.dkr.ecr.ap-southeast-1.amazonaws.com/phpfpmtest
       #- IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=latest
-      #- printenv
+      #- printen
       #- echo -n "$CODEBUILD_LOG_PATH" > /tmp/build_id.out
         #- printf "%s:%s" "$REPOSITORY_URI_NGINX" "$(cat /tmp/build_id.out)" > /tmp/build_tag_nginx.out
         #- printf "%s:%s" "$REPOSITORY_URI_PHPFPM" "$(cat /tmp/build_id.out)" > /tmp/build_tag_phpfpm.out
@@ -41,7 +41,7 @@ phases:
       - docker tag $REPOSITORY_URI_NGINX:$IMAGE_TAG $REPOSITORY_URI_NGINX:latest
       - docker build -t $REPOSITORY_URI_PHPFPM:$IMAGE_TAG -f Dockerfile-phpfpm-ecs .
       - docker tag $REPOSITORY_URI_PHPFPM:$IMAGE_TAG $REPOSITORY_URI_PHPFPM:latest
-
+      
   post_build:
     commands:
       - echo Build completed on `date`
