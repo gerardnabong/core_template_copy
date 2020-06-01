@@ -36,7 +36,6 @@ phases:
       #- echo Database Migration
       #- php artisan migrate --force
       - echo Build started on `date`
-      - php -v
       #- echo Building the Docker image...
       - docker build -t $REPOSITORY_URI_NGINX:$IMAGE_TAG -f Dockerfile-nginx-ecs .
       - docker tag $REPOSITORY_URI_NGINX:$IMAGE_TAG $REPOSITORY_URI_NGINX:latest
